@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mosselhuis · Carta imprimible · A3 horizontal gatefold</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   MOSSELHUIS — Carta imprimible
+   Formato: A3 horizontal (420 × 297 mm), 2 caras (gatefold triple).
+   3 paneles por cara = 140 × 297 mm cada panel.
+   Márgenes seguros: 12 mm.
+   Paleta: azul mar profundo + crema + ámbar mantequilla.
+============================================================ */
+
+@page {
+  size: 420mm 297mm;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --azul: #0f2a3d;
+  --azul-soft: #1b3d57;
+  --azul-deep: #08192a;
+  --crema: #f5ecdb;
+  --crema-soft: #ede1c8;
+  --crema-bright: #faf3e6;
+  --ambar: #d49a3a;
+  --ambar-soft: #e6b66a;
+  --ambar-deep: #a87422;
+  --linea: rgba(245, 236, 219, 0.16);
+  --linea-strong: rgba(245, 236, 219, 0.3);
+  --linea-dark: rgba(15, 42, 61, 0.14);
+
+  --display: 'Fraunces', 'EB Garamond', Georgia, serif;
+  --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  background: #1a1a1a;
+  font-family: var(--body);
+  font-weight: 400;
+  color: var(--azul);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body { padding: 30px; }
+
+/* ============================================================
+   SHEET — una página impresa A3 horizontal
+============================================================ */
+
+.sheet {
+  width: 420mm;
+  height: 297mm;
+  background: var(--crema);
+  display: grid;
+  grid-template-columns: 140mm 140mm 140mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  page-break-inside: avoid;
+  margin: 0 auto 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.sheet:last-child { page-break-after: auto; margin-bottom: 0; }
+
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(15,42,61,0.08);
+  pointer-events: none;
+  z-index: 10;
+}
+.fold--1 { left: 140mm; }
+.fold--2 { left: 280mm; }
+
+@media print { .fold { display: none; } }
+
+/* ============================================================
+   PANEL — base
+============================================================ */
+
+.panel {
+  height: 297mm;
+  width: 140mm;
+  padding: 14mm 12mm;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--crema { background: var(--crema); color: var(--azul); }
+.panel--azul { background: var(--azul); color: var(--crema); }
+.panel--azul-deep { background: var(--azul-deep); color: var(--crema); }
+
+.panel--cover {
+  background:
+    linear-gradient(180deg, rgba(8,25,42,0.55) 0%, rgba(8,25,42,0.72) 55%, rgba(8,25,42,0.95) 100%),
+    radial-gradient(ellipse at 70% 25%, rgba(212,154,58,0.36), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(27,61,87,0.45), transparent 60%),
+    var(--azul-deep);
+  color: var(--crema);
+  position: relative;
+}
+
+.panel--cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('img/portada-mejillones.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.32;
+  z-index: 0;
+}
+
+.panel--cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,25,42,0.55) 0%, rgba(8,25,42,0.6) 55%, rgba(8,25,42,0.85) 100%);
+  z-index: 1;
+}
+
+.panel--cover > * { position: relative; z-index: 2; }
+
+/* ============================================================
+   COVER PANEL
+============================================================ */
+
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--body);
+  font-size: 8pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ambar-soft);
+  font-weight: 500;
+}
+
+.cover-top span:last-child { color: var(--ambar); }
+
+.cover-center {
+  margin: auto 0;
+  text-align: center;
+}
+
+.brand-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16mm;
+}
+
+.brand-mark__rule {
+  width: 28px;
+  height: 1.2pt;
+  background: var(--ambar);
+}
+
+.brand-mark__label {
+  font-family: var(--body);
+  font-size: 7pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ambar);
+  font-weight: 600;
+}
+
+.cover-name {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 78pt;
+  line-height: 0.9;
+  letter-spacing: -0.015em;
+  color: var(--crema-bright);
+  margin-bottom: 6mm;
+  font-variation-settings: "opsz" 120;
+}
+
+.cover-name em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ambar-soft);
+}
+
+.cover-tagline {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14pt;
+  line-height: 1.4;
+  color: var(--crema);
+  max-width: 22ch;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+.cover-hero-line {
+  margin-top: 9mm;
+  font-family: var(--body);
+  font-size: 7pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ambar);
+  font-weight: 600;
+}
+
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ambar-soft);
+}
+.cover-bottom strong { color: var(--crema-bright); font-weight: 600; letter-spacing: 0.22em; }
+.cover-bottom div { display: flex; flex-direction: column; gap: 3px; }
+.cover-bottom .right { text-align: right; }
+
+/* ============================================================
+   STORY PANEL
+============================================================ */
+
+.panel--story {
+  background: var(--crema);
+  border-left: 1px solid rgba(15,42,61,0.08);
+  border-right: 1px solid rgba(15,42,61,0.08);
+  text-align: center;
+  justify-content: center;
+}
+
+.story-eyebrow {
+  font-size: 7pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ambar-deep);
+  margin-bottom: 6mm;
+  font-weight: 600;
+  font-family: var(--body);
+}
+
+.story-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 24pt;
+  line-height: 1.1;
+  color: var(--azul);
+  margin-bottom: 5mm;
+  letter-spacing: -0.01em;
+}
+.story-title em { font-style: italic; color: var(--ambar-deep); font-weight: 400; }
+
+.story-rule {
+  width: 24px;
+  height: 1.5pt;
+  background: var(--ambar);
+  margin: 5mm auto;
+  border-radius: 1pt;
+}
+
+.story-body {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: var(--azul-soft);
+  max-width: 34ch;
+  margin: 0 auto;
+}
+.story-body p + p { margin-top: 4mm; }
+
+.story-placeholder {
+  margin-top: 6mm;
+  display: inline-block;
+  font-family: var(--body);
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ambar-deep);
+  background: rgba(212,154,58,0.10);
+  padding: 3mm 5mm;
+  border: 0.7pt dashed var(--ambar);
+  font-weight: 600;
+}
+
+.story-signature {
+  margin-top: 5mm;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--ambar-deep);
+}
+
+/* ============================================================
+   LIST PANELS
+============================================================ */
+
+.panel--list { background: var(--crema); }
+.panel--list-dark { background: var(--azul); color: var(--crema); }
+
+.section-head {
+  text-align: center;
+  margin-bottom: 9mm;
+  padding-top: 2mm;
+}
+
+.chapter {
+  font-size: 6.5pt;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--ambar-deep);
+  font-weight: 600;
+  margin-bottom: 4mm;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--body);
+}
+
+.chapter::before, .chapter::after {
+  content: "";
+  width: 14px;
+  height: 1.2pt;
+  background: var(--ambar);
+  opacity: 0.7;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 22pt;
+  line-height: 1;
+  color: var(--azul);
+  letter-spacing: -0.01em;
+}
+.section-title em { font-style: italic; color: var(--ambar-deep); font-weight: 400; }
+
+.panel--list-dark .chapter { color: var(--ambar-soft); }
+.panel--list-dark .section-title { color: var(--crema-bright); }
+.panel--list-dark .section-title em { color: var(--ambar-soft); }
+.panel--list-dark .section-sub { color: var(--crema); opacity: 0.78; }
+
+.section-sub {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--azul-soft);
+  margin-top: 3mm;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+  opacity: 0.9;
+}
+
+/* dish */
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+}
+
+.dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5mm 4mm;
+  padding-bottom: 3.5mm;
+  border-bottom: 0.5pt solid var(--linea-dark);
+}
+
+.dish:last-child { border-bottom: none; }
+
+.panel--list-dark .dish { border-bottom-color: rgba(245,236,219,0.16); }
+
+.dish-name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 12pt;
+  line-height: 1.1;
+  color: var(--azul);
+  letter-spacing: -0.005em;
+}
+.dish-name em { font-style: italic; font-weight: 400; color: var(--ambar-deep); }
+
+.panel--list-dark .dish-name { color: var(--crema-bright); }
+.panel--list-dark .dish-name em { color: var(--ambar-soft); }
+
+.dish-price {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 9pt;
+  color: var(--ambar-deep);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.panel--list-dark .dish-price { color: var(--ambar-soft); }
+
+.dish-desc {
+  grid-column: 1 / -1;
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--azul-soft);
+}
+
+.panel--list-dark .dish-desc { color: var(--crema); opacity: 0.82; }
+
+.dish-tag {
+  grid-column: 1 / -1;
+  font-family: var(--body);
+  font-size: 5.5pt;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ambar-deep);
+  margin-top: 1mm;
+  font-weight: 600;
+}
+
+.panel--list-dark .dish-tag { color: var(--ambar-soft); }
+
+.placeholder-row {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 6.5pt;
+  letter-spacing: 0.04em;
+  color: var(--ambar-deep);
+  background: rgba(212,154,58,0.12);
+  border: 0.7pt dashed var(--ambar);
+  padding: 2.5mm 3mm;
+  margin-top: 1mm;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.panel--list-dark .placeholder-row {
+  color: var(--ambar-soft);
+  background: rgba(212,154,58,0.14);
+  border-color: var(--ambar-soft);
+}
+
+/* ============================================================
+   HERO PANEL — variedad estrella
+============================================================ */
+
+.panel--hero {
+  background: var(--azul-deep);
+  text-align: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--hero .hero-image {
+  height: 168mm;
+  background:
+    linear-gradient(180deg, rgba(8,25,42,0.05) 0%, rgba(8,25,42,0.2) 55%, rgba(8,25,42,0.92) 100%),
+    url('img/variedad-mariniere.webp') center top / cover no-repeat,
+    var(--azul-deep);
+  position: relative;
+}
+
+.panel--hero .hero-image::before {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30mm;
+  height: 30mm;
+  border: 0.7pt solid rgba(245,236,219,0.18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.panel--hero .hero-image::after {
+  content: "Marinière · la cazuela";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 20mm));
+  font-family: var(--body);
+  font-size: 6pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(245,236,219,0.4);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.panel--hero .hero-content {
+  padding: 6mm 12mm 10mm;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--crema);
+}
+
+.panel--hero .hero-chapter {
+  font-family: var(--body);
+  font-size: 6.5pt;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--ambar-soft);
+  font-weight: 600;
+  margin-bottom: 3mm;
+}
+
+.panel--hero .hero-name {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 26pt;
+  line-height: 1;
+  color: var(--crema-bright);
+  margin-bottom: 3mm;
+  letter-spacing: -0.01em;
+}
+.panel--hero .hero-name em { font-style: italic; font-weight: 300; color: var(--ambar-soft); }
+
+.panel--hero .hero-sub {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 9.5pt;
+  color: var(--crema);
+  opacity: 0.88;
+  margin-bottom: 4mm;
+  max-width: 32ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+.panel--hero .hero-note {
+  margin: 3mm auto 0;
+  max-width: 34ch;
+  border-top: 0.5pt solid var(--linea);
+  padding-top: 4mm;
+  font-family: var(--body);
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--crema);
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+.panel--hero .hero-note strong {
+  display: block;
+  margin-bottom: 2mm;
+  font-family: var(--body);
+  font-size: 6pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ambar-soft);
+  font-weight: 600;
+}
+
+/* ============================================================
+   IMG STRIP
+============================================================ */
+
+.img-strip {
+  height: 32mm;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: auto;
+  margin-left: -12mm;
+  margin-right: -12mm;
+  margin-bottom: -14mm;
+  flex-shrink: 0;
+}
+
+.img-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,25,42,0) 30%, rgba(8,25,42,0.55) 100%);
+  pointer-events: none;
+}
+
+.img-strip__caption {
+  position: absolute;
+  bottom: 3mm;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 8pt;
+  color: var(--crema);
+  text-shadow: 0 1px 6px rgba(8,25,42,0.85);
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+
+.panel--list { display: flex; flex-direction: column; }
+.panel--list .section-head,
+.panel--list .dishes { flex-shrink: 0; }
+
+/* ============================================================
+   SPLIT panel
+============================================================ */
+
+.panel--split {
+  background: var(--crema);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 0;
+  border-left: 1px solid rgba(15,42,61,0.08);
+  border-right: 1px solid rgba(15,42,61,0.08);
+}
+
+.split-section {
+  padding: 11mm 12mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.split-section + .split-section {
+  border-top: 1px solid rgba(15,42,61,0.12);
+}
+
+.split-section .section-head { margin-bottom: 4mm; padding-top: 0; }
+.split-section .section-title { font-size: 17pt; }
+.split-section .dishes { gap: 2.5mm; }
+.split-section .dish { padding-bottom: 2.5mm; }
+.split-section .dish-name { font-size: 10pt; }
+.split-section .dish-desc { font-size: 7pt; line-height: 1.4; }
+.split-section .dish-price { font-size: 8pt; }
+
+.split-section .img-strip {
+  height: 22mm;
+  margin-top: auto;
+  margin-left: -12mm;
+  margin-right: -12mm;
+  margin-bottom: -11mm;
+}
+.split-section .img-strip__caption { font-size: 7pt; bottom: 2mm; }
+
+/* ============================================================
+   CONTACT PANEL
+============================================================ */
+
+.panel--contact {
+  background: var(--azul-deep);
+  color: var(--crema);
+  text-align: center;
+  justify-content: space-between;
+  padding-top: 16mm;
+  padding-bottom: 14mm;
+}
+
+.contact-mark {
+  font-family: var(--body);
+  font-size: 6.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ambar);
+  margin-bottom: 6mm;
+  font-weight: 600;
+}
+
+.contact-name {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 32pt;
+  letter-spacing: -0.01em;
+  color: var(--crema-bright);
+  margin-bottom: 3mm;
+}
+.contact-name em { font-style: italic; color: var(--ambar-soft); font-weight: 300; }
+
+.contact-tag {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 10pt;
+  color: var(--crema);
+  opacity: 0.85;
+  margin-bottom: 8mm;
+}
+
+.contact-info {
+  font-family: var(--body);
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crema);
+  opacity: 0.85;
+  line-height: 2;
+  margin-bottom: 6mm;
+}
+
+.contact-info strong { color: var(--crema-bright); font-weight: 600; }
+
+.contact-info-placeholder {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  color: var(--ambar-soft);
+  opacity: 0.85;
+}
+
+.contact-hours {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 8pt;
+  color: var(--crema);
+  opacity: 0.78;
+  line-height: 1.6;
+  max-width: 36ch;
+  margin: 0 auto 6mm;
+  padding-top: 5mm;
+  border-top: 0.5pt solid var(--linea);
+}
+
+.allergens-block {
+  border-top: 0.5pt solid var(--linea);
+  padding-top: 5mm;
+  margin-bottom: 5mm;
+}
+
+.allergens-title {
+  font-family: var(--body);
+  font-size: 6.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ambar);
+  margin-bottom: 3mm;
+  font-weight: 600;
+}
+
+.allergens-body {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 7pt;
+  color: var(--crema);
+  opacity: 0.78;
+  line-height: 1.55;
+  max-width: 38ch;
+  margin: 0 auto;
+}
+
+.disclaimer {
+  border-top: 0.5pt solid var(--linea);
+  padding-top: 4mm;
+  margin-top: 4mm;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 6.5pt;
+  color: var(--crema);
+  opacity: 0.6;
+  line-height: 1.55;
+  max-width: 44ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.disclaimer + .disclaimer {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 3mm;
+  opacity: 0.5;
+}
+
+.kenaz-mark {
+  margin-top: 5mm;
+  font-family: var(--body);
+  font-size: 5.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--crema);
+  opacity: 0.4;
+  font-weight: 500;
+}
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+@media print {
+  html, body {
+    padding: 0;
+    margin: 0;
+    width: 420mm;
+    height: 297mm;
+    background: white;
+  }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+  .sheet:last-child { page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SHEET 1 (cara externa al plegar)
+     Triple panel: [STORY] | [VARIEDADES] | [COVER]
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Story -->
+  <section class="panel panel--crema panel--story">
+    <p class="story-eyebrow">La casa</p>
+    <h2 class="story-title">Una sola cosa,<br><em>bien hecha.</em></h2>
+
+    <div class="story-rule"></div>
+
+    <div class="story-body">
+      <p>
+        Mosselhuis es monoproducto: mejillones frescos, en sus
+        variedades clásicas, hechos al momento. Oficio belga y
+        holandés trasladado al mar de Calpe.
+      </p>
+      <p>
+        El resto es lo justo: pan, patata frita y cerveza belga.
+        Eso es todo. Eso es suficiente.
+      </p>
+    </div>
+
+    <span class="story-placeholder">Vuestra historia · a definir</span>
+
+    <p class="story-signature">— La casa del mejillón</p>
+
+    <div style="position:absolute; bottom:14mm; left:0; right:0; text-align:center;">
+      <p style="font-family: var(--body); font-size: 6.5pt; letter-spacing: 0.4em; text-transform: uppercase; color: var(--azul-soft); opacity: 0.5; font-weight: 500;">Carta · Edición</p>
+    </div>
+  </section>
+
+  <!-- Panel: Variedades (la sección principal) -->
+  <section class="panel panel--list">
+    <header class="section-head">
+      <p class="chapter">Capítulo I · La cazuela</p>
+      <h2 class="section-title">Nuestras <em>variedades</em></h2>
+      <p class="section-sub">Mejillón fresco del día. Salsa hecha al instante. Cazuela individual.</p>
+    </header>
+
+    <div class="dishes">
+
+      <article class="dish">
+        <h3 class="dish-name">Marinière</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Vino blanco, chalota, perejil fresco y mantequilla. El clásico belga.</p>
+        <span class="dish-tag">— El clásico</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Provençale</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Tomate, ajo y hierbas mediterráneas con un punto de pimentón.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Crème</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Nata, mostaza suave, mantequilla y vino blanco. Termina con pan.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Curry</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Crema, curry suave y cilantro. Toque holandés clásico.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Marinera <em>de la casa</em></h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">La receta firme de Mosselhuis — a definir con vosotros.</p>
+        <span class="dish-tag">— Firma de la casa</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Naturel</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Al vapor, sin salsa. Mejillón limpio con un toque de limón.</p>
+      </article>
+
+      <div class="placeholder-row">
+        Variedades de temporada y receta firme — a confirmar con vosotros antes de imprimir.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Panel: Cover -->
+  <section class="panel panel--cover">
+    <div class="cover-top">
+      <span>Calpe · Costa Blanca</span>
+      <span>Mejillones</span>
+    </div>
+
+    <div class="cover-center">
+      <div class="brand-mark">
+        <span class="brand-mark__rule"></span>
+        <span class="brand-mark__label">La casa del mejillón</span>
+        <span class="brand-mark__rule"></span>
+      </div>
+
+      <h1 class="cover-name">Mossel<em>huis</em></h1>
+
+      <p class="cover-tagline">
+        Solo mejillones.<br>
+        Bien hechos.
+      </p>
+
+      <p class="cover-hero-line">— Avenida de Europa 1 · Calpe</p>
+    </div>
+
+    <div class="cover-bottom">
+      <div>
+        <span>La carta</span>
+        <strong>Edición</strong>
+      </div>
+      <div class="right">
+        <span>Edificio Etxezuri</span>
+        <strong>03710 Calp</strong>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================
+     SHEET 2 (cara interna al desplegar)
+     Triple panel: [HERO mariniere] | [ACOMPAÑAR + BEBIDAS] | [ALÉRGENOS + CONTACTO]
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Hero -->
+  <section class="panel panel--hero">
+    <div class="hero-image"></div>
+
+    <div class="hero-content">
+      <p class="hero-chapter">Variedad estrella</p>
+
+      <h2 class="hero-name">Marinière, <em>como en casa</em></h2>
+
+      <p class="hero-sub">
+        Vino blanco, chalota, perejil fresco, mantequilla.
+        Sin trucos, sin chefismos.
+      </p>
+
+      <div class="hero-note">
+        <strong>Cómo se sirve</strong>
+        Cazuela individual, recién hecha. Pan para mojar. Patata frita
+        gruesa si queréis. Cerveza belga al lado.
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel: Acompañar + Bebidas (split) -->
+  <section class="panel panel--split">
+
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo II</p>
+        <h2 class="section-title">Para <em>acompañar</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Patatas fritas</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Estilo belga, corte grueso, doble fritura.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Pan rústico</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Pan del día, tostado. Para mojar en la salsa.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Salsas de la casa</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Mayonesa casera y selección para frites.</p>
+        </article>
+
+        <div class="placeholder-row">
+          Acompañamientos completos — a confirmar.
+        </div>
+      </div>
+
+      <div class="img-strip" style="background-image: url('img/bandeja-mar.webp');">
+        <p class="img-strip__caption">Bandeja con frites y cerveza · referencial</p>
+      </div>
+    </div>
+
+    <div class="split-section panel--list-dark" style="background: var(--azul);">
+      <header class="section-head">
+        <p class="chapter">Capítulo III · La barra</p>
+        <h2 class="section-title">Para <em>beber</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Cervezas belgas</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Selección de barril y botella. Marcas a definir.</p>
+          <span class="dish-tag">— Selección rotativa</span>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Vino blanco</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Copa o botella. Referencias a confirmar.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Refrescos y agua</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Selección habitual. Pregunta al camarero.</p>
+        </article>
+
+        <div class="placeholder-row">
+          Carta de bebidas completa — a cerrar.
+        </div>
+      </div>
+
+      <div class="img-strip" style="background-image: url('img/variedad-provenzale.webp');">
+        <p class="img-strip__caption">Mejillones provençale · referencial</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Panel: Contacto -->
+  <section class="panel panel--contact">
+
+    <div class="allergens-block">
+      <p class="allergens-title">Alérgenos · información</p>
+      <p class="allergens-body">
+        El mejillón es un molusco. Avisa al camarero por intolerancias o
+        alergias — la cocina las contempla. Desglose completo disponible
+        a la consulta.
+      </p>
+    </div>
+
+    <div style="border-top: 0.5pt solid var(--linea); padding-top: 6mm; margin-top: 4mm;">
+      <p class="contact-mark">Encuéntranos</p>
+      <h3 class="contact-name" style="font-size: 26pt; margin-bottom: 2mm;">Mossel<em>huis</em></h3>
+      <p class="contact-tag" style="font-size: 9pt; margin-bottom: 5mm;">La casa del mejillón en Calpe</p>
+
+      <div class="contact-info" style="font-size: 6.5pt;">
+        Avenida de Europa, 1<br>
+        Edificio Etxezuri<br>
+        03710 Calp · Alicante<br>
+        <span class="contact-info-placeholder">[teléfono a confirmar]</span>
+      </div>
+
+      <p class="contact-hours">
+        Horarios y reservas — a confirmar con vosotros antes de publicar.
+      </p>
+    </div>
+
+    <p class="disclaimer">
+      Carta editorial preparada por Kenaz como muestra. Variedades, precios
+      y detalles finales se cierran con vosotros antes de imprimir.
+    </p>
+    <p class="disclaimer">
+      Imágenes referenciales. Las definitivas serán fotografía profesional
+      realizada en Mosselhuis por nuestra socia fotógrafa.
+    </p>
+
+    <p class="kenaz-mark">Diseño · Kenaz Studio</p>
+  </section>
+
+</div>
+
+</body>
+</html>

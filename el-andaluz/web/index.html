@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#1d4a6e" />
+<title>El Andaluz — Arrocería y Tapería en Calpe</title>
+<meta name="description" content="Arrocería-tapería mediterránea en Calpe desde 1990. Arroz del senyoret, paella alicantina, arroz a banda, fideuá, arroz negro y tapas de barra. Pintor Sorolla 21, Calpe. Cerrado los lunes." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
+<style>
+  /* ==================================================
+     EL ANDALUZ — Sistema de marca propio (NO Kenaz)
+     Paleta: hueso mediterráneo + azul mar Calpe + azafrán + naranja paella
+     Display: Fraunces | Body: Inter
+     ================================================== */
+
+  :root {
+    --hueso: #faf6ee;
+    --hueso-soft: #f1ebde;
+    --crema: #ede4cf;
+    --tinta: #1a1410;
+    --tinta-soft: #3a322a;
+    --mar: #1d4a6e;
+    --mar-claro: #2d6892;
+    --mar-suave: #d6e2eb;
+    --azafran: #e0a83a;
+    --paella: #c7741f;
+    --paella-tostado: #9b5414;
+    --ceniza: #8d8479;
+    --linea: rgba(26, 20, 16, 0.12);
+    --linea-soft: rgba(26, 20, 16, 0.06);
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    /* Escala tipográfica modular */
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-md: 1.125rem;
+    --fs-lg: 1.375rem;
+    --fs-xl: 1.875rem;
+    --fs-2xl: 2.5rem;
+    --fs-3xl: 3.25rem;
+    --fs-4xl: 4.5rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 9rem;
+
+    --container: 1240px;
+    --container-narrow: 900px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--body);
+    font-size: var(--fs-base);
+    line-height: 1.65;
+    color: var(--tinta);
+    background: var(--hueso);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--azafran); color: var(--tinta); }
+
+  /* ==================== NAV ==================== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 1.5rem;
+    background: rgba(250, 246, 238, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--linea-soft);
+    transition: background 0.3s ease;
+  }
+  .nav-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: var(--fs-lg);
+    letter-spacing: 0.01em;
+    color: var(--tinta);
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand-mark {
+    font-style: italic;
+    font-weight: 400;
+  }
+  .brand-tag {
+    font-family: var(--body);
+    font-size: 0.625rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mar);
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+  .nav-links {
+    display: none;
+    gap: 2rem;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.03em;
+  }
+  .nav-links a {
+    color: var(--tinta-soft);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--mar); }
+  .nav-cta {
+    font-family: var(--body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.25rem;
+    background: var(--mar);
+    color: var(--hueso);
+    border-radius: 2px;
+    transition: background 0.2s ease;
+  }
+  .nav-cta:hover { background: var(--tinta); }
+
+  @media (min-width: 900px) {
+    .nav-links { display: flex; }
+  }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    padding: 8rem 1.5rem 4rem;
+    background: var(--hueso);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--mar);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--mar);
+  }
+  .hero-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 8vw, 4.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--tinta);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--paella);
+  }
+  .hero-sub {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+    color: var(--tinta-soft);
+    margin-bottom: 2.5rem;
+    max-width: 32rem;
+    line-height: 1.45;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .btn {
+    font-family: var(--body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1rem 1.75rem;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--mar);
+    color: var(--hueso);
+  }
+  .btn-primary:hover {
+    background: var(--tinta);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--tinta);
+    border-color: var(--tinta);
+  }
+  .btn-secondary:hover {
+    background: var(--tinta);
+    color: var(--hueso);
+  }
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--linea-soft);
+  }
+  .kpi {
+    display: flex;
+    flex-direction: column;
+  }
+  .kpi-value {
+    font-family: var(--display);
+    font-size: var(--fs-xl);
+    font-weight: 400;
+    color: var(--tinta);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+  .kpi-value em {
+    font-style: italic;
+    color: var(--paella);
+  }
+  .kpi-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+    font-weight: 500;
+  }
+  .hero-image {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-image-caption {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(250, 246, 238, 0.92);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 0.85rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tinta-soft);
+    font-weight: 500;
+  }
+
+  @media (min-width: 900px) {
+    .hero { padding: 10rem 2rem 5rem; }
+    .hero-inner {
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+    }
+    .kpi-strip {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* ==================== SECTION BASE ==================== */
+  section {
+    padding: 5rem 1.5rem;
+  }
+  @media (min-width: 900px) {
+    section { padding: 7rem 2rem; }
+  }
+  .section-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .section-inner-narrow {
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--mar);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--mar);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--tinta);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--paella);
+  }
+  .section-lede {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: var(--fs-md);
+    color: var(--tinta-soft);
+    max-width: 38rem;
+    line-height: 1.55;
+    margin-bottom: 3rem;
+  }
+
+  /* ==================== HISTORIA ==================== */
+  .historia {
+    background: var(--hueso-soft);
+    border-top: 1px solid var(--linea-soft);
+    border-bottom: 1px solid var(--linea-soft);
+  }
+  .historia-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .historia-text p {
+    font-size: var(--fs-md);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    color: var(--tinta-soft);
+  }
+  .historia-text p:first-of-type::first-letter {
+    font-family: var(--display);
+    font-size: 4rem;
+    line-height: 0.85;
+    float: left;
+    padding: 0.35rem 0.5rem 0 0;
+    color: var(--paella);
+    font-weight: 400;
+  }
+  .historia-cita {
+    border-left: 2px solid var(--paella);
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    margin: 2rem 0;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: var(--fs-lg);
+    line-height: 1.45;
+    color: var(--tinta);
+  }
+  .historia-cita-fuente {
+    margin-top: 0.75rem;
+    font-family: var(--body);
+    font-style: normal;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+  }
+  .historia-img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .historia-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 900px) {
+    .historia-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+  }
+
+  /* ==================== EQUIPO ==================== */
+  .equipo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .equipo-card {
+    background: var(--hueso-soft);
+    border-radius: 2px;
+    border: 1px solid var(--linea-soft);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  .equipo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 60px -32px rgba(26, 20, 16, 0.35);
+  }
+  .equipo-foto {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--crema);
+    position: relative;
+  }
+  .equipo-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.02);
+    transition: filter 0.7s ease, transform 0.7s ease;
+  }
+  .equipo-card:hover .equipo-foto img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.03);
+  }
+  .equipo-foto-placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--ceniza);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 3.5rem;
+    background: linear-gradient(160deg, var(--crema), var(--hueso-soft));
+    letter-spacing: -0.02em;
+  }
+  .equipo-body {
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .equipo-rol {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paella);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .equipo-nombre {
+    font-family: var(--display);
+    font-size: var(--fs-lg);
+    line-height: 1.15;
+    color: var(--tinta);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    min-height: 2.3em;
+  }
+  .equipo-origen {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: var(--fs-sm);
+    color: var(--tinta-soft);
+    margin: 0.25rem 0 0.75rem;
+  }
+  .equipo-bio {
+    font-size: var(--fs-sm);
+    color: var(--tinta-soft);
+    line-height: 1.6;
+  }
+
+  @media (min-width: 700px) {
+    .equipo-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1100px) {
+    .equipo-grid { grid-template-columns: repeat(4, 1fr); gap: 1.75rem; }
+  }
+
+  /* ==================== CARTA ==================== */
+  .carta {
+    background: var(--tinta);
+    color: var(--hueso);
+  }
+  .carta .section-title,
+  .carta .section-lede { color: var(--hueso); }
+  .carta .section-lede { color: rgba(250, 246, 238, 0.7); }
+  .carta .section-eyebrow {
+    color: var(--azafran);
+  }
+  .carta .section-eyebrow::before { background: var(--azafran); }
+
+  .carta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+  .carta-item {
+    border-top: 1px solid rgba(250, 246, 238, 0.12);
+    padding-top: 1.75rem;
+  }
+  .carta-img {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    border-radius: 2px;
+  }
+  .carta-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .carta-plato {
+    font-family: var(--display);
+    font-size: var(--fs-xl);
+    line-height: 1.1;
+    color: var(--hueso);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .carta-precio {
+    font-family: var(--body);
+    font-style: normal;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.1em;
+    color: var(--azafran);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .carta-cat {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--azafran);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .carta-desc {
+    font-size: var(--fs-sm);
+    color: rgba(250, 246, 238, 0.75);
+    line-height: 1.6;
+  }
+
+  @media (min-width: 700px) {
+    .carta-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem 2.5rem; }
+  }
+  @media (min-width: 1100px) {
+    .carta-grid { grid-template-columns: repeat(4, 1fr); gap: 3rem 2rem; }
+  }
+
+  .carta-cta {
+    text-align: center;
+    margin-top: 4rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: var(--fs-md);
+    color: rgba(250, 246, 238, 0.6);
+  }
+
+  /* ==================== RECONOCIMIENTO ==================== */
+  #reconocimiento {
+    background: var(--hueso);
+  }
+  .reconocimiento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .reconocimiento-card {
+    padding: 2.5rem 2rem;
+    background: var(--hueso-soft);
+    border: 1px solid var(--linea-soft);
+    border-left: 3px solid var(--azafran);
+    border-radius: 2px;
+    position: relative;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  .reconocimiento-card.is-flipped {
+    box-shadow: 0 18px 50px -28px rgba(224, 168, 58, 0.55), 0 2px 8px rgba(26, 20, 16, 0.06);
+  }
+  .reconocimiento-card-mar {
+    border-left-color: var(--paella);
+  }
+  .reconocimiento-anio {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: var(--fs-md);
+    color: var(--paella);
+    margin-bottom: 0.5rem;
+  }
+  .reconocimiento-titulo {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: var(--fs-lg);
+    line-height: 1.2;
+    color: var(--tinta);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.005em;
+  }
+  .reconocimiento-fuente {
+    font-size: var(--fs-sm);
+    color: var(--tinta-soft);
+    line-height: 1.55;
+  }
+  .reconocimiento-nota {
+    margin-top: 0.75rem;
+    font-size: var(--fs-xs);
+    color: var(--ceniza);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 800px) {
+    .reconocimiento-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ==================== GALERIA ==================== */
+  .galeria {
+    background: var(--crema);
+    overflow: hidden;
+    position: relative;
+  }
+  .galeria::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--azafran), transparent);
+    opacity: 0.4;
+  }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .galeria-img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .galeria-img-tall { aspect-ratio: 3 / 4; }
+  .galeria-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .galeria-img:hover img { transform: scale(1.04); }
+
+  @media (min-width: 700px) {
+    .galeria-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .galeria-img-tall { grid-row: span 2; aspect-ratio: 3 / 4; }
+  }
+
+  /* ==================== RESERVAS ==================== */
+  .reservas {
+    background: var(--hueso-soft);
+    border-top: 1px solid var(--linea-soft);
+  }
+  .reservas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+  .reservas-form {
+    background: var(--hueso);
+    padding: 2rem;
+    border-radius: 2px;
+    border: 1px solid var(--linea-soft);
+  }
+  .form-row { margin-bottom: 1.25rem; }
+  .form-row label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tinta-soft);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--linea);
+    background: var(--hueso);
+    font-family: var(--body);
+    font-size: var(--fs-base);
+    color: var(--tinta);
+    border-radius: 2px;
+    transition: border 0.2s;
+  }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus {
+    outline: none;
+    border-color: var(--mar);
+  }
+  .form-row-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form-disclaimer {
+    font-size: var(--fs-xs);
+    color: var(--ceniza);
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+  .reservas-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .reservas-info-card {
+    padding: 1.75rem;
+    background: var(--hueso);
+    border: 1px solid var(--linea-soft);
+    border-radius: 2px;
+  }
+  .reservas-info-card h4 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: var(--fs-md);
+    color: var(--tinta);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.005em;
+  }
+  .reservas-info-card p {
+    font-size: var(--fs-sm);
+    color: var(--tinta-soft);
+    line-height: 1.55;
+  }
+  .reservas-info-card a {
+    color: var(--mar);
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border 0.2s;
+  }
+  .reservas-info-card a:hover {
+    border-bottom-color: var(--mar);
+  }
+
+  @media (min-width: 900px) {
+    .reservas-grid {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  /* ==================== CONTACTO ==================== */
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  .contacto-block h4 {
+    font-family: var(--body);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--paella);
+    margin-bottom: 0.85rem;
+  }
+  .contacto-block p, .contacto-block address {
+    font-family: var(--display);
+    font-style: normal;
+    font-size: var(--fs-md);
+    line-height: 1.5;
+    color: var(--tinta);
+    font-weight: 400;
+  }
+  .contacto-block address {
+    font-style: normal;
+  }
+  .contacto-block a {
+    color: var(--tinta);
+    border-bottom: 1px solid var(--linea);
+    transition: border 0.2s;
+  }
+  .contacto-block a:hover { border-bottom-color: var(--tinta); }
+  .contacto-block .placeholder {
+    color: var(--ceniza);
+    font-style: italic;
+    font-size: var(--fs-sm);
+  }
+
+  @media (min-width: 700px) {
+    .contacto-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ==================== FOOTER ==================== */
+  footer {
+    background: var(--tinta);
+    color: var(--hueso);
+    padding: 4rem 1.5rem 2rem;
+  }
+  .footer-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(250, 246, 238, 0.1);
+  }
+  .footer-brand {
+    font-family: var(--display);
+    font-size: var(--fs-xl);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .footer-brand em { font-style: italic; font-weight: 400; }
+  .footer-mission {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: var(--fs-md);
+    color: rgba(250, 246, 238, 0.7);
+    line-height: 1.55;
+    max-width: 26rem;
+  }
+  .footer-col h5 {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--azafran);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .footer-col p, .footer-col li, .footer-col a {
+    font-size: var(--fs-sm);
+    color: rgba(250, 246, 238, 0.75);
+    line-height: 1.7;
+    list-style: none;
+  }
+  .footer-bottom {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .footer-meta {
+    font-size: var(--fs-xs);
+    color: rgba(250, 246, 238, 0.4);
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+  }
+  .footer-meta strong { color: rgba(250, 246, 238, 0.7); font-weight: 500; }
+  .footer-kenaz {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250, 246, 238, 0.5);
+  }
+  .footer-kenaz a {
+    color: var(--azafran);
+    border-bottom: 1px solid transparent;
+    transition: border 0.2s;
+  }
+  .footer-kenaz a:hover { border-bottom-color: var(--azafran); }
+
+  @media (min-width: 800px) {
+    .footer-top {
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  /* ==================== GALERIA HERO OVERLAY ==================== */
+  .galeria-img {
+    position: relative;
+  }
+  .galeria-img-hero {
+    position: relative;
+  }
+  .galeria-img-overlay {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(180deg, transparent, rgba(26, 20, 16, 0.78));
+    color: var(--hueso);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+  }
+  .galeria-img-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--azafran);
+    font-weight: 500;
+  }
+  .galeria-img-titulo {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: var(--fs-md);
+    line-height: 1.25;
+    color: var(--hueso);
+  }
+
+  /* ==================== CARTA — DEPTH HOVER ==================== */
+  .carta-item {
+    transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
+  }
+  .carta-img {
+    overflow: hidden;
+    transition: box-shadow 0.5s ease;
+  }
+  .carta-img img {
+    transition: transform 0.7s cubic-bezier(.2,.7,.2,1), filter 0.7s ease;
+  }
+  @media (hover: hover) {
+    .carta-item:hover {
+      transform: translateY(-6px) rotate(-0.4deg);
+    }
+    .carta-item:hover .carta-img {
+      box-shadow: 0 28px 60px -28px rgba(0, 0, 0, 0.55), 0 8px 18px -8px rgba(224, 168, 58, 0.18);
+    }
+    .carta-item:hover .carta-img img {
+      transform: scale(1.04) rotate(0.4deg);
+      filter: saturate(1.06) contrast(1.02);
+    }
+  }
+
+  /* ==================== TIMELINE 35 AÑOS ==================== */
+  .timeline-section {
+    background: var(--hueso-soft);
+    border-top: 1px solid var(--linea-soft);
+    border-bottom: 1px solid var(--linea-soft);
+    padding: 5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .timeline-header {
+    max-width: var(--container);
+    margin: 0 auto 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .timeline-header-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .timeline-counter {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(5rem, 14vw, 9rem);
+    line-height: 0.9;
+    color: var(--paella);
+    letter-spacing: -0.04em;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.25rem;
+  }
+  .timeline-counter-num {
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline-counter-sufijo {
+    font-family: var(--body);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.18em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tinta-soft);
+    align-self: center;
+  }
+
+  .timeline-track-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  .timeline-track {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .timeline-line {
+    position: absolute;
+    left: 1.25rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--azafran) 8%, var(--azafran) 92%, transparent);
+    opacity: 0.55;
+  }
+  .timeline-card {
+    position: relative;
+    padding: 1.5rem 0 2rem 3rem;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .timeline-card.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .timeline-card::before {
+    content: '';
+    position: absolute;
+    left: 0.875rem;
+    top: 2rem;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    background: var(--hueso-soft);
+    border: 2px solid var(--azafran);
+    box-shadow: 0 0 0 4px var(--hueso-soft);
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+  }
+  .timeline-card.is-in::before {
+    background: var(--azafran);
+    box-shadow: 0 0 0 4px var(--hueso-soft), 0 0 18px 2px rgba(224, 168, 58, 0.35);
+  }
+  .timeline-year {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    line-height: 1;
+    color: var(--paella);
+    letter-spacing: -0.02em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-hito {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: var(--fs-lg);
+    line-height: 1.2;
+    color: var(--tinta);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.005em;
+  }
+  .timeline-detalle {
+    font-size: var(--fs-sm);
+    line-height: 1.65;
+    color: var(--tinta-soft);
+    max-width: 28rem;
+  }
+  .timeline-fuente {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+    font-weight: 500;
+  }
+
+  @media (min-width: 1000px) {
+    .timeline-section {
+      padding: 7rem 0;
+    }
+    .timeline-pin {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .timeline-header {
+      padding: 0 2rem;
+    }
+    .timeline-track-wrapper {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .timeline-track {
+      flex-direction: row;
+      gap: 0;
+      padding: 0 6rem;
+      align-items: center;
+      will-change: transform;
+    }
+    .timeline-line {
+      left: 6rem;
+      right: 6rem;
+      top: 50%;
+      bottom: auto;
+      width: auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--azafran) 4%, var(--azafran) 96%, transparent);
+    }
+    .timeline-card {
+      flex: 0 0 22rem;
+      padding: 0 2.5rem;
+      position: relative;
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .timeline-card::before {
+      left: 50%;
+      top: auto;
+      bottom: -1.6rem;
+      transform: translateX(-50%);
+    }
+    .timeline-card:nth-child(even) {
+      transform: translateY(-9rem);
+    }
+    .timeline-card:nth-child(even)::before {
+      bottom: auto;
+      top: -1.6rem;
+    }
+    .timeline-card.is-in {
+      transform: none;
+    }
+    .timeline-card:nth-child(even).is-in {
+      transform: translateY(-9rem);
+    }
+    .timeline-detalle { max-width: none; }
+  }
+
+  /* ==================== TRAVELERS CHOICE FLIP ==================== */
+  .tc-badge {
+    margin: 3rem auto 0;
+    max-width: 28rem;
+    perspective: 1200px;
+  }
+  .tc-badge-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    transition: transform 1.1s cubic-bezier(.2,.7,.2,1);
+    transform-style: preserve-3d;
+  }
+  .tc-badge.is-flipped .tc-badge-inner {
+    transform: rotateY(180deg);
+  }
+  .tc-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--hueso);
+    border: 1px solid var(--linea);
+    border-radius: 2px;
+  }
+  .tc-face-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(160deg, var(--tinta), #2a2218);
+    color: var(--hueso);
+    border-color: var(--azafran);
+    box-shadow: 0 0 0 1px rgba(224, 168, 58, 0.18), 0 18px 60px -28px rgba(224, 168, 58, 0.55);
+  }
+  .tc-face-back::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(224, 168, 58, 0.22), transparent 65%);
+    pointer-events: none;
+  }
+  .tc-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--paella);
+    font-weight: 600;
+  }
+  .tc-face-back .tc-eyebrow { color: var(--azafran); }
+  .tc-titulo {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: var(--fs-xl);
+    line-height: 1.1;
+    text-align: center;
+    color: inherit;
+    letter-spacing: -0.01em;
+  }
+  .tc-anio {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--azafran);
+    margin-top: 0.5rem;
+  }
+  .tc-face-back .tc-titulo em {
+    font-style: italic;
+    color: var(--azafran);
+  }
+
+  /* ==================== REVEAL UTILS ==================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-equipo] {
+    opacity: 0;
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
+    will-change: opacity, transform;
+  }
+  [data-equipo][data-equipo-side="left"]  { transform: translateX(-32px); }
+  [data-equipo][data-equipo-side="right"] { transform: translateX(32px); }
+  [data-equipo][data-equipo-side="up"]    { transform: translateY(-28px); }
+  [data-equipo][data-equipo-side="down"]  { transform: translateY(28px); }
+  [data-equipo].is-in {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+    }
+    .reveal, [data-equipo], .timeline-card {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .tc-badge.is-flipped .tc-badge-inner { transform: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">El Andaluz</span>
+      <span class="brand-tag">Arrocería · Tapería · Calpe</span>
+    </a>
+    <div class="nav-links">
+      <a href="#historia">Historia</a>
+      <a href="#timeline">35 años</a>
+      <a href="#equipo">Casa</a>
+      <a href="#carta">Carta</a>
+      <a href="#reconocimiento">Reconocimiento</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#reservas" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">Pintor Sorolla 21 · Calpe</div>
+      <h1 class="hero-title">
+        Nombre andaluz,<br>
+        cocina <em>valenciana</em>,<br>
+        oficio de 35 años.
+      </h1>
+      <p class="hero-sub">
+        Arrocería y tapería en Calpe desde finales de 1990. Arroz del senyoret, paella
+        alicantina, arroz a banda, arroz negro y fideuá. La paella se reserva con antelación.
+      </p>
+      <div class="hero-actions">
+        <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
+        <a href="#carta" class="btn btn-secondary">Ver la carta</a>
+      </div>
+      <div class="kpi-strip">
+        <div class="kpi">
+          <span class="kpi-value">4,4<em>★</em></span>
+          <span class="kpi-label">Restaurant Guru</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value">1.706</span>
+          <span class="kpi-label">Reseñas verificadas</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value">35</span>
+          <span class="kpi-label">Años en Calpe</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value"><em>’25</em></span>
+          <span class="kpi-label">Travelers’ Choice</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="img/hero-paella.webp" alt="Arroz del senyoret terminado en paellera, marisco pelado y caldo concentrado" loading="eager" />
+      <div class="hero-image-caption">Arroz del senyoret · la casa</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HISTORIA ==================== -->
+<section class="historia" id="historia">
+  <div class="section-inner">
+    <div class="historia-grid">
+      <div class="historia-text">
+        <div class="section-eyebrow">La casa</div>
+        <h2 class="section-title">Un jiennense que aprendió a hacer paella en Calpe.</h2>
+        <p>
+          Juan Francisco Martínez Pérez nació en Villanueva del Arzobispo, Jaén, en 1961.
+          Llegó a Calpe siendo joven y pasó diez años en el Bar Baydal antes de abrir el suyo.
+          A finales de 1990 levantó El Andaluz junto a su mujer, Rosa María.
+        </p>
+        <p>
+          El nombre vino de su origen. La cocina, en cambio, la fue aprendiendo aquí:
+          el arroz alicantino, la fideuá, el caldo de pescado del puerto, las tapas
+          que se piden de pie en la barra. Treinta y cinco años después la casa sigue
+          en la misma esquina del Edificio Apolo, con la cocina al frente y la familia
+          en sala.
+        </p>
+        <blockquote class="historia-cita">
+          “Tengo clientes que en su día eran niños que me pedían un helado y hoy son adultos.”
+          <div class="historia-cita-fuente">Juan Francisco · entrevista en La Marina, 2019</div>
+        </blockquote>
+        <p>
+          La hija menor, Rosa, ha entrado al negocio para tomar el relevo. La modernización
+          del local en 2016 dejó la cocina abierta a la vista y la sala con la misma
+          calma de siempre.
+        </p>
+      </div>
+      <div class="historia-img reveal">
+        <img src="img/manos-cocina.webp" alt="Detalle de unas manos echando azafrán sobre una paella en cocción" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TIMELINE 35 AÑOS ==================== -->
+<section class="timeline-section" id="timeline" aria-labelledby="timeline-title">
+  <div class="timeline-header">
+    <div class="section-eyebrow">La línea del tiempo</div>
+    <div class="timeline-header-top">
+      <h2 class="section-title" id="timeline-title">
+        <em>Treinta y cinco</em> años,<br>
+        contados por hitos.
+      </h2>
+      <div class="timeline-counter" aria-hidden="true">
+        <span class="timeline-counter-num" data-count-to="35">0</span>
+        <span class="timeline-counter-sufijo">años en Calpe</span>
+      </div>
+    </div>
+    <p class="section-lede">
+      Una casa que abrió a finales de 1990 y sigue en la misma esquina del Edificio Apolo.
+      Los hechos, ordenados.
+    </p>
+  </div>
+  <div class="timeline-pin">
+    <div class="timeline-track-wrapper">
+      <div class="timeline-track" id="timeline-track">
+        <div class="timeline-line" aria-hidden="true"></div>
+
+        <article class="timeline-card">
+          <span class="timeline-year">1980</span>
+          <h3 class="timeline-hito">Aprendizaje en el Bar Baydal</h3>
+          <p class="timeline-detalle">
+            Juan Francisco pasa diez años en el Bar Baydal de Calpe, casa donde nació la
+            tradición del arroz del senyoret.
+          </p>
+          <p class="timeline-fuente">Entrevista La Marina · 2019</p>
+        </article>
+
+        <article class="timeline-card">
+          <span class="timeline-year">1990</span>
+          <h3 class="timeline-hito">Apertura de El Andaluz</h3>
+          <p class="timeline-detalle">
+            A finales de 1990, Juan Francisco abre la casa en la calle Pintor Sorolla
+            junto a su mujer, Rosa María.
+          </p>
+          <p class="timeline-fuente">Fundación de la casa</p>
+        </article>
+
+        <article class="timeline-card">
+          <span class="timeline-year">2015</span>
+          <h3 class="timeline-hito">Medalla Jaume Pastor i Fluixà</h3>
+          <p class="timeline-detalle">
+            El Ayuntamiento de Calpe reconoce la trayectoria de la casa en la edición
+            anual del 9 d'Octubre.
+          </p>
+          <p class="timeline-fuente">Ayuntamiento de Calpe</p>
+        </article>
+
+        <article class="timeline-card">
+          <span class="timeline-year">2016</span>
+          <h3 class="timeline-hito">Modernización del local</h3>
+          <p class="timeline-detalle">
+            Cocina abierta a la vista y sala renovada, manteniendo el carácter de la
+            esquina del Edificio Apolo.
+          </p>
+          <p class="timeline-fuente">Reforma interior</p>
+        </article>
+
+        <article class="timeline-card">
+          <span class="timeline-year">2019</span>
+          <h3 class="timeline-hito">Entrevista en La Marina</h3>
+          <p class="timeline-detalle">
+            «Tengo clientes que en su día eran niños que me pedían un helado y hoy son
+            adultos.»
+          </p>
+          <p class="timeline-fuente">Diario La Marina · 2019</p>
+        </article>
+
+        <article class="timeline-card">
+          <span class="timeline-year">2025</span>
+          <h3 class="timeline-hito">Travelers' Choice de TripAdvisor</h3>
+          <p class="timeline-detalle">
+            Distinción al 10 % de restaurantes mejor valorados del mundo en base a
+            reseñas verificadas del último año.
+          </p>
+          <p class="timeline-fuente">TripAdvisor · 2025</p>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EQUIPO ==================== -->
+<section id="equipo">
+  <div class="section-inner">
+    <div class="section-eyebrow">La familia y la cocina</div>
+    <h2 class="section-title">Cuatro nombres detrás de cada arroz.</h2>
+    <p class="section-lede">
+      No hay rotación de personal aquí. La sala y la cocina llevan años trabajando
+      juntas, y eso se nota desde que se entra.
+    </p>
+    <div class="equipo-grid">
+      <article class="equipo-card" data-equipo data-equipo-side="left">
+        <div class="equipo-foto">
+          <span class="equipo-foto-placeholder" aria-hidden="true">JF</span>
+        </div>
+        <div class="equipo-body">
+          <div class="equipo-rol">Fundador y dueño</div>
+          <h3 class="equipo-nombre">Juan Francisco<br>Martínez Pérez</h3>
+          <div class="equipo-origen">Villanueva del Arzobispo, Jaén · 1961</div>
+          <p class="equipo-bio">
+            Aprendió el oficio en el Bar Baydal de Calpe. Abrió El Andaluz a finales de 1990
+            y desde entonces no ha faltado un servicio.
+          </p>
+        </div>
+      </article>
+      <article class="equipo-card" data-equipo data-equipo-side="up">
+        <div class="equipo-foto">
+          <span class="equipo-foto-placeholder" aria-hidden="true">RM</span>
+        </div>
+        <div class="equipo-body">
+          <div class="equipo-rol">Sala y dirección</div>
+          <h3 class="equipo-nombre">Rosa María<br>Díaz</h3>
+          <div class="equipo-origen">Esposa de Juan · sala desde 1990</div>
+          <p class="equipo-bio">
+            Conocieron juntos el oficio antes de abrir la casa. Lleva la sala con el ritmo
+            de quien lo ha hecho cinco mil servicios.
+          </p>
+        </div>
+      </article>
+      <article class="equipo-card" data-equipo data-equipo-side="down">
+        <div class="equipo-foto">
+          <span class="equipo-foto-placeholder" aria-hidden="true">R</span>
+        </div>
+        <div class="equipo-body">
+          <div class="equipo-rol">Relevo generacional</div>
+          <h3 class="equipo-nombre">Rosa<br>Martínez Díaz</h3>
+          <div class="equipo-origen">Hija menor · relevo en curso</div>
+          <p class="equipo-bio">
+            Entró al negocio para tomar el testigo familiar. Trabaja al lado de Juan y Rosa María
+            aprendiendo cada plato de la carta.
+          </p>
+        </div>
+      </article>
+      <article class="equipo-card" data-equipo data-equipo-side="right">
+        <div class="equipo-foto">
+          <span class="equipo-foto-placeholder" aria-hidden="true">JG</span>
+        </div>
+        <div class="equipo-body">
+          <div class="equipo-rol">Jefe de cocina</div>
+          <h3 class="equipo-nombre">José<br>Giraldo</h3>
+          <div class="equipo-origen">Gaditano · cocina</div>
+          <p class="equipo-bio">
+            Manda en los fuegos. Suya es la mano del arroz a banda, la fideuá y los caldos
+            que se hacen cada mañana antes del servicio.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CARTA ==================== -->
+<section class="carta" id="carta">
+  <div class="section-inner">
+    <div class="section-eyebrow">La carta</div>
+    <h2 class="section-title">Arroces que tardan, tapas que no.</h2>
+    <p class="section-lede">
+      Treinta y dos tapas, cinco tostas, tres pescados, tres carnes y los arroces.
+      <strong>La paella se reserva con antelación</strong>: se hace al momento, como debe ser.
+    </p>
+    <div class="carta-grid">
+      <article class="carta-item">
+        <div class="carta-img">
+          <img src="img/hero-paella.webp" alt="Arroz del senyoret terminado en paellera con marisco pelado" loading="lazy" />
+        </div>
+        <div class="carta-cat">Arroces · Insignia</div>
+        <h3 class="carta-plato">
+          <span>Arroz del senyoret</span>
+          <span class="carta-precio">consultar</span>
+        </h3>
+        <p class="carta-desc">
+          Marisco pelado y fumet concentrado. «Muy rico y muy generoso», dicen los habituales.
+          La referencia más pedida.
+        </p>
+      </article>
+      <article class="carta-item">
+        <div class="carta-img">
+          <img src="img/plato-carnes.webp" alt="Solomillo con foie y pera caramelizada" loading="lazy" />
+        </div>
+        <div class="carta-cat">Carnes · Signature</div>
+        <h3 class="carta-plato">
+          <span>Solomillo al Foie y Pera Caramelizada</span>
+          <span class="carta-precio">22,75 €</span>
+        </h3>
+        <p class="carta-desc">
+          Solomillo de ternera, escalopa de foie, pera al horno. La firma de Juan Francisco
+          para los días que se sale del arroz.
+        </p>
+      </article>
+      <article class="carta-item">
+        <div class="carta-img">
+          <img src="img/tapas-barra.webp" alt="Merluza a la plancha con aceite de oliva y limón" loading="lazy" />
+        </div>
+        <div class="carta-cat">Pescados</div>
+        <h3 class="carta-plato">
+          <span>Merluza a la plancha</span>
+          <span class="carta-precio">18,50 €</span>
+        </h3>
+        <p class="carta-desc">
+          Pieza limpia, aceite de oliva y limón. Junto a la merluza a la vasca (17,75 €)
+          y la zarzuela de la casa (18,50 €).
+        </p>
+      </article>
+      <article class="carta-item">
+        <div class="carta-img">
+          <img src="img/tapas-barra.webp" alt="Surtido de tapas: jamón ibérico, croquetas, calamares" loading="lazy" />
+        </div>
+        <div class="carta-cat">Tapas · Premium</div>
+        <h3 class="carta-plato">
+          <span>Jamón Ibérico de Bellota</span>
+          <span class="carta-precio">18,00 € / 7,00 €</span>
+        </h3>
+        <p class="carta-desc">
+          Ración entera o media. Curado largo, corte a cuchillo. La tabla más
+          pedida de la barra.
+        </p>
+      </article>
+      <article class="carta-item">
+        <div class="carta-img">
+          <img src="img/tapas-barra.webp" alt="Croquetas caseras y albóndigas para picar" loading="lazy" />
+        </div>
+        <div class="carta-cat">Tapas · Para picar</div>
+        <h3 class="carta-plato">
+          <span>Croquetas / Albóndigas Caseras</span>
+          <span class="carta-precio">1,20 € / 1,00 € ud.</span>
+        </h3>
+        <p class="carta-desc">
+          Se piden por unidad — la manera de la casa para que pruebes varias
+          sin tener que terminar la ración entera.
+        </p>
+      </article>
+      <article class="carta-item">
+        <div class="carta-img">
+          <img src="img/fideua.webp" alt="Tosta de solomillo con queso de cabra y cebolla caramelizada" loading="lazy" />
+        </div>
+        <div class="carta-cat">Tostas</div>
+        <h3 class="carta-plato">
+          <span>Tostas de la casa</span>
+          <span class="carta-precio">4,00 € – 4,50 €</span>
+        </h3>
+        <p class="carta-desc">
+          Cinco tostas, todas bajo cinco euros: jamón y huevos de codorniz, solomillo
+          con queso de cabra, salmón, anchoas catalanas, vegetariana de sepia.
+        </p>
+      </article>
+    </div>
+    <p class="carta-cta">
+      Más de cuarenta referencias en carta. Menú de niños <strong>6,90 €</strong>.
+      Reserva al <a href="tel:+34965835566" style="color:var(--azafran); border-bottom:1px solid var(--azafran);">965 83 55 66</a>.
+      La paella, mejor con un día de antelación.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== RECONOCIMIENTO ==================== -->
+<section id="reconocimiento">
+  <div class="section-inner">
+    <div class="section-eyebrow">Reconocimiento</div>
+    <h2 class="section-title">Treinta y cinco años, dos sellos que importan.</h2>
+    <p class="section-lede">
+      No nos gusta hablar de premios, pero hay dos que sí merecen mención porque vienen
+      de quien sabe: los clientes y la propia ciudad.
+    </p>
+    <div class="reconocimiento-grid">
+      <article class="reconocimiento-card reveal">
+        <div class="reconocimiento-anio">2025</div>
+        <h3 class="reconocimiento-titulo">Travelers’ Choice de TripAdvisor</h3>
+        <p class="reconocimiento-fuente">
+          Distinción otorgada al 10 % de restaurantes mejor valorados del mundo en base
+          a las reseñas verificadas del último año.
+        </p>
+        <p class="reconocimiento-nota">Sello vigente, comprobable en la ficha de TripAdvisor.</p>
+      </article>
+      <article class="reconocimiento-card reconocimiento-card-mar reveal">
+        <div class="reconocimiento-anio">2015</div>
+        <h3 class="reconocimiento-titulo">Medalla al Mérito Empresarial Jaume Pastor i Fluixà</h3>
+        <p class="reconocimiento-fuente">
+          Otorgada por el Ayuntamiento de Calpe en su edición anual del 9 d’Octubre,
+          en reconocimiento a la trayectoria de la casa.
+        </p>
+        <p class="reconocimiento-nota">Referenciado en entrevista de La Marina (2019). Verificable en archivo municipal.</p>
+      </article>
+    </div>
+
+    <div class="tc-badge" id="tc-badge" aria-hidden="true">
+      <div class="tc-badge-inner">
+        <div class="tc-face tc-face-front">
+          <span class="tc-eyebrow">TripAdvisor</span>
+          <span class="tc-titulo">Travelers’ Choice</span>
+          <span class="tc-anio">2025</span>
+        </div>
+        <div class="tc-face tc-face-back">
+          <span class="tc-eyebrow">Top 10 %</span>
+          <span class="tc-titulo">Entre los <em>mejor valorados</em><br>del mundo</span>
+          <span class="tc-anio">’25</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GALERIA ==================== -->
+<section class="galeria">
+  <div class="section-inner">
+    <div class="section-eyebrow">El lugar</div>
+    <h2 class="section-title">La sala, los detalles, el día a día.</h2>
+    <div class="galeria-grid">
+      <div class="galeria-img galeria-img-tall galeria-img-hero">
+        <img src="img/ambiente-comedor.webp" alt="Sala del restaurante con mesas vestidas y luz cálida" loading="lazy" />
+        <div class="galeria-img-overlay">
+          <span class="galeria-img-eyebrow">La casa</span>
+          <span class="galeria-img-titulo">Una esquina del Edificio Apolo, abierta desde 1990.</span>
+        </div>
+      </div>
+      <div class="galeria-img">
+        <img src="img/vino-mesa.webp" alt="Mesa puesta con copa de vino y pan rústico" loading="lazy" />
+      </div>
+      <div class="galeria-img">
+        <img src="img/fachada-detalle.webp" alt="Detalle de fachada mediterránea con olivo y reja" loading="lazy" />
+      </div>
+      <div class="galeria-img">
+        <img src="img/tapas-barra.webp" alt="Tapas en barra con vermut" loading="lazy" />
+      </div>
+      <div class="galeria-img">
+        <img src="img/arroz-a-banda.webp" alt="Arroz a banda con allioli" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RESERVAS ==================== -->
+<section class="reservas" id="reservas">
+  <div class="section-inner">
+    <div class="section-eyebrow">Reservas</div>
+    <h2 class="section-title">Aparta tu mesa.</h2>
+    <p class="section-lede">
+      Si tu reserva incluye paella o arroz, conviene avisarlo en el comentario. Se prepara
+      al momento y necesitamos saber el número exacto de comensales.
+      <strong>Lunes cerrado.</strong>
+    </p>
+    <div class="reservas-grid">
+      <form class="reservas-form" onsubmit="event.preventDefault(); alert('Formulario de demostración. La reserva real se gestiona por teléfono o WhatsApp.');">
+        <div class="form-row form-row-double">
+          <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" required />
+          </div>
+          <div>
+            <label for="tel">Teléfono</label>
+            <input type="tel" id="tel" required />
+          </div>
+        </div>
+        <div class="form-row form-row-double">
+          <div>
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" required />
+          </div>
+          <div>
+            <label for="hora">Hora</label>
+            <select id="hora" required>
+              <option value="">Selecciona…</option>
+              <option>13:30</option>
+              <option>14:00</option>
+              <option>14:30</option>
+              <option>15:00</option>
+              <option>20:30</option>
+              <option>21:00</option>
+              <option>21:30</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="personas">Comensales</label>
+          <select id="personas" required>
+            <option value="">Selecciona…</option>
+            <option>2</option><option>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>+8 (avisar)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="notas">¿Vais a pedir arroz? Indícanos cuántos</label>
+          <textarea id="notas" rows="3" placeholder="Ej.: paella alicantina para 4, una alergia al marisco…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Solicitar reserva</button>
+        <p class="form-disclaimer">
+          La reserva se confirma desde la casa por teléfono o WhatsApp en menos de 24 h.
+          Para grupos de más de 8 personas, llámanos directamente.
+        </p>
+      </form>
+      <aside class="reservas-info">
+        <div class="reservas-info-card">
+          <h4>Teléfono directo</h4>
+          <p><a href="tel:+34965835566">965 83 55 66</a><br>
+          Línea atendida en horario de sala.</p>
+        </div>
+        <div class="reservas-info-card">
+          <h4>WhatsApp</h4>
+          <p><a href="https://wa.me/34965835566">Escribir por WhatsApp</a><br>
+          Respondemos antes de las 12:00 y a partir de las 17:00.</p>
+        </div>
+        <div class="reservas-info-card">
+          <h4>Grupos y eventos</h4>
+          <p>Comuniones, comidas de empresa, despedidas: llámanos para preparar menú a medida.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACTO ==================== -->
+<section id="contacto">
+  <div class="section-inner">
+    <div class="section-eyebrow">Cómo llegar</div>
+    <h2 class="section-title">En el corazón de Calpe, a dos pasos del paseo.</h2>
+    <div class="contacto-grid">
+      <div class="contacto-block">
+        <h4>Dirección</h4>
+        <address>
+          Calle Pintor Sorolla 21<br>
+          Edificio Apolo VII<br>
+          03710 Calpe, Alicante
+        </address>
+      </div>
+      <div class="contacto-block">
+        <h4>Horario</h4>
+        <p>
+          Martes a domingo<br>
+          13:00 – 16:00 · 19:30 – 23:30<br>
+          <strong>Lunes cerrado</strong>
+        </p>
+      </div>
+      <div class="contacto-block">
+        <h4>Contacto</h4>
+        <p>
+          <a href="tel:+34965835566">965 83 55 66</a><br>
+          <a href="mailto:hola@elandalucalpe.es">hola@elandalucalpe.es</a>
+          <span style="display:block; font-size:0.75rem; color:var(--ceniza); margin-top:0.5rem; font-style:italic;">
+            [email profesional propuesto · pendiente de configurar]
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-brand"><em>El Andaluz</em></div>
+        <p class="footer-mission">
+          Arrocería y tapería mediterránea en Calpe desde finales de 1990.
+          Cocina valenciana hecha como se hizo siempre, en una casa familiar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Visitar</h5>
+        <ul>
+          <li>Calle Pintor Sorolla 21</li>
+          <li>Edificio Apolo VII</li>
+          <li>03710 Calpe, Alicante</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Reservas</h5>
+        <ul>
+          <li><a href="tel:+34965835566" style="border-bottom:1px solid rgba(250,246,238,0.3);">965 83 55 66</a></li>
+          <li><a href="https://wa.me/34965835566" style="border-bottom:1px solid rgba(250,246,238,0.3);">WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/p/El-Andaluz-RestauranteArroceria-Taperia-Calpe-100057215959898/" style="border-bottom:1px solid rgba(250,246,238,0.3);">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-meta">
+        <strong>Aviso</strong><br>
+        Precios actualizados según foto de carta vigente publicada en TripAdvisor (verificada).
+        IVA incluido. S/M = según mercado. Pueden cambiar — confirmar con el equipo de sala.
+        Las fotografías de platos y ambiente son referenciales, creadas como propuesta visual.
+      </div>
+      <div class="footer-kenaz">
+        Web propuesta por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- helpers ----------
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  function whenLibsReady(check, cb, max) {
+    var tries = 0;
+    var maxTries = max || 50;
+    var iv = setInterval(function () {
+      tries++;
+      if (check()) { clearInterval(iv); cb(); }
+      else if (tries >= maxTries) { clearInterval(iv); cb(); }
+    }, 80);
+  }
+
+  // ---------- IO reveals (fallback always available) ----------
+  function ioReveal() {
+    if (!('IntersectionObserver' in window) || prefersReduced) {
+      document.querySelectorAll('.reveal, [data-equipo], .timeline-card').forEach(function (el) {
+        el.classList.add('is-in');
+      });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+
+    document.querySelectorAll('.reveal, [data-equipo]').forEach(function (el) { io.observe(el); });
+
+    // timeline staggered
+    var cards = document.querySelectorAll('.timeline-card');
+    var tIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var idx = Array.prototype.indexOf.call(cards, entry.target);
+          setTimeout(function () { entry.target.classList.add('is-in'); }, idx * 90);
+          tIo.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    cards.forEach(function (c) { tIo.observe(c); });
+  }
+
+  // ---------- counter 0 → 35 ----------
+  function counterAnim() {
+    var el = document.querySelector('[data-count-to]');
+    if (!el) return;
+    var target = parseInt(el.getAttribute('data-count-to'), 10) || 35;
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      el.textContent = target;
+      return;
+    }
+    var done = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !done) {
+          done = true;
+          var dur = 1400;
+          var start = performance.now();
+          function tick(now) {
+            var t = Math.min(1, (now - start) / dur);
+            // easeOutCubic
+            var eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(eased * target);
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = target;
+          }
+          requestAnimationFrame(tick);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    io.observe(el);
+  }
+
+  // ---------- TC flip ----------
+  function tcFlip() {
+    var badge = document.getElementById('tc-badge');
+    if (!badge) return;
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      badge.classList.add('is-flipped');
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          setTimeout(function () { badge.classList.add('is-flipped'); }, 280);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.55 });
+    io.observe(badge);
+  }
+
+  // ---------- Lenis smooth scroll ----------
+  function initLenis() {
+    if (prefersReduced || typeof Lenis === 'undefined') return null;
+    try {
+      var lenis = new Lenis({
+        duration: 1.05,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        smoothWheel: true,
+        smoothTouch: false,
+      });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      // anchor links cooperar
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id = a.getAttribute('href');
+          if (id && id.length > 1) {
+            var t = document.querySelector(id);
+            if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -10 }); }
+          }
+        });
+      });
+      return lenis;
+    } catch (err) { return null; }
+  }
+
+  // ---------- GSAP ScrollTrigger upgrades ----------
+  function initGsap() {
+    if (prefersReduced || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Add subtle parallax on hero image
+    var heroImg = document.querySelector('.hero-image img');
+    if (heroImg) {
+      gsap.to(heroImg, {
+        yPercent: 8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        }
+      });
+    }
+
+    // Desktop horizontal pinned timeline
+    var pin = document.querySelector('.timeline-pin');
+    var track = document.getElementById('timeline-track');
+    if (pin && track && window.matchMedia('(min-width: 1000px)').matches) {
+      var trackWidth = track.scrollWidth;
+      var viewportW = window.innerWidth;
+      var distance = Math.max(0, trackWidth - viewportW + 80);
+      if (distance > 0) {
+        gsap.to(track, {
+          x: -distance,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: pin,
+            start: 'top top',
+            end: '+=' + distance,
+            scrub: 0.6,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onUpdate: function (self) {
+              // progressive reveal of cards
+              var cards = track.querySelectorAll('.timeline-card');
+              var p = self.progress;
+              cards.forEach(function (c, i) {
+                var cp = i / Math.max(1, cards.length - 1);
+                if (p >= cp - 0.08) c.classList.add('is-in');
+              });
+            }
+          }
+        });
+      }
+    }
+  }
+
+  ready(function () {
+    ioReveal();
+    counterAnim();
+    tcFlip();
+    whenLibsReady(function () { return typeof Lenis !== 'undefined'; }, initLenis, 40);
+    whenLibsReady(function () { return typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined'; }, initGsap, 60);
+  });
+})();
+</script>
+
+</body>
+</html>

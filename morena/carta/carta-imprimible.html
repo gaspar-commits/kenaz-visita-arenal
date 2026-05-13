@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Morena · Carta imprimible · A3 horizontal gatefold</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   MORENA — Carta imprimible
+   Formato: A3 horizontal (420 × 297 mm), doble cara
+   Pliegue triple gatefold: 3 paneles de 140 × 297 mm
+   Márgenes seguros: 12 mm
+   Paleta: crema + rosa salmón + naranja coral + azul atardecer
+============================================================ */
+
+@page {
+  size: 420mm 297mm;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --crema: #fbf1e6;
+  --crema-soft: #f5e6d2;
+  --crema-bright: #fef7ed;
+  --crema-warm: #ead9b9;
+  --salmon: #f0a78e;
+  --salmon-soft: #f5c1ad;
+  --coral: #e07a5f;
+  --coral-deep: #b8543c;
+  --rosa: #d97a85;
+  --rosa-deep: #a8525c;
+  --azul-atardecer: #3a4a6b;
+  --azul-deep: #1f2b46;
+  --azul-line: #2c3a58;
+  --azul-soft: #5a6986;
+
+  --serif: 'Fraunces', 'DM Serif Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  background: #2a2a2a;
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--azul-deep);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body { padding: 30px; }
+
+/* ============================================================
+   SHEET (one printed page)
+============================================================ */
+
+.sheet {
+  width: 420mm;
+  height: 297mm;
+  background: var(--crema);
+  display: grid;
+  grid-template-columns: 140mm 140mm 140mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  margin: 0 auto 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.sheet:last-child { page-break-after: auto; margin-bottom: 0; }
+
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(31,43,70,0.08);
+  pointer-events: none;
+  z-index: 10;
+}
+.fold--1 { left: 140mm; }
+.fold--2 { left: 280mm; }
+
+@media print { .fold { display: none; } }
+
+/* ============================================================
+   PANEL — base
+============================================================ */
+
+.panel {
+  height: 297mm;
+  width: 140mm;
+  padding: 14mm 12mm;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--cream { background: var(--crema); color: var(--azul-deep); }
+.panel--dark { background: var(--azul-deep); color: var(--crema-bright); }
+
+.panel--cover {
+  background:
+    linear-gradient(180deg, rgba(31,43,70,0.35) 0%, rgba(31,43,70,0.68) 55%, rgba(31,43,70,0.95) 100%),
+    radial-gradient(ellipse at 70% 25%, rgba(240,167,142,0.55), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(184,84,60,0.32), transparent 60%),
+    var(--azul-deep);
+  color: var(--crema-bright);
+}
+
+/* ============================================================
+   COVER PANEL
+============================================================ */
+
+.panel--cover .top-meta {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--crema-warm);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+.panel--cover .top-meta span:last-child { color: var(--salmon); }
+
+.panel--cover .center {
+  margin: auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18mm;
+}
+
+.brand-mark__rule {
+  width: 30px;
+  height: 1.2pt;
+  background: var(--salmon);
+}
+
+.brand-mark__label {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--salmon);
+  font-weight: 600;
+}
+
+.cover-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 92pt;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
+  color: var(--crema-bright);
+  margin-bottom: 6mm;
+  font-variation-settings: "opsz" 120;
+}
+.cover-name em { font-style: italic; font-weight: 300; color: var(--salmon); }
+
+.cover-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 13pt;
+  line-height: 1.45;
+  color: var(--crema-warm);
+  max-width: 26ch;
+  margin: 0 auto;
+}
+
+.cover-hero-line {
+  margin-top: 8mm;
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--salmon-soft);
+  font-weight: 600;
+}
+
+.panel--cover .bottom-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crema-warm);
+  position: relative;
+  z-index: 2;
+}
+.panel--cover .bottom-meta strong { color: var(--crema-bright); font-weight: 600; letter-spacing: 0.22em; }
+.panel--cover .bottom-meta div { display: flex; flex-direction: column; gap: 3px; }
+.panel--cover .bottom-meta .right { text-align: right; }
+
+/* ============================================================
+   STORY PANEL
+============================================================ */
+
+.panel--story {
+  background: var(--crema);
+  border-left: 1px solid rgba(31,43,70,0.08);
+  border-right: 1px solid rgba(31,43,70,0.08);
+  text-align: center;
+  justify-content: center;
+}
+
+.story-eyebrow {
+  font-size: 7pt;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  margin-bottom: 6mm;
+  font-weight: 600;
+}
+
+.story-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24pt;
+  line-height: 1.08;
+  color: var(--azul-deep);
+  margin-bottom: 5mm;
+  letter-spacing: -0.005em;
+}
+.story-title em { font-style: italic; color: var(--coral-deep); font-weight: 300; }
+
+.story-rule {
+  width: 24px;
+  height: 1.5pt;
+  background: var(--coral);
+  margin: 5mm auto;
+  border-radius: 1pt;
+}
+
+.story-body {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: var(--azul-soft);
+  max-width: 32ch;
+  margin: 0 auto;
+}
+.story-body p + p { margin-top: 4mm; }
+
+.story-placeholder {
+  margin-top: 6mm;
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  background: rgba(216,122,95,0.10);
+  padding: 3mm 5mm;
+  border: 0.7pt dashed var(--coral);
+  font-weight: 600;
+}
+
+.story-signature {
+  margin-top: 5mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 11pt;
+  color: var(--coral-deep);
+}
+
+/* ============================================================
+   SECTION — listados
+============================================================ */
+
+.panel--list { background: var(--crema); }
+
+.panel--list-dark {
+  background: var(--azul-deep);
+  color: var(--crema-bright);
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 9mm;
+  padding-top: 4mm;
+}
+
+.chapter {
+  font-size: 6.5pt;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  font-weight: 600;
+  margin-bottom: 4mm;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.chapter::before, .chapter::after {
+  content: "";
+  width: 14px;
+  height: 1.2pt;
+  background: var(--coral);
+  opacity: 0.7;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22pt;
+  line-height: 1;
+  color: var(--azul-deep);
+  letter-spacing: 0.005em;
+}
+.section-title em { font-style: italic; color: var(--coral-deep); font-weight: 300; }
+
+.panel--list-dark .chapter { color: var(--salmon-soft); }
+.panel--list-dark .chapter::before, .panel--list-dark .chapter::after { background: var(--salmon); }
+.panel--list-dark .section-title { color: var(--crema-bright); }
+.panel--list-dark .section-title em { color: var(--salmon-soft); }
+.panel--list-dark .section-sub { color: var(--crema-warm); }
+
+.section-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 9pt;
+  color: var(--azul-soft);
+  margin-top: 3mm;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+  opacity: 0.9;
+}
+
+/* dish */
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+}
+
+.dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5mm 4mm;
+  padding-bottom: 3.5mm;
+  border-bottom: 0.5pt solid rgba(31,43,70,0.14);
+}
+.dish:last-child { border-bottom: none; }
+
+.panel--list-dark .dish { border-bottom-color: rgba(251,241,230,0.14); }
+
+.dish-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 11.5pt;
+  line-height: 1.1;
+  color: var(--azul-deep);
+  letter-spacing: 0.005em;
+}
+.dish-name em { font-style: italic; color: var(--coral-deep); }
+
+.panel--list-dark .dish-name { color: var(--crema-bright); }
+.panel--list-dark .dish-name em { color: var(--salmon-soft); }
+
+.dish-price {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 8pt;
+  color: var(--coral-deep);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel--list-dark .dish-price { color: var(--salmon-soft); }
+
+.dish-desc {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--azul-soft);
+}
+.dish-desc em { font-style: italic; color: var(--coral-deep); }
+
+.panel--list-dark .dish-desc { color: var(--crema-warm); }
+.panel--list-dark .dish-desc em { color: var(--salmon-soft); }
+
+.dish-tag {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-size: 5.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  margin-top: 1mm;
+  font-weight: 600;
+}
+
+.panel--list-dark .dish-tag { color: var(--salmon); }
+
+.placeholder-row {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 6.5pt;
+  letter-spacing: 0.04em;
+  color: var(--coral-deep);
+  background: rgba(216,122,95,0.12);
+  border: 0.7pt dashed var(--coral);
+  padding: 2.5mm 3mm;
+  margin-top: 1mm;
+  line-height: 1.4;
+}
+
+.panel--list-dark .placeholder-row {
+  color: var(--crema-warm);
+  background: rgba(240,167,142,0.12);
+  border-color: var(--salmon);
+}
+
+/* ============================================================
+   HERO PANEL — APEROL SPRITZ
+============================================================ */
+
+.panel--hero {
+  background: var(--azul-deep);
+  text-align: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--hero .hero-image {
+  height: 168mm;
+  background:
+    linear-gradient(180deg, rgba(31,43,70,0.05) 0%, rgba(31,43,70,0.18) 60%, rgba(31,43,70,0.92) 100%),
+    url('img/hero-aperol.webp') center top / cover no-repeat,
+    radial-gradient(ellipse at 50% 45%, rgba(240,167,142,0.4) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 45%, rgba(224,122,95,0.32) 0%, transparent 60%),
+    var(--azul-deep);
+  position: relative;
+}
+
+.panel--hero .hero-image::before {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30mm;
+  height: 30mm;
+  border: 0.7pt solid rgba(251,241,230,0.20);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.panel--hero .hero-image::after {
+  content: "Aperol spritz de la casa";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 20mm));
+  font-family: var(--sans);
+  font-size: 6pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(251,241,230,0.42);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.panel--hero .hero-content {
+  padding: 6mm 12mm 10mm;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--crema-bright);
+}
+
+.panel--hero .hero-chapter {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--salmon-soft);
+  font-weight: 600;
+  margin-bottom: 3mm;
+}
+
+.panel--hero .hero-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28pt;
+  line-height: 1;
+  color: var(--crema-bright);
+  margin-bottom: 3mm;
+  letter-spacing: -0.005em;
+}
+.panel--hero .hero-name em { font-style: italic; font-weight: 300; color: var(--salmon); }
+
+.panel--hero .hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 9.5pt;
+  color: var(--crema-warm);
+  margin-bottom: 4mm;
+  max-width: 32ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+.panel--hero .hero-note {
+  margin: 3mm auto 0;
+  max-width: 34ch;
+  border-top: 0.5pt solid var(--azul-line);
+  padding-top: 4mm;
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--crema-warm);
+  font-weight: 400;
+}
+
+.panel--hero .hero-note strong {
+  display: block;
+  margin-bottom: 2mm;
+  font-family: var(--sans);
+  font-size: 6pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--salmon-soft);
+  font-weight: 600;
+}
+
+/* ============================================================
+   IMAGE strip (imprimible)
+============================================================ */
+
+.img-strip {
+  height: 32mm;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: auto;
+  margin-left: -12mm;
+  margin-right: -12mm;
+  margin-bottom: -14mm;
+  flex-shrink: 0;
+}
+
+.img-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(31,43,70,0) 30%, rgba(31,43,70,0.55) 100%);
+  pointer-events: none;
+}
+
+.img-strip__caption {
+  position: absolute;
+  bottom: 3mm;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 8pt;
+  color: var(--crema-bright);
+  text-shadow: 0 1px 6px rgba(31,43,70,0.85);
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+
+.panel--list { display: flex; flex-direction: column; }
+.panel--list .section-head,
+.panel--list .dishes { flex-shrink: 0; }
+
+/* ============================================================
+   SPLIT panel
+============================================================ */
+
+.panel--split {
+  background: var(--crema);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 0;
+  border-left: 1px solid rgba(31,43,70,0.08);
+  border-right: 1px solid rgba(31,43,70,0.08);
+}
+
+.split-section {
+  padding: 12mm 12mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.split-section + .split-section {
+  border-top: 1px solid rgba(31,43,70,0.12);
+}
+
+.split-section .section-head { margin-bottom: 4mm; padding-top: 0; }
+.split-section .section-title { font-size: 18pt; }
+.split-section .dishes { gap: 2.5mm; }
+.split-section .dish { padding-bottom: 2.5mm; }
+.split-section .dish-name { font-size: 10pt; }
+.split-section .dish-desc { font-size: 7pt; line-height: 1.4; }
+.split-section .dish-price { font-size: 7.5pt; }
+
+.split-section .img-strip {
+  height: 22mm;
+  margin-top: auto;
+  margin-left: -12mm;
+  margin-right: -12mm;
+  margin-bottom: -12mm;
+}
+.split-section .img-strip__caption { font-size: 7pt; bottom: 2mm; }
+
+/* ============================================================
+   CONTACT / POSTRES panel
+============================================================ */
+
+.panel--contact {
+  background: var(--azul-deep);
+  color: var(--crema-bright);
+  text-align: center;
+  justify-content: space-between;
+  padding-top: 16mm;
+  padding-bottom: 14mm;
+}
+
+.contact-mark {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--salmon);
+  margin-bottom: 6mm;
+  font-weight: 600;
+}
+
+.contact-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30pt;
+  letter-spacing: 0.005em;
+  color: var(--crema-bright);
+  margin-bottom: 3mm;
+}
+.contact-name em { font-style: italic; color: var(--salmon); font-weight: 300; }
+
+.contact-tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 10pt;
+  color: var(--crema-warm);
+  margin-bottom: 8mm;
+}
+
+.contact-info {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crema-warm);
+  line-height: 2;
+  margin-bottom: 6mm;
+}
+
+.contact-info strong { color: var(--crema-bright); font-weight: 600; }
+
+.contact-hours {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 8pt;
+  color: var(--crema-warm);
+  line-height: 1.6;
+  max-width: 36ch;
+  margin: 0 auto 6mm;
+  padding-top: 5mm;
+  border-top: 0.5pt solid var(--azul-line);
+}
+
+.allergens-block {
+  border-top: 0.5pt solid var(--azul-line);
+  padding-top: 5mm;
+  margin-bottom: 5mm;
+}
+
+.allergens-title {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--salmon);
+  margin-bottom: 3mm;
+  font-weight: 600;
+}
+
+.allergens-body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 7pt;
+  color: var(--crema-warm);
+  line-height: 1.55;
+  max-width: 38ch;
+  margin: 0 auto;
+}
+
+.disclaimer {
+  border-top: 0.5pt solid var(--azul-line);
+  padding-top: 4mm;
+  margin-top: 4mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 6.5pt;
+  color: var(--crema-warm);
+  line-height: 1.55;
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.85;
+}
+
+.disclaimer + .disclaimer {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 3mm;
+  opacity: 0.7;
+}
+
+.kenaz-mark {
+  margin-top: 5mm;
+  font-family: var(--sans);
+  font-size: 5.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--crema-warm);
+  opacity: 0.5;
+  font-weight: 500;
+}
+
+/* ============================================================
+   PRINT — 2 sheets = 2 A3 pages exactly
+============================================================ */
+
+@media print {
+  html, body {
+    padding: 0;
+    margin: 0;
+    width: 420mm;
+    height: 297mm;
+    background: white;
+  }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+  .sheet:last-child { page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SHEET 1 (front, cara externa al plegar)
+     Triple panel: [STORY] | [CÓCTELES] | [COVER]
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Story / La casa -->
+  <section class="panel panel--cream panel--story">
+    <p class="story-eyebrow">La casa</p>
+    <h2 class="story-title">Una mesa en el paseo,<br><em>una copa al atardecer.</em></h2>
+
+    <div class="story-rule"></div>
+
+    <div class="story-body">
+      <p>
+        Morena es restobar en el paseo Arenal de Calpe. Cocina mediterránea
+        de mercado a mediodía, barra de cócteles cuando se pone el sol.
+      </p>
+      <p>
+        Mesa frente al mar, sombra cuando aprieta y luz cálida cuando se va.
+        El sitio para sentarse sin reloj.
+      </p>
+    </div>
+
+    <p class="story-placeholder">Historia a cerrar contigo</p>
+
+    <p class="story-signature">— La casa</p>
+
+    <div style="position:absolute; bottom:14mm; left:0; right:0; text-align:center;">
+      <p style="font-family: var(--sans); font-size: 6.5pt; letter-spacing: 0.4em; text-transform: uppercase; color: var(--azul-soft); opacity: 0.5; font-weight: 500;">Carta · Edición de muestra</p>
+    </div>
+  </section>
+
+  <!-- Panel: Cócteles -->
+  <section class="panel panel--list panel--list-dark">
+    <header class="section-head">
+      <p class="chapter">Capítulo I · La barra</p>
+      <h2 class="section-title">Cócteles <em>del atardecer</em></h2>
+      <p class="section-sub">Clásicos bien hechos y firmas del barman. Sin prisa.</p>
+    </header>
+
+    <div class="dishes">
+
+      <article class="dish">
+        <h3 class="dish-name">Mojito</h3>
+        <span class="dish-price">—</span>
+        <p class="dish-desc">Hierbabuena fresca, lima, azúcar moreno y ron blanco. <em>El de siempre, bien hecho.</em></p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Caipirinha</h3>
+        <span class="dish-price">—</span>
+        <p class="dish-desc">Cachaça, lima fresca y azúcar de caña.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Aperol Spritz</h3>
+        <span class="dish-price">—</span>
+        <p class="dish-desc">Aperol, prosecco, soda y naranja. El aperitivo del paseo.</p>
+        <span class="dish-tag">— Hora del atardecer</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Gin tonic</h3>
+        <span class="dish-price">—</span>
+        <p class="dish-desc">Ginebras premium, tónica fría y botánica del día.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Sangría de la casa</h3>
+        <span class="dish-price">—</span>
+        <p class="dish-desc">Vino, fruta de temporada, cítricos. Para la mesa.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Cócteles <em>de autor</em></h3>
+        <span class="dish-price">—</span>
+        <p class="dish-desc"><em>Cócteles especiales del barman.</em> Combinaciones de temporada.</p>
+        <span class="dish-tag">— Firma de la casa</span>
+      </article>
+
+      <div class="placeholder-row">
+        Más cócteles, vermú y vinos por copa — a cerrar contigo.
+      </div>
+
+    </div>
+
+    <div class="img-strip" style="background-image: url('img/mojito-sunset.webp');">
+      <p class="img-strip__caption">La barra al atardecer · clásicos bien hechos</p>
+    </div>
+  </section>
+
+  <!-- Panel: Cover -->
+  <section class="panel panel--cover">
+    <div class="top-meta">
+      <span>Calpe · Paseo Arenal</span>
+      <span>Restobar</span>
+    </div>
+
+    <div class="center">
+      <div class="brand-mark">
+        <span class="brand-mark__rule"></span>
+        <span class="brand-mark__label">Mesa con vistas, copa al atardecer</span>
+        <span class="brand-mark__rule"></span>
+      </div>
+
+      <h1 class="cover-name">Mor<em>e</em>na</h1>
+
+      <p class="cover-tagline">
+        Restobar en el paseo.<br>
+        Cocina y cócteles al atardecer.
+      </p>
+
+      <p class="cover-hero-line">— Carta · Edición de muestra</p>
+    </div>
+
+    <div class="bottom-meta">
+      <div>
+        <span>La carta</span>
+        <strong>Calpe · 2026</strong>
+      </div>
+      <div class="right">
+        <span>Calle Gran Bretaña</span>
+        <strong>Paseo Arenal</strong>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================
+     SHEET 2 (back, cara interna al desplegar)
+     Triple panel: [APEROL hero] | [PICAR + PLATOS] | [POSTRES + CONTACTO]
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Aperol hero -->
+  <section class="panel panel--hero">
+    <div class="hero-image"></div>
+
+    <div class="hero-content">
+      <p class="hero-chapter">El cóctel del paseo</p>
+
+      <h2 class="hero-name">Aperol <em>spritz</em></h2>
+
+      <p class="hero-sub">
+        Aperol, prosecco bien frío, un dedo de soda, naranja en rodaja.
+        Hielo abundante. La hora bonita en una copa.
+      </p>
+
+      <div class="hero-note">
+        <strong>Cómo lo servimos</strong>
+        Copa balón, prosecco siempre primero, Aperol después. Para que el burbujeo aguante hasta el último trago.
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel: Para picar + Platos (split) -->
+  <section class="panel panel--split">
+
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo II</p>
+        <h2 class="section-title">Para <em>picar</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Croquetas caseras</h3>
+          <span class="dish-price">—</span>
+          <p class="dish-desc">Hechas en casa. Variedades del día.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Calamares a la andaluza</h3>
+          <span class="dish-price">—</span>
+          <p class="dish-desc">Calamar fresco, harina justa, limón.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Tabla de <em>jamón ibérico</em></h3>
+          <span class="dish-price">—</span>
+          <p class="dish-desc">Cortado a cuchillo. Pan, aceite virgen.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Ensaladas de la casa</h3>
+          <span class="dish-price">—</span>
+          <p class="dish-desc">Producto fresco de temporada.</p>
+          <span class="dish-tag">— Veggie</span>
+        </article>
+
+        <div class="placeholder-row">
+          Más para picar — variedades del día, a cerrar contigo.
+        </div>
+      </div>
+
+      <div class="img-strip" style="background-image: url('img/tapas-sunset.webp');">
+        <p class="img-strip__caption">Mesa de tapas · algo bueno para empezar</p>
+      </div>
+    </div>
+
+    <div class="split-section panel--list-dark" style="background: var(--azul-deep);">
+      <header class="section-head">
+        <p class="chapter">Capítulo III</p>
+        <h2 class="section-title">Platos <em>del paseo</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Pescado <em>del día</em></h3>
+          <span class="dish-price">—</span>
+          <p class="dish-desc">A la plancha o al horno, según mercado.</p>
+          <span class="dish-tag">— Fresco del día</span>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Paella mediterránea</h3>
+          <span class="dish-price">—</span>
+          <p class="dish-desc">Arroz de la casa. Variedades a confirmar.</p>
+          <span class="dish-tag">— Mínimo 2 personas</span>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Carnes a la brasa</h3>
+          <span class="dish-price">—</span>
+          <p class="dish-desc">Corte del día con guarnición de temporada.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Opción vegetariana</h3>
+          <span class="dish-price">—</span>
+          <p class="dish-desc">Plato vegetal del día con verduras de temporada.</p>
+          <span class="dish-tag">— Veggie</span>
+        </article>
+
+        <div class="placeholder-row">
+          Carta corta de principales — variedades a definir contigo.
+        </div>
+      </div>
+
+      <div class="img-strip" style="background-image: url('img/plato-mediterraneo.webp');">
+        <p class="img-strip__caption">Cocina del mar · mediterránea sin pretensiones</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Panel: Postres + Contacto -->
+  <section class="panel panel--contact">
+    <div style="margin-bottom: 8mm;">
+      <p class="chapter" style="margin-bottom: 3mm; color: var(--salmon-soft);">Capítulo IV</p>
+      <h2 class="section-title" style="color: var(--crema-bright); font-size: 18pt; margin-bottom: 5mm;">Para <em style="color: var(--salmon);">terminar</em></h2>
+
+      <article class="dish" style="margin-bottom: 4mm; border-bottom-color: rgba(251,241,230,0.14);">
+        <h3 class="dish-name" style="color: var(--crema-bright);">Postres caseros <em style="color: var(--salmon-soft);">del día</em></h3>
+        <span class="dish-price" style="color: var(--salmon-soft);">—</span>
+        <p class="dish-desc" style="color: var(--crema-warm);">Selección preparada en la casa. Variedad según día.</p>
+      </article>
+
+      <article class="dish" style="margin-bottom: 4mm; border-bottom-color: rgba(251,241,230,0.14);">
+        <h3 class="dish-name" style="color: var(--crema-bright);">Tarta de la casa</h3>
+        <span class="dish-price" style="color: var(--salmon-soft);">—</span>
+        <p class="dish-desc" style="color: var(--crema-warm);">Tarta del día, ración generosa.</p>
+      </article>
+
+      <article class="dish" style="margin-bottom: 4mm; border-bottom: none;">
+        <h3 class="dish-name" style="color: var(--crema-bright);">Café y digestivos</h3>
+        <span class="dish-price" style="color: var(--salmon-soft);">—</span>
+        <p class="dish-desc" style="color: var(--crema-warm);">Café de especialidad, infusiones y licores para cerrar.</p>
+      </article>
+
+      <div class="placeholder-row" style="text-align: left; color: var(--crema-warm); background: rgba(240,167,142,0.12); border-color: var(--salmon);">
+        Postres y dulces — carta a definir.
+      </div>
+    </div>
+
+    <div class="allergens-block">
+      <p class="allergens-title">Alérgenos · información</p>
+      <p class="allergens-body">
+        Carta completa con desglose de alérgenos disponible.
+        Avisa al camarero por intolerancias — la cocina las contempla.
+      </p>
+    </div>
+
+    <div style="border-top: 0.5pt solid var(--azul-line); padding-top: 6mm; margin-top: 4mm;">
+      <p class="contact-mark">Encuéntranos</p>
+      <h3 class="contact-name" style="font-size: 26pt; margin-bottom: 2mm;">Mor<em>e</em>na</h3>
+      <p class="contact-tag" style="font-size: 9pt; margin-bottom: 5mm;">Restobar en el paseo · Calpe</p>
+
+      <div class="contact-info" style="font-size: 6.5pt;">
+        Calle Gran Bretaña<br>
+        Paseo Arenal<br>
+        <strong>03710 Calpe · Alicante</strong>
+      </div>
+
+      <p class="contact-hours">
+        Cocina mediterránea de mediodía a noche<br>
+        Cócteles del atardecer · horarios a confirmar
+      </p>
+    </div>
+
+    <p class="disclaimer">
+      Carta editorial preparada por Kenaz como muestra. Variedades, precios y detalles finales se cierran con vosotros. Imágenes referenciales.
+    </p>
+
+    <p class="kenaz-mark">Diseño · Kenaz Studio</p>
+  </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#fbf3e6" />
+<title>Cacao · Cócteles, snacks y alma venezolana en Calpe</title>
+<meta name="description" content="Bar caribeño en Calpe con cócteles de zumo natural exprimido, snacks frescos y la hospitalidad de una familia venezolana. Abierto todo el año." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+  /* ==================================================
+     CACAO — Bar caribeno con alma venezolana
+     Identidad PROPIA — NO Kenaz, NO Razo, NO Costa.
+     Paleta: crema calida + coral + lima tropical + cacao
+     Display: Fraunces | Body: DM Sans
+     ================================================== */
+
+  :root {
+    --crema: #fbf3e6;
+    --crema-soft: #f4e8d2;
+    --cacao: #3d2418;
+    --cacao-soft: #5c3a2a;
+    --coral: #e07a5f;
+    --coral-soft: #ec9a83;
+    --lima: #9bb84a;
+    --lima-soft: #b8d06d;
+    --ambar: #d99a3d;
+    --terracota: #b25a3d;
+    --linea: rgba(61, 36, 24, 0.12);
+    --linea-strong: rgba(61, 36, 24, 0.25);
+
+    --display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+    --body: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    --fs-xs: 0.72rem;
+    --fs-sm: 0.85rem;
+    --fs-base: 1rem;
+    --fs-md: 1.125rem;
+    --fs-lg: 1.375rem;
+    --fs-xl: 1.75rem;
+    --fs-2xl: 2.25rem;
+    --fs-3xl: 3rem;
+    --fs-4xl: 4rem;
+    --fs-5xl: 5.5rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 8rem;
+
+    --container: 1240px;
+    --container-narrow: 880px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* SCROLL FLUIDO: scroll nativo del browser, sin smooth-behavior ni Lenis.
+     scroll-behavior: smooth + Lenis + ScrollTrigger = jank garantizado. */
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--body);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--cacao);
+    background: var(--crema);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* CSS containment por seccion — el browser no recalcula layout fuera de cada section */
+  section {
+    contain: layout style paint;
+  }
+  /* Secciones below-the-fold: no se renderizan hasta entrar al viewport.
+     contain-intrinsic-size reserva espacio para evitar saltos de scrollbar.
+     Excluimos #carta porque contiene el carousel Embla que necesita medir
+     dimensiones reales al iniciar. */
+  section.familia,
+  section.resenas,
+  section#galeria,
+  section.visitanos {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1200px;
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--coral); color: var(--crema); }
+
+  /* ==================== NAV ==================== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 1.25rem;
+    background: rgba(251, 243, 230, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  .nav.scrolled {
+    border-bottom-color: var(--linea);
+    background: rgba(251, 243, 230, 0.95);
+  }
+  .nav__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .nav__brand {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+    color: var(--cacao);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+  }
+  .nav__brand-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+    display: inline-block;
+    transform: translateY(-2px);
+  }
+  .nav__brand-tag {
+    font-family: var(--body);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cacao-soft);
+    font-weight: 500;
+    margin-left: 0.4rem;
+  }
+  .nav__links {
+    display: none;
+    gap: 2rem;
+    list-style: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .nav__links a {
+    transition: color 0.2s ease;
+  }
+  .nav__links a:hover { color: var(--coral); }
+  .nav__cta {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--cacao);
+    border-radius: 999px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .nav__cta:hover {
+    background: var(--cacao);
+    color: var(--crema);
+  }
+  @media (min-width: 880px) {
+    .nav__links { display: flex; }
+  }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    position: relative;
+    padding: 8rem 1.25rem 3rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .hero__copy { position: relative; z-index: 2; }
+  .hero__eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--coral);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .hero__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--coral);
+  }
+  .hero__title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 9vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--cacao);
+    margin-bottom: 1.5rem;
+  }
+  .hero__title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--coral);
+  }
+  .hero__title-mark {
+    color: var(--lima);
+    font-style: italic;
+    font-weight: 300;
+  }
+  .hero__lede {
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--cacao-soft);
+    max-width: 540px;
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 999px;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn--primary {
+    background: var(--cacao);
+    color: var(--crema);
+  }
+  .btn--primary:hover {
+    background: var(--coral);
+    transform: translateY(-1px);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--cacao);
+    border-color: var(--linea-strong);
+  }
+  .btn--ghost:hover {
+    background: var(--cacao);
+    color: var(--crema);
+    border-color: var(--cacao);
+  }
+  .btn__arrow { transition: transform 0.25s ease; }
+  .btn:hover .btn__arrow { transform: translateX(3px); }
+
+  .hero__kpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    max-width: 560px;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--linea);
+  }
+  .kpi__value {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 3.25rem);
+    line-height: 1;
+    color: var(--cacao);
+    margin-bottom: 0.55rem;
+    letter-spacing: -0.01em;
+  }
+  .kpi__value em {
+    font-style: italic;
+    color: var(--coral);
+    font-weight: 300;
+    font-size: 0.7em;
+    margin-left: 0.15rem;
+  }
+  .kpi__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cacao-soft);
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .hero__visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--crema-soft);
+    z-index: 2;
+  }
+  .hero__inner { position: relative; z-index: 2; }
+  .hero__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero__visual-tag {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--crema);
+    background: rgba(61, 36, 24, 0.55);
+    backdrop-filter: blur(6px);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+
+  @media (min-width: 880px) {
+    .hero { padding: 9rem 2rem 4rem; }
+    .hero__inner {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 4rem;
+    }
+  }
+
+  /* ==================== SECTION COMMON ==================== */
+  .section {
+    padding: 5rem 1.25rem;
+    position: relative;
+  }
+  @media (min-width: 880px) {
+    .section { padding: 7rem 2rem; }
+  }
+  .section__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .section__inner--narrow {
+    max-width: var(--container-narrow);
+  }
+  .section__eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--coral);
+    margin-bottom: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--coral);
+  }
+  .section__title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--cacao);
+    margin-bottom: 1.25rem;
+    max-width: 720px;
+  }
+  .section__title em {
+    font-style: italic;
+    color: var(--coral);
+    font-weight: 300;
+  }
+  .section__lede {
+    font-size: 1.075rem;
+    line-height: 1.6;
+    color: var(--cacao-soft);
+    max-width: 580px;
+    margin-bottom: 3rem;
+  }
+
+  /* ==================== FAMILIA ==================== */
+  .familia {
+    background: var(--crema-soft);
+  }
+  .familia__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .familia__visual {
+    aspect-ratio: 4 / 5;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--crema);
+    position: relative;
+  }
+  .familia__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .familia__visual-tag {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.92rem;
+    color: var(--crema);
+    background: rgba(61, 36, 24, 0.55);
+    backdrop-filter: blur(6px);
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+  .familia__copy p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--cacao);
+    margin-bottom: 1.25rem;
+  }
+  .familia__copy p:last-child { margin-bottom: 0; }
+  .familia__highlight {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: var(--coral);
+    border-left: 2px solid var(--coral);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 880px) {
+    .familia__grid {
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+    }
+  }
+
+  /* ==================== CARTA ==================== */
+  .carta__intro {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+  @media (min-width: 880px) {
+    .carta__intro {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+  }
+  .carta__note {
+    font-size: 0.85rem;
+    color: var(--cacao-soft);
+    line-height: 1.55;
+    padding: 1rem 1.25rem;
+    background: var(--crema-soft);
+    border-radius: 4px;
+    border-left: 2px solid var(--ambar);
+  }
+
+  .carta__categorias {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  @media (min-width: 880px) {
+    .carta__categorias {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5rem 6rem;
+    }
+  }
+
+  .categoria__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--linea-strong);
+    margin-bottom: 1.5rem;
+  }
+  .categoria__title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 2.15rem;
+    line-height: 1.05;
+    color: var(--cacao);
+    letter-spacing: -0.01em;
+  }
+  .categoria__title em {
+    font-style: italic;
+    color: var(--coral);
+    font-weight: 300;
+  }
+  .categoria__count {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cacao-soft);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem 1.25rem;
+    padding: 1rem 0;
+    border-bottom: 1px dashed var(--linea);
+    align-items: baseline;
+  }
+  .item:last-child { border-bottom: none; }
+  .item__name {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--cacao);
+  }
+  .item__price {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--coral);
+    letter-spacing: 0.02em;
+    text-align: right;
+  }
+  .item__price--placeholder {
+    color: var(--cacao-soft);
+    font-style: italic;
+    font-size: 0.95rem;
+    opacity: 0.65;
+  }
+  .item__desc {
+    grid-column: 1 / -1;
+    font-size: 0.98rem;
+    color: var(--cacao-soft);
+    line-height: 1.55;
+    margin-top: 0.3rem;
+  }
+
+  /* ==================== RESEÑAS ==================== */
+  .resenas {
+    background: var(--cacao);
+    color: var(--crema);
+  }
+  .resenas .section__eyebrow { color: var(--coral-soft); }
+  .resenas .section__eyebrow::before { background: var(--coral-soft); }
+  .resenas .section__title { color: var(--crema); }
+  .resenas .section__title em { color: var(--ambar); }
+  .resenas .section__lede { color: rgba(251, 243, 230, 0.75); }
+
+  .resenas__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 720px) {
+    .resenas__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  @media (min-width: 1080px) {
+    .resenas__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .resena {
+    padding: 2rem 1.75rem;
+    border: 1px solid rgba(251, 243, 230, 0.12);
+    border-radius: 4px;
+    background: rgba(251, 243, 230, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .resena__stars {
+    color: var(--ambar);
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
+  .resena__text {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    color: var(--crema);
+    flex: 1;
+  }
+  .resena__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(251, 243, 230, 0.12);
+    font-size: 0.78rem;
+  }
+  .resena__author {
+    color: var(--crema);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .resena__source {
+    color: rgba(251, 243, 230, 0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
+
+  .resenas__summary {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(251, 243, 230, 0.18);
+  }
+  @media (min-width: 720px) {
+    .resenas__summary { grid-template-columns: repeat(4, 1fr); }
+  }
+  .resenas__stat-value {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--ambar);
+    margin-bottom: 0.4rem;
+  }
+  .resenas__stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(251, 243, 230, 0.65);
+    line-height: 1.45;
+  }
+
+  /* ==================== GALERIA ==================== */
+  .galeria__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  @media (min-width: 720px) {
+    .galeria__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+  }
+  .galeria__item {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--crema-soft);
+    border-radius: 2px;
+  }
+  .galeria__item--tall {
+    grid-row: span 1;
+  }
+  @media (min-width: 720px) {
+    .galeria__item--tall { grid-row: span 2; aspect-ratio: 3 / 4; }
+    .galeria__item--short { aspect-ratio: 1 / 1; }
+  }
+  .galeria__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .galeria__item:hover img { transform: scale(1.04); }
+
+  /* ==================== VISITANOS ==================== */
+  .visitanos {
+    background: var(--crema-soft);
+  }
+  .visitanos__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 880px) {
+    .visitanos__grid {
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .info__block-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--coral);
+    margin-bottom: 0.6rem;
+  }
+  .info__block-value {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: var(--cacao);
+  }
+  .info__block-value--small {
+    font-size: 1.15rem;
+  }
+  .info__block-meta {
+    font-size: 0.88rem;
+    color: var(--cacao-soft);
+    margin-top: 0.4rem;
+    line-height: 1.5;
+  }
+  .info__horario-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--cacao);
+  }
+  .info__horario-list li {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px dashed var(--linea);
+  }
+  .info__horario-list li:last-child { border-bottom: none; }
+  .info__horario-day { color: var(--cacao-soft); }
+  .info__horario-time {
+    font-family: var(--display);
+    color: var(--cacao);
+  }
+
+  .mapa {
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--crema);
+    border: 1px solid var(--linea);
+    position: relative;
+  }
+  @media (min-width: 880px) {
+    .mapa { aspect-ratio: 4 / 5; }
+  }
+  .mapa iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ==================== FOOTER ==================== */
+  .footer {
+    background: var(--cacao);
+    color: var(--crema);
+    padding: 4rem 1.25rem 2.5rem;
+  }
+  .footer__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(251, 243, 230, 0.15);
+  }
+  @media (min-width: 720px) {
+    .footer__grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; }
+  }
+  .footer__brand {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--crema);
+    line-height: 1;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+  }
+  .footer__brand-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--coral);
+    display: inline-block;
+    transform: translateY(-3px);
+  }
+  .footer__tag {
+    font-size: 0.9rem;
+    color: rgba(251, 243, 230, 0.65);
+    line-height: 1.55;
+    max-width: 320px;
+  }
+  .footer__col-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--coral-soft);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .footer__col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    font-size: 0.92rem;
+    color: rgba(251, 243, 230, 0.85);
+  }
+  .footer__col a:hover { color: var(--coral); }
+
+  .footer__bottom {
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(251, 243, 230, 0.55);
+  }
+  @media (min-width: 720px) {
+    .footer__bottom {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+    .footer__bottom-right { text-align: right; }
+  }
+  .footer__disclaimer {
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: rgba(251, 243, 230, 0.45);
+    margin-top: 1.5rem;
+    max-width: 720px;
+    font-style: italic;
+  }
+  .footer__kenaz {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(251, 243, 230, 0.7);
+  }
+  .footer__kenaz a {
+    color: var(--crema);
+    border-bottom: 1px solid rgba(251, 243, 230, 0.3);
+    padding-bottom: 1px;
+    transition: border-color 0.2s ease;
+  }
+  .footer__kenaz a:hover { border-color: var(--coral); }
+
+  /* ==================== UTILS ==================== */
+  .placeholder {
+    background: var(--crema-soft);
+    border: 1px dashed var(--linea-strong);
+    color: var(--cacao-soft);
+    padding: 0.5rem 0.9rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-style: italic;
+    display: inline-block;
+  }
+
+  /* ==================== HERO PARTICLES (canvas) ==================== */
+  .hero__particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+  }
+  /* Mobile: las partículas son lujo, no esencia. Bajan FPS y suman batería. */
+  @media (max-width: 768px) {
+    .hero__particles { display: none; }
+  }
+
+  /* ==================== BOTÓN LÍQUIDO ==================== */
+  .btn--liquid {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn--liquid .btn__label,
+  .btn--liquid .btn__arrow {
+    position: relative;
+    z-index: 2;
+  }
+  .btn--liquid::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+                var(--coral) 0%,
+                var(--coral) 24%,
+                transparent 55%);
+    opacity: 0;
+    z-index: 1;
+    /* SIN filter por defecto — los filters fuerzan repaint aunque opacity sea 0.
+       El blur y el SVG distort solo se aplican durante hover real. */
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  /* Solo en dispositivos con hover real (no mobile) y SOLO durante hover */
+  @media (hover: hover) and (pointer: fine) {
+    .btn--liquid:hover::before {
+      filter: url(#liquid-distort) blur(2px);
+    }
+  }
+  .btn--liquid:hover::before {
+    opacity: 1;
+  }
+  .btn--liquid::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+                rgba(251, 243, 230, 0.18) 0%, transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .btn--liquid:hover::after { opacity: 1; }
+
+  /* ==================== EMBLA CARRUSEL ==================== */
+  .cocteles-carousel {
+    margin-bottom: 5rem;
+  }
+  .cocteles-carousel__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--linea-strong);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .cocteles-carousel__hint {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 500;
+    margin-top: 0.5rem;
+    opacity: 0.85;
+  }
+  .embla {
+    position: relative;
+  }
+  .embla__viewport {
+    overflow: hidden;
+    cursor: grab;
+    margin: 0 -1.25rem;
+    padding: 0 1.25rem;
+  }
+  .embla__viewport:active { cursor: grabbing; }
+  .embla__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    gap: 1.25rem;
+    margin-left: 0;
+  }
+  .coctel-card {
+    flex: 0 0 78%;
+    min-width: 0;
+    background: var(--crema-soft);
+    border: 1px solid var(--linea);
+    border-radius: 8px;
+    padding: 2rem 1.75rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 280px;
+    position: relative;
+    transition: background 0.4s ease, transform 0.4s ease;
+  }
+  .coctel-card:hover {
+    background: var(--cacao);
+    color: var(--crema);
+    transform: translateY(-2px);
+  }
+  .coctel-card:hover .coctel-card__name,
+  .coctel-card:hover .coctel-card__desc,
+  .coctel-card:hover .coctel-card__num,
+  .coctel-card:hover .coctel-card__tag {
+    color: var(--crema);
+  }
+  .coctel-card:hover .coctel-card__tag {
+    border-color: var(--coral);
+    color: var(--coral-soft);
+  }
+  .coctel-card__num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+  }
+  .coctel-card__name {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.85rem;
+    line-height: 1.05;
+    color: var(--cacao);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .coctel-card__desc {
+    font-size: 0.95rem;
+    color: var(--cacao-soft);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .coctel-card__tag {
+    align-self: flex-start;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--coral);
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--linea-strong);
+    border-radius: 999px;
+    margin-top: auto;
+  }
+  .coctel-card--open {
+    background: var(--cacao);
+    color: var(--crema);
+  }
+  .coctel-card--open .coctel-card__name,
+  .coctel-card--open .coctel-card__desc,
+  .coctel-card--open .coctel-card__num { color: var(--crema); }
+  .coctel-card--open .coctel-card__tag {
+    color: var(--coral-soft);
+    border-color: var(--coral);
+  }
+  .embla__controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+  }
+  .embla__btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--linea-strong);
+    background: transparent;
+    color: var(--cacao);
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-family: var(--body);
+  }
+  .embla__btn:hover {
+    background: var(--cacao);
+    color: var(--crema);
+    border-color: var(--cacao);
+  }
+  .embla__btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+  @media (min-width: 720px) {
+    .coctel-card { flex: 0 0 46%; }
+  }
+  @media (min-width: 1080px) {
+    .coctel-card { flex: 0 0 32%; }
+  }
+
+  /* ==================== ANIM REVEAL ==================== */
+  /* Solo se oculta cuando JS confirma GSAP cargado (clase js-anim en html). */
+  .js-anim .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .hero__particles { display: none; }
+    .js-anim .reveal { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__brand">
+      Cacao<span class="nav__brand-dot"></span>
+      <span class="nav__brand-tag">Calpe</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#familia">La familia</a></li>
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#visitanos">Visítanos</a></li>
+    </ul>
+    <a href="tel:+34678210005" class="nav__cta">Reservar</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <canvas class="hero__particles" id="heroParticles" aria-hidden="true"></canvas>
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <div class="hero__eyebrow">Calpe · Costa Blanca</div>
+      <h1 class="hero__title">
+        Cócteles, snacks<br>y <em>alma venezolana</em>.
+      </h1>
+      <p class="hero__lede">
+        Un bar pequeño en Calpe abierto todo el año, con cócteles
+        hechos con zumo natural exprimido y la hospitalidad de una
+        familia venezolana. Carta corta, ingredientes frescos,
+        ambiente de barrio.
+      </p>
+      <div class="hero__ctas">
+        <a href="tel:+34678210005" class="btn btn--primary btn--liquid" id="ctaReservar">
+          <span class="btn__label">Reservar mesa</span>
+          <span class="btn__arrow">→</span>
+        </a>
+        <a href="#carta" class="btn btn--ghost">
+          Ver carta
+        </a>
+      </div>
+      <div class="hero__kpis">
+        <div class="kpi">
+          <div class="kpi__value"><span class="kpi__num" data-count="4.4" data-decimals="1" data-suffix="">0,0</span><em>★</em></div>
+          <div class="kpi__label">Google Maps</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi__value"><span class="kpi__num" data-count="1554" data-decimals="0" data-format="es">0</span></div>
+          <div class="kpi__label">Reseñas acumuladas</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi__value"><span class="kpi__num" data-count="365" data-decimals="0">0</span></div>
+          <div class="kpi__label">Días abiertos al año</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <img src="img/hero-cocktail.webp" alt="Mojito con menta fresca y lima en barra de bar" loading="eager" fetchpriority="high" width="1024" height="1280" />
+      <div class="hero__visual-tag">Mojito de la casa</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAMILIA ==================== -->
+<section class="section familia" id="familia">
+  <div class="section__inner">
+    <div class="familia__grid">
+      <div class="familia__visual">
+        <img src="img/detalle-plantas.webp" alt="Plantas tropicales colgando del techo de Cacao" loading="lazy" decoding="async" width="1024" height="1024" />
+        <div class="familia__visual-tag">La barra · cada día</div>
+      </div>
+      <div class="familia__copy">
+        <div class="section__eyebrow">La familia detrás</div>
+        <h2 class="section__title">
+          Cacao lo lleva <em>Valentina</em>, su marido y su suegro.
+        </h2>
+        <p>
+          Una familia venezolana que abrió un bar pequeño en una
+          calle tranquila de Calpe y, desde entonces, atiende
+          personalmente a cada cliente que entra por la puerta.
+        </p>
+        <p class="familia__highlight">
+          "Valentina, her husband and father-in-law were amazing.
+          I felt like I was at home."
+        </p>
+        <p>
+          Esa reseña de junio de 2022 resume bien la propuesta de la
+          casa: una carta corta de cócteles y snacks bien hechos, sin
+          pretensiones, servida con el calor de alguien que recibe
+          en su sala. Abierto todo el año, también fuera de
+          temporada turística.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CARTA ==================== -->
+<section class="section" id="carta">
+  <div class="section__inner">
+    <div class="carta__intro">
+      <div>
+        <div class="section__eyebrow">Qué servimos</div>
+        <h2 class="section__title">
+          Carta corta, <em>todo fresco</em>, todo del día.
+        </h2>
+        <p class="section__lede">
+          Cócteles con zumo natural exprimido en el momento y una
+          selección breve de snacks para compartir. Tickets habituales
+          entre 9&nbsp;€ y 21&nbsp;€ por persona. Menú desayuno
+          a&nbsp;8,70&nbsp;€, bitter a&nbsp;4&nbsp;€, dulce de la casa
+          a&nbsp;5&nbsp;€.
+        </p>
+      </div>
+      <div class="carta__note">
+        <strong>Nota:</strong> precios verificados en reviews y carta.
+        El resto se consulta en barra. IVA incluido.
+      </div>
+    </div>
+
+    <!-- Drag carousel — Cócteles (feel de barra, no de restaurante) -->
+    <div class="cocteles-carousel" id="coctelesCarousel">
+      <div class="cocteles-carousel__head">
+        <div>
+          <h3 class="categoria__title">Cócteles <em>de la casa</em></h3>
+          <span class="cocteles-carousel__hint">↔ Arrastra para explorar</span>
+        </div>
+        <span class="categoria__count">Con zumo natural</span>
+      </div>
+
+      <div class="embla" data-embla>
+        <div class="embla__viewport">
+          <div class="embla__container">
+            <article class="coctel-card">
+              <div class="coctel-card__num">01</div>
+              <h4 class="coctel-card__name">Mojito</h4>
+              <p class="coctel-card__desc">
+                Ron blanco, menta fresca de la barra, lima exprimida
+                en el momento, soda y azúcar de caña.
+              </p>
+              <div class="coctel-card__tag">Firma de la casa</div>
+            </article>
+
+            <article class="coctel-card">
+              <div class="coctel-card__num">02</div>
+              <h4 class="coctel-card__name">Sangría</h4>
+              <p class="coctel-card__desc">
+                La de la casa, con vino tinto, frutas de temporada y
+                un toque de canela.
+              </p>
+              <div class="coctel-card__tag">Para compartir</div>
+            </article>
+
+            <article class="coctel-card">
+              <div class="coctel-card__num">03</div>
+              <h4 class="coctel-card__name">Zumos exprimidos</h4>
+              <p class="coctel-card__desc">
+                Naranja, limón, piña y combinados tropicales según la
+                fruta del día. Sin concentrados.
+              </p>
+              <div class="coctel-card__tag">Fresco del día</div>
+            </article>
+
+            <article class="coctel-card">
+              <div class="coctel-card__num">04</div>
+              <h4 class="coctel-card__name">Cerveza</h4>
+              <p class="coctel-card__desc">
+                Caña de barril y botellín. Fría siempre.
+              </p>
+              <div class="coctel-card__tag">De barril</div>
+            </article>
+
+            <article class="coctel-card">
+              <div class="coctel-card__num">05</div>
+              <h4 class="coctel-card__name">Bitter <span style="font-family: var(--body); font-size: 0.7em; color: var(--coral); letter-spacing: 0.02em;">· 4,00&nbsp;€</span></h4>
+              <p class="coctel-card__desc">
+                Aperitivo amargo, justo antes de la comida. El que pide
+                la mesa de al lado.
+              </p>
+              <div class="coctel-card__tag">Aperitivo</div>
+            </article>
+
+            <article class="coctel-card coctel-card--open">
+              <div class="coctel-card__num">+</div>
+              <h4 class="coctel-card__name">Más en barra</h4>
+              <p class="coctel-card__desc">
+                Daiquiris, piñas coladas, sin alcohol y selección de
+                marcas. Pregunta a Valentina.
+              </p>
+              <div class="coctel-card__tag">Pregunta en barra</div>
+            </article>
+          </div>
+        </div>
+        <div class="embla__controls">
+          <button class="embla__btn" data-embla-prev aria-label="Anterior">←</button>
+          <button class="embla__btn" data-embla-next aria-label="Siguiente">→</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="carta__categorias">
+      <div class="categoria">
+        <div class="categoria__head">
+          <h3 class="categoria__title">Para <em>picar</em></h3>
+          <span class="categoria__count">Snacks · Compartir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Nachos con guacamole</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Tortilla crujiente, guacamole hecho a mano, pico de gallo
+            y jalapeño. Para dos.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Ceviche cítrico</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Pescado blanco marinado en lima, cebolla morada, aguacate
+            y cilantro fresco.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Gambas al ajillo</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            En cazuela de barro, aceite de oliva, ajo laminado, guindilla
+            y perejil. Con pan.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Empanadas</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Pequeñas, recién hechas. Relleno y tipo según el día.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Hamburguesa de salmón</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Salmón fresco, pan brioche, aguacate y un toque cítrico.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Camarones</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Camarones salteados al gusto del día. Pregunta a Valentina
+            por la preparación.
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria">
+        <div class="categoria__head">
+          <h3 class="categoria__title">Desayunos <em>en barra</em></h3>
+          <span class="categoria__count">Cada mañana</span>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Menú desayuno</div>
+          <div class="item__price">8,70&nbsp;€</div>
+          <div class="item__desc">
+            Sándwich del día, zumo natural exprimido y café. El
+            desayuno de la casa.
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria">
+        <div class="categoria__head">
+          <h3 class="categoria__title">Para <em>cerrar</em></h3>
+          <span class="categoria__count">Dulces · De la casa</span>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Dulce de la casa</div>
+          <div class="item__price">5,00&nbsp;€</div>
+          <div class="item__desc">
+            Ración pequeña. El postre del día que prepara la familia.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Postres del día</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Tartas caseras y opciones que cambian con la semana.
+            Pregunta en barra.
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria">
+        <div class="categoria__head">
+          <h3 class="categoria__title">Tostadas <em>y bocadillos</em></h3>
+          <span class="categoria__count">Para uno</span>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Tostada de jamón y queso</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Pan tostado, jamón y queso fundido. Clásica.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Tostada de tomate y aguacate</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Pan rústico, tomate fresco, aguacate, sal en escamas y
+            aceite de oliva virgen extra.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Sándwiches</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Varias combinaciones disponibles cada día. Pregúntanos.
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria">
+        <div class="categoria__head">
+          <h3 class="categoria__title">Cosas <em>frescas</em></h3>
+          <span class="categoria__count">Día a día</span>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Cítricos del día</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Cada cóctel se prepara con zumo recién exprimido en la
+            barra. Sin concentrados, sin atajos.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Carta de temporada</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            La carta es corta a propósito. Lo que entra fresco esa
+            semana es lo que llega al plato.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__name">Sugerencia diaria</div>
+          <div class="item__price item__price--placeholder">— €</div>
+          <div class="item__desc">
+            Pregunta en barra: casi siempre hay algo que no está en
+            la carta.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RESEÑAS ==================== -->
+<section class="section resenas" id="resenas">
+  <div class="section__inner">
+    <div class="section__eyebrow">Lo que dicen</div>
+    <h2 class="section__title">
+      1.554 personas <em>ya pasaron</em> por la barra.
+    </h2>
+    <p class="section__lede">
+      Las reseñas que dejaron, sin filtros. Cinco años de hospitalidad
+      familiar, abierto todo el año, sin web propia.
+    </p>
+
+    <div class="resenas__grid">
+      <article class="resena">
+        <div class="resena__stars" aria-label="5 estrellas">★ ★ ★ ★ ★</div>
+        <p class="resena__text">
+          Valentina, her husband and father-in-law were amazing.
+          I felt like I was at home.
+        </p>
+        <div class="resena__meta">
+          <span class="resena__author">Nina Vargas</span>
+          <span class="resena__source">Tripadvisor · Jun 2022</span>
+        </div>
+      </article>
+
+      <article class="resena">
+        <div class="resena__stars" aria-label="5 estrellas">★ ★ ★ ★ ★</div>
+        <p class="resena__text">
+          Great food, fish was excellent, friendly service.
+          We will come back next year.
+        </p>
+        <div class="resena__meta">
+          <span class="resena__author">Kasper</span>
+          <span class="resena__source">Tripadvisor · Jun 2025</span>
+        </div>
+      </article>
+
+      <article class="resena">
+        <div class="resena__stars" aria-label="5 estrellas">★ ★ ★ ★ ★</div>
+        <p class="resena__text">
+          Eight of us, all happy. Good cocktails, fresh juice,
+          atmosphere is relaxed and welcoming.
+        </p>
+        <div class="resena__meta">
+          <span class="resena__author">AJN</span>
+          <span class="resena__source">Tripadvisor · Mar 2024</span>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== GALERIA ==================== -->
+<section class="section" id="galeria">
+  <div class="section__inner">
+    <div class="section__eyebrow">Ambiente</div>
+    <h2 class="section__title">
+      Pequeño, <em>luminoso</em>, lleno de plantas.
+    </h2>
+    <p class="section__lede">
+      Una barra de madera, taburetes de ratán, plantas tropicales
+      colgando del techo y una carta corta hecha con cuidado.
+      Imágenes referenciales — la foto definitiva la haremos in situ.
+    </p>
+
+    <div class="galeria__grid">
+      <div class="galeria__item galeria__item--tall">
+        <img src="img/ambiente-bar.webp" alt="Interior del bar Cacao con plantas tropicales y barra de madera" loading="lazy" decoding="async" width="1024" height="1365" />
+      </div>
+      <div class="galeria__item galeria__item--short">
+        <img src="img/plato-nachos.webp" alt="Nachos con guacamole y pico de gallo" loading="lazy" decoding="async" width="1024" height="1024" />
+      </div>
+      <div class="galeria__item galeria__item--short">
+        <img src="img/plato-ceviche.webp" alt="Ceviche cítrico con aguacate y cilantro" loading="lazy" decoding="async" width="1024" height="1024" />
+      </div>
+      <div class="galeria__item galeria__item--short">
+        <img src="img/detalle-citrico.webp" alt="Limas y cítricos frescos en la barra" loading="lazy" decoding="async" width="1024" height="1024" />
+      </div>
+      <div class="galeria__item galeria__item--short">
+        <img src="img/plato-gambas.webp" alt="Gambas al ajillo en cazuela de barro" loading="lazy" decoding="async" width="1024" height="1024" />
+      </div>
+      <div class="galeria__item galeria__item--tall">
+        <img src="img/detalle-plantas.webp" alt="Plantas tropicales colgando del techo del bar" loading="lazy" decoding="async" width="1024" height="1365" />
+      </div>
+      <div class="galeria__item galeria__item--short">
+        <img src="img/plato-tostada.webp" alt="Tostada de tomate y aguacate" loading="lazy" decoding="async" width="1024" height="1024" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== VISITANOS ==================== -->
+<section class="section visitanos" id="visitanos">
+  <div class="section__inner">
+    <div class="visitanos__grid">
+      <div class="info">
+        <div class="section__eyebrow">Visítanos</div>
+        <h2 class="section__title">
+          En el corazón <em>de Calpe</em>.
+        </h2>
+
+        <div>
+          <div class="info__block-title">Dirección</div>
+          <div class="info__block-value">
+            Calle Isla de Formentera, 18<br>
+            <span class="info__block-value--small">03710 Calp, Alicante</span>
+          </div>
+          <div class="info__block-meta">
+            A dos pasos del centro, abierto todo el año.
+          </div>
+        </div>
+
+        <div>
+          <div class="info__block-title">Teléfono</div>
+          <div class="info__block-value">
+            <a href="tel:+34678210005">+34 678 21 00 05</a>
+          </div>
+          <div class="info__block-meta">
+            Llámanos para reservar o pasa directamente.
+          </div>
+        </div>
+
+        <div>
+          <div class="info__block-title">Horario</div>
+          <ul class="info__horario-list">
+            <li>
+              <span class="info__horario-day">Lunes a domingo</span>
+              <span class="info__horario-time">11:00 – 23:00</span>
+            </li>
+          </ul>
+          <div class="info__block-meta">
+            Todos los días del año, incluso fuera de temporada.
+          </div>
+        </div>
+
+        <div>
+          <div class="info__block-title">Ticket medio</div>
+          <div class="info__block-value info__block-value--small">
+            Entre 8&nbsp;€ y 21&nbsp;€ por persona
+          </div>
+          <div class="info__block-meta">
+            Una copa y un picoteo, o una cena completa.
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <iframe
+          src="https://www.google.com/maps?q=Calle+Isla+de+Formentera+18+Calpe&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de Cacao en Calpe"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Cacao<span class="footer__brand-dot"></span></div>
+        <p class="footer__tag">
+          Bar caribeño con alma venezolana en Calpe.
+          Cócteles con zumo exprimido, snacks frescos, ambiente
+          de barrio. Abierto todo el año.
+        </p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Visitar</div>
+        <ul>
+          <li>Calle Isla de Formentera, 18</li>
+          <li>03710 Calp, Alicante</li>
+          <li><a href="tel:+34678210005">+34 678 21 00 05</a></li>
+          <li>Lunes a domingo · 11–23 h</li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Explorar</div>
+        <ul>
+          <li><a href="#familia">La familia</a></li>
+          <li><a href="#carta">Carta</a></li>
+          <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#visitanos">Visítanos</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div>© Cacao Calpe · Todos los derechos reservados</div>
+      <div class="footer__bottom-right footer__kenaz">
+        Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a>
+      </div>
+    </div>
+
+    <p class="footer__disclaimer">
+      Esta web es una propuesta de diseño elaborada por Kenaz Studio
+      con datos verificados públicamente (Tripadvisor, Google Maps,
+      carta.menu, Gastroranking). Las imágenes son referenciales; las
+      fotos finales se realizarán in situ. Precios verificados en
+      reviews y carta. Resto: consultar en barra. IVA incluido. Sin
+      afiliación contractual previa con Cacao.
+    </p>
+  </div>
+</footer>
+
+<!-- SVG filter para hover líquido (sin animate infinito: el filter ya distorsiona) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="liquid-distort">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="3" result="turb"/>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="14" />
+    </filter>
+  </defs>
+</svg>
+
+<!-- CDN: GSAP · ScrollTrigger · Embla (Lenis REMOVIDO — scroll nativo es mas fluido) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/embla-carousel@8.3.0/embla-carousel.umd.js"></script>
+
+<script>
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ============ Nav scroll state ============
+  const nav = document.getElementById('nav');
+  function onScrollNav() {
+    const y = window.scrollY || window.pageYOffset;
+    if (y > 30) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScrollNav, { passive: true });
+  onScrollNav();
+
+  // ============ Scroll nativo + ScrollTrigger ============
+  // Lenis fue removido — agrega latencia y compite con el ticker del browser.
+  // ScrollTrigger.normalizeScroll() unifica el comportamiento de scroll en mobile/desktop.
+
+  // ============ GSAP + ScrollTrigger ============
+  if (window.gsap && window.ScrollTrigger) {
+    document.documentElement.classList.add('js-anim');
+    gsap.registerPlugin(ScrollTrigger);
+    // normalizeScroll: scroll consistente entre browsers/devices, sin smoothing forzado
+    ScrollTrigger.normalizeScroll(true);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
+    if (!prefersReduced) {
+      // -------- Count-up KPIs hero --------
+      document.querySelectorAll('.kpi__num').forEach((el) => {
+        const target = parseFloat(el.dataset.count);
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        const format = el.dataset.format || '';
+        const obj = { v: 0 };
+        gsap.to(obj, {
+          v: target,
+          duration: 2.2,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 92%' },
+          onUpdate: () => {
+            let val;
+            if (decimals > 0) {
+              val = obj.v.toFixed(decimals).replace('.', ',');
+            } else if (format === 'es') {
+              val = Math.round(obj.v).toLocaleString('es-ES');
+            } else {
+              val = Math.round(obj.v).toString();
+            }
+            el.textContent = val;
+          },
+        });
+      });
+
+      // -------- Reveal stagger generic --------
+      const reveals = document.querySelectorAll('.section__title, .section__lede, .hero__title, .hero__lede, .hero__ctas, .hero__kpis');
+      reveals.forEach((el) => el.classList.add('reveal'));
+      gsap.to('.hero .reveal', {
+        opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, delay: 0.15,
+      });
+
+      ScrollTrigger.batch('.section .reveal', {
+        start: 'top 88%',
+        onEnter: (batch) => gsap.to(batch, {
+          opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.1, overwrite: true,
+        }),
+      });
+
+      // -------- Carta items stagger --------
+      gsap.utils.toArray('.categoria').forEach((cat) => {
+        const items = cat.querySelectorAll('.item');
+        gsap.set(items, { opacity: 0, y: 22 });
+        ScrollTrigger.create({
+          trigger: cat,
+          start: 'top 90%',
+          once: true,
+          onEnter: () => gsap.to(items, {
+            opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', stagger: 0.07,
+          }),
+        });
+      });
+
+      // -------- Cards cócteles stagger --------
+      gsap.set('.coctel-card', { opacity: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: '.cocteles-carousel',
+        start: 'top 88%',
+        once: true,
+        onEnter: () => gsap.to('.coctel-card', {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08,
+        }),
+      });
+
+      // -------- Galería reveal cinematográfico --------
+      gsap.utils.toArray('.galeria__item').forEach((item, i) => {
+        gsap.set(item, { opacity: 0, y: 50, scale: 0.96 });
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top 95%',
+          once: true,
+          onEnter: () => gsap.to(item, {
+            opacity: 1, y: 0, scale: 1, duration: 1.05, ease: 'power3.out',
+            delay: (i % 4) * 0.08,
+          }),
+        });
+      });
+
+      // -------- Reseñas stagger --------
+      gsap.set('.resena', { opacity: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: '.resenas__grid',
+        start: 'top 88%',
+        once: true,
+        onEnter: () => gsap.to('.resena', {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.12,
+        }),
+      });
+
+      // Forzar refresh tras carga total de imágenes (lazy-load cambia layout)
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    } else {
+      // reduced motion: KPIs ya con valor final
+      document.querySelectorAll('.kpi__num').forEach((el) => {
+        const target = parseFloat(el.dataset.count);
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        const format = el.dataset.format || '';
+        let val;
+        if (decimals > 0) val = target.toFixed(decimals).replace('.', ',');
+        else if (format === 'es') val = Math.round(target).toLocaleString('es-ES');
+        else val = Math.round(target).toString();
+        el.textContent = val;
+      });
+    }
+  }
+
+  // ============ Embla drag carousel ============
+  if (window.EmblaCarousel) {
+    const emblaNode = document.querySelector('.embla');
+    if (emblaNode) {
+      const viewport = emblaNode.querySelector('.embla__viewport');
+      const embla = EmblaCarousel(viewport, {
+        loop: true,
+        align: 'start',
+        dragFree: true,
+        containScroll: 'trimSnaps',
+      });
+      const prevBtn = emblaNode.querySelector('[data-embla-prev]');
+      const nextBtn = emblaNode.querySelector('[data-embla-next]');
+      if (prevBtn) prevBtn.addEventListener('click', () => embla.scrollPrev());
+      if (nextBtn) nextBtn.addEventListener('click', () => embla.scrollNext());
+    }
+  }
+
+  // ============ Hover líquido CTA (tracking del mouse) ============
+  const ctaReservar = document.getElementById('ctaReservar');
+  if (ctaReservar && !prefersReduced) {
+    ctaReservar.addEventListener('pointermove', (e) => {
+      const r = ctaReservar.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      ctaReservar.style.setProperty('--mx', x + '%');
+      ctaReservar.style.setProperty('--my', y + '%');
+    });
+  }
+
+  // ============ Partículas tropicales (canvas ligero) ============
+  // Solo se ejecuta en desktop (>768px) — en mobile el CSS oculta el canvas.
+  if (!prefersReduced && window.innerWidth > 768) {
+    const canvas = document.getElementById('heroParticles');
+    if (canvas) {
+      const ctx = canvas.getContext('2d', { alpha: true });
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let w = 0, h = 0;
+
+      const COUNT = window.innerWidth < 1080 ? 7 : 10; // densidad baja (reducida)
+      const palette = ['#e07a5f', '#9bb84a', '#d99a3d', '#b25a3d'];
+      const particles = [];
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        w = rect.width; h = rect.height;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function makeParticle() {
+        return {
+          x: Math.random() * w,
+          y: -20 - Math.random() * h * 0.3,
+          r: 5 + Math.random() * 9,
+          vy: 0.12 + Math.random() * 0.25,    // movimiento lento
+          vx: -0.08 + Math.random() * 0.16,
+          rot: Math.random() * Math.PI * 2,
+          vrot: (-0.005 + Math.random() * 0.01),
+          shape: Math.random() < 0.6 ? 'leaf' : 'citrus',
+          color: palette[Math.floor(Math.random() * palette.length)],
+          alpha: 0.10 + Math.random() * 0.18, // opacidad < 0.3
+        };
+      }
+
+      for (let i = 0; i < COUNT; i++) {
+        const p = makeParticle();
+        p.y = Math.random() * h; // distribuir al inicio
+        particles.push(p);
+      }
+
+      function drawLeaf(p) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.r * 0.55, p.r, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function drawCitrus(p) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = p.alpha;
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(0, 0, p.r * 0.8, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(-p.r * 0.8, 0);
+        ctx.lineTo(p.r * 0.8, 0);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      let raf;
+      function tick() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vrot;
+          if (p.y > h + 30 || p.x < -40 || p.x > w + 40) {
+            Object.assign(p, makeParticle());
+            p.y = -30;
+          }
+          if (p.shape === 'leaf') drawLeaf(p);
+          else drawCitrus(p);
+        });
+        raf = requestAnimationFrame(tick);
+      }
+
+      resize();
+      tick();
+      window.addEventListener('resize', () => {
+        cancelAnimationFrame(raf);
+        resize();
+        tick();
+      });
+
+      // pausa cuando hero está fuera de vista (perf)
+      const heroEl = document.getElementById('hero');
+      let heroVisible = true;
+      let scrolling = false;
+      let scrollTimer = null;
+
+      function stopParticles() {
+        if (raf) { cancelAnimationFrame(raf); raf = null; ctx.clearRect(0, 0, w, h); }
+      }
+      function startParticles() {
+        if (!raf && heroVisible && !scrolling) tick();
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          heroVisible = entry.isIntersecting;
+          if (heroVisible) startParticles();
+          else stopParticles();
+        });
+      }, { threshold: 0 });
+      if (heroEl) io.observe(heroEl);
+
+      // Pausar particulas mientras el usuario scrollea (no compite con el scroll)
+      function onScrollStart() {
+        if (!scrolling) { scrolling = true; stopParticles(); }
+        if (scrollTimer) clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+          scrolling = false;
+          startParticles();
+        }, 200);
+      }
+      // Scroll nativo + passive listener (no bloquea el main thread)
+      window.addEventListener('scroll', onScrollStart, { passive: true });
+    }
+  }
+</script>
+
+</body>
+</html>

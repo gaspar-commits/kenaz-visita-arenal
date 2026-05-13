@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0d0805" />
+<title>RAZO — Asador uruguayo en Calpe</title>
+<meta name="description" content="Asador uruguayo en Calpe. Carne importada directa desde Uruguay y parrilla rioplatense tradicional. Avenida Europa 24." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ==================================================
+     RAZO — Sistema de marca propio (NO Kenaz)
+     Paleta: carbón profundo + crema hueso + cobre brasa
+     Display: Cormorant Garamond | Body: Inter
+     ================================================== */
+
+  :root {
+    --carbon: #1a0f0a;
+    --brasa-negra: #0d0805;
+    --crema: #f4ead8;
+    --crema-soft: #ebe0cb;
+    --cobre: #c1622d;
+    --cobre-claro: #d97a45;
+    --asado: #7a3a1a;
+    --ceniza: #8b8378;
+    --ceniza-soft: #a8a097;
+    --linea: rgba(244, 234, 216, 0.12);
+
+    --display: 'Cormorant Garamond', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    /* Escala modular tipográfica (1.25 minor third en mobile, 1.333 en desktop) */
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-md: 1.125rem;
+    --fs-lg: 1.375rem;
+    --fs-xl: 1.875rem;
+    --fs-2xl: 2.5rem;
+    --fs-3xl: 3.5rem;
+    --fs-4xl: 5rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 9rem;
+
+    --container: 1280px;
+    --container-narrow: 920px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--body);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--crema);
+    background: var(--carbon);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  ::selection { background: var(--cobre); color: var(--crema); }
+
+  /* ==================== NAV ==================== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, rgba(13,8,5,0.95) 0%, rgba(13,8,5,0.7) 70%, rgba(13,8,5,0) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: padding 0.3s ease;
+  }
+  .nav__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .nav__brand {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.18em;
+    color: var(--crema);
+    line-height: 1;
+  }
+  .nav__brand-mark {
+    color: var(--cobre);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .nav__links {
+    display: none;
+    gap: 2rem;
+    list-style: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .nav__links a {
+    color: var(--ceniza-soft);
+    transition: color 0.2s ease;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+  }
+  .nav__links a:hover { color: var(--crema); border-bottom-color: var(--cobre); }
+  .nav__cta {
+    font-family: var(--body);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.1rem;
+    border: 1px solid var(--cobre);
+    color: var(--crema);
+    background: transparent;
+    transition: background 0.25s ease, color 0.25s ease;
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .nav__cta:hover { background: var(--cobre); color: var(--brasa-negra); }
+
+  @media (min-width: 900px) {
+    .nav { padding: 1.5rem 2rem; }
+    .nav__brand { font-size: 1.75rem; }
+    .nav__links { display: flex; }
+  }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    color: var(--crema);
+    overflow: hidden;
+    background: var(--brasa-negra);
+  }
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(13,8,5,0.45) 0%, rgba(13,8,5,0.1) 35%, rgba(13,8,5,0.85) 100%),
+      linear-gradient(90deg, rgba(13,8,5,0.55) 0%, rgba(13,8,5,0) 60%);
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container);
+    width: 100%;
+    margin: 0 auto;
+    padding: 7rem 1.25rem 3rem;
+  }
+  .hero__eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cobre-claro);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero__eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--cobre);
+  }
+  .hero__title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(3rem, 13vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--crema);
+    margin-bottom: 1.25rem;
+  }
+  .hero__title em {
+    font-style: italic;
+    color: var(--cobre-claro);
+    font-weight: 400;
+  }
+  .hero__sub {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.25rem, 4.2vw, 1.75rem);
+    line-height: 1.4;
+    color: var(--crema);
+    max-width: 32rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.92;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .btn {
+    font-family: var(--body);
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 1rem 1.75rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1;
+  }
+  .btn--primary {
+    background: var(--cobre);
+    color: var(--brasa-negra);
+    border-color: var(--cobre);
+  }
+  .btn--primary:hover {
+    background: var(--cobre-claro);
+    border-color: var(--cobre-claro);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--crema);
+    border-color: rgba(244,234,216,0.4);
+  }
+  .btn--ghost:hover {
+    border-color: var(--crema);
+    background: rgba(244,234,216,0.06);
+  }
+
+  .hero__meta {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.25rem;
+    z-index: 2;
+    text-align: right;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ceniza-soft);
+    font-weight: 400;
+    line-height: 1.6;
+    display: none;
+  }
+  .hero__meta strong { color: var(--crema); font-weight: 500; }
+
+  @media (min-width: 700px) {
+    .hero__inner { padding: 8rem 2rem 4rem; }
+    .hero__meta { display: block; bottom: 2rem; right: 2rem; }
+  }
+  @media (min-width: 1100px) {
+    .hero__inner { padding: 10rem 2rem 6rem; }
+  }
+
+  /* ==================== SECTIONS GENERICAS ==================== */
+  .section {
+    padding: var(--space-2xl) 1.25rem;
+    position: relative;
+  }
+  .section__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .section__inner--narrow { max-width: var(--container-narrow); }
+
+  .section--carbon { background: var(--carbon); color: var(--crema); }
+  .section--brasa  { background: var(--brasa-negra); color: var(--crema); }
+  .section--crema  { background: var(--crema); color: var(--brasa-negra); }
+
+  @media (min-width: 900px) {
+    .section { padding: var(--space-3xl) 2rem; }
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cobre);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--cobre);
+  }
+  .section--crema .eyebrow { color: var(--asado); }
+  .section--crema .eyebrow::before { background: var(--asado); }
+
+  .h-display {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2rem, 6.5vw, 3.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.5rem;
+  }
+  .h-display em {
+    font-style: italic;
+    color: var(--cobre);
+    font-weight: 400;
+  }
+  .section--crema .h-display em { color: var(--asado); }
+
+  .lead {
+    font-family: var(--display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+    line-height: 1.5;
+    color: var(--ceniza-soft);
+    max-width: 40rem;
+    margin-bottom: 2.5rem;
+  }
+  .section--crema .lead { color: var(--asado); opacity: 0.85; }
+
+  .body-text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--crema);
+    opacity: 0.85;
+    max-width: 36rem;
+  }
+  .section--crema .body-text { color: var(--brasa-negra); opacity: 0.8; }
+  .body-text + .body-text { margin-top: 1.25rem; }
+
+  /* ==================== HISTORIA ==================== */
+  .historia {
+    background: var(--carbon);
+  }
+  .historia__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+  .historia__copy { padding-top: 0; }
+  .historia__media {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .historia__media img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    filter: contrast(1.05) saturate(0.95);
+  }
+  .historia__media img:nth-child(2) {
+    aspect-ratio: 4/3;
+  }
+
+  .pull-quote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.35;
+    color: var(--cobre-claro);
+    border-left: 2px solid var(--cobre);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    margin: 2.5rem 0;
+    max-width: 30rem;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--linea);
+  }
+  .stats__item { }
+  .stats__num {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--cobre);
+    margin-bottom: 0.5rem;
+  }
+  .stats__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ceniza-soft);
+    line-height: 1.4;
+  }
+
+  @media (min-width: 900px) {
+    .historia__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+    .historia__media {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .historia__media img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/10;
+    }
+    .historia__media img:nth-child(2) { aspect-ratio: 1/1; }
+    .historia__media img:nth-child(3) { aspect-ratio: 1/1; }
+  }
+
+  /* ==================== PARRILLA (oficio) ==================== */
+  .parrilla {
+    background: var(--brasa-negra);
+    position: relative;
+    overflow: hidden;
+  }
+  .parrilla__media {
+    position: relative;
+    margin-bottom: 3rem;
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .parrilla__media img {
+    width: 100%;
+    aspect-ratio: 21/9;
+    object-fit: cover;
+    object-position: center;
+  }
+  .parrilla__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13,8,5,0) 0%, rgba(13,8,5,0.4) 100%);
+    pointer-events: none;
+  }
+  .parrilla__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .principio { }
+  .principio__num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--cobre);
+    margin-bottom: 0.75rem;
+  }
+  .principio__title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--crema);
+    margin-bottom: 0.75rem;
+  }
+  .principio__desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ceniza-soft);
+  }
+
+  @media (min-width: 700px) {
+    .parrilla__grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  }
+
+  /* ==================== CARTA ==================== */
+  .carta { background: var(--crema); color: var(--brasa-negra); }
+  .carta__head {
+    text-align: left;
+    margin-bottom: var(--space-xl);
+    max-width: 42rem;
+  }
+  .carta__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .corte {
+    background: transparent;
+  }
+  .corte__media {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    background: var(--brasa-negra);
+  }
+  .corte__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .corte:hover .corte__media img { transform: scale(1.04); }
+  .corte__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(13,8,5,0.15);
+    padding-bottom: 0.5rem;
+  }
+  .corte__name {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    color: var(--brasa-negra);
+  }
+  .corte__price {
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--asado);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .corte__desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(13,8,5,0.7);
+  }
+  .corte__origin {
+    font-family: var(--body);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--asado);
+    margin-top: 0.75rem;
+    font-weight: 500;
+  }
+
+  .carta__footer {
+    margin-top: var(--space-xl);
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(13,8,5,0.15);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: end;
+  }
+  .carta__note {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--asado);
+    max-width: 28rem;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 700px) {
+    .carta__grid { grid-template-columns: repeat(2, 1fr); gap: 3rem 2rem; }
+  }
+  @media (min-width: 1100px) {
+    .carta__grid { grid-template-columns: repeat(3, 1fr); gap: 4rem 2.5rem; }
+  }
+
+  /* ==================== CHIMICHURRI strip ==================== */
+  .strip {
+    background: var(--brasa-negra);
+    padding: var(--space-xl) 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .strip__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .strip__media img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+  .strip__copy h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    color: var(--crema);
+  }
+  .strip__copy h3 em { font-style: italic; color: var(--cobre); font-weight: 400; }
+  .strip__copy p {
+    color: var(--ceniza-soft);
+    line-height: 1.7;
+    max-width: 32rem;
+  }
+
+  @media (min-width: 900px) {
+    .strip { padding: var(--space-2xl) 2rem; }
+    .strip__inner { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
+  }
+
+  /* ==================== AMBIENTE ==================== */
+  .ambiente { background: var(--carbon); }
+  .ambiente__head {
+    margin-bottom: var(--space-xl);
+    max-width: 42rem;
+  }
+  .ambiente__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .ambiente__grid img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .ambiente__grid img:nth-child(1) { aspect-ratio: 4/3; }
+  .ambiente__grid img:nth-child(2) { aspect-ratio: 4/3; }
+  .ambiente__grid img:nth-child(3) { aspect-ratio: 4/3; }
+
+  @media (min-width: 900px) {
+    .ambiente__grid {
+      grid-template-columns: 1.5fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+    .ambiente__grid img:nth-child(1) {
+      grid-row: 1 / 3;
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 540px;
+    }
+    .ambiente__grid img:nth-child(2),
+    .ambiente__grid img:nth-child(3) {
+      aspect-ratio: 4/3;
+    }
+  }
+
+  /* ==================== RESERVAS ==================== */
+  .reservas {
+    background: var(--brasa-negra);
+    color: var(--crema);
+  }
+  .reservas__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  .reservas__copy { }
+  .reservas__form {
+    background: rgba(244,234,216,0.04);
+    border: 1px solid var(--linea);
+    padding: 2rem 1.5rem;
+  }
+  .reservas__form h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--crema);
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .field label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ceniza-soft);
+    font-weight: 500;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--linea);
+    padding: 0.6rem 0;
+    color: var(--crema);
+    font-family: var(--body);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    width: 100%;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus { border-bottom-color: var(--cobre); }
+  .field--row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .field--row .field { margin-bottom: 0; }
+  .field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23c1622d' stroke-width='1.5' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    padding-right: 1.5rem;
+  }
+  .field select option { background: var(--brasa-negra); color: var(--crema); }
+  .reservas__form .btn { width: 100%; justify-content: center; margin-top: 0.5rem; }
+
+  .reservas__direct {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--linea);
+    text-align: center;
+  }
+  .reservas__direct-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ceniza-soft);
+    margin-bottom: 0.75rem;
+  }
+  .reservas__direct a {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--cobre);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .reservas__direct a:hover { border-bottom-color: var(--cobre); }
+
+  .info-list {
+    list-style: none;
+    margin-top: 2rem;
+  }
+  .info-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--linea);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .info-list li:last-child { border-bottom: none; }
+  .info-list dt {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cobre);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .info-list dd {
+    color: var(--crema);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .info-list dd a { color: var(--crema); border-bottom: 1px solid var(--linea); transition: border-color 0.2s; }
+  .info-list dd a:hover { border-bottom-color: var(--cobre); }
+
+  @media (min-width: 900px) {
+    .reservas__grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .reservas__form { padding: 3rem 2.5rem; }
+  }
+
+  /* ==================== FOOTER ==================== */
+  .footer {
+    background: var(--brasa-negra);
+    color: var(--ceniza-soft);
+    padding: 3rem 1.25rem 2rem;
+    border-top: 1px solid var(--linea);
+  }
+  .footer__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--linea);
+  }
+  .footer__brand {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 2rem;
+    letter-spacing: 0.18em;
+    color: var(--crema);
+    margin-bottom: 0.75rem;
+  }
+  .footer__brand em { color: var(--cobre); font-style: italic; font-weight: 400; }
+  .footer__tag {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ceniza-soft);
+  }
+  .footer__col h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cobre);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .footer__col p, .footer__col a {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--ceniza-soft);
+    margin-bottom: 0.25rem;
+  }
+  .footer__col a:hover { color: var(--crema); }
+  .footer__bottom {
+    padding-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+  }
+  .footer__legal {
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: var(--ceniza);
+    line-height: 1.6;
+  }
+  .footer__kenaz {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+  }
+  .footer__kenaz a { color: var(--ceniza-soft); border-bottom: 1px solid var(--linea); }
+  .footer__kenaz a:hover { color: var(--crema); border-bottom-color: var(--cobre); }
+  .footer__honest {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(193,98,45,0.06);
+    border-left: 2px solid var(--cobre);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--ceniza-soft);
+    font-style: italic;
+  }
+
+  @media (min-width: 700px) {
+    .footer__top { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+  }
+
+  /* ==================== PLACEHOLDER HONESTO ==================== */
+  .placeholder {
+    font-style: italic;
+    color: var(--cobre-claro);
+    opacity: 0.85;
+    border-bottom: 1px dashed rgba(193, 98, 45, 0.45);
+    padding-bottom: 1px;
+  }
+  .section--crema .placeholder {
+    color: var(--asado);
+    border-bottom-color: rgba(122, 58, 26, 0.45);
+  }
+
+  /* ==================== UTILS ==================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav" aria-label="Navegación principal">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand">RAZ<span class="nav__brand-mark">O</span></a>
+    <ul class="nav__links">
+      <li><a href="#historia">La historia</a></li>
+      <li><a href="#parrilla">La parrilla</a></li>
+      <li><a href="#carta">La carta</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#reservas" class="nav__cta">Reservar</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<header id="top" class="hero">
+  <div class="hero__media">
+    <img src="img/hero-parrilla.jpg" alt="Parrilla tradicional uruguaya con cortes de carne sobre brasas" />
+  </div>
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Asador uruguayo · Calpe</p>
+    <h1 class="hero__title">Brasa, sal<br />y <em>oficio</em>.</h1>
+    <p class="hero__sub">Asador uruguayo en el corazón de Calpe. Carne importada directa desde Uruguay, brasa de encina y parrilla rioplatense tradicional.</p>
+    <div class="hero__actions">
+      <a href="#reservas" class="btn btn--primary">Reservar mesa</a>
+      <a href="#historia" class="btn btn--ghost">Conocer la casa</a>
+    </div>
+  </div>
+  <div class="hero__meta">
+    <strong>Avenida Europa 24</strong><br />
+    Calpe, Alicante<br />
+    +34 965 04 61 04
+  </div>
+</header>
+
+<!-- ==================== HISTORIA ==================== -->
+<section id="historia" class="section section--carbon historia">
+  <div class="section__inner">
+    <div class="historia__grid">
+      <div class="historia__copy">
+        <p class="eyebrow">La historia</p>
+        <h2 class="h-display">Dos <em>hermanos</em>, una misma parrilla.</h2>
+        <p class="lead">Asador uruguayo en Calpe. Carne importada directa desde Uruguay. Brasa de encina. Tiempo.</p>
+        <p class="body-text">La técnica uruguaya del asado es lenta, silenciosa y honesta: leña dura, sal gruesa y paciencia. Eso es lo que pasa en la parrilla, sin atajos ni reinventos.</p>
+        <p class="body-text">La carne llega entera desde Uruguay. Se madura y se corta en casa, y cada pieza se cocina al punto que pide. Esa parte del oficio es la misma en cualquier asador rioplatense que se precie.</p>
+
+        <blockquote class="pull-quote">
+          <span class="placeholder">[Aquí va vuestra historia familiar — quiénes sois, de dónde venís, por qué Calpe — la escribimos juntos cuando arranquemos.]</span>
+        </blockquote>
+
+        <div class="stats">
+          <div class="stats__item">
+            <div class="stats__num">100%</div>
+            <div class="stats__label">Carne uruguaya<br />de importación directa</div>
+          </div>
+          <div class="stats__item">
+            <div class="stats__num">2</div>
+            <div class="stats__label">Hermanos al frente<br />de la parrilla</div>
+          </div>
+        </div>
+      </div>
+      <div class="historia__media">
+        <img src="img/historia-manos.jpg" alt="Manos trabajando sobre una tabla de madera con un facón uruguayo y carne" />
+        <img src="img/historia-carne.jpg" alt="Pieza de carne uruguaya madurada sobre piedra oscura" />
+        <img src="img/brasas.jpg" alt="Detalle de brasas encendidas en la parrilla" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PARRILLA ==================== -->
+<section id="parrilla" class="section section--brasa parrilla">
+  <div class="section__inner">
+    <div class="parrilla__media">
+      <img src="img/brasas.jpg" alt="Brasas vivas en la parrilla del asador" />
+    </div>
+    <div style="max-width: 42rem; margin-bottom: 3rem;">
+      <p class="eyebrow">El oficio</p>
+      <h2 class="h-display">El fuego no se apura. Se <em>escucha</em>.</h2>
+      <p class="lead">La parrilla uruguaya no es una técnica de cocina. Es una manera de mirar el tiempo.</p>
+    </div>
+
+    <div class="parrilla__grid">
+      <div class="principio">
+        <div class="principio__num">01</div>
+        <h3 class="principio__title">La leña primero</h3>
+        <p class="principio__desc">Leña dura, paciencia y respeto. Las brasas tardan lo que tienen que tardar. Sin atajos químicos ni acelerantes.</p>
+      </div>
+      <div class="principio">
+        <div class="principio__num">02</div>
+        <h3 class="principio__title">La sal y nada más</h3>
+        <p class="principio__desc">A la carne buena no se le hace nada. Sal gruesa, brasa justa, tiempo. El sabor lo pone el animal y la madera.</p>
+      </div>
+      <div class="principio">
+        <div class="principio__num">03</div>
+        <h3 class="principio__title">El punto exacto</h3>
+        <p class="principio__desc">Cada corte tiene su punto y su lugar en la parrilla. Es un oficio de mirar y de tiempo, no de receta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CARTA ==================== -->
+<section id="carta" class="section carta">
+  <div class="section__inner">
+    <div class="carta__head">
+      <p class="eyebrow">La carta</p>
+      <h2 class="h-display">Cortes de la <em>casa</em>.</h2>
+      <p class="lead">Una selección breve. Cortes principales importados desde Uruguay, preparados a la parrilla al punto que pidas. <span class="placeholder">[La carta definitiva la cerramos con vosotros.]</span></p>
+    </div>
+
+    <div class="carta__grid">
+
+      <article class="corte">
+        <div class="corte__media">
+          <img src="img/corte-ojo-bife.jpg" alt="Ojo de bife uruguayo a la parrilla" />
+        </div>
+        <div class="corte__head">
+          <h3 class="corte__name">Ojo de bife</h3>
+        </div>
+        <p class="corte__desc">El corte del centro del lomo. Jugoso, marmoleado, intenso. La pieza más pedida de la casa.</p>
+        <p class="corte__origin">Origen Uruguay</p>
+      </article>
+
+      <article class="corte">
+        <div class="corte__media">
+          <img src="img/corte-asado.jpg" alt="Asado de tira con chimichurri" />
+        </div>
+        <div class="corte__head">
+          <h3 class="corte__name">Asado de tira</h3>
+        </div>
+        <p class="corte__desc">El clásico que cruza el costillar. Hueso, grasa noble y carne con sabor profundo. La esencia del domingo rioplatense.</p>
+        <p class="corte__origin">Origen Uruguay</p>
+      </article>
+
+      <article class="corte">
+        <div class="corte__media">
+          <img src="img/corte-vacio.jpg" alt="Vacío uruguayo a la brasa" />
+        </div>
+        <div class="corte__head">
+          <h3 class="corte__name">Vacío</h3>
+        </div>
+        <p class="corte__desc">Un corte largo, fibroso y de carácter. Se cocina entero, sellado por fuera y rosado por dentro. Para quien busca sabor verdadero.</p>
+        <p class="corte__origin">Origen Uruguay</p>
+      </article>
+
+      <article class="corte">
+        <div class="corte__media">
+          <img src="img/corte-entrana.jpg" alt="Entraña a la parrilla con chimichurri" />
+        </div>
+        <div class="corte__head">
+          <h3 class="corte__name">Entraña</h3>
+        </div>
+        <p class="corte__desc">El corte que se queda con la grasa del diafragma. Fina, intensa, con una textura que no se parece a ninguna otra.</p>
+        <p class="corte__origin">Origen Uruguay</p>
+      </article>
+
+      <article class="corte">
+        <div class="corte__media">
+          <img src="img/corte-mollejas.jpg" alt="Mollejas a la parrilla" />
+        </div>
+        <div class="corte__head">
+          <h3 class="corte__name">Mollejas</h3>
+        </div>
+        <p class="corte__desc">Doradas por fuera, cremosas por dentro. Limón, sal y nada más. El bocado que separa al curioso del aficionado.</p>
+        <p class="corte__origin">Origen Uruguay</p>
+      </article>
+
+      <article class="corte">
+        <div class="corte__media">
+          <img src="img/corte-chorizo.jpg" alt="Chorizos parrilleros y morcilla" />
+        </div>
+        <div class="corte__head">
+          <h3 class="corte__name">Chorizo &amp; morcilla</h3>
+        </div>
+        <p class="corte__desc">El comienzo de toda parrilla rioplatense. Embutidos artesanales hechos a la manera uruguaya. Para abrir mesa.</p>
+        <p class="corte__origin">Receta de la casa</p>
+      </article>
+
+    </div>
+
+    <div class="carta__footer">
+      <p class="carta__note">La carta cambia con la temporada y con lo que llega de Uruguay. Pregúntanos por los cortes especiales del día.</p>
+      <a href="#reservas" class="btn btn--primary" style="background: var(--asado); color: var(--crema); border-color: var(--asado);">Reservar mesa</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHIMICHURRI STRIP ==================== -->
+<section class="strip">
+  <div class="strip__inner">
+    <div class="strip__media">
+      <img src="img/chimichurri.jpg" alt="Chimichurri casero de la casa" />
+    </div>
+    <div class="strip__copy">
+      <p class="eyebrow">Salsa de la casa</p>
+      <h3>El <em>chimichurri</em>, como manda el oficio.</h3>
+      <p>Perejil fresco, ajo, orégano, ají molido, vinagre y un buen aceite. Sin cocción, sin batidoras. Reposa unas horas y se sirve a temperatura de mesa, acompañando todo lo que sale de la parrilla. <span class="placeholder">[La receta exacta de la casa la documentamos con vosotros.]</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AMBIENTE ==================== -->
+<section class="section section--carbon ambiente">
+  <div class="section__inner">
+    <div class="ambiente__head">
+      <p class="eyebrow">El lugar</p>
+      <h2 class="h-display">Una mesa <em>tranquila</em>, un fuego cerca.</h2>
+      <p class="lead">Un local pequeño en Avenida Europa, con la parrilla a la vista y la mesa pensada para quedarse un rato largo.</p>
+    </div>
+    <div class="ambiente__grid">
+      <img src="img/ambiente-interior.jpg" alt="Interior del asador RAZO con la parrilla a la vista" />
+      <img src="img/ambiente-mesa.jpg" alt="Mesa servida con copas de vino y vela" />
+      <img src="img/historia-carne.jpg" alt="Pieza de carne uruguaya en la cámara" />
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RESERVAS ==================== -->
+<section id="reservas" class="section section--brasa reservas">
+  <div class="section__inner">
+    <div class="reservas__grid">
+      <div class="reservas__copy">
+        <p class="eyebrow">Reservas</p>
+        <h2 class="h-display">Te guardamos <em>una mesa</em>.</h2>
+        <p class="lead">Reservar es la mejor manera de asegurar tu sitio. Cocinamos con tiempo y trabajamos con aforo limitado: cuanto antes nos avises, mejor te recibimos.</p>
+
+        <ul class="info-list">
+          <li>
+            <dt>Horario</dt>
+            <dd>Todos los días<br />09:00 — 23:30</dd>
+          </li>
+          <li>
+            <dt>Dirección</dt>
+            <dd>Avenida Europa 24<br />03710 Calpe, Alicante</dd>
+          </li>
+          <li>
+            <dt>Teléfono</dt>
+            <dd><a href="tel:+34965046104">+34 965 04 61 04</a></dd>
+          </li>
+          <li>
+            <dt>WhatsApp</dt>
+            <dd><a href="https://wa.me/34965046104" target="_blank" rel="noopener">Escribirnos directo</a></dd>
+          </li>
+        </ul>
+      </div>
+
+      <form class="reservas__form" onsubmit="event.preventDefault(); alert('Gracias. Te confirmamos por WhatsApp en breve.');">
+        <h3>Reservar mesa</h3>
+        <div class="field">
+          <label for="r-nombre">Nombre</label>
+          <input id="r-nombre" name="nombre" type="text" required autocomplete="name" />
+        </div>
+        <div class="field--row">
+          <div class="field">
+            <label for="r-personas">Personas</label>
+            <select id="r-personas" name="personas" required>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="r-fecha">Fecha</label>
+            <input id="r-fecha" name="fecha" type="date" required />
+          </div>
+        </div>
+        <div class="field--row">
+          <div class="field">
+            <label for="r-hora">Hora</label>
+            <select id="r-hora" name="hora" required>
+              <option>13:30</option>
+              <option>14:00</option>
+              <option>14:30</option>
+              <option>15:00</option>
+              <option>20:30</option>
+              <option>21:00</option>
+              <option>21:30</option>
+              <option>22:00</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="r-telefono">Teléfono</label>
+            <input id="r-telefono" name="telefono" type="tel" required autocomplete="tel" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-notas">Comentarios (opcional)</label>
+          <textarea id="r-notas" name="notas" rows="2" placeholder="Alergias, ocasión, preferencias..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">Solicitar reserva</button>
+
+        <div class="reservas__direct">
+          <div class="reservas__direct-label">¿Para hoy mismo?</div>
+          <a href="tel:+34965046104">+34 965 04 61 04</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACTO / FOOTER ==================== -->
+<footer id="contacto" class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__col">
+        <div class="footer__brand">RAZ<em>O</em></div>
+        <p class="footer__tag">Asador uruguayo en Calpe.<br />Brasa, sal y oficio.</p>
+      </div>
+      <div class="footer__col">
+        <h4>La casa</h4>
+        <a href="#historia">La historia</a>
+        <a href="#parrilla">La parrilla</a>
+        <a href="#carta">La carta</a>
+        <a href="#reservas">Reservar</a>
+      </div>
+      <div class="footer__col">
+        <h4>Visítanos</h4>
+        <p>Avenida Europa 24<br />03710 Calpe, Alicante</p>
+        <p>Lun — Dom<br />09:00 — 23:30</p>
+      </div>
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <a href="tel:+34965046104">+34 965 04 61 04</a>
+        <a href="https://wa.me/34965046104" target="_blank" rel="noopener">WhatsApp directo</a>
+        <a href="https://maps.google.com/?q=Avenida+Europa+24+Calpe" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+
+    <p class="footer__honest">Esta web es una propuesta de diseño. Contiene contenido placeholder marcado con corchetes — la historia, el equipo y la carta definitiva los definimos juntos con vosotros al firmar. Algunas imágenes son referenciales; las definitivas serán fotografía profesional realizada en RAZO.</p>
+
+    <div class="footer__bottom">
+      <p class="footer__legal">© 2026 RAZO Asador. Todos los derechos reservados.</p>
+      <p class="footer__kenaz">Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll — minimal y respeta prefers-reduced-motion
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.h-display, .lead, .corte, .principio, .stats, .pull-quote').forEach(el => {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  }
+
+  // Set min date for reservas to today
+  const fechaInput = document.getElementById('r-fecha');
+  if (fechaInput) {
+    const today = new Date().toISOString().split('T')[0];
+    fechaInput.min = today;
+    fechaInput.value = today;
+  }
+</script>
+
+</body>
+</html>

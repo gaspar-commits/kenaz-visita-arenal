@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Semsa Beach · Primera línea frente al Peñón · Calpe</title>
+<meta name="description" content="Semsa Beach. Restaurante de playa primera línea con vista directa al Peñón de Ifach. Cocina mediterránea, cócteles al sol, dog-friendly. Calle Alemania 4, Calpe." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --sand: #f5ede1;
+    --sand-deep: #ede1cd;
+    --cream: #fbf6ee;
+    --ink: #1d2a35;
+    --ink-soft: #4a5765;
+    --sea: #1f4e6b;
+    --sea-deep: #143246;
+    --sea-light: #6e9cb3;
+    --gold: #c69a4a;
+    --gold-deep: #a87f33;
+    --line: rgba(29, 42, 53, 0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 246, 238, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px; max-width: 1180px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: baseline; gap: 8px; }
+  .brand-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+  .brand-tag {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--sea); font-weight: 500;
+  }
+  .nav-links { display: none; gap: 28px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .nav-cta {
+    background: var(--ink); color: var(--cream);
+    padding: 10px 16px; border-radius: 999px;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+  }
+  @media (min-width: 880px) {
+    .nav-links { display: flex; }
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    overflow: hidden;
+    background: var(--sea-deep);
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.92;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(29,42,53,0.05) 0%, rgba(29,42,53,0.55) 75%, rgba(29,42,53,0.85) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    min-height: 92vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 120px 22px 56px;
+    max-width: 1180px; margin: 0 auto;
+    color: var(--cream);
+  }
+  .hero-kicker {
+    font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 18px; font-weight: 500;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(44px, 9vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    margin-bottom: 22px;
+    max-width: 12ch;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); font-weight: 300; }
+  .hero-sub {
+    font-size: clamp(16px, 2.4vw, 19px);
+    line-height: 1.5;
+    max-width: 36ch;
+    color: rgba(251, 246, 238, 0.88);
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+    border-radius: 999px;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary { background: var(--gold); color: var(--sea-deep); }
+  .btn-primary:hover { background: var(--gold-deep); }
+  .btn-ghost { background: transparent; color: var(--cream); border: 1px solid rgba(251,246,238,0.4); }
+  .btn-ghost:hover { background: rgba(251,246,238,0.08); }
+
+  /* SECTION BASE */
+  section { padding: 80px 22px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--sea); font-weight: 600; margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(34px, 6vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    max-width: 18ch;
+  }
+  .section-title em { font-style: italic; color: var(--sea); }
+  .lede {
+    font-size: clamp(17px, 2.2vw, 20px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    font-weight: 300;
+  }
+
+  /* EL SITIO */
+  .sitio {
+    background: var(--sand);
+    border-top: 1px solid var(--line);
+  }
+  .sitio-grid {
+    display: grid; gap: 28px;
+    grid-template-columns: 1fr;
+    margin-top: 48px;
+  }
+  .sitio-card {
+    background: var(--cream);
+    padding: 32px 26px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .sitio-card .icon {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .sitio-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .sitio-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.55; }
+  @media (min-width: 760px) {
+    .sitio-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* CARTA */
+  .carta { background: var(--cream); }
+  .carta-grid {
+    display: grid; gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 48px;
+  }
+  .carta-item {
+    background: var(--cream);
+    padding: 32px 26px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .carta-item .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .carta-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .carta-item p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.55; }
+  .placeholder-note {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--sea-light); font-weight: 500;
+  }
+  @media (min-width: 760px) {
+    .carta-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1000px) {
+    .carta-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* GALERIA */
+  .galeria { background: var(--sand-deep); }
+  .gal-grid {
+    display: grid; gap: 12px;
+    grid-template-columns: 1fr;
+    margin-top: 48px;
+  }
+  .gal-item {
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: var(--sand);
+  }
+  .gal-item img { width: 100%; height: 100%; object-fit: cover; }
+  .gal-item.tall { aspect-ratio: 3 / 4; }
+  .gal-item.wide { aspect-ratio: 4 / 3; }
+  @media (min-width: 760px) {
+    .gal-grid {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(2, 320px);
+      gap: 14px;
+    }
+    .gal-item.g1 { grid-column: 1 / 4; grid-row: 1 / 3; aspect-ratio: auto; }
+    .gal-item.g2 { grid-column: 4 / 6; grid-row: 1 / 2; aspect-ratio: auto; }
+    .gal-item.g3 { grid-column: 6 / 7; grid-row: 1 / 2; aspect-ratio: auto; }
+    .gal-item.g4 { grid-column: 4 / 5; grid-row: 2 / 3; aspect-ratio: auto; }
+    .gal-item.g5 { grid-column: 5 / 7; grid-row: 2 / 3; aspect-ratio: auto; }
+  }
+
+  /* VISITA */
+  .visita { background: var(--sea-deep); color: var(--cream); }
+  .visita .eyebrow { color: var(--gold); }
+  .visita .section-title { color: var(--cream); }
+  .visita .section-title em { color: var(--gold); }
+  .visita-grid {
+    display: grid; gap: 32px;
+    grid-template-columns: 1fr;
+    margin-top: 48px;
+  }
+  .visita-card { }
+  .visita-card .label {
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px; font-weight: 500;
+  }
+  .visita-card .data {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+  .visita-card .data small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(251,246,238,0.6);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+  @media (min-width: 760px) {
+    .visita-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(251,246,238,0.7);
+    padding: 56px 22px 40px;
+    font-size: 13px;
+  }
+  .foot-inner { max-width: 1100px; margin: 0 auto; }
+  .foot-top {
+    display: flex; flex-direction: column; gap: 24px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(251,246,238,0.12);
+  }
+  .foot-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 500;
+    color: var(--cream); letter-spacing: 0.04em;
+  }
+  .foot-meta {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    padding-top: 24px;
+    font-size: 12px; letter-spacing: 0.06em;
+  }
+  .foot-meta .kenaz-credit { color: var(--gold); }
+  @media (min-width: 760px) {
+    .foot-top { flex-direction: row; justify-content: space-between; align-items: center; }
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: var(--sand);
+    padding: 20px 22px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    font-size: 12px; color: var(--ink-soft);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .disclaimer strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  <strong>Maqueta de propuesta.</strong> Imágenes generadas y textos provisionales. Datos de carta, precios e historia se completarían con vosotros.
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="brand-mark">Semsa Beach</span>
+      <span class="brand-tag">Calpe</span>
+    </div>
+    <div class="nav-links">
+      <a href="#sitio">El sitio</a>
+      <a href="#carta">La carta</a>
+      <a href="#galeria">Galería</a>
+      <a href="#visita">Visita</a>
+    </div>
+    <a href="#visita" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <img class="hero-img" src="img/hero-penon.webp" alt="Vista del Peñón de Ifach desde una mesa de Semsa Beach al atardecer" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-kicker">Primera línea · Calle Alemania 4</div>
+    <h1 class="hero-title">El Peñón <em>desde tu mesa.</em></h1>
+    <p class="hero-sub">
+      Restaurante de playa frente al Peñón de Ifach. Cocina mediterránea, cócteles al sol y sobremesas largas con los pies casi en la arena. Dog-friendly.
+    </p>
+    <div class="hero-actions">
+      <a href="#visita" class="btn btn-primary">Reservar mesa</a>
+      <a href="#carta" class="btn btn-ghost">Ver la carta</a>
+    </div>
+  </div>
+</header>
+
+<section class="sitio" id="sitio">
+  <div class="wrap">
+    <div class="eyebrow">El sitio</div>
+    <h2 class="section-title">Vista al Peñón, <em>brisa de mar</em> y mesas para quedarse.</h2>
+    <p class="lede">
+      Estamos en Calle Alemania 4, primera línea de la Playa de la Fossa, con el Peñón de Ifach plantado enfrente. El sitio se siente más Ibiza que carretera: terraza abierta, telas blancas, música a volumen humano. Y sí, tu perro se queda contigo.
+    </p>
+    <div class="sitio-grid">
+      <div class="sitio-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M5 20l4-10 4 6 3-4 3 8"/><circle cx="16" cy="6" r="2"/></svg>
+        </div>
+        <h3>Frente al Peñón</h3>
+        <p>Una de las pocas terrazas con vista directa al Peñón de Ifach sin nada que se cruce entre tú y el mar.</p>
+      </div>
+      <div class="sitio-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+        </div>
+        <h3>Del aperitivo al ocaso</h3>
+        <p>Abrimos al mediodía y cerramos cuando el sol cae. Cócteles, mesa larga y la luz cambiando sobre el agua.</p>
+      </div>
+      <div class="sitio-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l1.5-4 2.5 1 2.5-1 1.5 4"/><circle cx="9" cy="9" r="1.3"/><circle cx="15" cy="9" r="1.3"/><path d="M6 13c-1 0-2-1-2-2.5S5 8 6 8"/><path d="M18 13c1 0 2-1 2-2.5S19 8 18 8"/><path d="M9 17v2M15 17v2"/></svg>
+        </div>
+        <h3>Dog-friendly</h3>
+        <p>Tu perro tiene su sitio en la sombra, su agua y todo lo que necesita para que la sobremesa la disfrutéis los dos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="eyebrow">La carta</div>
+    <h2 class="section-title">Cocina mediterránea <em>con los pies en el mar.</em></h2>
+    <p class="lede">
+      Estructura provisional de la carta. Los platos exactos, sus descripciones y los precios los definimos con vosotros en la próxima reunión.
+    </p>
+    <div class="carta-grid">
+      <div class="carta-item">
+        <span class="num">/ 01</span>
+        <h3>Cócteles</h3>
+        <p>De clásicos bien hechos a creaciones de casa. Spritz, gin-tonics premium, cócteles de autor.</p>
+        <span class="placeholder-note">Lista a definir</span>
+      </div>
+      <div class="carta-item">
+        <span class="num">/ 02</span>
+        <h3>Para picar</h3>
+        <p>Tablas, tartar, croquetas, frituras. Comida de compartir pensada para acompañar la copa.</p>
+        <span class="placeholder-note">Lista a definir</span>
+      </div>
+      <div class="carta-item">
+        <span class="num">/ 03</span>
+        <h3>Pescados</h3>
+        <p>Producto de lonja según día. Sugerencia diaria de pescado a la sal, a la espalda o a la brasa.</p>
+        <span class="placeholder-note">Lista a definir</span>
+      </div>
+      <div class="carta-item">
+        <span class="num">/ 04</span>
+        <h3>Carnes a la brasa</h3>
+        <p>Cortes seleccionados pasados por fuego. Acompañamientos sencillos para no robarle el sitio a la pieza.</p>
+        <span class="placeholder-note">Lista a definir</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <div class="eyebrow">El ambiente</div>
+    <h2 class="section-title">Lo que se siente <em>al llegar.</em></h2>
+    <p class="lede">Composiciones de muestra para la futura sesión fotográfica. La sesión real se haría con vosotros, en el sitio, con vuestras mesas y vuestra luz.</p>
+    <div class="gal-grid">
+      <div class="gal-item g1"><img src="img/ambiente-lounge.webp" alt="Terraza lounge de Semsa Beach con tumbonas y telas blancas frente al mar" /></div>
+      <div class="gal-item g2"><img src="img/cocteles.webp" alt="Cócteles servidos al sol en la barra de playa" /></div>
+      <div class="gal-item g3"><img src="img/plato-tartar.webp" alt="Tartar de atún emplatado al estilo Semsa Beach" /></div>
+      <div class="gal-item g4"><img src="img/perro-terraza.webp" alt="Perro descansando feliz en la terraza dog-friendly" /></div>
+      <div class="gal-item g5"><img src="img/hero-penon.webp" alt="Vista del Peñón de Ifach desde la terraza al atardecer" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="visita" id="visita">
+  <div class="wrap">
+    <div class="eyebrow">Visita</div>
+    <h2 class="section-title">Pasaos a <em>vernos</em>.</h2>
+    <p class="lede" style="color: rgba(251,246,238,0.8);">
+      Reservas, horarios y contacto. Los datos definitivos se completan con vosotros.
+    </p>
+    <div class="visita-grid">
+      <div class="visita-card">
+        <div class="label">Dirección</div>
+        <div class="data">
+          Calle Alemania 4<br/>
+          03710 Calpe, Alicante
+          <small>Primera línea · Playa de la Fossa</small>
+        </div>
+      </div>
+      <div class="visita-card">
+        <div class="label">Horario</div>
+        <div class="data">
+          A definir
+          <small>Horarios reales a completar con el equipo</small>
+        </div>
+      </div>
+      <div class="visita-card">
+        <div class="label">Reservas</div>
+        <div class="data">
+          A definir
+          <small>Teléfono y formulario a integrar</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Semsa Beach</div>
+        <div style="margin-top: 8px; font-size: 13px; color: rgba(251,246,238,0.55); letter-spacing: 0.04em;">
+          Calle Alemania 4 · Calpe
+        </div>
+      </div>
+      <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(251,246,238,0.6);">
+        Primera línea · Mediterráneo
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span>© Semsa Beach</span>
+      <span class="kenaz-credit">Diseño propuesto por Kenaz Studio</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

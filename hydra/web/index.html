@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hydra · Cocina en Calpe</title>
+<meta name="description" content="Restaurante en Calpe. Cocina mediterránea cuidada en un ambiente sereno." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --hueso: #f5f1ea;
+    --hueso-suave: #ecdfd1;
+    --papel: #faf7f2;
+    --azul: #1c2a3a;
+    --azul-suave: #2d3f53;
+    --oro: #b08a4b;
+    --oro-suave: #d4b67f;
+    --tinta: #1a1f26;
+    --tinta-suave: #5e6571;
+    --linea: #e6dfd4;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--papel);
+    color: var(--tinta);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.5em;
+    color: var(--azul);
+  }
+  p { margin: 0 0 1em; }
+  a { color: var(--oro); text-decoration: none; transition: opacity 0.15s; }
+  a:hover { opacity: 0.75; }
+  img { display: block; max-width: 100%; height: auto; }
+  .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: var(--azul);
+    color: var(--hueso);
+    text-align: center;
+    font-size: 0.78rem;
+    padding: 0.7rem 1.25rem;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 247, 242, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--linea);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.25rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--azul);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .brand .accent { color: var(--oro); }
+  .nav-cta {
+    display: inline-block;
+    padding: 0.55rem 1rem;
+    background: var(--azul);
+    color: var(--hueso);
+    border-radius: 0;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .nav-cta:hover { background: var(--azul-suave); opacity: 1; }
+
+  /* HERO */
+  .hero {
+    padding: 2rem 0 2.5rem;
+    background: var(--papel);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.74rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--oro);
+    margin-bottom: 1.1rem;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6.5vw, 3.6rem);
+    margin-bottom: 0.7rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--oro);
+    font-weight: 300;
+  }
+  .hero p.lead {
+    font-size: 1.05rem;
+    color: var(--tinta-suave);
+    max-width: 32rem;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 0.7rem;
+    margin-top: 1.4rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all 0.15s ease;
+  }
+  .btn-primary { background: var(--azul); color: var(--hueso); }
+  .btn-primary:hover { background: var(--azul-suave); opacity: 1; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--azul);
+    border: 1px solid var(--azul);
+  }
+  .btn-ghost:hover { background: var(--azul); color: var(--hueso); opacity: 1; }
+  .hero-img {
+    overflow: hidden;
+    box-shadow: 0 18px 40px -22px rgba(28, 42, 58, 0.4);
+    aspect-ratio: 4/5;
+  }
+  .hero-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* SECTIONS */
+  section { padding: 3.5rem 0; }
+  .section-head {
+    margin-bottom: 2.5rem;
+    max-width: 38rem;
+  }
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--oro);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .section-head h2 {
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  }
+  .section-head p {
+    color: var(--tinta-suave);
+    font-size: 1.02rem;
+    font-weight: 300;
+  }
+
+  /* SITIO */
+  .sitio {
+    background: var(--hueso);
+  }
+  .sitio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .sitio-img {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .sitio-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .sitio-text h2 {
+    margin-bottom: 1rem;
+  }
+  .sitio-text p {
+    color: var(--tinta-suave);
+    font-weight: 300;
+  }
+  .sitio-text .placeholder {
+    margin-top: 1.5rem;
+    padding: 1rem 1.2rem;
+    background: var(--papel);
+    border-left: 2px solid var(--oro);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--tinta-suave);
+  }
+
+  /* CARTA */
+  .carta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .carta-section {
+    padding: 1.6rem 1.4rem;
+    background: var(--papel);
+    border: 1px solid var(--linea);
+  }
+  .carta-section h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+    color: var(--azul);
+  }
+  .carta-section .num {
+    font-family: 'Fraunces', serif;
+    font-size: 0.75rem;
+    color: var(--oro);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .carta-section p {
+    font-size: 0.92rem;
+    color: var(--tinta-suave);
+    margin: 0;
+    font-weight: 300;
+  }
+  .carta-nota {
+    margin-top: 1.8rem;
+    padding: 1rem 1.2rem;
+    background: var(--hueso);
+    border-left: 2px solid var(--oro);
+    font-size: 0.88rem;
+    color: var(--tinta-suave);
+    font-style: italic;
+  }
+
+  /* GALERIA */
+  .galeria {
+    background: var(--azul);
+    color: var(--hueso);
+  }
+  .galeria h2 { color: var(--hueso); }
+  .galeria .section-head p { color: rgba(245, 241, 234, 0.7); }
+  .galeria .section-eyebrow { color: var(--oro-suave); }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .galeria-item {
+    overflow: hidden;
+    aspect-ratio: 1/1;
+  }
+  .galeria-item img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* VISITA */
+  .visita-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .visita-card {
+    padding: 1.8rem 1.5rem;
+    background: var(--hueso);
+    border-top: 2px solid var(--oro);
+  }
+  .visita-card h3 {
+    font-size: 0.78rem;
+    margin-bottom: 0.8rem;
+    color: var(--oro);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+  .visita-card p {
+    font-size: 0.98rem;
+    color: var(--tinta);
+    margin: 0;
+    font-weight: 300;
+  }
+  .visita-card p em {
+    color: var(--tinta-suave);
+    font-size: 0.88rem;
+  }
+  .visita-card strong {
+    font-weight: 500;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--azul);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--azul);
+    color: var(--hueso);
+    padding: 3rem 0 1.5rem;
+  }
+  footer .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  footer h3 {
+    color: var(--hueso);
+    font-style: italic;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+  footer .label {
+    color: var(--oro-suave);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 0.74rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+    font-weight: 500;
+  }
+  footer p, footer a {
+    color: rgba(245, 241, 234, 0.78);
+    font-size: 0.92rem;
+    font-weight: 300;
+  }
+  footer a:hover { color: var(--oro-suave); opacity: 1; }
+  .footer-bottom {
+    border-top: 1px solid rgba(245, 241, 234, 0.12);
+    padding-top: 1.3rem;
+    margin-top: 1.5rem;
+    font-size: 0.76rem;
+    color: rgba(245, 241, 234, 0.55);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .footer-bottom a { color: rgba(245, 241, 234, 0.78); }
+
+  /* RESPONSIVE */
+  @media (min-width: 720px) {
+    section { padding: 5rem 0; }
+    .hero { padding: 3.5rem 0 4.5rem; }
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+    }
+    .sitio-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .carta-grid { grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .galeria-grid { grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+    .visita-grid { grid-template-columns: repeat(3, 1fr); }
+    footer .container { grid-template-columns: 1.4fr 0.8fr 0.8fr; }
+  }
+  @media (min-width: 960px) {
+    .hero h1 { font-size: 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Demostración visual no oficial · Diseño propuesto por Kenaz Studio · Concepto y carta a definir tras visita in situ
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#">Hydra<span class="accent"> ·</span></a>
+    <a class="nav-cta" href="#visita">Reservas</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow">Restaurante · Calpe</span>
+        <h1>Hydra <em>·</em><br />Cocina en Calpe</h1>
+        <p class="lead">Una mesa cuidada en un ambiente sereno. Cocina mediterránea con producto cercano y un pulso pausado, pensada para quedarse.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#visita">Reservar mesa</a>
+          <a class="btn btn-ghost" href="#carta">Ver la carta</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="img/hero-mesa.webp" alt="Mesa puesta en interior elegante con copa de vino y vajilla" loading="eager" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sitio" id="sitio">
+  <div class="container">
+    <div class="sitio-grid">
+      <div class="sitio-img">
+        <img src="img/ambiente-interior.webp" alt="Interior del restaurante con luz cálida" loading="lazy" />
+      </div>
+      <div class="sitio-text">
+        <span class="section-eyebrow">El sitio</span>
+        <h2>Un lugar tranquilo<br />en Calpe</h2>
+        <p>Una sala con luz contenida y mesas separadas. El sitio pide su tiempo: la comida llega cuando llega, y se come a otro ritmo.</p>
+        <p>Avenida Rosa de los Vientos, en una zona apartada del bullicio. Lejos del paseo, cerca de la mesa.</p>
+        <div class="placeholder">
+          [Historia del proyecto, equipo de cocina y filosofía gastronómica a definir tras visita in situ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="carta">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">La carta</span>
+      <h2>Lo que sale de cocina</h2>
+      <p>Una carta corta organizada en tres momentos. Sin platos llamativos: producto, técnica y temporada.</p>
+    </div>
+    <div class="carta-grid">
+      <div class="carta-section">
+        <span class="num">I</span>
+        <h3>Entrantes</h3>
+        <p>Pequeños platos para empezar la comida con calma. Selección por temporada.</p>
+      </div>
+      <div class="carta-section">
+        <span class="num">II</span>
+        <h3>Principales</h3>
+        <p>Carnes, pescados y propuestas de cocina mediterránea con técnica cuidada.</p>
+      </div>
+      <div class="carta-section">
+        <span class="num">III</span>
+        <h3>Postres</h3>
+        <p>Cierre dulce de elaboración propia. Algo ligero para acabar bien.</p>
+      </div>
+    </div>
+    <div class="carta-nota">
+      Carta completa, sugerencias del día y maridajes por confirmar tras visita in situ. La carta puede cambiar según temporada y producto disponible.
+    </div>
+  </div>
+</section>
+
+<section class="galeria">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">El ambiente</span>
+      <h2>Mesa, sala, luz, calma</h2>
+      <p>Imágenes orientativas del estilo y atmósfera que proponemos para reposicionar la presencia digital.</p>
+    </div>
+    <div class="galeria-grid">
+      <div class="galeria-item">
+        <img src="img/plato-mediterraneo.webp" alt="Plato mediterráneo emplatado" loading="lazy" />
+      </div>
+      <div class="galeria-item">
+        <img src="img/vista-interior.webp" alt="Vista de interior con ventana y luz dorada" loading="lazy" />
+      </div>
+      <div class="galeria-item">
+        <img src="img/detalle-copa.webp" alt="Detalle de copa de vino en mantel oscuro" loading="lazy" />
+      </div>
+      <div class="galeria-item">
+        <img src="img/detalle-pan-aceite.webp" alt="Pan y aceite de oliva" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visita">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Visita</span>
+      <h2>Reservas y horario</h2>
+      <p>Para garantizar mesa, mejor reservar. El sitio es para sentarse, no para esperar.</p>
+    </div>
+    <div class="visita-grid">
+      <div class="visita-card">
+        <h3>Dirección</h3>
+        <p><strong>Av. Rosa de los Vientos, 16</strong>Calpe, Alicante<br /><em>Acceso y aparcamiento a confirmar in situ</em></p>
+      </div>
+      <div class="visita-card">
+        <h3>Horario</h3>
+        <p><strong>Por confirmar</strong>Servicio de comidas y cenas<br /><em>Días de apertura por verificar</em></p>
+      </div>
+      <div class="visita-card">
+        <h3>Reservas</h3>
+        <p><strong>Por confirmar</strong>Teléfono y formulario online<br /><em>Mejor confirmar día antes</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <h3>Hydra</h3>
+      <p>Cocina en Calpe. Mesa cuidada, ambiente sereno.</p>
+    </div>
+    <div>
+      <span class="label">Navegación</span>
+      <p>
+        <a href="#sitio">El sitio</a><br />
+        <a href="#carta">La carta</a><br />
+        <a href="#visita">Visita</a>
+      </p>
+    </div>
+    <div>
+      <span class="label">Ubicación</span>
+      <p>
+        Av. Rosa de los Vientos, 16<br />
+        Calpe, Alicante
+      </p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a> · Demostración no oficial · Datos pendientes de verificación in situ
+  </div>
+</footer>
+
+</body>
+</html>

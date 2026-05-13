@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>RAZO · Carta imprimible · A3 doble cara</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   RAZO — Carta imprimible
+   Formato: A3 horizontal (420 × 297 mm) doble cara
+   Pliegue triple: 3 paneles de 140 × 297 mm cada uno
+   Márgenes seguros: 10 mm
+   Para imprenta: lista para CMYK / sangrado mínimo
+============================================================ */
+
+@page {
+  size: 420mm 297mm;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --carbon: #1a1411;
+  --carbon-soft: #251c18;
+  --carbon-line: #3a2c24;
+  --bone: #f4ecdf;
+  --bone-soft: #ebe0cd;
+  --bone-mute: #c9bca5;
+  --copper: #c8743a;
+  --copper-deep: #a85a26;
+  --ember: #8b3a1f;
+
+  --serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  background: #2a2a2a;
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--bone);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* On-screen preview gap between the two sheets */
+body { padding: 30px; }
+
+/* ============================================================
+   SHEET (one printed page)
+============================================================ */
+
+.sheet {
+  width: 420mm;
+  height: 297mm;
+  background: var(--carbon);
+  display: grid;
+  grid-template-columns: 140mm 140mm 140mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  margin: 0 auto 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.sheet:last-child { page-break-after: auto; margin-bottom: 0; }
+
+/* Fold guides — visible on screen only, hidden on print */
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.05);
+  pointer-events: none;
+  z-index: 10;
+}
+.fold--1 { left: 140mm; }
+.fold--2 { left: 280mm; }
+
+@media print { .fold { display: none; } }
+
+/* ============================================================
+   PANEL — base
+============================================================ */
+
+.panel {
+  height: 297mm;
+  width: 140mm;
+  padding: 14mm 12mm;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--dark { background: var(--carbon); color: var(--bone); }
+
+.panel--cover {
+  background:
+    linear-gradient(180deg, rgba(26,20,17,0.55) 0%, rgba(26,20,17,0.85) 60%, rgba(26,20,17,0.98) 100%),
+    url('img/cover-parrilla.jpg') center / cover no-repeat,
+    var(--carbon);
+}
+
+/* ============================================================
+   COVER PANEL
+============================================================ */
+
+.panel--cover .top-meta {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+}
+
+.panel--cover .top-meta span:last-child { color: var(--copper); }
+
+.panel--cover .center {
+  margin: auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18mm;
+}
+
+.brand-mark__rule {
+  width: 30px;
+  height: 1px;
+  background: var(--copper);
+}
+
+.brand-mark__label {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--copper);
+  font-weight: 500;
+}
+
+.cover-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 96pt;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--bone);
+  margin-bottom: 6mm;
+}
+.cover-name em { font-style: italic; font-weight: 400; color: var(--copper); }
+
+.cover-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14pt;
+  line-height: 1.45;
+  color: var(--bone-soft);
+  max-width: 26ch;
+  margin: 0 auto;
+}
+
+.panel--cover .bottom-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.panel--cover .bottom-meta strong { color: var(--bone); font-weight: 500; letter-spacing: 0.22em; }
+.panel--cover .bottom-meta div { display: flex; flex-direction: column; gap: 3px; }
+.panel--cover .bottom-meta .right { text-align: right; }
+
+/* ============================================================
+   STORY PANEL
+============================================================ */
+
+.panel--story {
+  background: var(--carbon);
+  border-left: 1px solid var(--carbon-line);
+  border-right: 1px solid var(--carbon-line);
+  text-align: center;
+  justify-content: center;
+}
+
+.story-eyebrow {
+  font-size: 7pt;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 6mm;
+  font-weight: 500;
+}
+
+.story-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 28pt;
+  line-height: 1.1;
+  color: var(--bone);
+  margin-bottom: 8mm;
+}
+.story-title em { font-style: italic; color: var(--copper); font-weight: 400; }
+
+.story-body {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 12pt;
+  line-height: 1.6;
+  color: var(--bone-soft);
+  max-width: 30ch;
+  margin: 0 auto;
+}
+.story-body p + p { margin-top: 4mm; }
+
+.story-signature {
+  margin-top: 8mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--copper);
+}
+
+.story-rule {
+  width: 24px;
+  height: 1px;
+  background: var(--copper);
+  margin: 8mm auto 6mm;
+}
+
+/* ============================================================
+   ENTRANTES PANEL
+============================================================ */
+
+.panel--list {
+  background: var(--carbon);
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 9mm;
+  padding-top: 4mm;
+}
+
+.chapter {
+  font-size: 6.5pt;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--copper);
+  font-weight: 500;
+  margin-bottom: 4mm;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.chapter::before, .chapter::after {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0.6;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 24pt;
+  line-height: 1;
+  color: var(--bone);
+  letter-spacing: 0.005em;
+}
+.section-title em { font-style: italic; color: var(--copper); font-weight: 400; }
+
+.section-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--bone-mute);
+  margin-top: 3mm;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+}
+
+/* dish */
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5mm;
+  flex: 1;
+}
+
+.dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5mm 4mm;
+  padding-bottom: 4mm;
+  border-bottom: 0.5pt solid var(--carbon-line);
+}
+.dish:last-child { border-bottom: none; }
+
+.dish-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 12pt;
+  line-height: 1.1;
+  color: var(--bone);
+  letter-spacing: 0.005em;
+}
+
+.dish-price {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 9pt;
+  color: var(--copper);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.dish-desc {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 8pt;
+  line-height: 1.5;
+  color: var(--bone-mute);
+}
+.dish-desc em { font-style: italic; color: var(--bone-soft); }
+
+.dish-tag {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-size: 6pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-top: 1.5mm;
+  font-weight: 400;
+}
+
+/* ============================================================
+   PARRILLA — center panel sheet 2 (the hero)
+============================================================ */
+
+.panel--hero {
+  background: var(--carbon);
+  text-align: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--hero .hero-image {
+  height: 95mm;
+  background:
+    linear-gradient(180deg, rgba(26,20,17,0.2) 0%, rgba(26,20,17,0.85) 100%),
+    url('img/feature-ojodebife.jpg') center / cover no-repeat,
+    var(--carbon);
+  position: relative;
+  border-bottom: 1px solid var(--carbon-line);
+}
+
+.panel--hero .hero-image::after {
+  content: "Ojo de bife uruguayo, madurado en casa";
+  position: absolute;
+  bottom: 8mm;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--bone-soft);
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.panel--hero .hero-content {
+  padding: 10mm 12mm 12mm;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--hero .section-head { margin-bottom: 6mm; padding-top: 0; }
+.panel--hero .section-title { font-size: 22pt; }
+.panel--hero .section-sub { font-size: 8.5pt; }
+
+.panel--hero .dishes { gap: 2.8mm; }
+.panel--hero .dish { padding-bottom: 2.3mm; border-bottom-color: rgba(58,44,36,0.7); }
+.panel--hero .dish-name { font-size: 10.5pt; }
+.panel--hero .dish-desc { font-size: 7pt; line-height: 1.4; }
+.panel--hero .dish-price { font-size: 8.5pt; }
+
+/* ============================================================
+   POSTRES + BEBIDAS panel — split into 2 columns vertical
+============================================================ */
+
+.panel--split {
+  background: var(--carbon);
+  border-left: 1px solid var(--carbon-line);
+  border-right: 1px solid var(--carbon-line);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 0;
+}
+
+.split-section {
+  padding: 14mm 12mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.split-section + .split-section {
+  border-top: 1px solid var(--carbon-line);
+}
+
+.split-section .section-head { margin-bottom: 5mm; padding-top: 0; }
+.split-section .section-title { font-size: 19pt; }
+.split-section .dishes { gap: 3mm; }
+.split-section .dish { padding-bottom: 2.5mm; }
+.split-section .dish-name { font-size: 10.5pt; }
+.split-section .dish-desc { font-size: 7.5pt; line-height: 1.4; }
+.split-section .dish-price { font-size: 8.5pt; }
+
+/* ============================================================
+   ALLERGENS panel
+============================================================ */
+
+.panel--allergens {
+  background: var(--carbon-soft);
+  text-align: center;
+  justify-content: space-between;
+  padding-top: 18mm;
+  padding-bottom: 14mm;
+}
+
+.allergens-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 18pt;
+  color: var(--bone);
+  margin-bottom: 2mm;
+}
+.allergens-title em { font-style: italic; color: var(--copper); font-weight: 400; }
+
+.allergens-sub {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  color: var(--bone-mute);
+  letter-spacing: 0.04em;
+  margin-bottom: 8mm;
+}
+
+.allergens-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4mm 4mm;
+  text-align: left;
+  margin: 0 4mm;
+}
+
+.allergen {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.04em;
+  color: var(--bone-mute);
+}
+
+.allergen-icon {
+  width: 6mm;
+  height: 6mm;
+  border: 0.5pt solid var(--copper);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 7pt;
+  color: var(--copper);
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.allergens-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 7.5pt;
+  color: var(--bone-mute);
+  line-height: 1.5;
+  max-width: 38ch;
+  margin: 8mm auto 0;
+}
+
+.contact-block {
+  margin-top: 6mm;
+  padding-top: 8mm;
+  border-top: 1px solid var(--carbon-line);
+}
+
+.contact-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22pt;
+  color: var(--bone);
+  letter-spacing: 0.06em;
+  margin-bottom: 3mm;
+}
+
+.contact-info {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  line-height: 1.9;
+}
+
+.contact-info strong {
+  color: var(--bone-soft);
+  font-weight: 500;
+}
+
+.disclaimer {
+  margin-top: 6mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 7pt;
+  color: var(--bone-mute);
+  line-height: 1.5;
+  max-width: 40ch;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.7;
+}
+
+.placeholder {
+  font-style: italic;
+  color: var(--copper);
+  opacity: 0.85;
+  border-bottom: 0.4pt dashed rgba(200, 116, 58, 0.5);
+  padding-bottom: 0.5pt;
+}
+
+/* ============================================================
+   IMAGE PANELS
+============================================================ */
+
+.panel--image {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+.panel--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.04) saturate(0.95);
+}
+
+.panel--image .img-caption {
+  position: absolute;
+  bottom: 12mm;
+  left: 12mm;
+  right: 12mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--bone-soft);
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  z-index: 2;
+  letter-spacing: 0.02em;
+}
+
+.panel--image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26,20,17,0.1) 0%, rgba(26,20,17,0) 40%, rgba(26,20,17,0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+@media print {
+  body { background: white; padding: 0; margin: 0; }
+  .sheet { box-shadow: none; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SHEET 1 (front)
+     Triple panel: [HISTORIA] | [PARA EMPEZAR] | [COVER]
+     The cover is on the right so when folded, it ends up as the
+     outside front-facing panel of the gatefold.
+     Reading order on screen mimics print left-to-right.
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Story -->
+  <section class="panel panel--dark panel--story">
+    <p class="story-eyebrow">Dos hermanos · una parrilla</p>
+    <h2 class="story-title">Asador uruguayo en <em>Calpe</em>.</h2>
+
+    <div class="story-rule"></div>
+
+    <div class="story-body">
+      <p>
+        Carne importada directa desde Uruguay. Brasa de encina.
+        Sal gruesa, fuego y tiempo. La técnica del asado rioplatense,
+        sin atajos.
+      </p>
+      <p class="placeholder">
+        [Aquí va vuestra historia familiar — la escribimos juntos cuando arranquemos.]
+      </p>
+    </div>
+
+    <div style="position:absolute; bottom:14mm; left:0; right:0; text-align:center;">
+      <p style="font-family: var(--sans); font-size: 6.5pt; letter-spacing: 0.4em; text-transform: uppercase; color: var(--bone-mute); opacity: 0.6;">Carta · Propuesta 2026</p>
+    </div>
+  </section>
+
+  <!-- Panel: Para empezar -->
+  <section class="panel panel--list">
+    <header class="section-head">
+      <p class="chapter">Capítulo I</p>
+      <h2 class="section-title">Para <em>empezar</em></h2>
+      <p class="section-sub">Pequeñas piezas para abrir el apetito mientras la brasa toma su punto.</p>
+    </header>
+
+    <div class="dishes">
+
+      <article class="dish">
+        <h3 class="dish-name">Picada del asador</h3>
+        <span class="dish-price">14 €</span>
+        <p class="dish-desc">Salame de campo, queso uruguayo curado, aceitunas negras de Calpe, pan crocante de masa madre y nuestra <em>chimichurri</em> de la casa.</p>
+        <span class="dish-tag">— Recomendado</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Empanadas criollas</h3>
+        <span class="dish-price">9 €</span>
+        <p class="dish-desc">Tres unidades. Carne cortada a cuchillo, cebolla pochada, comino y huevo. Masa hojaldrada, horneadas al momento.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Provoleta a la parrilla</h3>
+        <span class="dish-price">12 €</span>
+        <p class="dish-desc">Disco de queso provolone fundido sobre la brasa, terminado con orégano, ají molido y un hilo de aceite virgen.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Mollejas crocantes</h3>
+        <span class="dish-price">15 €</span>
+        <p class="dish-desc">Mollejas de corazón doradas en parrilla con sal gruesa y limón. Crujientes por fuera, melosas por dentro.</p>
+        <span class="dish-tag">— La favorita</span>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Panel: Cover -->
+  <section class="panel panel--cover">
+    <div class="top-meta">
+      <span>Calpe · Costa Blanca</span>
+      <span>Asador uruguayo</span>
+    </div>
+
+    <div class="center">
+      <div class="brand-mark">
+        <span class="brand-mark__rule"></span>
+        <span class="brand-mark__label">Asador uruguayo</span>
+        <span class="brand-mark__rule"></span>
+      </div>
+
+      <h1 class="cover-name">RAZ<em>O</em></h1>
+
+      <p class="cover-tagline">
+        Carne uruguaya, brasa de encina<br>
+        y parrilla rioplatense.
+      </p>
+    </div>
+
+    <div class="bottom-meta">
+      <div>
+        <span>La carta</span>
+        <strong>2026</strong>
+      </div>
+      <div class="right">
+        <span>Avenida Europa 24</span>
+        <strong>+34 965 04 61 04</strong>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================
+     SHEET 2 (back)
+     Triple panel: [LA PARRILLA hero] | [ACOMPAÑAR + POSTRES] | [BEBIDAS + ALÉRGENOS]
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: La parrilla (hero) -->
+  <section class="panel panel--dark panel--hero">
+    <div class="hero-image"></div>
+
+    <div class="hero-content">
+      <header class="section-head">
+        <p class="chapter">Capítulo II · La estrella</p>
+        <h2 class="section-title">La <em>parrilla</em></h2>
+        <p class="section-sub">Carne uruguaya criada a pasto. Brasa de encina. Sal gruesa, fuego y paciencia.</p>
+      </header>
+
+      <div class="dishes">
+
+        <article class="dish">
+          <h3 class="dish-name">Ojo de bife</h3>
+          <span class="dish-price">29 €</span>
+          <p class="dish-desc">Corte central del bife ancho, madurado en casa. Sellado, reposado, <em>a tu punto</em>.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Asado de tira</h3>
+          <span class="dish-price">26 €</span>
+          <p class="dish-desc">Costilla de novillo uruguayo al estilo rioplatense. Cocción lenta sobre encina.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Vacío</h3>
+          <span class="dish-price">24 €</span>
+          <p class="dish-desc">Pieza fina de la falda. Tiempo largo, brasa baja. Tierno, fibroso, con su <em>capa</em>.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Entraña</h3>
+          <span class="dish-price">28 €</span>
+          <p class="dish-desc">El corte del parrillero. Sabor profundo. Sellada fuerte, servida jugosa.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Bife de chorizo</h3>
+          <span class="dish-price">27 €</span>
+          <p class="dish-desc">Pieza alta del lomo bajo. Carácter, jugo, su tapón de grasa dorado.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Chorizo · Morcilla dulce</h3>
+          <span class="dish-price">11 €</span>
+          <p class="dish-desc">Embutido casero al estilo uruguayo. Pareja por unidad.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Parrillada RAZO</h3>
+          <span class="dish-price">32 € / pers.</span>
+          <p class="dish-desc">Mín. 2 personas. Asado, vacío, entraña, mollejas, chorizo, morcilla, provoleta. <em>La experiencia.</em></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel: Acompañar + Postres -->
+  <section class="panel panel--split">
+
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo III</p>
+        <h2 class="section-title">Para <em>acompañar</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Papas a la provenzal</h3>
+          <span class="dish-price">8 €</span>
+          <p class="dish-desc">Patata gallega cortada a mano, frita en aceite limpio, perejil y ajo fresco.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Papas rústicas con romero</h3>
+          <span class="dish-price">8 €</span>
+          <p class="dish-desc">Asadas en horno con piel, sal gruesa y ramas de romero del huerto.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Ensalada criolla</h3>
+          <span class="dish-price">9 €</span>
+          <p class="dish-desc">Tomate maduro, cebolla morada, pimiento asado y perejil. Aceite virgen y vinagre suave.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Ensalada verde de la huerta</h3>
+          <span class="dish-price">9 €</span>
+          <p class="dish-desc">Hojas tiernas, rúcula, queso curado y vinagreta de mostaza.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Verduras a la parrilla</h3>
+          <span class="dish-price">10 €</span>
+          <p class="dish-desc">Calabacín, berenjena, pimiento y espárragos. Sal en escamas y oliva.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo IV</p>
+        <h2 class="section-title">Para <em>terminar</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Flan casero · dulce de leche</h3>
+          <span class="dish-price">7 €</span>
+          <p class="dish-desc">Flan de huevo al baño maría, dulce de leche uruguayo y crema batida.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Panqueques · dulce de leche</h3>
+          <span class="dish-price">7 €</span>
+          <p class="dish-desc">Crepe fina rellena, flameada con ron añejo a la mesa.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Queso y dulce</h3>
+          <span class="dish-price">8 €</span>
+          <p class="dish-desc">Queso colonia uruguayo y dulce de membrillo. El postre del campo.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Helado artesanal</h3>
+          <span class="dish-price">6 €</span>
+          <p class="dish-desc">Tres bochas: dulce de leche granizado, vainilla, sambayón.</p>
+        </article>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Panel: Bebidas + Alérgenos -->
+  <section class="panel panel--split">
+
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo V</p>
+        <h2 class="section-title">Para <em>beber</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Tintos uruguayos</h3>
+          <span class="dish-price">desde 22 €</span>
+          <p class="dish-desc">Selección rioplatense. Cuerpo, estructura y fruta negra.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Tintos argentinos</h3>
+          <span class="dish-price">desde 22 €</span>
+          <p class="dish-desc">Mendoza y alrededores. Redondos, especiados, frutales.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Selección local</h3>
+          <span class="dish-price">desde 18 €</span>
+          <p class="dish-desc">Tintos y blancos de la zona. Pregunta a tu camarero.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Cerveza · Refrescos · Aguas</h3>
+          <span class="dish-price">desde 3 €</span>
+          <p class="dish-desc">Cerveza, zumos naturales y refrescos.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Cócteles · Destilados</h3>
+          <span class="dish-price">consultar</span>
+          <p class="dish-desc"><span class="placeholder">[Carta a definir con vosotros.]</span></p>
+        </article>
+      </div>
+    </div>
+
+    <div class="split-section panel--allergens" style="border-top: 1px solid var(--carbon-line);">
+      <h2 class="allergens-title">Información <em>alérgenos</em></h2>
+      <p class="allergens-sub">Carta completa disponible · Consulta a tu camarero</p>
+
+      <div class="allergens-grid">
+        <div class="allergen"><span class="allergen-icon">G</span> Gluten</div>
+        <div class="allergen"><span class="allergen-icon">L</span> Lácteos</div>
+        <div class="allergen"><span class="allergen-icon">H</span> Huevo</div>
+        <div class="allergen"><span class="allergen-icon">F</span> Frutos secos</div>
+        <div class="allergen"><span class="allergen-icon">S</span> Sulfitos</div>
+        <div class="allergen"><span class="allergen-icon">M</span> Mostaza</div>
+      </div>
+
+      <div class="contact-block">
+        <div class="contact-name">RAZO</div>
+        <div class="contact-info">
+          Avenida Europa 24 · Calpe<br>
+          <strong>+34 965 04 61 04</strong>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        Propuesta de diseño. Contiene contenido placeholder marcado con corchetes —
+        historia, equipo y carta real los definimos juntos al firmar. Algunas imágenes
+        son referenciales; las definitivas serán fotografía profesional realizada en RAZO.
+        Precios indicativos.
+      </p>
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+</html>

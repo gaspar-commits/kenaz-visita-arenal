@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#050505">
+<title>Kenaz · Visita Martes · 13-may-2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --k-black: #050505;
+    --k-white: #f2f2f2;
+    --k-gray-1: #101010;
+    --k-gray-2: #1a1a1a;
+    --k-gray-3: #2a2a2a;
+    --k-gray-4: #3a3a3a;
+    --k-gray-5: #6a6a6a;
+    --k-gray-6: #999;
+    --st-pendiente: #6a6a6a;
+    --st-visitado: #4a90e2;
+    --st-interesado: #e2c54a;
+    --st-firmado: #4ae28a;
+    --st-no: #e24a4a;
+    --orbitron: 'Orbitron', sans-serif;
+    --mono: 'Share Tech Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    background: var(--k-black);
+    color: var(--k-white);
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.45;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--k-white); color: var(--k-black); }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+
+  header {
+    background: var(--k-black);
+    border-bottom: 1px solid var(--k-gray-3);
+    padding: 14px 16px 12px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .runa svg {
+    width: 28px; height: 28px;
+    stroke: var(--k-white); fill: none;
+    stroke-width: 7; stroke-linecap: square; stroke-linejoin: miter;
+  }
+  .brand h1 {
+    font-family: var(--orbitron);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .brand small {
+    display: block;
+    color: var(--k-gray-6);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    margin-top: 2px;
+  }
+  .clock {
+    font-family: var(--orbitron);
+    font-size: 13px;
+    color: var(--k-gray-6);
+    letter-spacing: 0.1em;
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+  .metric {
+    border: 1px solid var(--k-gray-3);
+    padding: 8px 4px;
+    text-align: center;
+    border-radius: 2px;
+  }
+  .metric .num {
+    font-family: var(--orbitron);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--k-white);
+  }
+  .metric .lbl {
+    font-size: 9px;
+    color: var(--k-gray-6);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .metric.m-vis .num { color: var(--st-visitado); }
+  .metric.m-int .num { color: var(--st-interesado); }
+  .metric.m-fir .num { color: var(--st-firmado); }
+  .metric.m-no  .num { color: var(--st-no); }
+
+  .controls {
+    padding: 12px 16px;
+    background: var(--k-gray-1);
+    border-bottom: 1px solid var(--k-gray-3);
+  }
+  .filter-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .filter-row:last-child { margin-bottom: 0; }
+  .filter-label {
+    font-size: 9px;
+    color: var(--k-gray-6);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  button.f {
+    background: transparent;
+    border: 1px solid var(--k-gray-4);
+    color: var(--k-white);
+    padding: 6px 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    border-radius: 2px;
+    transition: all 0.15s ease;
+  }
+  button.f.active {
+    background: var(--k-white);
+    color: var(--k-black);
+    border-color: var(--k-white);
+  }
+  input.search {
+    background: transparent;
+    border: 1px solid var(--k-gray-4);
+    color: var(--k-white);
+    padding: 8px 10px;
+    font-family: var(--mono);
+    font-size: 13px;
+    width: 100%;
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+  input.search:focus { outline: 1px solid var(--k-white); border-color: var(--k-white); }
+  input.search::placeholder { color: var(--k-gray-5); }
+
+  .cluster { border-bottom: 1px solid var(--k-gray-3); }
+  .cluster-header {
+    padding: 14px 16px 8px;
+    background: var(--k-gray-2);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .cluster-header h2 {
+    font-family: var(--orbitron);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .cluster-header .loc {
+    font-size: 10px;
+    color: var(--k-gray-6);
+    letter-spacing: 0.08em;
+  }
+
+  .card {
+    border-bottom: 1px solid var(--k-gray-3);
+    transition: opacity 0.2s ease;
+  }
+  .card.st-no { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .card-head {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .card-name { flex: 1; min-width: 0; }
+  .card-name .n {
+    font-family: var(--orbitron);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+  .card-name .sub {
+    font-size: 11px;
+    color: var(--k-gray-6);
+    margin-top: 2px;
+  }
+  .pill {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+    font-family: var(--orbitron);
+    font-weight: 700;
+  }
+  .pill.tier-A { color: var(--k-black); background: var(--k-white); border-color: var(--k-white); }
+  .pill.tier-B { color: var(--k-gray-6); }
+  .pill.st-pendiente   { color: var(--st-pendiente); }
+  .pill.st-visitado    { color: var(--st-visitado); }
+  .pill.st-interesado  { color: var(--st-interesado); }
+  .pill.st-firmado     { color: var(--st-firmado); }
+  .pill.st-no          { color: var(--st-no); }
+  .chev {
+    color: var(--k-gray-5);
+    font-size: 14px;
+    transition: transform 0.2s ease;
+  }
+  .card.open .chev { transform: rotate(90deg); }
+
+  .card-body {
+    display: none;
+    padding: 4px 16px 18px;
+    border-top: 1px dashed var(--k-gray-3);
+    background: var(--k-gray-1);
+  }
+  .card.open .card-body { display: block; }
+  .row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .meta { font-size: 12px; color: var(--k-gray-6); line-height: 1.5; }
+  .meta b { color: var(--k-white); font-weight: 400; letter-spacing: 0.06em; }
+  .meta .lbl-inline {
+    color: var(--k-gray-5);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-right: 6px;
+  }
+  .tel-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: var(--k-white);
+    color: var(--k-black);
+    font-family: var(--orbitron);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+    border: 1px solid var(--k-white);
+  }
+  .warn {
+    color: var(--st-interesado);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 6px 8px;
+    border: 1px solid var(--st-interesado);
+    border-radius: 2px;
+    margin-top: 10px;
+    display: block;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 8px;
+    border: 1px solid var(--k-gray-4);
+    color: var(--k-white);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+    text-align: center;
+    transition: all 0.15s ease;
+  }
+  .link-btn:active { background: var(--k-white); color: var(--k-black); }
+  .link-btn.full { grid-column: 1 / -1; }
+  .link-btn.disabled {
+    opacity: 0.35;
+    pointer-events: none;
+    border-style: dashed;
+  }
+
+  .state-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 14px;
+  }
+  .state-btn {
+    padding: 12px 6px;
+    background: transparent;
+    border: 1px solid currentColor;
+    font-family: var(--orbitron);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.15s ease;
+  }
+  .state-btn.s-visitado   { color: var(--st-visitado); }
+  .state-btn.s-interesado { color: var(--st-interesado); }
+  .state-btn.s-firmado    { color: var(--st-firmado); }
+  .state-btn.s-no         { color: var(--st-no); }
+  .state-btn.active { background: currentColor; }
+  .state-btn.active span { color: var(--k-black); }
+
+  textarea.notes {
+    width: 100%;
+    background: var(--k-black);
+    border: 1px solid var(--k-gray-4);
+    color: var(--k-white);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 2px;
+    min-height: 80px;
+    margin-top: 12px;
+    resize: vertical;
+  }
+  textarea.notes:focus { outline: 1px solid var(--k-white); border-color: var(--k-white); }
+  textarea.notes::placeholder { color: var(--k-gray-5); }
+
+  .history {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--k-gray-5);
+    border-top: 1px dashed var(--k-gray-3);
+    padding-top: 10px;
+  }
+  .history-title {
+    color: var(--k-gray-6);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .history ul { list-style: none; }
+  .history li {
+    padding: 3px 0;
+    font-size: 11px;
+    border-bottom: 1px dotted var(--k-gray-3);
+  }
+  .history li:last-child { border: none; }
+  .history .ts { color: var(--k-gray-5); margin-right: 6px; }
+
+  .reset-row { padding: 20px 16px 40px; text-align: center; }
+  .reset-btn {
+    background: transparent;
+    border: 1px solid var(--k-gray-4);
+    color: var(--k-gray-6);
+    padding: 10px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 720px) {
+    body { font-size: 14px; }
+    header { padding: 18px 24px 14px; }
+    .brand h1 { font-size: 16px; }
+    .metrics { gap: 10px; }
+    .metric .num { font-size: 22px; }
+    .controls { padding: 16px 24px; }
+    .cluster-header { padding: 18px 24px 10px; }
+    .card-head { padding: 16px 24px; }
+    .card-body { padding: 4px 24px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-row">
+    <div class="brand">
+      <div class="runa">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 68 18 L 30 50 L 68 82" />
+        </svg>
+      </div>
+      <div>
+        <h1>Visita Kenaz</h1>
+        <small>Mar 13 · May 2026 · Paseo Arenal Calpe</small>
+      </div>
+    </div>
+    <div class="clock" id="clock">--:--</div>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="num" id="m-total">0</div><div class="lbl">Total</div></div>
+    <div class="metric m-vis"><div class="num" id="m-visitado">0</div><div class="lbl">Visit</div></div>
+    <div class="metric m-int"><div class="num" id="m-interesado">0</div><div class="lbl">Inter</div></div>
+    <div class="metric m-fir"><div class="num" id="m-firmado">0</div><div class="lbl">Firm</div></div>
+    <div class="metric m-no"><div class="num" id="m-no">0</div><div class="lbl">No</div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="filter-row">
+    <span class="filter-label">Cluster</span>
+    <button class="f f-cluster active" data-cluster="all">Todos</button>
+    <button class="f f-cluster" data-cluster="1">1 · Etxezuri</button>
+    <button class="f f-cluster" data-cluster="2">2 · Paseo</button>
+    <button class="f f-cluster" data-cluster="3">3 · Apolo VII</button>
+    <button class="f f-cluster" data-cluster="4">4 · Formentera</button>
+    <button class="f f-cluster" data-cluster="5">5 · Verificar</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Estado</span>
+    <button class="f f-state active" data-state="all">Todos</button>
+    <button class="f f-state" data-state="pendiente">Pendiente</button>
+    <button class="f f-state" data-state="visitado">Visit</button>
+    <button class="f f-state" data-state="interesado">Inter</button>
+    <button class="f f-state" data-state="firmado">Firm</button>
+    <button class="f f-state" data-state="no">No</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Tier</span>
+    <button class="f f-tier active" data-tier="all">Todos</button>
+    <button class="f f-tier" data-tier="A">Tier A (kit completo)</button>
+    <button class="f f-tier" data-tier="B">Tier B (demo)</button>
+  </div>
+  <input type="search" class="search" id="search" placeholder="Buscar nombre, calle, telefono...">
+</div>
+
+<main id="app"></main>
+
+<div class="reset-row">
+  <button class="reset-btn" id="reset-btn">Reset · borrar todo</button>
+</div>
+
+<script>
+'use strict';
+
+const STORAGE_KEY = 'visita-kenaz-martes-2026-05-13';
+
+const NEGOCIOS = [
+  { id: 'mosselhuis', nombre: 'Mosselhuis', cluster: 1, tier: 'B',
+    direccion: 'Av Europa 1 · Edif. Etxezuri',
+    desc: 'Restaurante mejillones · sin web propia',
+    franja: 'Mar 11:00-12:30', tel: '', telNote: 'verificar in situ',
+    score: null,
+    web: 'mosselhuis/web/index.html',
+    cartaDigital: 'mosselhuis/carta/carta-digital.html',
+    cartaPDF: 'mosselhuis/carta/carta-imprimible.pdf',
+    warn: 'Sin telefono confirmado — visitar puerta a puerta' },
+  { id: 'pasteleria-europa', nombre: 'Pasteleria Av Europa 1', cluster: 1, tier: 'B',
+    direccion: 'Av Europa 1 · Edif. Etxezuri',
+    desc: 'Pasteleria · verificar nombre exacto in situ',
+    franja: 'Mar 10:00-12:00', tel: '', telNote: 'verificar in situ',
+    score: null,
+    web: 'pasteleria-av-europa/web/index.html',
+    cartaDigital: null, cartaPDF: null,
+    warn: 'Puerta con puerta con Mosselhuis — visitar juntos' },
+
+  { id: 'razo', nombre: 'RAZO', cluster: 2, tier: 'A',
+    direccion: 'Av Europa 24',
+    desc: 'Bar mediterraneo con guinos rioplatenses',
+    franja: 'Mar/Mie 11:00-12:30', tel: '+34 965 04 61 04',
+    score: 9.0,
+    web: 'razo/web-v2/index.html',
+    cartaDigital: 'razo/carta-v2/carta-digital.html',
+    cartaPDF: 'razo/carta-v2/carta-imprimible.pdf',
+    warn: null },
+  { id: 'morena', nombre: 'Morena Restobar', cluster: 2, tier: 'B',
+    direccion: 'Calle Gran Bretana',
+    desc: 'Restaurante paseo · web frames hace 15 anos',
+    franja: 'Mar 11:00-12:30', tel: '', telNote: 'verificar in situ',
+    score: null,
+    web: 'morena/web/index.html',
+    cartaDigital: 'morena/carta/carta-digital.html',
+    cartaPDF: 'morena/carta/carta-imprimible.pdf',
+    warn: 'Web actual es del 2009 — referencia directa al pitch' },
+  { id: 'semsa-beach', nombre: 'Semsa Beach', cluster: 2, tier: 'B',
+    direccion: 'Calle Alemania 4',
+    desc: '1a linea Penon · estilo Ibiza / lounge',
+    franja: 'Mar 11:30-13:00', tel: '', telNote: 'verificar in situ',
+    score: null,
+    web: 'semsa-beach/web/index.html',
+    cartaDigital: null, cartaPDF: null, warn: null },
+  { id: 'las-olas', nombre: 'Las Olas', cluster: 2, tier: 'B',
+    direccion: 'Av Europa · paseo',
+    desc: 'Restaurante paellas paseo',
+    franja: 'Mar 11:00-12:30', tel: '', telNote: 'verificar in situ',
+    score: null,
+    web: 'las-olas/web/index.html',
+    cartaDigital: 'las-olas/carta/carta-digital.html',
+    cartaPDF: 'las-olas/carta/carta-imprimible.pdf', warn: null },
+  { id: 'peca2', nombre: 'Heladeria Peca2', cluster: 2, tier: 'B',
+    direccion: 'Paseo Arenal-Bol',
+    desc: 'Heladeria del paseo',
+    franja: 'Mar 11:00-13:00', tel: '', telNote: 'verificar in situ',
+    score: null,
+    web: 'peca2/web/index.html',
+    cartaDigital: null, cartaPDF: null, warn: null },
+  { id: 'amara', nombre: 'Amara · Heladeria', cluster: 2, tier: 'B',
+    direccion: 'Paseo Arenal-Bol',
+    desc: 'Heladeria & cafeteria · NO el resto Amara cerrado',
+    franja: 'Mar 11:00-13:00', tel: '', telNote: 'verificar in situ',
+    score: null,
+    web: 'amara/web/index.html',
+    cartaDigital: null, cartaPDF: null,
+    warn: 'IMPORTANTE: no confundir con restaurante Amara que cerro' },
+
+  { id: 'costa', nombre: 'Restaurante Costa', cluster: 3, tier: 'A',
+    direccion: 'Pintor Sorolla · Apolo VII · Local 5A',
+    desc: 'Cocina ecletica · mediterranea + belga + asiatica',
+    franja: 'Mar/Jue 11:00-12:30 o 16:30-17:30',
+    tel: '+34 965 06 43 69', score: 8.9,
+    web: 'costa/web-v2/index.html',
+    cartaDigital: 'costa/carta-v2/carta-digital.html',
+    cartaPDF: 'costa/carta-v2/carta-imprimible.pdf',
+    warn: 'Cierra miercoles — confirmar dia' },
+  { id: 'el-andaluz', nombre: 'El Andaluz', cluster: 3, tier: 'A',
+    direccion: 'Pintor Sorolla 21 · Apolo VII',
+    desc: 'Arroceria-taperia valenciana',
+    franja: 'Mar-Dom 11:00-12:30',
+    tel: '+34 965 83 55 66', score: 9.0,
+    web: 'el-andaluz/web/index.html',
+    cartaDigital: 'el-andaluz/carta/carta-digital.html',
+    cartaPDF: 'el-andaluz/carta/carta-imprimible.pdf',
+    warn: 'Cierra lunes' },
+
+  { id: 'cacao', nombre: 'Cacao Bar', cluster: 4, tier: 'A',
+    direccion: 'Calle Isla de Formentera 18',
+    desc: 'Bar caribeno con alma venezolana',
+    franja: 'Mar-Dom 11:00-13:00 o 16:00-17:30',
+    tel: '+34 678 21 00 05', score: 9.0,
+    web: 'cacao/web/index.html',
+    cartaDigital: 'cacao/carta/carta-digital.html',
+    cartaPDF: 'cacao/carta/carta-imprimible.pdf',
+    warn: 'Verificar in situ que sigue abierto' },
+
+  { id: 'hydra', nombre: 'Hydra', cluster: 5, tier: 'B',
+    direccion: 'Av Rosa de los Vientos 16',
+    desc: 'Verificar zona',
+    franja: 'Mar 11:00-13:00', tel: '', telNote: 'verificar in situ',
+    score: null, web: 'hydra/web/index.html', cartaDigital: null, cartaPDF: null,
+    warn: 'Sin confirmar — solo si queda tiempo' }
+];
+
+const CLUSTERS = {
+  1: { label: 'Cluster 1', loc: 'Av Europa 1 · Edif. Etxezuri' },
+  2: { label: 'Cluster 2', loc: 'Paseo Arenal-Bol (Av Europa + calles)' },
+  3: { label: 'Cluster 3', loc: 'Pintor Sorolla · Edif. Apolo VII' },
+  4: { label: 'Cluster 4', loc: 'Calle Isla de Formentera' },
+  5: { label: 'Cluster 5', loc: 'Verificar (Av Rosa de los Vientos)' }
+};
+
+const STATES = {
+  pendiente:  { label: 'Pendiente'  },
+  visitado:   { label: 'Visitado'   },
+  interesado: { label: 'Interesado' },
+  firmado:    { label: 'Firmado'    },
+  no:         { label: 'No interes' }
+};
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    return JSON.parse(raw) || {};
+  } catch (e) { return {}; }
+}
+function saveState(s) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+}
+
+let state = loadState();
+NEGOCIOS.forEach(n => {
+  if (!state[n.id]) {
+    state[n.id] = { status: 'pendiente', notes: '', history: [], open: false };
+  }
+  if (!state[n.id].history) state[n.id].history = [];
+  if (typeof state[n.id].open !== 'boolean') state[n.id].open = false;
+});
+
+let filters = { cluster: 'all', state: 'all', tier: 'all', search: '' };
+
+const $app = document.getElementById('app');
+
+function el(tag, opts = {}, children = []) {
+  const node = document.createElement(tag);
+  if (opts.className) node.className = opts.className;
+  if (opts.text != null) node.textContent = opts.text;
+  if (opts.attrs) {
+    for (const k in opts.attrs) {
+      if (opts.attrs[k] != null) node.setAttribute(k, opts.attrs[k]);
+    }
+  }
+  if (opts.dataset) {
+    for (const k in opts.dataset) node.dataset[k] = opts.dataset[k];
+  }
+  if (opts.value != null) node.value = opts.value;
+  (children || []).forEach(c => {
+    if (c == null) return;
+    if (typeof c === 'string') node.appendChild(document.createTextNode(c));
+    else node.appendChild(c);
+  });
+  return node;
+}
+
+function fmtTime(d) {
+  const p = n => n.toString().padStart(2, '0');
+  return p(d.getHours()) + ':' + p(d.getMinutes());
+}
+
+function statePill(st) {
+  return el('span', { className: 'pill st-' + st, text: STATES[st].label });
+}
+
+function negocioCard(n) {
+  const s = state[n.id];
+  const card = el('article', {
+    className: 'card st-' + s.status + (s.open ? ' open' : ''),
+    dataset: { id: n.id, cluster: n.cluster, tier: n.tier, state: s.status }
+  });
+
+  // HEAD
+  const head = el('div', {
+    className: 'card-head',
+    dataset: { act: 'toggle', id: n.id }
+  });
+  head.appendChild(el('span', { className: 'chev', text: '›' }));
+  const nameBox = el('div', { className: 'card-name' });
+  nameBox.appendChild(el('span', { className: 'n', text: n.nombre }));
+  nameBox.appendChild(el('span', { className: 'sub', text: n.desc }));
+  head.appendChild(nameBox);
+  head.appendChild(el('span', { className: 'pill tier-' + n.tier, text: 'T' + n.tier }));
+  head.appendChild(statePill(s.status));
+  card.appendChild(head);
+
+  // BODY
+  const body = el('div', { className: 'card-body' });
+
+  // dir row
+  const dirRow = el('div', { className: 'row' });
+  const dirMeta = el('span', { className: 'meta' });
+  dirMeta.appendChild(el('span', { className: 'lbl-inline', text: 'Dir' }));
+  dirMeta.appendChild(el('b', { text: n.direccion }));
+  dirRow.appendChild(dirMeta);
+  body.appendChild(dirRow);
+
+  // franja + score
+  const franjaRow = el('div', { className: 'row' });
+  const franjaMeta = el('span', { className: 'meta' });
+  franjaMeta.appendChild(el('span', { className: 'lbl-inline', text: 'Franja' }));
+  franjaMeta.appendChild(document.createTextNode(n.franja));
+  franjaRow.appendChild(franjaMeta);
+  if (n.score) {
+    const scoreMeta = el('span', { className: 'meta' });
+    scoreMeta.appendChild(el('span', { className: 'lbl-inline', text: 'Score' }));
+    scoreMeta.appendChild(el('b', { text: n.score.toFixed(1) }));
+    franjaRow.appendChild(scoreMeta);
+  }
+  body.appendChild(franjaRow);
+
+  // tel row
+  const telRow = el('div', { className: 'row' });
+  if (n.tel) {
+    const a = el('a', {
+      className: 'tel-btn',
+      attrs: { href: 'tel:' + n.tel.replace(/\s/g, '') },
+      text: 'CALL ' + n.tel
+    });
+    telRow.appendChild(a);
+  } else {
+    const telMeta = el('span', { className: 'meta' });
+    telMeta.appendChild(el('span', { className: 'lbl-inline', text: 'Tel' }));
+    telMeta.appendChild(document.createTextNode(n.telNote || 'verificar'));
+    telRow.appendChild(telMeta);
+  }
+  body.appendChild(telRow);
+
+  // warn
+  if (n.warn) {
+    body.appendChild(el('div', { className: 'warn', text: '⚠ ' + n.warn }));
+  }
+
+  // links
+  const links = el('div', { className: 'links' });
+  const linkBtn = (label, href, full) => {
+    if (href) {
+      return el('a', {
+        className: 'link-btn' + (full ? ' full' : ''),
+        attrs: { href: href, target: '_blank', rel: 'noopener' },
+        text: label
+      });
+    }
+    return el('span', { className: 'link-btn disabled' + (full ? ' full' : ''), text: label });
+  };
+  links.appendChild(linkBtn('WEB', n.web, false));
+  links.appendChild(linkBtn(n.cartaDigital ? 'CARTA DIGITAL' : 'CARTA DIG', n.cartaDigital, false));
+  if (n.cartaPDF) {
+    links.appendChild(linkBtn('CARTA PDF', n.cartaPDF, true));
+  }
+  body.appendChild(links);
+
+  // state buttons
+  const stBtns = el('div', { className: 'state-buttons' });
+  [
+    ['visitado', 'Visitado'],
+    ['interesado', 'Interesado'],
+    ['firmado', 'Firmado'],
+    ['no', 'No interes']
+  ].forEach(([st, lbl]) => {
+    const b = el('button', {
+      className: 'state-btn s-' + st + (s.status === st ? ' active' : ''),
+      dataset: { act: 'set', id: n.id, st: st }
+    });
+    b.appendChild(el('span', { text: lbl }));
+    stBtns.appendChild(b);
+  });
+  body.appendChild(stBtns);
+
+  // notes
+  const notes = el('textarea', {
+    className: 'notes',
+    attrs: { placeholder: 'Notas del cliente (lo que diga textual)...' },
+    dataset: { act: 'notes', id: n.id },
+    value: s.notes || ''
+  });
+  body.appendChild(notes);
+
+  // history
+  if (s.history.length) {
+    const hist = el('div', { className: 'history' });
+    hist.appendChild(el('div', { className: 'history-title', text: 'Historial' }));
+    const ul = el('ul');
+    s.history.slice().reverse().forEach(h => {
+      const li = el('li');
+      li.appendChild(el('span', { className: 'ts', text: h.ts }));
+      li.appendChild(document.createTextNode((STATES[h.st] && STATES[h.st].label) || h.st));
+      ul.appendChild(li);
+    });
+    hist.appendChild(ul);
+    body.appendChild(hist);
+  }
+
+  card.appendChild(body);
+  return card;
+}
+
+function render() {
+  // Clear app
+  while ($app.firstChild) $app.removeChild($app.firstChild);
+
+  const grouped = {};
+  NEGOCIOS.forEach(n => {
+    if (!grouped[n.cluster]) grouped[n.cluster] = [];
+    grouped[n.cluster].push(n);
+  });
+
+  Object.keys(grouped).sort().forEach(c => {
+    const ci = CLUSTERS[c];
+    const section = el('section', {
+      className: 'cluster',
+      dataset: { cluster: c }
+    });
+    const ch = el('div', { className: 'cluster-header' });
+    ch.appendChild(el('h2', { text: ci.label }));
+    ch.appendChild(el('span', { className: 'loc', text: ci.loc }));
+    section.appendChild(ch);
+    grouped[c].forEach(n => section.appendChild(negocioCard(n)));
+    $app.appendChild(section);
+  });
+
+  applyFilters();
+  updateMetrics();
+}
+
+function applyFilters() {
+  const q = filters.search.trim().toLowerCase();
+  document.querySelectorAll('.card').forEach(elc => {
+    const id = elc.dataset.id;
+    const n = NEGOCIOS.find(x => x.id === id);
+    const s = state[id];
+
+    let visible = true;
+    if (filters.cluster !== 'all' && String(n.cluster) !== filters.cluster) visible = false;
+    if (filters.state !== 'all' && s.status !== filters.state) visible = false;
+    if (filters.tier !== 'all' && n.tier !== filters.tier) visible = false;
+    if (q) {
+      const hay = [n.nombre, n.direccion, n.desc, n.tel || ''].join(' ').toLowerCase();
+      if (!hay.includes(q)) visible = false;
+    }
+    elc.classList.toggle('hidden', !visible);
+  });
+
+  document.querySelectorAll('.cluster').forEach(cl => {
+    const anyVisible = cl.querySelectorAll('.card:not(.hidden)').length > 0;
+    cl.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+function updateMetrics() {
+  const counts = { total: NEGOCIOS.length, visitado: 0, interesado: 0, firmado: 0, no: 0 };
+  NEGOCIOS.forEach(n => {
+    const st = state[n.id].status;
+    if (st !== 'pendiente') counts[st] = (counts[st] || 0) + 1;
+  });
+  document.getElementById('m-total').textContent = counts.total;
+  document.getElementById('m-visitado').textContent = counts.visitado;
+  document.getElementById('m-interesado').textContent = counts.interesado;
+  document.getElementById('m-firmado').textContent = counts.firmado;
+  document.getElementById('m-no').textContent = counts.no;
+}
+
+function setStatus(id, st) {
+  const prev = state[id].status;
+  if (prev === st) {
+    state[id].status = 'pendiente';
+  } else {
+    state[id].status = st;
+  }
+  const d = new Date();
+  state[id].history.push({ ts: fmtTime(d), st: state[id].status });
+  saveState(state);
+  render();
+}
+
+function toggleCard(id) {
+  state[id].open = !state[id].open;
+  saveState(state);
+  const c = document.querySelector('.card[data-id="' + id + '"]');
+  if (c) c.classList.toggle('open', state[id].open);
+}
+
+function setNotes(id, val) {
+  state[id].notes = val;
+  saveState(state);
+}
+
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-act]');
+  if (!t) return;
+  const act = t.dataset.act;
+  const id = t.dataset.id;
+  if (act === 'toggle') toggleCard(id);
+  else if (act === 'set') setStatus(id, t.dataset.st);
+});
+
+document.addEventListener('input', (e) => {
+  if (e.target.matches('textarea[data-act="notes"]')) {
+    setNotes(e.target.dataset.id, e.target.value);
+  }
+  if (e.target.id === 'search') {
+    filters.search = e.target.value;
+    applyFilters();
+  }
+});
+
+document.querySelectorAll('.f-cluster').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.f-cluster').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    filters.cluster = b.dataset.cluster;
+    applyFilters();
+  });
+});
+document.querySelectorAll('.f-state').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.f-state').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    filters.state = b.dataset.state;
+    applyFilters();
+  });
+});
+document.querySelectorAll('.f-tier').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.f-tier').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    filters.tier = b.dataset.tier;
+    applyFilters();
+  });
+});
+
+document.getElementById('reset-btn').addEventListener('click', () => {
+  if (!confirm('Borrar TODO el progreso de la visita?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state = {};
+  NEGOCIOS.forEach(n => {
+    state[n.id] = { status: 'pendiente', notes: '', history: [], open: false };
+  });
+  saveState(state);
+  render();
+});
+
+function tickClock() {
+  document.getElementById('clock').textContent = fmtTime(new Date());
+}
+setInterval(tickClock, 30000);
+tickClock();
+
+render();
+</script>
+</body>
+</html>

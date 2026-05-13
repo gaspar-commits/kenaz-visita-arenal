@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e3a3d">
+<meta name="description" content="Cacao · Bar de cócteles y snacks en Calpe. Mojitos, sangría, jugos naturales y carta internacional con alma venezolana.">
+<title>Cacao · Carta · Cócteles, snacks y alma venezolana</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* -----------------------------------------------------------
+   CACAO — Carta digital
+   Concepto: Bar de cócteles y snacks regentado por familia venezolana.
+   Paleta: arena cálida + petróleo profundo (mar caribe nocturno)
+           + coral papaya (signature) + verde lima (frescura).
+   Tipografía: Fraunces (display, cálida y amigable) + Plus Jakarta Sans (body).
+   Mobile-first. Diseño cálido, fresco, familiar. NO Kenaz, NO Costa, NO RAZO.
+----------------------------------------------------------- */
+
+:root {
+  --sand: #f7efe2;
+  --sand-soft: #f0e5d1;
+  --sand-warm: #e6d6b8;
+  --petrol: #0e3a3d;
+  --petrol-soft: #154a4d;
+  --petrol-line: #1f5e62;
+  --teal: #2a7a7e;
+  --coral: #e87a5d;
+  --coral-deep: #c95a3e;
+  --lime: #aebe5a;
+  --lime-deep: #8a9c3a;
+  --ink-warm: #2a1e14;
+
+  --serif: 'Fraunces', 'DM Serif Display', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --gutter: clamp(20px, 6vw, 40px);
+  --max-content: 720px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  background: var(--sand);
+  color: var(--petrol);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.005em;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--coral); color: var(--sand); }
+
+/* ============================================================
+   COVER
+============================================================ */
+
+.cover {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--gutter);
+  padding-top: max(var(--gutter), env(safe-area-inset-top));
+  padding-bottom: max(var(--gutter), env(safe-area-inset-bottom));
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(14,58,61,0.45) 0%, rgba(14,58,61,0.72) 60%, rgba(14,58,61,0.92) 100%),
+    radial-gradient(ellipse at 70% 25%, rgba(232,122,93,0.42), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(174,190,90,0.22), transparent 60%),
+    var(--petrol);
+  color: var(--sand);
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0%, rgba(14,58,61,0.18) 80%);
+  pointer-events: none;
+}
+
+.cover__top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sand-warm);
+  font-weight: 500;
+}
+
+.cover__top .accent { color: var(--coral); }
+
+.cover__center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin: auto 0;
+  padding: 10vh 0;
+}
+
+.brand-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.brand-mark__rule {
+  width: 38px;
+  height: 1.5px;
+  background: var(--coral);
+  border-radius: 2px;
+}
+
+.brand-mark__label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--coral);
+  font-weight: 600;
+}
+
+.cover__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(82px, 24vw, 138px);
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  color: var(--sand);
+  margin-bottom: 18px;
+  font-variation-settings: "opsz" 120;
+}
+
+.cover__name em { font-style: italic; font-weight: 400; color: var(--sand); }
+
+.cover__tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(17px, 4.6vw, 22px);
+  line-height: 1.45;
+  color: var(--sand-warm);
+  max-width: 26ch;
+  margin: 0 auto;
+}
+
+.cover__hero-line {
+  margin-top: 26px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--lime);
+  font-weight: 600;
+}
+
+.cover__bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand-warm);
+}
+
+.cover__bottom strong { color: var(--sand); font-weight: 600; }
+.cover__bottom div { display: flex; flex-direction: column; gap: 4px; }
+.cover__bottom .right { text-align: right; }
+
+.cover__scroll {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: var(--sand-warm);
+  text-transform: uppercase;
+  opacity: 0.55;
+  z-index: 3;
+}
+
+/* ============================================================
+   STORY / LA CASA
+============================================================ */
+
+.story {
+  background: var(--sand);
+  padding: 80px var(--gutter) 64px;
+  text-align: center;
+  position: relative;
+}
+
+.story__eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+
+.story__title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 7vw, 38px);
+  line-height: 1.1;
+  color: var(--petrol);
+  margin-bottom: 22px;
+  max-width: 15ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story__title em { font-style: italic; color: var(--coral-deep); font-weight: 400; }
+
+.story__rule {
+  width: 28px;
+  height: 1.5px;
+  background: var(--coral);
+  margin: 0 auto 26px;
+  border-radius: 2px;
+}
+
+.story__body {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(15px, 4vw, 17px);
+  line-height: 1.65;
+  color: var(--petrol-soft);
+  max-width: 34ch;
+  margin: 0 auto;
+}
+.story__body p + p { margin-top: 14px; }
+
+.story__placeholder {
+  margin-top: 24px;
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  background: rgba(232,122,93,0.10);
+  padding: 8px 14px;
+  border: 1px dashed var(--coral);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.story__signature {
+  margin-top: 26px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--teal);
+}
+
+/* ============================================================
+   SECTION (genérica)
+============================================================ */
+
+.section {
+  padding: 64px var(--gutter);
+  max-width: var(--max-content);
+  margin: 0 auto;
+  position: relative;
+}
+
+.section--alt {
+  background: var(--petrol);
+  color: var(--sand);
+  max-width: none;
+  margin: 0;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.section--alt .dish-name { color: var(--sand); }
+.section--alt .dish-desc { color: var(--sand-warm); }
+.section--alt .dish-price { color: var(--coral); }
+.section--alt .dish { border-bottom-color: var(--petrol-line); }
+.section--alt .section-head { color: var(--sand); }
+.section--alt .section-title { color: var(--sand); }
+.section--alt .section-title em { color: var(--coral); }
+.section--alt .chapter { color: var(--coral); }
+.section--alt .section-sub { color: var(--sand-warm); }
+.section--alt .placeholder-row {
+  background: rgba(232,122,93,0.12);
+  border-color: var(--coral);
+  color: var(--sand-warm);
+}
+
+/* sección verde (cócteles, frescura jugos) */
+.section--fresh {
+  background: linear-gradient(180deg, var(--sand) 0%, var(--sand-soft) 100%);
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.chapter {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chapter::before, .chapter::after {
+  content: "";
+  width: 16px;
+  height: 1.5px;
+  background: var(--coral);
+  opacity: 0.7;
+  border-radius: 2px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 7vw, 38px);
+  line-height: 1;
+  color: var(--petrol);
+  letter-spacing: 0.005em;
+  margin-bottom: 14px;
+}
+
+.section-title em { font-style: italic; color: var(--coral-deep); font-weight: 400; }
+
+.section-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--petrol-soft);
+  max-width: 38ch;
+  margin: 0 auto;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* dish */
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(14,58,61,0.15);
+}
+
+.dish:last-child { border-bottom: none; padding-bottom: 0; }
+
+.dish-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.15;
+  color: var(--petrol);
+  letter-spacing: 0.005em;
+}
+
+.dish-price {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--teal);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  align-self: start;
+}
+
+.dish-price em {
+  font-style: normal;
+  color: var(--coral-deep);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 2px;
+}
+
+.dish-desc {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--petrol-soft);
+}
+.dish-desc em { font-style: italic; color: var(--coral-deep); }
+
+.dish-tag {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  margin-top: 4px;
+  font-weight: 600;
+  opacity: 0.82;
+}
+
+/* Sistema unificado: todos los tags en coral-deep discreto (sin verde) */
+.dish-tag--fresh { color: var(--coral-deep); }
+
+/* ============================================================
+   PLACEHOLDER row
+============================================================ */
+
+.placeholder-row {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--coral-deep);
+  background: rgba(232,122,93,0.10);
+  border: 1px dashed var(--coral);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ============================================================
+   HERO PROTAGONISTA — MOJITOS
+============================================================ */
+
+.hero-dish {
+  background: var(--petrol);
+  color: var(--sand);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-dish__image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background:
+    linear-gradient(180deg, rgba(14,58,61,0.05) 0%, rgba(14,58,61,0.18) 60%, rgba(14,58,61,0.88) 100%),
+    url('img/mojito-signature.webp') center / cover no-repeat,
+    radial-gradient(ellipse at 50% 38%, rgba(174,190,90,0.42) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 38%, rgba(232,122,93,0.30) 0%, transparent 60%),
+    var(--petrol);
+  position: relative;
+}
+
+.hero-dish__image::before {
+  content: "";
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  border: 1.5px solid rgba(247,239,226,0.18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-dish__image::after {
+  content: "Mojito de la casa";
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 90px));
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(247,239,226,0.35);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.hero-dish__content {
+  padding: 56px var(--gutter) 64px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-dish__chapter {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--lime);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.hero-dish__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(34px, 9vw, 52px);
+  line-height: 1;
+  color: var(--sand);
+  margin-bottom: 16px;
+}
+
+.hero-dish__name em { font-style: italic; font-weight: 400; color: var(--coral); }
+
+.hero-dish__sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--sand-warm);
+  margin-bottom: 26px;
+  max-width: 32ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.hero-dish__note {
+  margin: 26px auto 0;
+  max-width: 36ch;
+  border-top: 1px solid var(--petrol-line);
+  padding-top: 22px;
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--sand-warm);
+  letter-spacing: 0.04em;
+}
+
+.hero-dish__note strong {
+  color: var(--lime);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 10px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   IMAGE BLOCK
+============================================================ */
+
+.imgblock {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(232,122,93,0.32), transparent 55%),
+    radial-gradient(ellipse at 75% 60%, rgba(174,190,90,0.28), transparent 55%),
+    linear-gradient(135deg, var(--sand-warm) 0%, var(--sand-soft) 100%);
+}
+
+.imgblock::before {
+  content: "Mesa de cócteles";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(14,58,61,0.45);
+  font-weight: 600;
+  z-index: 1;
+}
+
+.imgblock img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+/* hide alt text when image fails to load */
+.imgblock img:not([src]),
+.imgblock img[src=""] { display: none; }
+
+.imgblock figcaption {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  right: 18px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--sand);
+  text-shadow: 0 2px 14px rgba(14,58,61,0.85);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.imgblock::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14,58,61,0) 45%, rgba(14,58,61,0.65) 100%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.footer {
+  background: var(--petrol);
+  color: var(--sand);
+  padding: 64px var(--gutter) 48px;
+  text-align: center;
+}
+
+.footer__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(36px, 9vw, 52px);
+  letter-spacing: 0.04em;
+  color: var(--sand);
+  margin-bottom: 8px;
+}
+
+.footer__name em { font-style: italic; color: var(--sand); font-weight: 400; }
+
+.footer__tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--sand-warm);
+  margin-bottom: 36px;
+}
+
+.footer__info {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand-warm);
+  line-height: 2;
+  margin-bottom: 36px;
+}
+
+.footer__info strong { color: var(--sand); font-weight: 600; }
+
+.footer__hours {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--sand-warm);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.allergens {
+  border-top: 1px solid var(--petrol-line);
+  padding-top: 32px;
+  margin-bottom: 32px;
+}
+
+.allergens__title {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.allergens__body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--sand-warm);
+  line-height: 1.6;
+  max-width: 42ch;
+  margin: 0 auto;
+}
+
+.disclaimer {
+  border-top: 1px solid var(--petrol-line);
+  padding-top: 28px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--sand-warm);
+  line-height: 1.6;
+  max-width: 44ch;
+  margin: 0 auto 12px;
+  opacity: 0.85;
+}
+
+.disclaimer + .disclaimer {
+  border-top: none;
+  padding-top: 0;
+  opacity: 0.75;
+}
+
+.kenaz-mark {
+  margin-top: 24px;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--sand-warm);
+  opacity: 0.45;
+}
+
+/* ============================================================
+   DESKTOP REFINEMENTS
+============================================================ */
+
+@media (min-width: 768px) {
+  body { font-size: 16px; }
+
+  .section { padding: 96px var(--gutter); }
+  .story { padding: 110px var(--gutter) 80px; }
+
+  .hero-dish__image { aspect-ratio: 16/9; }
+  .hero-dish__content { padding: 80px var(--gutter) 96px; }
+
+  .footer { padding: 96px var(--gutter) 64px; }
+
+  .dish { grid-template-columns: 1fr auto; gap: 6px 28px; padding-bottom: 28px; }
+  .dish-name { font-size: 20px; }
+  .dish-desc { font-size: 14px; }
+}
+
+@media (min-width: 1024px) {
+  :root { --gutter: 56px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER
+============================================================ -->
+<section class="cover">
+  <div class="cover__top">
+    <span>Calpe · Costa Blanca</span>
+    <span class="accent">Bar &amp; Cócteles</span>
+  </div>
+
+  <div class="cover__center">
+    <div class="brand-mark">
+      <span class="brand-mark__rule"></span>
+      <span class="brand-mark__label">Cócteles, snacks y alma venezolana</span>
+      <span class="brand-mark__rule"></span>
+    </div>
+
+    <h1 class="cover__name">CAC<em>A</em>O</h1>
+
+    <p class="cover__tagline">
+      Mojitos frescos, jugos exprimidos<br>
+      y una carta que se comparte.
+    </p>
+
+    <p class="cover__hero-line">— Mojitos · firma de la casa</p>
+  </div>
+
+  <div class="cover__bottom">
+    <div>
+      <span>La carta</span>
+      <strong>2026</strong>
+    </div>
+    <div class="right">
+      <span>Calle Isla de Formentera 18</span>
+      <strong>+34 678 21 00 05</strong>
+    </div>
+  </div>
+
+  <div class="cover__scroll">↓ Carta</div>
+</section>
+
+<!-- ============================================================
+     STORY / LA CASA
+============================================================ -->
+<section class="story">
+  <p class="story__eyebrow">La familia detrás</p>
+  <h2 class="story__title">Un bar con <em>raíces</em> caribeñas, en pleno Calpe.</h2>
+
+  <div class="story__rule"></div>
+
+  <div class="story__body">
+    <p>
+      Cacao es un pequeño bar regentado por una familia venezolana.
+      Valentina, su marido y su suegro, tres generaciones detrás de
+      la barra. Una carta breve que mezcla cócteles caribeños frescos
+      con snacks pensados para compartir.
+    </p>
+    <p>
+      Jugos naturales exprimidos del día. Mojitos como deben ser.
+      Y comida sin pretensiones — pero hecha al momento.
+    </p>
+    <p style="margin-top: 22px; font-style: italic; color: var(--coral-deep); font-size: 0.95em; line-height: 1.55;">
+      &ldquo;Valentina, her husband and father in love were amazing.
+      I felt like I was at home.&rdquo;
+      <span style="display: block; margin-top: 8px; font-style: normal; font-family: var(--sans); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--petrol-soft); opacity: 0.7;">— Nina Vargas · Tripadvisor · Jun 2022</span>
+    </p>
+  </div>
+
+  <div class="story__body" style="margin-top: 22px;">
+    <p>
+      Un bar caribeño con alma venezolana en Calle Isla de Formentera.
+      Cócteles con zumos exprimidos al momento y snacks frescos.
+    </p>
+    <p style="font-style: italic; color: var(--teal); font-size: 0.95em; margin-top: 12px;">
+      La historia y el equipo se cuentan con vosotros — Valentina, su
+      marido y su suegro, tres generaciones detrás de la barra.
+    </p>
+  </div>
+
+  <p class="story__signature">— Familia Cacao</p>
+</section>
+
+<!-- ============================================================
+     CÓCTELES — sección protagonista
+============================================================ -->
+<section class="section section--fresh">
+  <header class="section-head">
+    <p class="chapter">Capítulo I · La barra</p>
+    <h2 class="section-title">Los <em>cócteles</em></h2>
+    <p class="section-sub">
+      Hierbabuena fresca, fruta del día y mano caribeña. La barra es el alma de la casa.
+    </p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <h3 class="dish-name">Mojito</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">
+        Hierbabuena fresca machacada al momento, lima, azúcar moreno y ron blanco.
+        <em>El cóctel firma — el que pide la mesa de al lado.</em>
+      </p>
+      <span class="dish-tag">— Firma de la casa</span>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Sangría de la casa</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">
+        Vino, fruta de temporada y un toque caribeño. Pensada para compartir, en jarra.
+      </p>
+      <span class="dish-tag">— Para compartir</span>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Jugos naturales exprimidos</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">
+        Fruta fresca exprimida del día. Sin almíbar, sin trucos. <em>La frescura es real.</em>
+      </p>
+      <span class="dish-tag dish-tag--fresh">— Exprimido al momento</span>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Bitter</h3>
+      <span class="dish-price">4,00&nbsp;€</span>
+      <p class="dish-desc">
+        Aperitivo amargo, justo antes de la comida. <em>El que pide la mesa de al lado.</em>
+      </p>
+      <span class="dish-tag">— Aperitivo</span>
+    </article>
+
+    <div class="placeholder-row">
+      Más cócteles del día — pregunta en barra.
+      <span style="display:block; margin-top:6px; font-style:italic; font-size:11px; opacity:0.85;">
+        Daiquiris, piñas coladas, sin alcohol y selección de marcas, a confirmar con la familia.
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE — mesa cócteles
+============================================================ -->
+<figure class="imgblock">
+  <img src="img/mesa-cocteles.webp" alt="Mesa con mojitos, sangría y jugos naturales — luz cálida de tarde" onerror="this.style.display='none'">
+  <figcaption>La barra al atardecer · mojitos y jugos exprimidos</figcaption>
+</figure>
+
+<!-- ============================================================
+     HERO — MOJITO
+============================================================ -->
+<section class="hero-dish">
+  <div class="hero-dish__image" role="img" aria-label="Mojito firma de la casa, hierbabuena fresca y lima"></div>
+
+  <div class="hero-dish__content">
+    <p class="hero-dish__chapter">El cóctel de la casa</p>
+
+    <h2 class="hero-dish__name">Mojito <em>firma</em></h2>
+
+    <p class="hero-dish__sub">
+      Hierbabuena fresca machacada, lima exprimida del día, azúcar moreno,
+      ron blanco y hielo. Nada congelado. Nada pre-hecho.
+    </p>
+
+    <div class="hero-dish__note">
+      <strong>Cómo lo hacemos</strong>
+      Machacado a mano, una copa a la vez. Si la barra está llena, vale la pena esperar.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PARA PICAR
+============================================================ -->
+<section class="section">
+  <header class="section-head">
+    <p class="chapter">Capítulo II</p>
+    <h2 class="section-title">Para <em>picar</em></h2>
+    <p class="section-sub">Bocados para acompañar la barra. Hechos al momento, para compartir o solo.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <h3 class="dish-name">Nachos con guacamole</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">Totopos crujientes con guacamole casero de aguacate fresco, lima y cilantro.</p>
+      <span class="dish-tag">— Para compartir</span>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Gambas al ajillo</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">Gambas en cazuela con ajo, guindilla y aceite de oliva. Pan para mojar.</p>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Empanadas</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">Hechas en casa. Rellenos a confirmar con la cocina del día.</p>
+      <span class="dish-tag">— De la casa</span>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Ceviche cítrico</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">Pescado fresco curado en lima, cebolla morada, cilantro y un toque de ají.</p>
+      <span class="dish-tag dish-tag--fresh">— Fresco del día</span>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Camarones</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">Camarones salteados al gusto del día — pregunta a Valentina por la preparación.</p>
+    </article>
+
+    <div class="placeholder-row">
+      Más para picar — pregunta en barra.
+      <span style="display:block; margin-top:6px; font-style:italic; font-size:11px; opacity:0.85;">
+        Entrantes, raciones y variedades de empanada según el día.
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE — nachos / para picar
+============================================================ -->
+<figure class="imgblock">
+  <img src="img/plato-nachos.webp" alt="Nachos con guacamole casero — bocados para compartir" onerror="this.style.display='none'">
+  <figcaption>Para compartir · nachos con guacamole casero</figcaption>
+</figure>
+
+<!-- ============================================================
+     TOSTADAS Y SANDWICHES
+============================================================ -->
+<section class="section section--alt">
+  <header class="section-head">
+    <p class="chapter">Capítulo III</p>
+    <h2 class="section-title">Tostadas y <em>sandwiches</em></h2>
+    <p class="section-sub">Pan tostado al momento. Lo simple, bien hecho.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <h3 class="dish-name">Tostada de jamón y queso</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">Pan tostado, jamón cocido y queso fundido. La de toda la vida.</p>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Tostada de tomate y aguacate</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">Tomate maduro, aguacate fresco, aceite de oliva y sal en escamas.</p>
+      <span class="dish-tag dish-tag--fresh">— Veggie</span>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Hamburguesa de salmón</h3>
+      <span class="dish-price">—</span>
+      <p class="dish-desc">Salmón fresco a la plancha en pan brioche, con guarnición del día.</p>
+      <span class="dish-tag">— Recomendado</span>
+    </article>
+
+    <div class="placeholder-row">
+      Sandwiches y rellenos del día — variantes calientes y frías, pregunta en barra.
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     DESAYUNOS — el único precio verificado
+============================================================ -->
+<section class="section">
+  <header class="section-head">
+    <p class="chapter">Capítulo IV · Cada mañana</p>
+    <h2 class="section-title">Desayunos en <em>barra</em></h2>
+    <p class="section-sub">El desayuno de la casa — abre temprano, con calma.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <h3 class="dish-name">Menú desayuno</h3>
+      <span class="dish-price">8,70&nbsp;€</span>
+      <p class="dish-desc">
+        Sándwich del día, zumo natural exprimido y café. Lo que se pide
+        al sentarse en la barra de la mañana.
+      </p>
+      <span class="dish-tag dish-tag--fresh">— Precio cerrado</span>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE — ceviche / fresco del día
+============================================================ -->
+<figure class="imgblock">
+  <img src="img/plato-ceviche.webp" alt="Ceviche cítrico — pescado fresco curado en lima" onerror="this.style.display='none'">
+  <figcaption>Ceviche cítrico · fresco del día</figcaption>
+</figure>
+
+<!-- ============================================================
+     POSTRES
+============================================================ -->
+<section class="section">
+  <header class="section-head">
+    <p class="chapter">Capítulo V</p>
+    <h2 class="section-title">Para <em>cerrar</em></h2>
+    <p class="section-sub">Dulces para acompañar el último mojito.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <h3 class="dish-name">Dulce de la casa</h3>
+      <span class="dish-price">5,00&nbsp;€</span>
+      <p class="dish-desc">
+        Ración pequeña. El postre del día que prepara la familia.
+      </p>
+      <span class="dish-tag">— De la casa</span>
+    </article>
+
+    <div class="placeholder-row">
+      Más postres caseros y tartas — pregunta a Valentina o a la familia en barra.
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <h2 class="footer__name">CAC<em>A</em>O</h2>
+  <p class="footer__tag">Cócteles, snacks y alma venezolana · Calpe</p>
+
+  <div class="footer__info">
+    Calle Isla de Formentera 18<br>
+    03710 Calp · Alicante<br>
+    <strong>+34 678 21 00 05</strong>
+  </div>
+
+  <p class="footer__hours">
+    Abiertos cada día<br>
+    11:00 — 23:00<br>
+    Horario a confirmar en visita
+  </p>
+
+  <div class="allergens">
+    <p class="allergens__title">Información de alérgenos</p>
+    <p class="allergens__body">
+      Carta completa con desglose de alérgenos disponible.
+      Avisa al camarero por intolerancias o necesidades específicas — la cocina las contempla.
+    </p>
+  </div>
+
+  <p class="disclaimer">
+    Las imágenes son referenciales para esta propuesta. Las definitivas serán
+    fotografía profesional realizada en Cacao por nuestra socia fotógrafa.
+  </p>
+
+  <p class="disclaimer">
+    Precios verificados en reviews y carta. Resto: consultar en barra.
+    Ticket medio orientativo entre 9&nbsp;€ y 21&nbsp;€ por persona.
+    IVA incluido.
+  </p>
+
+  <p class="kenaz-mark">Diseño · Kenaz Studio</p>
+</footer>
+
+</body>
+</html>

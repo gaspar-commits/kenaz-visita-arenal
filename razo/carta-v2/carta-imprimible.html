@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>RAZO · Carta imprimible · A3 triple gatefold</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   RAZO — Carta imprimible (identidad mediterránea)
+   Formato: A3 horizontal (420 × 297 mm) doble cara
+   Pliegue triple gatefold: 3 paneles de 140 × 297 mm cada uno
+   Márgenes seguros: 10 mm
+============================================================ */
+
+@page {
+  size: 420mm 297mm;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bone: #f7f1e8;
+  --bone-soft: #ede4d3;
+  --bone-mute: #d6c8af;
+  --ink: #2a241e;
+  --ink-soft: #4a4138;
+  --ink-mute: #7a6e60;
+  --sea: #2c5e7c;
+  --sea-deep: #1d435a;
+  --terra: #c66a4a;
+  --terra-soft: #d88865;
+  --ochre: #c89a4a;
+
+  --serif: 'Fraunces', 'EB Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  background: #d8d3c8;
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body { padding: 30px; }
+
+/* ============================================================
+   SHEET (one printed page)
+============================================================ */
+
+.sheet {
+  width: 420mm;
+  height: 297mm;
+  background: var(--bone);
+  display: grid;
+  grid-template-columns: 140mm 140mm 140mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  margin: 0 auto 30px;
+  box-shadow: 0 20px 60px rgba(42,36,30,0.18);
+}
+
+.sheet:last-child { page-break-after: auto; margin-bottom: 0; }
+
+/* Fold guides — screen only */
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(42,36,30,0.06);
+  pointer-events: none;
+  z-index: 10;
+}
+.fold--1 { left: 140mm; }
+.fold--2 { left: 280mm; }
+
+@media print { .fold { display: none; } }
+
+/* ============================================================
+   PANEL
+============================================================ */
+
+.panel {
+  height: 297mm;
+  width: 140mm;
+  padding: 14mm 12mm;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--dark {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.panel--cover {
+  padding: 0;
+  position: relative;
+}
+
+.panel--ink {
+  background: var(--sea-deep);
+  color: var(--bone);
+}
+
+/* ============================================================
+   COVER PANEL (front, right-most of sheet 1)
+============================================================ */
+
+.cover {
+  position: relative;
+  width: 140mm;
+  height: 297mm;
+  overflow: hidden;
+  color: var(--bone);
+}
+
+.cover__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) saturate(1.05);
+}
+
+.cover__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(42,36,30,0.5) 0%,
+      rgba(42,36,30,0.1) 40%,
+      rgba(42,36,30,0.25) 65%,
+      rgba(42,36,30,0.85) 100%);
+}
+
+.cover__top {
+  position: absolute;
+  top: 16mm;
+  left: 12mm;
+  right: 12mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  font-size: 8pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.cover__top-l {
+  font-family: var(--serif);
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.cover__top-r { opacity: 0.7; }
+
+.cover__bot {
+  position: absolute;
+  bottom: 16mm;
+  left: 12mm;
+  right: 12mm;
+  z-index: 2;
+}
+
+.cover__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 88pt;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 5mm;
+}
+
+.cover__tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14pt;
+  line-height: 1.3;
+  opacity: 0.92;
+  margin-bottom: 3mm;
+  max-width: 110mm;
+}
+
+.cover__rule {
+  width: 14mm;
+  height: 0.4mm;
+  background: var(--bone);
+  opacity: 0.55;
+  margin: 4mm 0;
+}
+
+.cover__sub {
+  font-size: 7.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+/* ============================================================
+   BACK PANEL — la casa
+============================================================ */
+
+.back {
+  padding: 18mm 14mm;
+  position: relative;
+}
+
+.back__eyebrow {
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terra);
+  font-weight: 500;
+  margin-bottom: 4mm;
+}
+
+.back__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32pt;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 6mm;
+}
+
+.back__lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 11pt;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-bottom: 6mm;
+  max-width: 100mm;
+}
+
+.back__body {
+  font-size: 9pt;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.back__body p { margin-bottom: 3mm; }
+
+.back__meta {
+  margin-top: auto;
+  padding-top: 6mm;
+  border-top: 0.3mm solid rgba(42,36,30,0.15);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm;
+}
+
+.meta__label {
+  font-size: 6.5pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 1.5mm;
+}
+
+.meta__val {
+  font-family: var(--serif);
+  font-size: 9.5pt;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+/* ============================================================
+   GENERIC TEXT PANEL
+============================================================ */
+
+.panel__eyebrow {
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terra);
+  font-weight: 500;
+  margin-bottom: 4mm;
+}
+
+.panel__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28pt;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 5mm;
+}
+
+.panel__lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 10pt;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin-bottom: 6mm;
+  max-width: 100mm;
+}
+
+.panel--dark .panel__title { color: var(--bone); }
+.panel--dark .panel__lead { color: rgba(247,241,232,0.85); }
+.panel--dark .panel__eyebrow { color: var(--terra-soft); }
+
+.panel--ink .panel__title { color: var(--bone); }
+.panel--ink .panel__lead { color: rgba(247,241,232,0.85); }
+.panel--ink .panel__eyebrow { color: var(--ochre); }
+
+/* ============================================================
+   MENU LIST (print)
+============================================================ */
+
+.list {
+  list-style: none;
+}
+
+.list__row {
+  padding: 3mm 0;
+  border-bottom: 0.25mm solid rgba(42,36,30,0.12);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1mm 3mm;
+  align-items: baseline;
+}
+
+.list__row:last-child { border-bottom: none; }
+
+.list__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 11.5pt;
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.list__price {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 10pt;
+  color: var(--terra);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.list__price--blank {
+  color: var(--ink-mute);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 8pt;
+}
+
+.list__desc {
+  grid-column: 1 / -1;
+  font-size: 7.5pt;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin-top: -0.5mm;
+}
+
+.panel--dark .list__row { border-color: rgba(247,241,232,0.15); }
+.panel--dark .list__name { color: var(--bone); }
+.panel--dark .list__desc { color: rgba(247,241,232,0.7); }
+.panel--dark .list__price { color: var(--ochre); }
+.panel--dark .list__price--blank { color: rgba(247,241,232,0.55); }
+
+.panel--ink .list__row { border-color: rgba(247,241,232,0.15); }
+.panel--ink .list__name { color: var(--bone); }
+.panel--ink .list__desc { color: rgba(247,241,232,0.75); }
+.panel--ink .list__price { color: var(--ochre); }
+.panel--ink .list__price--blank { color: rgba(247,241,232,0.55); }
+
+/* ============================================================
+   PLACEHOLDER BLOCK
+============================================================ */
+
+.ph-block {
+  margin: 4mm 0;
+  padding: 3.5mm 4mm;
+  background: rgba(198,106,74,0.08);
+  border-left: 0.5mm solid var(--terra);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 8pt;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.ph-block strong {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 6.5pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 1.5mm;
+}
+
+.panel--dark .ph-block,
+.panel--ink .ph-block {
+  background: rgba(216,136,101,0.12);
+  color: rgba(247,241,232,0.85);
+}
+.panel--dark .ph-block strong,
+.panel--ink .ph-block strong {
+  color: var(--terra-soft);
+}
+
+/* Placeholder sutil — secundario, no acento */
+.ph-soft {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 10pt;
+  line-height: 1.5;
+  color: var(--ink-mute);
+  margin-top: 2mm;
+  max-width: 44ch;
+}
+
+.ph-soft em {
+  font-style: italic;
+}
+
+/* ============================================================
+   WINK (guiños rioplatenses)
+============================================================ */
+
+.wink {
+  margin-top: 5mm;
+  padding: 5mm 4mm;
+  background: var(--bone-soft);
+  border: 0.25mm solid rgba(42,36,30,0.1);
+}
+
+.wink__eyebrow {
+  font-size: 6.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sea);
+  font-weight: 500;
+  margin-bottom: 2mm;
+}
+
+.wink__title {
+  font-family: var(--serif);
+  font-size: 13pt;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 3mm;
+}
+
+.wink__desc {
+  font-size: 8pt;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-bottom: 2mm;
+}
+
+.wink__note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 8pt;
+  line-height: 1.4;
+  color: var(--ink-mute);
+}
+
+.panel--dark .wink,
+.panel--ink .wink {
+  background: rgba(247,241,232,0.08);
+  border-color: rgba(247,241,232,0.18);
+}
+.panel--dark .wink__title,
+.panel--ink .wink__title { color: var(--bone); }
+.panel--dark .wink__desc,
+.panel--ink .wink__desc { color: rgba(247,241,232,0.78); }
+.panel--dark .wink__note,
+.panel--ink .wink__note { color: rgba(247,241,232,0.6); }
+.panel--dark .wink__eyebrow,
+.panel--ink .wink__eyebrow { color: var(--ochre); }
+
+/* ============================================================
+   IMAGE PANEL
+============================================================ */
+
+.imgpanel {
+  position: relative;
+  width: 140mm;
+  height: 297mm;
+  overflow: hidden;
+}
+
+.imgpanel__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgpanel__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(42,36,30,0.1) 0%,
+    rgba(42,36,30,0.0) 30%,
+    rgba(42,36,30,0.0) 60%,
+    rgba(42,36,30,0.85) 100%);
+}
+
+.imgpanel__cap {
+  position: absolute;
+  bottom: 16mm;
+  left: 12mm;
+  right: 12mm;
+  color: var(--bone);
+  z-index: 2;
+}
+
+.imgpanel__cap-eyebrow {
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 3mm;
+}
+
+.imgpanel__cap-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18pt;
+  line-height: 1.2;
+  margin-bottom: 2mm;
+}
+
+.imgpanel__cap-note {
+  font-size: 7pt;
+  opacity: 0.65;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   FOOTER PANEL (back, sheet 2 right)
+============================================================ */
+
+.contact {
+  background: var(--ink);
+  color: var(--bone);
+  display: flex;
+  flex-direction: column;
+  padding: 18mm 14mm;
+}
+
+.contact__mark {
+  font-family: var(--serif);
+  font-size: 48pt;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.9;
+  margin-bottom: 6mm;
+}
+
+.contact__tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12pt;
+  line-height: 1.35;
+  opacity: 0.85;
+  margin-bottom: 10mm;
+  max-width: 100mm;
+}
+
+.contact__rule {
+  width: 20mm;
+  height: 0.4mm;
+  background: var(--bone);
+  opacity: 0.4;
+  margin-bottom: 10mm;
+}
+
+.contact__block {
+  margin-bottom: 8mm;
+}
+
+.contact__label {
+  font-size: 6.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 2mm;
+}
+
+.contact__val {
+  font-family: var(--serif);
+  font-size: 13pt;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.contact__bottom {
+  margin-top: auto;
+  padding-top: 8mm;
+  border-top: 0.3mm solid rgba(247,241,232,0.18);
+}
+
+.contact__disclaimer {
+  font-size: 6.5pt;
+  line-height: 1.55;
+  opacity: 0.55;
+}
+
+/* ============================================================
+   ALÉRGENOS PANEL
+============================================================ */
+
+.alerg__txt {
+  font-size: 8pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.alerg__txt p { margin-bottom: 3mm; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SHEET 1 — exterior cuando está plegada
+     (panel izq = contraportada/historia · panel centro = ensaladas+pizza · panel der = portada)
+============================================================ -->
+<section class="sheet" aria-label="Cara exterior">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- PANEL 1 (izq): Contraportada – La casa -->
+  <div class="panel back">
+    <p class="back__eyebrow">La casa</p>
+    <h2 class="back__title">Bar de barrio,<br>mesa mediterránea.</h2>
+
+    <p class="back__lead">Avenida Europa, a un paseo de la arena. Aquí se come tranquilo, sin prisas.</p>
+
+    <div class="back__body">
+      <p>Un bar-restaurante a pasos del paseo de La Fossa. Cocina mediterránea, tapas, carnes y pescados con algún guiño rioplatense puntual (chivito, milanesa napolitana).</p>
+      <p>Desayunos desde las 09:00, comidas, sobremesa y cenas. Servicio cercano, sin postureo.</p>
+      <p style="font-style: italic; color: var(--ink-mute); font-size: 8.5pt;">[La historia, el equipo y el origen de los toques rioplatenses se cuentan con vosotros.]</p>
+    </div>
+
+    <div class="back__meta">
+      <div>
+        <p class="meta__label">Cocina</p>
+        <p class="meta__val">Mediterránea<br>de barrio</p>
+      </div>
+      <div>
+        <p class="meta__label">Horario</p>
+        <p class="meta__val">Todos los días<br>09:00 – 23:30</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 2 (centro): Desayunos + Ensaladas + Pizza -->
+  <div class="panel">
+    <p class="panel__eyebrow">Desde las 09:00 · precios cerrados</p>
+    <h3 class="panel__title">Desayunos</h3>
+
+    <ul class="list">
+      <li class="list__row">
+        <span class="list__name">Desayuno continental</span>
+        <span class="list__price">8,00 €</span>
+        <p class="list__desc">Tostada, mermelada, té o café y zumo.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Desayuno completo</span>
+        <span class="list__price">8,80 €</span>
+        <p class="list__desc">Versión más completa, con varios acompañamientos.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Tortilla vegetariana</span>
+        <span class="list__price">7,50 €</span>
+        <p class="list__desc">A la sartén, con verduras.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Desayuno separado · variante</span>
+        <span class="list__price">12,00 €</span>
+        <p class="list__desc">Platos por separado, zumo grande.</p>
+      </li>
+    </ul>
+
+    <p class="panel__eyebrow" style="margin-top: 8mm;">Frescas</p>
+    <h3 class="panel__title" style="font-size: 22pt;">Ensaladas</h3>
+
+    <ul class="list">
+      <li class="list__row">
+        <span class="list__name">Ensalada de la casa</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Ensalada de tomate</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Ventresca, kumato y cebolla</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Ensalada del Norte</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">Con patatas bravas — recomendada en sala.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Ensalada La Reina</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">Con pollo y pistachos.</p>
+      </li>
+    </ul>
+
+    <p class="panel__eyebrow" style="margin-top: 7mm;">Forno</p>
+    <h3 class="panel__title" style="font-size: 22pt;">Pizza · Postres</h3>
+
+    <ul class="list">
+      <li class="list__row">
+        <span class="list__name">Pizza napolitana</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Postres caseros</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">Selección del día — pregunta en sala.</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- PANEL 3 (der): PORTADA -->
+  <div class="cover">
+    <img class="cover__img" src="img/hero-terraza.webp" alt="Terraza junto al mar">
+    <div class="cover__veil"></div>
+
+    <div class="cover__top">
+      <span class="cover__top-l">Bar &middot; Restaurante</span>
+      <span class="cover__top-r">Calp</span>
+    </div>
+
+    <div class="cover__bot">
+      <h1 class="cover__title">Razo</h1>
+      <p class="cover__tag">Cocina mediterránea junto al mar.</p>
+      <div class="cover__rule"></div>
+      <p class="cover__sub">Carta · A pasos de playa La Fossa</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SHEET 2 — interior cuando está desplegada
+     (panel izq = Para picar · panel centro = Del mar · panel der = Carnes)
+============================================================ -->
+<section class="sheet" aria-label="Cara interior">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- PANEL 4 (izq): Para picar -->
+  <div class="panel">
+    <p class="panel__eyebrow">Para picar</p>
+    <h3 class="panel__title">Aperitivos y<br>entrantes</h3>
+    <p class="panel__lead">Lo de siempre, bien hecho. Para empezar.</p>
+
+    <ul class="list">
+      <li class="list__row">
+        <span class="list__name">Croquetas de jamón caseras</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Patatas bravas</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Gambas al ajillo</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Mejillones al vapor</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Huevos rotos</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Jamón serrano</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Ensaladilla rusa</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Tempura</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Nachos con queso</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Patatas fritas</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+    </ul>
+
+    <p class="panel__eyebrow" style="margin-top: 6mm;">Pan en mano</p>
+    <h3 class="panel__title" style="font-size: 18pt;">Sándwiches · Burritos</h3>
+    <ul class="list">
+      <li class="list__row">
+        <span class="list__name">Burritos</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Paninis calientes</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+    </ul>
+
+    <div class="alerg__txt" style="margin-top: auto; padding-top: 4mm; border-top: 0.25mm solid rgba(42,36,30,0.12);">
+      <p style="font-size: 6.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 2mm;">Información de alérgenos</p>
+      <p style="font-size: 7.5pt;">Cualquiera de nuestros platos puede adaptarse a necesidades de comensales con alergias o intolerancias. Indícalo al camarero antes de pedir. Información completa según reglamento UE 1169/2011.</p>
+    </div>
+  </div>
+
+  <!-- PANEL 5 (centro): Del mar -->
+  <div class="panel panel--ink">
+    <p class="panel__eyebrow">Del mar</p>
+    <h3 class="panel__title">Pescados y<br>mariscos</h3>
+    <p class="panel__lead">Cerca de la Fossa. El producto manda.</p>
+
+    <ul class="list">
+      <li class="list__row">
+        <span class="list__name">Lubina</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">A la plancha o al horno.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Filete de atún</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">A la plancha, punto al gusto.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Pulpo y orzo</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">Pulpo con orzo y aceite de oliva.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Calamares</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">A la andaluza o a la plancha.</p>
+      </li>
+    </ul>
+
+    <p class="panel__eyebrow" style="margin-top: 8mm;">Bebidas</p>
+    <h3 class="panel__title" style="font-size: 22pt;">Para acompañar</h3>
+
+    <ul class="list">
+      <li class="list__row">
+        <span class="list__name">Vino de la casa · botella tinto</span>
+        <span class="list__price">9,00 €</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Rioja · botella</span>
+        <span class="list__price">15,00 €</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Sangría</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">De la casa.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Cerveza</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Café · Agua</span>
+        <span class="list__price list__price--blank">consultar</span>
+      </li>
+    </ul>
+
+    <p class="ph-soft" style="color: rgba(247,241,232,0.7);"><em>Resto de la carta de vinos a definir con vosotros.</em></p>
+
+    <div style="margin-top: auto; padding-top: 6mm;">
+      <p style="font-family: var(--serif); font-style: italic; font-size: 9pt; color: rgba(247,241,232,0.7); line-height: 1.4;">
+        Más platos del día y sugerencias — pregunta en sala.
+      </p>
+    </div>
+  </div>
+
+  <!-- PANEL 6 (der): Carnes + guiño rioplatense -->
+  <div class="panel">
+    <p class="panel__eyebrow">Carnes</p>
+    <h3 class="panel__title">Del fuego</h3>
+    <p class="panel__lead">Especialidad de la casa. A la plancha, al punto.</p>
+
+    <ul class="list">
+      <li class="list__row">
+        <span class="list__name">Entrecot</span>
+        <span class="list__price">16,90 €</span>
+        <p class="list__desc">A la plancha, al punto que pidas.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Solomillo</span>
+        <span class="list__price">17,90 €</span>
+        <p class="list__desc">Corte premium. Con guarnición.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Ternera con toque mexicano</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">Plato propio de la casa.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Hamburguesa casera</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">Carne picada en casa, pan, queso y guarnición.</p>
+      </li>
+      <li class="list__row">
+        <span class="list__name">Pollo</span>
+        <span class="list__price list__price--blank">consultar</span>
+        <p class="list__desc">A la plancha.</p>
+      </li>
+    </ul>
+
+    <div class="wink">
+      <p class="wink__eyebrow">Guiños rioplatenses</p>
+      <p class="wink__title">Chivito y milanesa<br>a la napolitana</p>
+      <p class="wink__desc">Dos clásicos del otro lado del Atlántico en una mesa mediterránea — el chivito (sándwich uruguayo) y la milanesa napolitana al estilo del Río de la Plata.</p>
+      <p class="wink__note"><em>[Por qué un toque rioplatense — lo cuentan con vosotros.]</em></p>
+    </div>
+
+    <div style="margin-top: auto; padding-top: 6mm; text-align: center;">
+      <p style="font-family: var(--serif); font-style: italic; font-size: 9pt; color: var(--ink-mute); line-height: 1.4;">
+        Av. Europa, 24 · Calp<br>
+        +34 965 04 61 04<br>
+        Todos los días · 09:00 – 23:30
+      </p>
+      <p style="font-size: 6pt; line-height: 1.5; color: var(--ink-mute); margin-top: 4mm; opacity: 0.75; max-width: 90mm; margin-left: auto; margin-right: auto;">
+        Precios verificados en reviews de Tripadvisor UK 2024-2025. IVA incluido. Resto de platos: consultar al equipo de sala. Identidad y origen del equipo a confirmar con la casa.
+      </p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

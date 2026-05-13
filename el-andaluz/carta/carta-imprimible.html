@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>El Andaluz · Carta imprimible · A3 gatefold triple</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   EL ANDALUZ — Carta imprimible
+   Formato: A3 horizontal (420 × 297 mm) doble cara, pliegue triple
+   3 paneles de 140 × 297 mm por hoja · 2 hojas (anverso/reverso)
+   Estructura editorial: 6 capítulos (I–VI) coherente con la digital
+============================================================ */
+
+@page {
+  size: 420mm 297mm;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+@media print {
+  html, body {
+    background: var(--bone) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 420mm;
+    height: 297mm;
+  }
+  .sheet {
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .sheet:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
+
+:root {
+  --bone:        #f4ede1;
+  --bone-soft:   #ece2cf;
+  --bone-line:   #d9c9ad;
+  --ink:         #1a2533;
+  --ink-soft:    #2b3b50;
+  --ink-mute:    #6e7a8a;
+  --calpe:       #2b5d8a;
+  --calpe-deep:  #1d4366;
+  --calpe-line:  #3d7aab;
+  --saffron:     #d8932e;
+  --saffron-deep:#b5751a;
+
+  --serif: 'Fraunces', 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  background: #d9d4c8;
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body { padding: 30px; }
+
+/* ============================================================
+   SHEET (one printed A3 side)
+============================================================ */
+
+.sheet {
+  width: 420mm;
+  height: 297mm;
+  background: var(--bone);
+  display: grid;
+  grid-template-columns: 140mm 140mm 140mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  margin: 0 auto 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.sheet:last-child { page-break-after: auto; margin-bottom: 0; }
+
+/* Fold guides — visible on screen only */
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(26, 37, 51, 0.08);
+  pointer-events: none;
+  z-index: 10;
+}
+.fold--1 { left: 140mm; }
+.fold--2 { left: 280mm; }
+
+@media print { .fold { display: none; } }
+
+/* ============================================================
+   PANEL — base
+============================================================ */
+
+.panel {
+  height: 297mm;
+  width: 140mm;
+  padding: 14mm 12mm;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--bone { background: var(--bone); color: var(--ink); }
+.panel--bone-soft { background: var(--bone-soft); color: var(--ink); }
+.panel--ink { background: var(--ink); color: var(--bone); }
+.panel--calpe { background: var(--calpe-deep); color: var(--bone); }
+
+.panel--cover {
+  background:
+    linear-gradient(180deg, var(--bone) 0%, var(--bone) 60%, var(--bone-soft) 100%);
+  position: relative;
+}
+
+.panel--cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 92%, rgba(43, 93, 138, 0.10), transparent 65%),
+    radial-gradient(ellipse at 50% 8%, rgba(216, 147, 46, 0.10), transparent 60%);
+  pointer-events: none;
+}
+
+.panel--photo-paella {
+  background:
+    linear-gradient(180deg, rgba(26, 37, 51, 0.72) 0%, rgba(26, 37, 51, 0.92) 65%, rgba(26, 37, 51, 0.96) 100%),
+    url('img/paella-alicantina.webp') center / cover no-repeat,
+    var(--ink);
+  color: var(--bone);
+}
+
+.panel--photo-tapas {
+  background:
+    linear-gradient(180deg, rgba(26, 37, 51, 0.75) 0%, rgba(26, 37, 51, 0.93) 65%, rgba(26, 37, 51, 0.96) 100%),
+    url('img/tapas-barra.webp') center / cover no-repeat,
+    var(--ink);
+  color: var(--bone);
+}
+
+.panel--photo-fideua {
+  background:
+    linear-gradient(180deg, rgba(26, 37, 51, 0.75) 0%, rgba(26, 37, 51, 0.93) 65%, rgba(26, 37, 51, 0.96) 100%),
+    url('img/fideua.webp') center / cover no-repeat,
+    var(--ink);
+  color: var(--bone);
+}
+
+.panel--photo-carnes {
+  background:
+    linear-gradient(180deg, rgba(244, 237, 225, 0.94) 0%, rgba(244, 237, 225, 0.97) 55%, rgba(244, 237, 225, 1) 100%),
+    url('img/plato-carnes.webp') center / cover no-repeat,
+    var(--bone);
+  color: var(--ink);
+}
+
+.panel--photo-postres {
+  background:
+    linear-gradient(180deg, rgba(20, 48, 75, 0.55) 0%, rgba(20, 48, 75, 0.70) 55%, rgba(20, 48, 75, 0.85) 100%),
+    url('img/plato-postres.webp') center / cover no-repeat,
+    var(--calpe-deep);
+  color: var(--bone);
+}
+
+.panel--photo-postres .chapter-mark,
+.panel--photo-postres .eyebrow,
+.panel--photo-postres .title,
+.panel--photo-postres .lead,
+.panel--photo-postres .top-meta,
+.panel--photo-postres .note-print,
+.panel--photo-postres .dish__name,
+.panel--photo-postres .dish__desc,
+.panel--photo-postres .dish__price {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+/* ============================================================
+   TYPOGRAPHY — print
+============================================================ */
+
+.top-meta {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+.panel--ink .top-meta,
+.panel--calpe .top-meta,
+.panel--photo-paella .top-meta,
+.panel--photo-tapas .top-meta,
+.panel--photo-fideua .top-meta,
+.panel--photo-postres .top-meta { color: rgba(244, 237, 225, 0.7); }
+
+.top-meta span:last-child { color: var(--calpe); }
+.panel--ink .top-meta span:last-child,
+.panel--calpe .top-meta span:last-child,
+.panel--photo-postres .top-meta span:last-child,
+.panel--photo-paella .top-meta span:last-child,
+.panel--photo-tapas .top-meta span:last-child,
+.panel--photo-fideua .top-meta span:last-child { color: var(--saffron); }
+
+.chapter-mark {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--calpe);
+  font-weight: 600;
+  margin-bottom: 3mm;
+  position: relative;
+  z-index: 2;
+}
+
+.panel--ink .chapter-mark,
+.panel--calpe .chapter-mark,
+.panel--photo-paella .chapter-mark,
+.panel--photo-tapas .chapter-mark,
+.panel--photo-fideua .chapter-mark,
+.panel--photo-postres .chapter-mark { color: var(--saffron); }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--saffron-deep);
+  font-weight: 600;
+  margin-bottom: 6mm;
+  position: relative;
+  z-index: 2;
+}
+
+.panel--ink .eyebrow,
+.panel--calpe .eyebrow,
+.panel--photo-paella .eyebrow,
+.panel--photo-tapas .eyebrow,
+.panel--photo-fideua .eyebrow,
+.panel--photo-postres .eyebrow { color: var(--saffron); }
+
+.title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 26pt;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 4mm;
+  font-variation-settings: 'opsz' 96;
+  position: relative;
+  z-index: 2;
+}
+
+.title em { font-style: italic; font-weight: 400; color: var(--calpe); }
+.panel--ink .title { color: var(--bone); }
+.panel--ink .title em { color: var(--saffron); }
+.panel--calpe .title { color: var(--bone); }
+.panel--calpe .title em { color: var(--saffron); }
+.panel--photo-paella .title,
+.panel--photo-tapas .title,
+.panel--photo-fideua .title,
+.panel--photo-postres .title { color: var(--bone); }
+.panel--photo-paella .title em,
+.panel--photo-tapas .title em,
+.panel--photo-fideua .title em,
+.panel--photo-postres .title em { color: var(--saffron); }
+
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11pt;
+  line-height: 1.42;
+  color: var(--ink-soft);
+  margin-bottom: 7mm;
+  position: relative;
+  z-index: 2;
+}
+
+.panel--ink .lead,
+.panel--calpe .lead,
+.panel--photo-paella .lead,
+.panel--photo-tapas .lead,
+.panel--photo-fideua .lead,
+.panel--photo-postres .lead { color: var(--bone-soft); opacity: 0.85; }
+
+p.body, .body p {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 9.5pt;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 3.5mm;
+  font-variation-settings: 'opsz' 18;
+  position: relative;
+  z-index: 2;
+}
+
+.body strong { font-weight: 600; color: var(--calpe-deep); }
+
+.pullquote {
+  margin: 5mm 0;
+  padding: 4mm 0 4mm 5mm;
+  border-left: 1.5pt solid var(--saffron);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: var(--calpe-deep);
+  position: relative;
+  z-index: 2;
+}
+
+.pullquote cite {
+  display: block;
+  margin-top: 3mm;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+
+/* ============================================================
+   COVER PANEL
+============================================================ */
+
+.cover-center {
+  margin: auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3mm;
+  margin-bottom: 8mm;
+}
+
+.brand-mark__rule {
+  width: 12mm;
+  height: 0.5pt;
+  background: var(--saffron);
+}
+
+.brand-mark__label {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+
+.cover-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 60pt;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144;
+}
+
+.cover-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--calpe);
+}
+
+.cover-sub {
+  margin-top: 6mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13pt;
+  color: var(--ink-soft);
+}
+
+.cover-tag {
+  margin-top: 4mm;
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--saffron-deep);
+  font-weight: 500;
+}
+
+.cover-quote {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 9pt;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 100mm;
+  margin: 0 auto;
+}
+
+.cover-quote::before {
+  content: "";
+  display: block;
+  width: 0.5pt;
+  height: 8mm;
+  background: var(--calpe-line);
+  margin: 0 auto 4mm;
+}
+
+.cover-quote cite {
+  display: block;
+  margin-top: 3mm;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+
+/* ============================================================
+   MENU LIST (print)
+============================================================ */
+
+.menu-print { position: relative; z-index: 2; }
+
+.dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1mm 4mm;
+  padding-bottom: 4mm;
+  margin-bottom: 4mm;
+  border-bottom: 0.4pt solid var(--bone-line);
+}
+
+.panel--ink .dish { border-bottom-color: rgba(244, 237, 225, 0.18); }
+.panel--calpe .dish,
+.panel--photo-postres .dish { border-bottom-color: rgba(244, 237, 225, 0.2); }
+
+.dish:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.dish__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 11.5pt;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 36;
+}
+
+.panel--ink .dish__name,
+.panel--calpe .dish__name,
+.panel--photo-postres .dish__name { color: var(--bone); }
+
+.dish__price {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 9pt;
+  color: var(--saffron-deep);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  align-self: start;
+  padding-top: 1.5mm;
+}
+
+.panel--ink .dish__price,
+.panel--calpe .dish__price,
+.panel--photo-postres .dish__price { color: var(--saffron); }
+
+.dish__desc {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-size: 8pt;
+  line-height: 1.45;
+  color: var(--ink-mute);
+  font-weight: 400;
+}
+
+.panel--ink .dish__desc,
+.panel--calpe .dish__desc,
+.panel--photo-paella .dish__desc,
+.panel--photo-tapas .dish__desc,
+.panel--photo-fideua .dish__desc,
+.panel--photo-postres .dish__desc { color: var(--bone-soft); opacity: 0.92; }
+
+.panel--photo-paella .dish__name,
+.panel--photo-tapas .dish__name,
+.panel--photo-fideua .dish__name { color: var(--bone); }
+
+.panel--photo-paella .dish__price,
+.panel--photo-tapas .dish__price,
+.panel--photo-fideua .dish__price { color: var(--saffron); }
+
+.panel--photo-paella .dish__tag,
+.panel--photo-tapas .dish__tag,
+.panel--photo-fideua .dish__tag { color: var(--saffron); }
+
+.panel--photo-paella .dish,
+.panel--photo-tapas .dish,
+.panel--photo-fideua .dish { border-bottom-color: rgba(244, 237, 225, 0.18); }
+
+.panel--photo-paella .dish--feature .dish__name,
+.panel--photo-tapas .dish--feature .dish__name,
+.panel--photo-fideua .dish--feature .dish__name { color: var(--saffron); }
+
+.panel--photo-paella .dish--placeholder,
+.panel--photo-tapas .dish--placeholder,
+.panel--photo-fideua .dish--placeholder,
+.panel--photo-postres .dish--placeholder {
+  background: rgba(244, 237, 225, 0.08);
+  border-color: rgba(244, 237, 225, 0.28);
+}
+
+.panel--photo-paella .dish--placeholder .dish__name,
+.panel--photo-tapas .dish--placeholder .dish__name,
+.panel--photo-fideua .dish--placeholder .dish__name,
+.panel--photo-postres .dish--placeholder .dish__name { color: var(--bone-soft); opacity: 0.85; }
+
+.panel--photo-paella .note-print,
+.panel--photo-tapas .note-print,
+.panel--photo-fideua .note-print,
+.panel--photo-postres .note-print {
+  background: rgba(216, 147, 46, 0.18);
+  color: var(--bone);
+  opacity: 0.95;
+}
+
+.dish__tag {
+  display: inline-block;
+  margin-right: 2mm;
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--calpe);
+  font-weight: 600;
+}
+
+.panel--ink .dish__tag,
+.panel--calpe .dish__tag,
+.panel--photo-postres .dish__tag { color: var(--saffron); }
+
+.dish--feature .dish__name {
+  font-size: 13pt;
+  color: var(--calpe-deep);
+  font-style: italic;
+}
+
+.panel--ink .dish--feature .dish__name,
+.panel--calpe .dish--feature .dish__name,
+.panel--photo-postres .dish--feature .dish__name { color: var(--saffron); }
+
+.dish--placeholder {
+  background: rgba(43, 93, 138, 0.05);
+  padding: 3mm 3mm;
+  border: 0.4pt dashed var(--bone-line);
+  grid-template-columns: 1fr;
+}
+
+.panel--ink .dish--placeholder,
+.panel--calpe .dish--placeholder,
+.panel--photo-postres .dish--placeholder {
+  background: rgba(244, 237, 225, 0.06);
+  border-color: rgba(244, 237, 225, 0.25);
+}
+
+.dish--placeholder .dish__name {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 9pt;
+  color: var(--ink-mute);
+}
+
+.panel--ink .dish--placeholder .dish__name,
+.panel--calpe .dish--placeholder .dish__name,
+.panel--photo-postres .dish--placeholder .dish__name { color: var(--bone-soft); opacity: 0.7; }
+
+.dish--placeholder .dish__desc { font-style: italic; }
+
+/* Doble columna ración / pequeña ración (tapas) — print */
+.dish__price--dual {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4mm;
+  line-height: 1.05;
+}
+.dish__price--dual .ration {
+  font-size: 9pt;
+  color: var(--saffron-deep);
+  font-weight: 600;
+}
+.dish__price--dual .ration-small {
+  font-size: 6.8pt;
+  color: var(--ink-mute);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.dish__price--dual .ration-small::before {
+  content: "½ ";
+  opacity: 0.7;
+}
+.dish__price--unit {
+  font-size: 8.5pt;
+  color: var(--saffron-deep);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dish__price--unit::after {
+  content: " / ud";
+  font-size: 6pt;
+  color: var(--ink-mute);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-left: 0.5mm;
+}
+.dish__price--market {
+  font-size: 6.8pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 600;
+}
+.panel--ink .dish__price--dual .ration,
+.panel--photo-paella .dish__price--dual .ration,
+.panel--photo-tapas .dish__price--dual .ration,
+.panel--photo-fideua .dish__price--dual .ration,
+.panel--photo-postres .dish__price--dual .ration,
+.panel--calpe .dish__price--dual .ration { color: var(--saffron); }
+.panel--ink .dish__price--dual .ration-small,
+.panel--photo-paella .dish__price--dual .ration-small,
+.panel--photo-tapas .dish__price--dual .ration-small,
+.panel--photo-fideua .dish__price--dual .ration-small,
+.panel--photo-postres .dish__price--dual .ration-small,
+.panel--calpe .dish__price--dual .ration-small { color: var(--bone-soft); opacity: 0.75; }
+.panel--ink .dish__price--unit,
+.panel--photo-paella .dish__price--unit,
+.panel--photo-tapas .dish__price--unit,
+.panel--photo-fideua .dish__price--unit,
+.panel--photo-postres .dish__price--unit,
+.panel--calpe .dish__price--unit { color: var(--saffron); }
+.panel--ink .dish__price--unit::after,
+.panel--photo-paella .dish__price--unit::after,
+.panel--photo-tapas .dish__price--unit::after,
+.panel--photo-fideua .dish__price--unit::after,
+.panel--photo-postres .dish__price--unit::after,
+.panel--calpe .dish__price--unit::after { color: var(--bone-soft); opacity: 0.7; }
+.panel--ink .dish__price--market,
+.panel--photo-paella .dish__price--market,
+.panel--photo-tapas .dish__price--market,
+.panel--photo-fideua .dish__price--market,
+.panel--photo-postres .dish__price--market,
+.panel--calpe .dish__price--market { color: var(--bone-soft); opacity: 0.75; }
+
+/* Tapas legend (print) */
+.tapas-legend-print {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  margin-bottom: 4mm;
+  padding: 1.5mm 2.5mm;
+  border-left: 1.2pt solid var(--saffron);
+  background: rgba(216, 147, 46, 0.10);
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bone-soft);
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+.tapas-legend-print strong {
+  font-weight: 700;
+  color: var(--saffron);
+  letter-spacing: 0.22em;
+}
+
+/* Compact tapas grid for print */
+.menu-print--tapas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4mm;
+  row-gap: 0;
+}
+.menu-print--tapas .dish {
+  padding-bottom: 1.8mm;
+  margin-bottom: 1.8mm;
+  gap: 0.6mm 2mm;
+}
+.menu-print--tapas .dish__name {
+  font-size: 8.8pt;
+  line-height: 1.08;
+}
+.menu-print--tapas .dish__desc { display: none; }
+.menu-print--tapas .dish__price {
+  font-size: 8pt;
+  padding-top: 0.6mm;
+}
+.menu-print--tapas .dish__price--dual .ration { font-size: 8pt; }
+.menu-print--tapas .dish__price--dual .ration-small { font-size: 6pt; }
+.menu-print--tapas .dish__price--unit { font-size: 7.5pt; }
+.menu-print--tapas .dish__price--unit::after { font-size: 5.5pt; }
+.menu-print--tapas .dish__price--market { font-size: 6pt; }
+
+/* ============================================================
+   FOOTER PANEL (back cover)
+============================================================ */
+
+.foot-print {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.foot-print__brand {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 22pt;
+  color: var(--bone);
+  margin-bottom: 1mm;
+  font-variation-settings: 'opsz' 96;
+}
+
+.foot-print__sub {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  font-weight: 500;
+  margin-bottom: 10mm;
+}
+
+.foot-print__block {
+  margin-bottom: 6mm;
+}
+
+.foot-print__block h4 {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bone-soft);
+  font-weight: 600;
+  opacity: 0.6;
+  margin-bottom: 2mm;
+}
+
+.foot-print__block p,
+.foot-print__block address {
+  font-family: var(--sans);
+  font-size: 9pt;
+  line-height: 1.5;
+  color: var(--bone);
+  font-style: normal;
+}
+
+.foot-print__disclaimer {
+  margin-top: auto;
+  padding-top: 6mm;
+  border-top: 0.4pt solid rgba(244, 237, 225, 0.15);
+  font-family: var(--sans);
+  font-size: 7pt;
+  line-height: 1.5;
+  color: var(--bone-soft);
+  opacity: 0.55;
+}
+
+.foot-print__credit {
+  margin-top: 4mm;
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+/* ============================================================
+   NOTE
+============================================================ */
+
+.note-print {
+  margin-top: auto;
+  padding: 3.5mm 4mm;
+  border-left: 1.2pt solid var(--saffron);
+  background: rgba(216, 147, 46, 0.10);
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  position: relative;
+  z-index: 2;
+}
+
+.panel--ink .note-print,
+.panel--calpe .note-print {
+  background: rgba(216, 147, 46, 0.14);
+  color: var(--bone-soft);
+}
+
+/* ============================================================
+   ALLERGENS PRINT
+============================================================ */
+
+.allergens-print {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3mm;
+  margin-top: 4mm;
+  position: relative;
+  z-index: 2;
+}
+
+.allergen-print {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  padding: 2.5mm 3mm;
+  background: var(--bone);
+  border: 0.4pt solid var(--bone-line);
+}
+
+.allergen-print__icon {
+  width: 5mm;
+  height: 5mm;
+  border-radius: 50%;
+  background: var(--calpe);
+  color: var(--bone);
+  display: grid;
+  place-items: center;
+  font-family: var(--sans);
+  font-size: 6pt;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.allergen-print__label {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HOJA 1 — ANVERSO (cuando está cerrado se ve solo el panel 3)
+     Panel 1: Capítulo V — Postres (foto plato-postres, hero del cierre)
+     Panel 2: La historia (interior central)
+     Panel 3: PORTADA (visible cerrado)
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- PANEL 1 — Capítulo V · Postres (hero foto plato-postres) -->
+  <div class="panel panel--photo-postres">
+    <div class="top-meta">
+      <span>Para terminar</span>
+      <span>V</span>
+    </div>
+
+    <div style="margin-top: 10mm; flex: 1; display: flex; flex-direction: column; position: relative; z-index: 2;">
+      <p class="chapter-mark">Capítulo V</p>
+      <p class="eyebrow">Para terminar</p>
+      <h2 class="title">Postres <em>caseros</em>.</h2>
+      <p class="lead">Tres clásicos para cerrar la mesa.</p>
+
+      <div class="menu-print" style="flex: 1;">
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Crema catalana</h3>
+            <p class="dish__desc">Receta tradicional, azúcar quemado al momento.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Tarta de queso</h3>
+            <p class="dish__desc">Cremosa por dentro, dorada arriba.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Helados</h3>
+            <p class="dish__desc">Selección de gelatos artesanos, sabores del día.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+      </div>
+
+      <p class="note-print">Postres caseros del día — consultar al equipo de sala.</p>
+    </div>
+  </div>
+
+  <!-- PANEL 2 — La historia (interior central) -->
+  <div class="panel panel--bone-soft">
+    <div class="top-meta">
+      <span>La historia</span>
+      <span>1990</span>
+    </div>
+
+    <div style="margin-top: 12mm; position: relative; z-index: 2;">
+      <p class="chapter-mark">Desde 1990</p>
+      <p class="eyebrow">La historia</p>
+      <h2 class="title">Un nombre <em>andaluz</em>,<br>una cocina <em>valenciana</em>.</h2>
+      <p class="lead">El nombre viene del origen del dueño. La cocina, de la tierra que lo adoptó.</p>
+
+      <div class="body">
+        <p>Juan Francisco Martínez Pérez, nacido en <strong>Villanueva del Arzobispo, Jaén</strong>, se instaló en Calpe a finales de los setenta. Diez años en el Bar Baydal, varios más en el Bar Jaén con su cuñado Tomás Medina, y a finales de <strong>1990</strong> abrió El Andaluz.</p>
+
+        <p>Treinta y cinco años después sigue al frente con su mujer <strong>Rosa María Díaz</strong> y su hija menor <strong>Rosa</strong>, que toma el relevo. En cocina, <strong>José Giraldo</strong> — gaditano de oficio — dirige la brigada.</p>
+
+        <blockquote class="pullquote">
+          “Tengo clientes que en su día eran niños que me pedían un helado y hoy son adultos.”
+          <cite>Juan Francisco Martínez — La Marina, 2019</cite>
+        </blockquote>
+
+        <p>Travelers' Choice de TripAdvisor 2025, mención en la Guía Maximín por <em>uno de los mejores conjuntos de tapas</em> de Calpe, y — según fuente periodística local — la medalla al mérito empresarial Jaume Pastor i Fluixà en 2015.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 3 — PORTADA (visible cuando está cerrado) -->
+  <div class="panel panel--cover">
+    <div class="top-meta">
+      <span>Calpe · 1990</span>
+      <span>Carta</span>
+    </div>
+
+    <div class="cover-center">
+      <div class="brand-mark">
+        <span class="brand-mark__rule"></span>
+        <span class="brand-mark__label">Desde 1990</span>
+      </div>
+
+      <h1 class="cover-title">El <em>Andaluz</em></h1>
+      <p class="cover-sub">Arrocería · Tapería</p>
+      <p class="cover-tag">Cocina mediterránea · Calpe</p>
+    </div>
+
+    <blockquote class="cover-quote">
+      “Tengo clientes que en su día eran niños que me pedían un helado y hoy son adultos.”
+      <cite>— Juan Francisco Martínez · La Marina, 2019</cite>
+    </blockquote>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     HOJA 2 — REVERSO (interior del gatefold cuando se abre del todo)
+     Panel 4: Capítulo I — Entrantes  +  Capítulo III — Tapas (foto tapas-barra)
+     Panel 5: Capítulo II — Arroces y fideuás (foto paella, hero del menú)
+     Panel 6: Capítulo IV — Carnes  +  Capítulo VI — Bebidas  +  Info / pie
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- PANEL 4 — Capítulo III (Tapas y raciones, las 32) + Tostas -->
+  <div class="panel panel--photo-tapas">
+    <div class="top-meta">
+      <span>Para compartir</span>
+      <span>III</span>
+    </div>
+
+    <div style="margin-top: 8mm; position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column;">
+      <p class="chapter-mark">Capítulo III</p>
+      <p class="eyebrow">La barra de la casa</p>
+      <h2 class="title" style="font-size: 20pt;">Tapas <em>y</em><br>raciones.</h2>
+
+      <div class="tapas-legend-print">
+        <span><strong>Ración</strong></span>
+        <span>½ <strong>Pequeña</strong></span>
+        <span><strong>S/M</strong> mercado</span>
+      </div>
+
+      <div class="menu-print menu-print--tapas">
+        <article class="dish">
+          <div><h3 class="dish__name">Jamón Ibérico Bellota</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">18,00</span><span class="ration-small">7,00</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Jamón y Queso</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">12,50</span><span class="ration-small">6,50</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Jamón Reserva</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">10,50</span><span class="ration-small">5,50</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Sepia a la Plancha</h3></div>
+          <span class="dish__price">9,50</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Boquerones Fritos</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">9,00</span><span class="ration-small">5,00</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Cazón en Adobo</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">9,00</span><span class="ration-small">4,75</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Calamares Andaluza</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">7,75</span><span class="ration-small">5,00</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Pitura Mixta</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">7,50</span><span class="ration-small">7,00</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Boquerones Vinagre</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">—</span><span class="ration-small">6,50</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Salpicón Marisco</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">5,75</span><span class="ration-small">3,00</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Suspiros de Padrón</h3></div>
+          <span class="dish__price">5,50</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Negra con Tomate</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">5,00</span><span class="ration-small">2,50</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Ensaladilla Rusa</h3></div>
+          <span class="dish__price dish__price--dual"><span class="ration">4,25</span><span class="ration-small">3,00</span></span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Berenjenas Rellenas</h3></div>
+          <span class="dish__price dish__price--unit">4,50</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Mejillones Tigres</h3></div>
+          <span class="dish__price dish__price--unit">1,75</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Pimientos Rellenos</h3></div>
+          <span class="dish__price dish__price--unit">1,75</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Croquetas Caseras</h3></div>
+          <span class="dish__price dish__price--unit">1,20</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Albóndigas Caseras</h3></div>
+          <span class="dish__price dish__price--unit">1,00</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Pulpo Gallego</h3></div>
+          <span class="dish__price dish__price--market">consultar</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Parrillada Verdura</h3></div>
+          <span class="dish__price dish__price--market">consultar</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Pastel de Puerros</h3></div>
+          <span class="dish__price dish__price--market">consultar</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Chipirón</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Pescaditos Fritos</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Mejillones Vapor</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Berberechos Vapor</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Almejas Naturales</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Tellinas Plancha</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Quisquilla Hervida</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Gambas Plancha</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Navajas Plancha</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Cigalas Plancha</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Calamar Plancha</h3></div>
+          <span class="dish__price dish__price--market">S/M</span>
+        </article>
+      </div>
+
+      <p class="note-print" style="margin-top: 4mm;">
+        Surtido de tapas caseras también en la barra. <strong>S/M</strong> = según mercado.
+      </p>
+    </div>
+  </div>
+
+  <!-- PANEL 5 — Capítulo II · Arroces + Tostas + Pescados (hero foto paella) -->
+  <div class="panel panel--photo-paella">
+    <div class="top-meta">
+      <span>La especialidad · Tostas · Pescado</span>
+      <span>II · III·bis · I</span>
+    </div>
+
+    <div style="margin-top: 8mm; position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column;">
+      <p class="chapter-mark">Capítulo II</p>
+      <p class="eyebrow">Lo que nos define</p>
+      <h2 class="title" style="font-size: 22pt;">Arroces <em>&amp;</em> fideuás.</h2>
+      <p class="lead" style="font-size: 9.5pt; margin-bottom: 4mm;">La paella se hace al momento. <strong>Reservar con antelación</strong> — lo recomiendan los habituales.</p>
+
+      <div class="menu-print" style="margin-bottom: 5mm;">
+        <article class="dish dish--feature">
+          <div>
+            <span class="dish__tag">Insignia</span>
+            <h3 class="dish__name">Arroz del senyoret</h3>
+            <p class="dish__desc">Marisco pelado, fumet concentrado. La referencia más pedida.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Paella alicantina</h3>
+            <p class="dish__desc">Arroz seco, azafrán, sofrito largo, producto de lonja.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Paella mixta / de marisco</h3>
+            <p class="dish__desc">Carne y marisco, o solo marisco según pedido.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Paella verduras y bacalao</h3>
+            <p class="dish__desc">Verduras de temporada con bacalao desmigado.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Arroz a banda · Arroz negro · Fideuá</h3>
+            <p class="dish__desc">Tres clásicos marineros: roca, tinta y fideo fino.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+      </div>
+
+      <p class="chapter-mark" style="margin-top: 3mm;">Capítulo I</p>
+      <p class="eyebrow">Sugerencias · pescado</p>
+      <h2 class="title" style="font-size: 16pt; margin-bottom: 3mm;">Pescado <em>de mercado</em>.</h2>
+
+      <div class="menu-print" style="margin-bottom: 5mm;">
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Merluza a la Vasca</h3>
+            <p class="dish__desc">Cazuela, salsa verde, ajo y perejil.</p>
+          </div>
+          <span class="dish__price">17,75 €</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Cazuela de Rape</h3>
+            <p class="dish__desc">Salsa marinera reducida. Por encargo.</p>
+          </div>
+          <span class="dish__price">17,75 €</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Zarzuela de la Casa</h3>
+            <p class="dish__desc">Surtido pescado y marisco, fumet concentrado.</p>
+          </div>
+          <span class="dish__price">18,50 €</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Merluza a la Plancha</h3>
+            <p class="dish__desc">Pieza limpia, aceite de oliva y limón.</p>
+          </div>
+          <span class="dish__price">18,50 €</span>
+        </article>
+      </div>
+
+      <p class="chapter-mark" style="margin-top: 3mm;">Capítulo III · bis</p>
+      <p class="eyebrow">Tostas</p>
+      <h2 class="title" style="font-size: 16pt; margin-bottom: 3mm;">Pan <em>tostado</em>.</h2>
+
+      <div class="menu-print">
+        <article class="dish">
+          <div><h3 class="dish__name">Jamón, Espárrago y Huevos de Codorniz</h3></div>
+          <span class="dish__price">4,50 €</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Anchoas a la Catalana</h3></div>
+          <span class="dish__price">4,25 €</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Solomillo, Queso Cabra y Cebolla Caramelizada</h3></div>
+          <span class="dish__price">4,00 €</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Salmón con Queso Fresco</h3></div>
+          <span class="dish__price">4,00 €</span>
+        </article>
+        <article class="dish">
+          <div><h3 class="dish__name">Vegetariana de Sepia</h3></div>
+          <span class="dish__price">4,00 €</span>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 6 — Capítulo IV (Carnes + signature) + Menú niños + Bebidas + Info -->
+  <div class="panel panel--ink">
+    <div class="top-meta">
+      <span>Carne · Niños · Bebidas · Info</span>
+      <span>IV · VI</span>
+    </div>
+
+    <div style="margin-top: 8mm; flex: 1; display: flex; flex-direction: column;">
+      <p class="chapter-mark">Capítulo IV</p>
+      <p class="eyebrow">Sugerencias · por encargo</p>
+      <h2 class="title" style="font-size: 18pt;">Carne <em>de cuchillo</em>.</h2>
+
+      <div class="menu-print" style="margin-bottom: 5mm;">
+        <article class="dish dish--feature">
+          <div>
+            <span class="dish__tag">Signature</span>
+            <h3 class="dish__name">Solomillo al Foie y Pera Caramelizada</h3>
+            <p class="dish__desc">Solomillo, escalopa de foie, pera al horno. La firma de la casa.</p>
+          </div>
+          <span class="dish__price">22,75 €</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Paletilla de Cabrito Lechal</h3>
+            <p class="dish__desc">Asada al horno. Por encargo.</p>
+          </div>
+          <span class="dish__price">18,00 €</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Chuletilla de Cabrito Lechal</h3>
+            <p class="dish__desc">A la brasa, sal en escamas.</p>
+          </div>
+          <span class="dish__price">17,00 €</span>
+        </article>
+      </div>
+
+      <p class="chapter-mark">Menú</p>
+      <p class="eyebrow">Para los más pequeños</p>
+      <h2 class="title" style="font-size: 14pt; margin-bottom: 3mm;">Menú de <em>niños</em>.</h2>
+
+      <div class="menu-print" style="margin-bottom: 5mm;">
+        <article class="dish dish--feature">
+          <div>
+            <h3 class="dish__name">Nuggets de Pollo con Patatas y Refresco</h3>
+            <p class="dish__desc">Plato completo, bebida incluida.</p>
+          </div>
+          <span class="dish__price">6,90 €</span>
+        </article>
+      </div>
+
+      <p class="chapter-mark">Capítulo VI</p>
+      <p class="eyebrow">Bodega y barra</p>
+      <h2 class="title" style="font-size: 14pt; margin-bottom: 3mm;">Bebidas <em>&amp;</em> vinos.</h2>
+
+      <div class="menu-print" style="margin-bottom: 5mm;">
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Vino de la casa · Sangría</h3>
+            <p class="dish__desc">Tinto, blanco o sangría preparada en casa.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+        <article class="dish">
+          <div>
+            <h3 class="dish__name">Cortado y cafés</h3>
+            <p class="dish__desc">Cortado, solo, con leche, descafeinado.</p>
+          </div>
+          <span class="dish__price">consultar</span>
+        </article>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 4mm; border-top: 0.4pt solid rgba(244, 237, 225, 0.15);">
+        <p class="foot-print__brand" style="font-size: 14pt; margin-bottom: 0.5mm;">El Andaluz</p>
+        <p class="foot-print__sub" style="font-size: 6pt; margin-bottom: 3mm;">Arrocería · Tapería · Calpe · 1990</p>
+
+        <p style="font-family: var(--sans); font-size: 7pt; line-height: 1.45; color: var(--bone); margin-bottom: 2.5mm;">
+          C. Pintor Sorolla 21 · Edificio Apolo VII · 03710 Calpe<br>
+          T. 965 83 55 66 · Facebook · El Andaluz Calpe<br>
+          Mar–dom · 13:00–16:00 · 19:30–23:30 · <strong>Lunes cerrado</strong>
+        </p>
+
+        <p style="font-family: var(--sans); font-size: 6pt; line-height: 1.4; color: var(--bone-soft); opacity: 0.55;">
+          IVA incluido. S/M = según mercado. Precios actualizados según foto de carta vigente publicada en TripAdvisor (verificada). Pueden cambiar — confirmar con el equipo de sala. <strong>Travelers' Choice TripAdvisor 2025</strong> · Medalla al mérito empresarial Jaume Pastor i Fluixà 2015 (según fuente periodística local). Las imágenes son referenciales.
+        </p>
+        <p style="margin-top: 2.5mm; font-family: var(--sans); font-size: 5.5pt; letter-spacing: 0.32em; text-transform: uppercase; color: var(--saffron); opacity: 0.7; font-weight: 500;">Kenaz Studio · kenaz.studio</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

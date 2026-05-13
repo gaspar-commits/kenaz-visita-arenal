@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f2438">
+<meta name="description" content="Restaurante Costa — Cocina ecléctica en Apolo VII, Calpe. Mediterráneo, guiños belgas y una nota del sur asiático. Carta digital.">
+<title>Costa · Carta · Cocina ecléctica en Apolo VII, Calpe</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* -----------------------------------------------------------
+   COSTA — Carta digital · V2 neutra
+   Paleta: blanco hueso + azul Mediterráneo profundo + ocre dorado
+   Tipografía: Fraunces (display) + Inter (body)
+   Mobile-first. Diseño editorial limpio, honesto, sin invenciones.
+----------------------------------------------------------- */
+
+:root {
+  --bone: #f5efe4;
+  --bone-soft: #ebe3d3;
+  --bone-warm: #e3d8c1;
+  --ink: #0f2438;
+  --ink-soft: #1a3148;
+  --ink-line: #2a4663;
+  --sea: #244a6b;
+  --sea-deep: #163553;
+  --ochre: #c08a3a;
+  --ochre-deep: #9d6c25;
+  --mustard: #d6a531;
+  --olive: #6b6a3c;
+  --shadow: rgba(15, 36, 56, 0.12);
+
+  --serif: 'Fraunces', 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --gutter: clamp(20px, 6vw, 40px);
+  --max-content: 720px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--sea); color: var(--bone); }
+
+/* ============================================================
+   COVER
+============================================================ */
+
+.cover {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--gutter);
+  padding-top: max(var(--gutter), env(safe-area-inset-top));
+  padding-bottom: max(var(--gutter), env(safe-area-inset-bottom));
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(15,36,56,0.55) 0%, rgba(15,36,56,0.78) 65%, rgba(15,36,56,0.92) 100%),
+    url('img/ambiente.webp') center / cover no-repeat,
+    var(--ink);
+  color: var(--bone);
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 25%, rgba(192, 138, 58, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.cover__top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  font-weight: 400;
+  gap: 16px;
+}
+
+.cover__top .award {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ochre);
+  border: 0.5px solid rgba(192,138,58,0.45);
+  padding: 6px 10px;
+  border-radius: 2px;
+  background: rgba(192,138,58,0.08);
+  letter-spacing: 0.24em;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.cover__top .award::before {
+  content: "★";
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+.cover__center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin: auto 0;
+  padding: 12vh 0;
+}
+
+.brand-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.brand-mark__rule {
+  width: 38px;
+  height: 1px;
+  background: var(--ochre);
+}
+
+.brand-mark__label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+.cover__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(78px, 22vw, 132px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--bone);
+  margin-bottom: 18px;
+}
+
+.cover__name em { font-style: italic; font-weight: 400; color: var(--ochre); }
+
+.cover__tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(17px, 4.6vw, 22px);
+  line-height: 1.45;
+  color: var(--bone-warm);
+  max-width: 26ch;
+  margin: 0 auto;
+}
+
+.cover__hero-line {
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+.cover__anchors {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cover-anchor {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 16px;
+  border: 0.5px solid rgba(192,138,58,0.45);
+  background: rgba(192,138,58,0.08);
+  border-radius: 2px;
+  min-width: 120px;
+}
+
+.cover-anchor__lab {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+.cover-anchor__val {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--bone);
+  letter-spacing: 0.005em;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.cover-anchor__val span {
+  font-size: 11px;
+  color: var(--bone-warm);
+  letter-spacing: 0;
+  margin-left: 2px;
+}
+
+.cover__bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+}
+
+.cover__bottom strong { color: var(--bone); font-weight: 500; }
+.cover__bottom div { display: flex; flex-direction: column; gap: 4px; }
+.cover__bottom .right { text-align: right; }
+
+.cover__scroll {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: var(--bone-warm);
+  text-transform: uppercase;
+  opacity: 0.6;
+  z-index: 3;
+}
+
+/* ============================================================
+   STORY / LA CASA
+============================================================ */
+
+.story {
+  background: var(--bone);
+  padding: 80px var(--gutter) 64px;
+  text-align: center;
+  position: relative;
+}
+
+.story__eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+
+.story__title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 7vw, 38px);
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 26px;
+  max-width: 16ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story__title em { font-style: italic; color: var(--sea); font-weight: 400; }
+
+.story__rule {
+  width: 28px;
+  height: 1px;
+  background: var(--ochre);
+  margin: 0 auto 26px;
+}
+
+.story__body {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(15px, 4vw, 17px);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 32ch;
+  margin: 0 auto;
+}
+.story__body p + p { margin-top: 14px; }
+
+.story__note {
+  margin-top: 18px;
+  font-family: var(--serif);
+  font-size: clamp(13px, 3.4vw, 14px);
+  color: var(--ink-soft);
+  opacity: 0.7;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.dish-note {
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  font-style: italic;
+  line-height: 1.5;
+  padding: 4px 0 0;
+}
+
+.section--alt .dish-note { color: var(--bone-warm); opacity: 0.75; }
+
+.story__placeholder {
+  margin-top: 22px;
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ochre-deep);
+  background: var(--bone-warm);
+  padding: 6px 12px;
+  border: 0.5px dashed var(--ochre);
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   SECTION (genérica para listados de platos)
+============================================================ */
+
+.section {
+  padding: 64px var(--gutter);
+  max-width: var(--max-content);
+  margin: 0 auto;
+  position: relative;
+}
+
+.section--alt {
+  background: var(--ink);
+  color: var(--bone);
+  max-width: none;
+  margin: 0;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.section--alt .dish-name { color: var(--bone); }
+.section--alt .dish-desc { color: var(--bone-warm); }
+.section--alt .dish-price { color: var(--ochre); }
+.section--alt .dish { border-bottom-color: var(--ink-line); }
+.section--alt .section-head { color: var(--bone); }
+.section--alt .section-title { color: var(--bone); }
+.section--alt .section-title em { color: var(--ochre); }
+.section--alt .chapter { color: var(--ochre); }
+.section--alt .section-sub { color: var(--bone-warm); }
+.section--alt .placeholder-row { background: rgba(192,138,58,0.08); border-color: var(--ochre); color: var(--bone-warm); }
+
+.section-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.chapter {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chapter::before, .chapter::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--ochre);
+  opacity: 0.6;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 7vw, 38px);
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+  margin-bottom: 14px;
+}
+
+.section-title em { font-style: italic; color: var(--sea); font-weight: 400; }
+
+.section-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 36ch;
+  margin: 0 auto;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+/* dish */
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  padding-bottom: 22px;
+  border-bottom: 0.5px solid rgba(15, 36, 56, 0.15);
+}
+
+.dish:last-child { border-bottom: none; padding-bottom: 0; }
+
+.dish-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+}
+
+.dish-price {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--sea);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  align-self: start;
+}
+
+.dish-price em {
+  font-style: normal;
+  color: var(--ochre);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 2px;
+}
+
+.dish-desc {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.dish-desc em { font-style: italic; color: var(--sea); }
+
+.dish-tag {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.dish-origin {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 8.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  margin: 0 0 2px;
+  font-weight: 500;
+}
+.dish-origin::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+.dish-origin--med { color: var(--sea); }
+.dish-origin--asia { color: #b87a3a; }
+.section--alt .dish-origin--med { color: var(--bone-warm); }
+.section--alt .dish-origin { color: var(--mustard); }
+.section--alt .dish-origin--asia { color: #e8b88a; }
+
+/* ============================================================
+   PLACEHOLDER row (para "[platos a confirmar]")
+============================================================ */
+
+.placeholder-row {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ochre-deep);
+  background: rgba(192,138,58,0.08);
+  border: 0.5px dashed var(--ochre);
+  border-radius: 2px;
+  padding: 14px 16px;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ============================================================
+   FEATURE PLATO — LUBINA AL HORNO DE SAL (destacada, no única)
+============================================================ */
+
+.feature-dish {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-dish__image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: url('img/lubina-en-sal.webp') center / cover no-repeat, var(--ink);
+  position: relative;
+}
+
+.feature-dish__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,36,56,0.05) 0%, rgba(15,36,56,0.15) 60%, rgba(15,36,56,0.85) 100%);
+  pointer-events: none;
+}
+
+.feature-dish__content {
+  padding: 56px var(--gutter) 64px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.feature-dish__chapter {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.feature-dish__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(34px, 9vw, 52px);
+  line-height: 1;
+  color: var(--bone);
+  margin-bottom: 16px;
+}
+
+.feature-dish__name em { font-style: italic; font-weight: 400; color: var(--ochre); }
+
+.feature-dish__sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--bone-warm);
+  margin-bottom: 26px;
+  max-width: 30ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.feature-dish__quote {
+  margin: 30px auto 32px;
+  max-width: 30ch;
+  border-top: 0.5px solid var(--ink-line);
+  padding-top: 26px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--bone);
+  font-weight: 400;
+  text-wrap: balance;
+  hyphens: auto;
+}
+
+.feature-dish__quote::before {
+  content: "\201C";
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 48px;
+  color: var(--ochre);
+  line-height: 0.6;
+  margin-bottom: 6px;
+}
+
+.feature-dish__quote-source {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+.feature-dish__price-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+/* ============================================================
+   IMAGE BLOCK (entre secciones)
+============================================================ */
+
+.imgblock {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  background: var(--bone-warm);
+}
+
+.imgblock img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgblock figcaption {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  right: 18px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--bone);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.imgblock::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,36,56,0) 50%, rgba(15,36,56,0.6) 100%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   FOOTER / INFO
+============================================================ */
+
+.footer {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 64px var(--gutter) 48px;
+  text-align: center;
+}
+
+.footer__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(36px, 9vw, 52px);
+  letter-spacing: 0.04em;
+  color: var(--bone);
+  margin-bottom: 8px;
+}
+
+.footer__name em { font-style: italic; color: var(--ochre); font-weight: 400; }
+
+.footer__tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--bone-warm);
+  margin-bottom: 36px;
+}
+
+.footer__info {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  line-height: 2;
+  margin-bottom: 36px;
+}
+
+.footer__info strong { color: var(--bone); font-weight: 500; }
+
+.footer__hours {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--bone-warm);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.allergens {
+  border-top: 0.5px solid var(--ink-line);
+  padding-top: 32px;
+  margin-bottom: 32px;
+}
+
+.allergens__title {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.allergens__body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--bone-warm);
+  line-height: 1.6;
+  max-width: 40ch;
+  margin: 0 auto;
+}
+
+.disclaimer {
+  border-top: 0.5px solid var(--ink-line);
+  padding-top: 28px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--bone-warm);
+  line-height: 1.6;
+  max-width: 42ch;
+  margin: 0 auto 12px;
+  opacity: 0.8;
+}
+
+.kenaz-mark {
+  margin-top: 24px;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  opacity: 0.45;
+}
+
+/* ============================================================
+   DESKTOP REFINEMENTS
+============================================================ */
+
+@media (min-width: 768px) {
+  body { font-size: 16px; }
+
+  .section { padding: 96px var(--gutter); }
+  .story { padding: 110px var(--gutter) 80px; }
+
+  .feature-dish__image { aspect-ratio: 16/9; }
+  .feature-dish__content { padding: 80px var(--gutter) 96px; }
+
+  .footer { padding: 96px var(--gutter) 64px; }
+
+  .dish { grid-template-columns: 1fr auto; gap: 6px 28px; padding-bottom: 28px; }
+  .dish-name { font-size: 20px; }
+  .dish-desc { font-size: 14px; }
+}
+
+@media (min-width: 1024px) {
+  :root { --gutter: 56px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER
+============================================================ -->
+<section class="cover">
+  <div class="cover__top">
+    <span>Calpe · Costa Blanca</span>
+    <span class="award">Travelers' Choice</span>
+  </div>
+
+  <div class="cover__center">
+    <div class="brand-mark">
+      <span class="brand-mark__rule"></span>
+      <span class="brand-mark__label">Cocina ecléctica en Apolo VII</span>
+      <span class="brand-mark__rule"></span>
+    </div>
+
+    <h1 class="cover__name">COST<em>A</em></h1>
+
+    <p class="cover__tagline">
+      Mediterráneo, Bélgica<br>
+      y un curry, una sola mesa.
+    </p>
+
+    <div class="cover__anchors">
+      <div class="cover-anchor">
+        <span class="cover-anchor__lab">Paella señoret</span>
+        <span class="cover-anchor__val">15,00 €<span>/ pers.</span></span>
+      </div>
+      <div class="cover-anchor">
+        <span class="cover-anchor__lab">Menú del día</span>
+        <span class="cover-anchor__val">16 – 20 €</span>
+      </div>
+    </div>
+
+    <p class="cover__hero-line">— Carta · Edición 2026</p>
+  </div>
+
+  <div class="cover__bottom">
+    <div>
+      <span>La carta</span>
+      <strong>2026</strong>
+    </div>
+    <div class="right">
+      <span>Pintor Sorolla 5A</span>
+      <strong>+34 965 06 43 69</strong>
+    </div>
+  </div>
+
+  <div class="cover__scroll">&darr; Carta</div>
+</section>
+
+<!-- ============================================================
+     STORY / LA CASA
+============================================================ -->
+<section class="story">
+  <p class="story__eyebrow">La casa</p>
+  <h2 class="story__title">Cocina ecléctica <em>en Apolo VII</em>, Calpe.</h2>
+
+  <div class="story__rule"></div>
+
+  <div class="story__body">
+    <p>
+      Arroces alicantinos y pescados de mercado conviven con coquilles
+      al azafrán, pollo a la mostaza, kaastaart y un korma de langostino.
+      Mediterráneo, Bélgica y un guiño del sur asiático en la misma mesa.
+    </p>
+    <p class="story__note"><em>La historia y el equipo se definen con vosotros antes de imprimir la carta final.</em></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     PARA EMPEZAR
+============================================================ -->
+<section class="section">
+  <header class="section-head">
+    <p class="chapter">Capítulo I</p>
+    <h2 class="section-title">Para <em>empezar</em></h2>
+    <p class="section-sub">De la cocina mediterránea, con algún guiño del norte.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Pan con alioli de la casa</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Alioli emulsionado a mano, pan tostado.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Croquetas caseras</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Bechamel densa, hechas en la casa cada servicio.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Calamares a la romana</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Anillas rebozadas en su punto, mayonesa de la casa.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Tartar de atún</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Atún cortado a cuchillo, aderezo cítrico. <em>“Buenísimo” — reseña Tripadvisor.</em></p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Revuelto de jamón y champiñones</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Huevo cuajado en su punto, jamón y champiñones salteados.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Ensalada mixta de la casa</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Lechuga, tomate, manzana, pepino y aguacate.</p>
+    </article>
+
+    <p class="dish-note"><em>Carta más amplia con ensaladilla rusa, chopitos crujientes, queso y jamón, ensalada César y tataki de atún — pregunta en sala.</em></p>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE — paella negra (transición)
+============================================================ -->
+<figure class="imgblock">
+  <img src="img/paella-negra.webp" alt="Paella negra con tinta de calamar, marisco y sofrito mediterráneo">
+  <figcaption>Arroz negro · tinta de calamar, sepia y marisco</figcaption>
+</figure>
+
+<!-- ============================================================
+     ARROCES
+============================================================ -->
+<section class="section section--alt">
+  <header class="section-head">
+    <p class="chapter">Capítulo II · El fuego lento</p>
+    <h2 class="section-title">Los <em>arroces</em></h2>
+    <p class="section-sub">Cocidos al momento. Mínimo 25 min de espera.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Paella señoret</h3>
+      <span class="dish-price">15,00 € <em>por persona</em></span>
+      <p class="dish-desc">Marisco pelado, fondo de pescado y azafrán. Tradición valenciana sin manchar las manos. Mínimo dos personas.</p>
+      <span class="dish-tag">— Recomendado · ancla de carta</span>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Arroz negro</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Tinta de calamar, sepia y marisco. Allioli aparte.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Paella mixta</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Carne y marisco en la misma cazuela. Clásico de la casa para mesa larga.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Arroz con bogavante</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Bogavante entero sobre arroz meloso con caldo de marisco.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Fideuá</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Pasta corta dorada al estilo arroz, fondo de pescado y marisco. <em>“Increíble” — reseña Tripadvisor.</em></p>
+    </article>
+
+    <p class="dish-note"><em>También paella de pollo y verduras, paella de pollo, arroz negro de carta — consultar en sala.</em></p>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE DISH — LUBINA AL HORNO DE SAL (destacada, no única)
+============================================================ -->
+<section class="feature-dish">
+  <div class="feature-dish__image" role="img" aria-label="Lubina al horno de sal abierta sobre plato"></div>
+
+  <div class="feature-dish__content">
+    <p class="feature-dish__chapter">Una de las destacadas</p>
+
+    <h2 class="feature-dish__name">Lubina <em>al horno de sal</em></h2>
+
+    <p class="feature-dish__sub">
+      Pieza entera del día, costra de sal gruesa, horno fuerte.
+      Se abre en mesa y se rocía con aceite de oliva.
+    </p>
+
+    <blockquote class="feature-dish__quote">
+      La mejor lubina al horno de sal que he probado en Calpe en veinte años.
+      <span class="feature-dish__quote-source">— Reseña Tripadvisor (anónima)</span>
+    </blockquote>
+
+    <p class="feature-dish__price-row">
+      Precio según pieza · Sugerencia para 2 personas
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     DEL MAR (pescados + coquilles belga)
+============================================================ -->
+<section class="section">
+  <header class="section-head">
+    <p class="chapter">Capítulo III</p>
+    <h2 class="section-title">Del <em>mar</em></h2>
+    <p class="section-sub">Pescado y marisco. Producto del mercado y un guiño belga.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Pulpo a la brasa</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Tentáculo a la parrilla, pimentón de la Vera, aceite virgen.</p>
+      <span class="dish-tag">— De la casa</span>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin">Bélgica</span>
+      <h3 class="dish-name">Coquilles scampi</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Vieiras con gambas y salsa de azafrán. Clásico del recetario belga. <em>“Una delicia” — reseña Tripadvisor.</em></p>
+      <span class="dish-tag">— Plato fusión</span>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Rodaballo (turbot)</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Pieza entera al horno, según mercado.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Sepia a la plancha</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Sepia limpia a la plancha con verduras de temporada.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Salmón con tagliatelle</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Lomo de salmón, tagliatelle fresca, salsa de azafrán.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE — pulpo
+============================================================ -->
+<figure class="imgblock">
+  <img src="img/pulpo-brasa.webp" alt="Pulpo a la brasa en plato blanco con pimentón ahumado">
+  <figcaption>Pulpo a la brasa · pimentón ahumado y aceite virgen</figcaption>
+</figure>
+
+<!-- ============================================================
+     CARNES + GUIÑO BELGA
+============================================================ -->
+<section class="section section--alt">
+  <header class="section-head">
+    <p class="chapter">Capítulo IV</p>
+    <h2 class="section-title">De la <em>brasa</em> y el horno</h2>
+    <p class="section-sub">Cortes seleccionados, sal gruesa, brasa viva. Y un par de recetas belgas.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Carrilladas al vino tinto</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Mejilla de ternera braseada lentamente. Se deshace en el tenedor.</p>
+      <span class="dish-tag">— De la casa</span>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Entrecot a la brasa</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Pieza del lomo bajo, sal en escamas. Punto a elegir.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Filete argentino · salsa pimienta</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Solomillo sellado, salsa cremosa de pimienta verde.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin">Bélgica</span>
+      <h3 class="dish-name">Pollo en salsa de mostaza</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Pechuga sellada con salsa cremosa de mostaza. Uno de los platos más reconocibles del recetario belga.</p>
+      <span class="dish-tag">— Plato fusión</span>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Cordero al horno</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Pieza al horno con guarnición de la casa.</p>
+    </article>
+
+    <p class="dish-note"><em>También filete de cerdo y otros cortes — consultar en sala.</em></p>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE — carrilleras
+============================================================ -->
+<figure class="imgblock">
+  <img src="img/carrillada.webp" alt="Carrilleras al vino tinto, salsa reducida en plato blanco">
+  <figcaption>Carrilleras al vino · cocción larga y salsa reducida</figcaption>
+</figure>
+
+<!-- ============================================================
+     KORMA — la nota del sur asiático
+============================================================ -->
+<section class="section">
+  <header class="section-head">
+    <p class="chapter">Capítulo V · Una nota oriental</p>
+    <h2 class="section-title">El <em>korma</em></h2>
+    <p class="section-sub">Una única receta del sur asiático en la carta. Y va en serio.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--asia">Sur asiático</span>
+      <h3 class="dish-name">Langostino korma</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Curry suave de inspiración india, leche de coco y especias. El langostino se cuece en la propia salsa.</p>
+      <span class="dish-tag">— Plato fusión</span>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     POSTRES — incluye kaastaart belga
+============================================================ -->
+<section class="section section--alt">
+  <header class="section-head">
+    <p class="chapter">Capítulo VI</p>
+    <h2 class="section-title">Para <em>cerrar</em></h2>
+    <p class="section-sub">Postres de la casa. Algunos llegan del norte.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Tarta de queso casera</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Cremosa por dentro, dorada por fuera. <em>El postre que pide repetir.</em></p>
+      <span class="dish-tag">— De la casa</span>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin">Bélgica</span>
+      <h3 class="dish-name">Kaastaart</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Tarta de queso de tradición flamenca: más densa, menos dulce, base de bizcocho fino.</p>
+      <span class="dish-tag">— Plato fusión</span>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Crema catalana</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Crema con costra caramelizada al momento.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Profiteroles con chocolate caliente</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Bocaditos rellenos de helado, chocolate caliente al servir.</p>
+    </article>
+
+    <article class="dish">
+      <span class="dish-origin dish-origin--med">Mediterráneo</span>
+      <h3 class="dish-name">Sorbete de mojito</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Sorbete con un punto de ron y hierbabuena.</p>
+    </article>
+
+    <p class="dish-note"><em>También carpaccio de piña con helado y postre helado del día — consultar en sala.</em></p>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BEBIDAS Y MENÚ DEL DÍA
+============================================================ -->
+<section class="section">
+  <header class="section-head">
+    <p class="chapter">Capítulo VII</p>
+    <h2 class="section-title">Para <em>acompañar</em></h2>
+    <p class="section-sub">Menú del día, sangría casera, vino de la casa.</p>
+  </header>
+
+  <div class="dishes">
+
+    <article class="dish">
+      <h3 class="dish-name">Menú del día</h3>
+      <span class="dish-price">16 – 20 €</span>
+      <p class="dish-desc">Disponible al mediodía. Cambia según producto del día. Pregunta en sala.</p>
+      <span class="dish-tag">— De lunes a viernes</span>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Sangría casera</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Vino tinto, frutas de temporada, un punto de licor.</p>
+    </article>
+
+    <article class="dish">
+      <h3 class="dish-name">Vino de la casa</h3>
+      <span class="dish-price">— <em>consultar</em></span>
+      <p class="dish-desc">Tinto, blanco o rosado. Selección breve y bien medida.</p>
+    </article>
+
+    <div class="placeholder-row">
+      Carta completa de vinos, cervezas y refrescos — pregunta en sala.
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <h2 class="footer__name">COST<em>A</em></h2>
+  <p class="footer__tag">Cocina ecléctica en Apolo VII · Calpe</p>
+
+  <div class="footer__info">
+    Calle del Pintor Sorolla 5A · Edificio Apolo VII<br>
+    03710 Calpe · Alicante<br>
+    <strong>+34 965 06 43 69</strong>
+  </div>
+
+  <p class="footer__hours">
+    Domingo a martes y jueves a sábado<br>
+    11:00 — 16:00 · 18:00 — 23:45<br>
+    Miércoles cerrado
+  </p>
+
+  <div class="allergens">
+    <p class="allergens__title">Información de alérgenos</p>
+    <p class="allergens__body">
+      Carta completa con desglose de alérgenos disponible.
+      Consulta a tu camarero por intolerancias o necesidades específicas.
+    </p>
+  </div>
+
+  <p class="disclaimer">
+    Las imágenes son referenciales para esta propuesta. Las definitivas serán
+    fotografía profesional realizada en Costa por nuestra socia fotógrafa.
+  </p>
+
+  <p class="disclaimer">
+    Algunos precios verificados en reseñas y carta.menu. IVA incluido.
+    Resto: consultar al equipo de sala.
+  </p>
+
+  <p class="kenaz-mark">Diseño · Kenaz Studio</p>
+</footer>
+
+</body>
+</html>

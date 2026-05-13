@@ -1,0 +1,2026 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>RAZO · Bar-restaurante mediterráneo, Calpe</title>
+    <meta
+      name="description"
+      content="RAZO. Bar-restaurante en Avenida Europa 24, Calpe. Cocina mediterránea de barrio a pasos de la playa de La Fossa. 4,4★ con más de 1.000 reseñas en Google."
+    />
+    <meta name="theme-color" content="#f7f1e8" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        /* Paleta mediterranea costera calida */
+        --bone: #f7f1e8;
+        --bone-warm: #efe6d5;
+        --sand: #e8dcc4;
+        --terracotta: #c66a4a;
+        --terracotta-dark: #a55438;
+        --ochre: #d4a574;
+        --sea: #2c5e7c;
+        --sea-dark: #1f4459;
+        --coal: #2a2520;
+        --coal-soft: #4a3f37;
+        --line: #d9cdb8;
+
+        /* Tipografia */
+        --serif: "Fraunces", "EB Garamond", Georgia, serif;
+        --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        /* scroll-behavior gestionado por Lenis cuando reduced-motion no está activo */
+        -webkit-text-size-adjust: 100%;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* Lenis core styles */
+      html.lenis,
+      html.lenis body {
+        height: auto;
+      }
+
+      .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+      }
+
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
+
+      .lenis.lenis-stopped {
+        overflow: hidden;
+      }
+
+      body {
+        background: var(--bone);
+        color: var(--coal);
+        font-family: var(--sans);
+        font-size: 16px;
+        line-height: 1.55;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ========= NAV ========= */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        padding: 14px 20px;
+        background: rgba(247, 241, 232, 0.92);
+        backdrop-filter: saturate(140%) blur(10px);
+        -webkit-backdrop-filter: saturate(140%) blur(10px);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        font-family: var(--serif);
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        color: var(--coal);
+      }
+
+      .brand sup {
+        font-size: 9px;
+        color: var(--terracotta);
+        letter-spacing: 0.1em;
+        margin-left: 3px;
+        vertical-align: super;
+      }
+
+      .nav-links {
+        display: none;
+        gap: 28px;
+        font-size: 13.5px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--coal-soft);
+      }
+
+      .nav-links a:hover {
+        color: var(--terracotta);
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 9px 14px;
+        background: var(--coal);
+        color: var(--bone);
+        font-size: 12.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 2px;
+        transition: background 0.2s ease;
+      }
+
+      .nav-cta:hover {
+        background: var(--terracotta);
+      }
+
+      @media (min-width: 900px) {
+        .nav {
+          padding: 18px 48px;
+        }
+        .brand {
+          font-size: 26px;
+        }
+        .nav-links {
+          display: flex;
+        }
+      }
+
+      /* ========= HERO ========= */
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        padding: 110px 20px 56px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        background: var(--bone);
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: saturate(1.02) brightness(0.92);
+      }
+
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(247, 241, 232, 0.45) 0%,
+          rgba(247, 241, 232, 0.05) 38%,
+          rgba(42, 37, 32, 0.55) 100%
+        );
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        height: 100%;
+        flex: 1;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--bone);
+        font-weight: 600;
+        align-self: flex-start;
+        margin-top: auto;
+        padding: 8px 14px 8px 0;
+        background: linear-gradient(
+          90deg,
+          rgba(42, 37, 32, 0.55) 0%,
+          rgba(42, 37, 32, 0.25) 70%,
+          transparent 100%
+        );
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        border-radius: 0 2px 2px 0;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+      }
+
+      .hero-eyebrow::before {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: var(--terracotta);
+      }
+
+      .hero h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: clamp(42px, 9vw, 92px);
+        line-height: 1;
+        letter-spacing: -0.015em;
+        color: var(--bone);
+        max-width: 14ch;
+        text-shadow: 0 2px 28px rgba(42, 37, 32, 0.35);
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--ochre);
+        font-weight: 300;
+      }
+
+      .hero-sub {
+        max-width: 46ch;
+        font-size: 15.5px;
+        line-height: 1.55;
+        color: var(--bone);
+        opacity: 0.94;
+        font-weight: 400;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 4px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 2px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background: var(--terracotta);
+        color: var(--bone);
+      }
+
+      .btn-primary:hover {
+        background: var(--terracotta-dark);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--bone);
+        border: 1px solid rgba(247, 241, 232, 0.6);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(247, 241, 232, 0.12);
+        border-color: var(--bone);
+      }
+
+      .btn-arrow {
+        font-size: 16px;
+        line-height: 1;
+        display: inline-block;
+        transform: translateY(-1px);
+      }
+
+      .hero-stats {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 28px 0 24px;
+        border-top: 1px solid rgba(247, 241, 232, 0.22);
+        margin-top: 28px;
+      }
+
+      .stat-num {
+        font-family: var(--serif);
+        font-size: clamp(28px, 6vw, 42px);
+        font-weight: 400;
+        line-height: 1;
+        color: var(--bone);
+        letter-spacing: -0.01em;
+      }
+
+      .stat-label {
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ochre);
+        margin-top: 8px;
+        font-weight: 500;
+      }
+
+      @media (min-width: 900px) {
+        .hero {
+          padding: 140px 48px 64px;
+        }
+        .hero-stats {
+          grid-template-columns: repeat(3, auto);
+          gap: 80px;
+          justify-content: flex-start;
+        }
+        .hero-sub {
+          font-size: 17px;
+        }
+      }
+
+      /* ========= SECTIONS ========= */
+      .section {
+        padding: 80px 20px;
+      }
+
+      @media (min-width: 900px) {
+        .section {
+          padding: 120px 48px;
+        }
+      }
+
+      .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--terracotta);
+        font-weight: 500;
+        margin-bottom: 18px;
+      }
+
+      .section-eyebrow::before {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: var(--terracotta);
+      }
+
+      .section-title {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: clamp(32px, 5.4vw, 56px);
+        line-height: 1.05;
+        letter-spacing: -0.012em;
+        color: var(--coal);
+        max-width: 18ch;
+        margin-bottom: 24px;
+      }
+
+      .section-title em {
+        font-style: italic;
+        color: var(--terracotta);
+        font-weight: 300;
+      }
+
+      .section-lead {
+        max-width: 60ch;
+        font-size: 16px;
+        line-height: 1.65;
+        color: var(--coal-soft);
+      }
+
+      /* Placeholder honesto: claramente NO es contenido final */
+      .placeholder {
+        font-style: italic;
+        color: var(--terracotta);
+        border-bottom: 1px dashed var(--terracotta);
+        padding: 0 2px;
+        background: rgba(198, 106, 74, 0.06);
+        cursor: help;
+      }
+
+      /* Texto secundario sutil (placeholders neutralizados) */
+      .text-soft {
+        color: var(--coal-soft);
+        opacity: 0.78;
+        font-size: 15px;
+        margin-top: 10px;
+      }
+
+      .text-soft em {
+        font-style: italic;
+        font-family: var(--serif);
+        font-weight: 300;
+      }
+
+      .dd-soft {
+        color: var(--coal-soft);
+        opacity: 0.7;
+        font-family: var(--serif);
+        font-size: 16px;
+        font-style: italic;
+        font-weight: 300;
+      }
+
+      /* ========= CASA (sobre) ========= */
+      .casa {
+        background: var(--bone-warm);
+      }
+
+      .casa-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        max-width: 1280px;
+        margin: 0 auto;
+        align-items: center;
+      }
+
+      .casa-img {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        border-radius: 2px;
+        box-shadow: 0 12px 40px rgba(42, 37, 32, 0.12);
+      }
+
+      .casa-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .casa-img-tag {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        background: rgba(42, 37, 32, 0.78);
+        color: var(--bone);
+        padding: 8px 12px;
+        font-size: 10.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        backdrop-filter: blur(4px);
+      }
+
+      .casa-text p {
+        margin-top: 18px;
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--coal-soft);
+        max-width: 56ch;
+      }
+
+      .casa-meta {
+        margin-top: 36px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+
+      .casa-meta dt {
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--terracotta);
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+
+      .casa-meta dd {
+        font-family: var(--serif);
+        font-size: 18px;
+        color: var(--coal);
+        line-height: 1.3;
+      }
+
+      @media (min-width: 900px) {
+        .casa-grid {
+          grid-template-columns: 1fr 1.15fr;
+          gap: 96px;
+        }
+        .casa-img {
+          aspect-ratio: 3 / 4;
+        }
+      }
+
+      /* ========= DESAYUNOS (sección destacada) ========= */
+      .desayunos {
+        background: var(--sand);
+        position: relative;
+      }
+
+      .desayunos::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--line);
+      }
+
+      .desayunos-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        max-width: 1280px;
+        margin: 0 auto;
+        align-items: start;
+      }
+
+      .desayunos-head .section-title {
+        max-width: 14ch;
+      }
+
+      .desayunos-stamp {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 6px 12px;
+        background: var(--coal);
+        color: var(--bone);
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 2px;
+      }
+
+      .desayunos-list {
+        list-style: none;
+      }
+
+      .desayunos-list li {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: baseline;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .desayunos-list li:first-child {
+        border-top: 1px solid var(--line);
+      }
+
+      .desayunos-name {
+        font-family: var(--serif);
+        font-size: 21px;
+        font-weight: 500;
+        color: var(--coal);
+        line-height: 1.2;
+      }
+
+      .desayunos-desc {
+        grid-column: 1 / -1;
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--coal-soft);
+        margin-top: -4px;
+      }
+
+      .desayunos-price {
+        font-family: var(--serif);
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--terracotta);
+        white-space: nowrap;
+      }
+
+      @media (min-width: 900px) {
+        .desayunos-grid {
+          grid-template-columns: 1fr 1.4fr;
+          gap: 96px;
+        }
+      }
+
+      /* ========= CARTA ========= */
+      .carta {
+        background: var(--bone);
+      }
+
+      .carta-head {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 56px;
+      }
+
+      .carta-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 1280px;
+        margin: 0 auto;
+        perspective: 1200px;
+      }
+
+      .dish {
+        display: flex;
+        flex-direction: column;
+        background: var(--bone-warm);
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 4px 14px rgba(42, 37, 32, 0.06);
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.45s ease;
+        transform-style: preserve-3d;
+        will-change: transform;
+      }
+
+      .dish:hover {
+        transform: translateY(-4px) scale(1.02) rotateX(2deg);
+        box-shadow: 0 20px 48px rgba(42, 37, 32, 0.18);
+      }
+
+      .dish-img {
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background: var(--sand);
+      }
+
+      .dish-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .dish:hover .dish-img img {
+        transform: scale(1.04);
+      }
+
+      .dish-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 22px 22px 24px;
+      }
+
+      .dish-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .dish-name {
+        font-family: var(--serif);
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--coal);
+        line-height: 1.15;
+      }
+
+      .dish-price {
+        font-family: var(--serif);
+        font-size: 18px;
+        color: var(--terracotta);
+        white-space: nowrap;
+      }
+
+      .dish-desc {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--coal-soft);
+        max-width: 58ch;
+      }
+
+      .dish-tag {
+        display: inline-block;
+        margin-top: 4px;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--sea);
+        font-weight: 500;
+      }
+
+      .carta-note {
+        margin: 48px auto 0;
+        max-width: 1280px;
+        padding: 22px;
+        background: var(--bone-warm);
+        border-left: 3px solid var(--terracotta);
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: var(--coal-soft);
+      }
+
+      .carta-note strong {
+        color: var(--coal);
+        font-weight: 600;
+      }
+
+      @media (min-width: 700px) {
+        .carta-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+        }
+      }
+
+      @media (min-width: 1100px) {
+        .carta-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 28px;
+        }
+        .dish-name {
+          font-size: 21px;
+        }
+      }
+
+      /* ========= RESEÑAS ========= */
+      .resenas {
+        background: var(--coal);
+        color: var(--bone);
+      }
+
+      .resenas .section-title {
+        color: var(--bone);
+      }
+
+      .resenas .section-title em {
+        color: var(--ochre);
+      }
+
+      .resenas .section-eyebrow {
+        color: var(--ochre);
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.26em;
+      }
+
+      .resenas .section-eyebrow::before {
+        background: var(--ochre);
+        width: 36px;
+        height: 1.5px;
+      }
+
+      .resenas .section-lead {
+        font-size: 17px;
+        line-height: 1.7;
+        max-width: 56ch;
+      }
+
+      .resenas-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        max-width: 1280px;
+        margin: 56px auto 0;
+      }
+
+      .review {
+        padding: 28px 0;
+        border-top: 1px solid rgba(247, 241, 232, 0.18);
+      }
+
+      .review-stars {
+        color: var(--ochre);
+        letter-spacing: 0.18em;
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+
+      .review-body {
+        font-family: var(--serif);
+        font-size: 19px;
+        line-height: 1.5;
+        font-style: italic;
+        color: var(--bone);
+        font-weight: 300;
+      }
+
+      .review-meta {
+        margin-top: 18px;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ochre);
+      }
+
+      .review-meta span {
+        color: rgba(247, 241, 232, 0.55);
+        margin-left: 8px;
+        text-transform: none;
+        letter-spacing: 0.04em;
+      }
+
+      @media (min-width: 900px) {
+        .resenas-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 48px;
+        }
+        .review-body {
+          font-size: 20px;
+        }
+      }
+
+      /* ========= GALERIA ========= */
+      .galeria {
+        background: var(--bone);
+        padding-bottom: 0;
+      }
+
+      .galeria-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        max-width: 1600px;
+        margin: 56px auto 0;
+      }
+
+      .galeria-grid img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+
+      .galeria-grid .gallery-tall {
+        grid-row: span 2;
+        aspect-ratio: 1 / 2;
+      }
+
+      @media (min-width: 900px) {
+        .galeria-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      /* ========= RESERVAS ========= */
+      .reservas {
+        background: var(--sand);
+      }
+
+      .reservas-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .reservas form {
+        display: grid;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .form-field label {
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--coal-soft);
+        font-weight: 500;
+      }
+
+      .form-field input,
+      .form-field select,
+      .form-field textarea {
+        font-family: var(--sans);
+        font-size: 15px;
+        padding: 14px 14px;
+        background: var(--bone);
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        color: var(--coal);
+        transition: border-color 0.2s ease;
+      }
+
+      .form-field input:focus,
+      .form-field select:focus,
+      .form-field textarea:focus {
+        outline: none;
+        border-color: var(--terracotta);
+      }
+
+      .form-field textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .reservas .btn-primary {
+        margin-top: 8px;
+        justify-self: flex-start;
+        background: var(--coal);
+      }
+
+      .reservas .btn-primary:hover {
+        background: var(--terracotta);
+      }
+
+      .reservas-alt {
+        margin-top: 28px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+
+      .reservas-alt p {
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        color: var(--coal-soft);
+        margin-bottom: 14px;
+      }
+
+      .reservas-alt-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .alt-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        background: var(--bone);
+        color: var(--coal);
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        font-weight: 500;
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        transition: all 0.2s ease;
+      }
+
+      .alt-btn:hover {
+        border-color: var(--terracotta);
+        color: var(--terracotta);
+      }
+
+      .alt-btn .ic {
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      @media (min-width: 900px) {
+        .reservas-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 96px;
+        }
+        .form-row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* ========= CONTACTO ========= */
+      .contacto {
+        background: var(--bone);
+      }
+
+      .contacto-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .info-block {
+        margin-top: 28px;
+      }
+
+      .info-row {
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 18px;
+        align-items: baseline;
+      }
+
+      .info-row:first-of-type {
+        border-top: 1px solid var(--line);
+      }
+
+      .info-label {
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--terracotta);
+        font-weight: 500;
+      }
+
+      .info-value {
+        font-family: var(--serif);
+        font-size: 17px;
+        color: var(--coal);
+        line-height: 1.45;
+      }
+
+      .info-value a {
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease;
+      }
+
+      .info-value a:hover {
+        border-color: var(--terracotta);
+      }
+
+      .map-wrap {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border-radius: 2px;
+        background: var(--sand);
+        margin-top: 28px;
+      }
+
+      .map-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        filter: grayscale(0.2) saturate(0.85);
+      }
+
+      @media (min-width: 900px) {
+        .contacto-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 96px;
+        }
+        .map-wrap {
+          aspect-ratio: 1 / 1;
+        }
+      }
+
+      /* ========= FOOTER ========= */
+      .footer {
+        background: var(--coal);
+        color: var(--bone);
+        padding: 56px 20px 28px;
+      }
+
+      @media (min-width: 900px) {
+        .footer {
+          padding: 72px 48px 32px;
+        }
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 36px;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .footer-brand {
+        font-family: var(--serif);
+        font-size: 30px;
+        letter-spacing: 0.18em;
+        font-weight: 500;
+      }
+
+      .footer-tag {
+        margin-top: 10px;
+        font-size: 13px;
+        color: rgba(247, 241, 232, 0.6);
+        max-width: 38ch;
+        line-height: 1.55;
+      }
+
+      .footer-section h4 {
+        font-size: 10.5px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ochre);
+        margin-bottom: 16px;
+        font-weight: 500;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section li {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: rgba(247, 241, 232, 0.78);
+        line-height: 1.5;
+      }
+
+      .footer-section a:hover {
+        color: var(--terracotta);
+      }
+
+      .footer-bottom {
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(247, 241, 232, 0.14);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        font-size: 11.5px;
+        color: rgba(247, 241, 232, 0.42);
+        line-height: 1.55;
+      }
+
+      .footer-bottom strong {
+        color: rgba(247, 241, 232, 0.65);
+        font-weight: 500;
+      }
+
+      .footer-bottom .by-kenaz {
+        color: rgba(247, 241, 232, 0.4);
+      }
+
+      .footer-bottom .by-kenaz a {
+        color: var(--ochre);
+        border-bottom: 1px dotted rgba(212, 165, 116, 0.4);
+      }
+
+      .footer-bottom .by-kenaz a:hover {
+        color: var(--terracotta);
+        border-color: var(--terracotta);
+      }
+
+      @media (min-width: 900px) {
+        .footer-grid {
+          grid-template-columns: 1.4fr 1fr 1fr 1fr;
+          gap: 48px;
+        }
+        .footer-bottom {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+
+      /* ========= REDUCED MOTION ========= */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ========= NAV ========= -->
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#hero" class="brand">
+        RAZO<sup>Calpe</sup>
+      </a>
+      <div class="nav-links">
+        <a href="#casa">La casa</a>
+        <a href="#desayunos">Desayunos</a>
+        <a href="#carta">Carta</a>
+        <a href="#resenas">Reseñas</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a href="#reservas" class="nav-cta">Reservar</a>
+    </nav>
+
+    <!-- ========= HERO ========= -->
+    <header id="hero" class="hero">
+      <div class="hero-bg">
+        <img
+          src="img/hero-terraza.webp"
+          alt="Terraza mediterránea junto al paseo marítimo de Calpe al atardecer."
+        />
+      </div>
+
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Av. Europa 24 · Calpe · Frente a La Fossa</div>
+
+        <h1>
+          Cocina mediterránea<br />
+          con <em>alma de barrio</em>.
+        </h1>
+
+        <p class="hero-sub">
+          Bar-restaurante a pasos de la playa de La Fossa. Tapas, ensaladas,
+          pescado y carnes a la plancha — desayunos, comidas y sobremesa,
+          sin pretensiones.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#reservas" class="btn-primary">
+            Reservar mesa <span class="btn-arrow">→</span>
+          </a>
+          <a href="#carta" class="btn-secondary">Ver carta</a>
+        </div>
+
+        <div class="hero-stats" role="list">
+          <div role="listitem">
+            <div class="stat-num">4,4★</div>
+            <div class="stat-label">Google</div>
+          </div>
+          <div role="listitem">
+            <div class="stat-num">+1.000</div>
+            <div class="stat-label">Reseñas</div>
+          </div>
+          <div role="listitem">
+            <div class="stat-num">A pasos</div>
+            <div class="stat-label">de La Fossa</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========= CASA (sobre nosotros) ========= -->
+    <section id="casa" class="section casa" aria-labelledby="casa-title">
+      <div class="casa-grid">
+        <div class="casa-img">
+          <img
+            src="img/ambiente-bar.webp"
+            alt="Interior cálido de RAZO: barra de madera, lámparas de bronce y luz natural."
+          />
+          <div class="casa-img-tag">Imagen referencial</div>
+        </div>
+
+        <div class="casa-text">
+          <span class="section-eyebrow">La casa</span>
+          <h2 id="casa-title" class="section-title">
+            Un sitio de <em>barrio</em>, con vistas al mar.
+          </h2>
+
+          <p>
+            Un bar-restaurante a pasos del paseo de La Fossa. Cocina
+            mediterránea, tapas, carnes y pescados con algún guiño
+            rioplatense puntual (chivito, milanesa napolitana).
+          </p>
+
+          <p class="text-soft">
+            <em>La historia, el equipo y el origen de los toques
+            rioplatenses se cuentan con vosotros — éste es el espacio
+            reservado para vuestras palabras.</em>
+          </p>
+
+          <dl class="casa-meta">
+            <div>
+              <dt>Dónde</dt>
+              <dd>Av. Europa 24<br />03710 Calpe</dd>
+            </div>
+            <div>
+              <dt>Junto a</dt>
+              <dd>Playa de La&nbsp;Fossa<br />Hotel Port Europa</dd>
+            </div>
+            <div>
+              <dt>Reservas</dt>
+              <dd>+34 965 04 61 04</dd>
+            </div>
+            <div>
+              <dt>Equipo</dt>
+              <dd class="dd-soft">[a definir<br />con vosotros]</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= DESAYUNOS (sección destacada — precios cerrados) ========= -->
+    <section id="desayunos" class="section desayunos" aria-labelledby="desayunos-title">
+      <div class="desayunos-grid">
+        <div class="desayunos-head">
+          <span class="section-eyebrow">Desde las 09:00</span>
+          <h2 id="desayunos-title" class="section-title">
+            Desayunos con <em>precio cerrado</em>.
+          </h2>
+          <p class="section-lead">
+            La única franja de la carta con precios fijos. Para empezar el
+            día sin prisas, a un paso de la arena.
+          </p>
+          <span class="desayunos-stamp">IVA incluido</span>
+        </div>
+
+        <ul class="desayunos-list">
+          <li>
+            <span class="desayunos-name">Desayuno continental</span>
+            <span class="desayunos-price">8,00 €</span>
+            <p class="desayunos-desc">Tostada, mermelada, té o café y zumo.</p>
+          </li>
+          <li>
+            <span class="desayunos-name">Desayuno completo</span>
+            <span class="desayunos-price">8,80 €</span>
+            <p class="desayunos-desc">Versión más completa, con varios acompañamientos.</p>
+          </li>
+          <li>
+            <span class="desayunos-name">Tortilla vegetariana</span>
+            <span class="desayunos-price">7,50 €</span>
+            <p class="desayunos-desc">A la sartén, con verduras.</p>
+          </li>
+          <li>
+            <span class="desayunos-name">Desayuno separado · variante</span>
+            <span class="desayunos-price">12,00 €</span>
+            <p class="desayunos-desc">Platos por separado, con zumo grande.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========= CARTA ========= -->
+    <section id="carta" class="section carta" aria-labelledby="carta-title">
+      <div class="carta-head">
+        <span class="section-eyebrow">Carta destacada</span>
+        <h2 id="carta-title" class="section-title">
+          Tapas, mar y <em>plancha</em>.
+        </h2>
+        <p class="section-lead">
+          Una selección de la carta: aperitivos, pescado, carne a la plancha
+          y un par de guiños rioplatenses puntuales. Los platos del día se
+          cantan en sala. Precios sujetos al mercado.
+        </p>
+      </div>
+
+      <div class="carta-grid">
+        <article class="dish">
+          <div class="dish-img">
+            <img src="img/plato-bravas.webp" alt="Patatas bravas con salsa y alioli." />
+          </div>
+          <div class="dish-info">
+            <div class="dish-head">
+              <h3 class="dish-name">Patatas bravas</h3>
+              <span class="dish-price">—</span>
+            </div>
+            <p class="dish-desc">
+              Patata frita crujiente, salsa brava casera con pimentón
+              ahumado y alioli suave. La tapa de la casa.
+            </p>
+            <span class="dish-tag">Tapa · Clásico</span>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-img">
+            <img src="img/plato-gambas.webp" alt="Gambas al ajillo en cazuela de barro." />
+          </div>
+          <div class="dish-info">
+            <div class="dish-head">
+              <h3 class="dish-name">Gambas al ajillo</h3>
+              <span class="dish-price">—</span>
+            </div>
+            <p class="dish-desc">
+              Gambas salteadas en aceite de oliva, ajo laminado y guindilla.
+              Servidas en cazuela, con pan para mojar.
+            </p>
+            <span class="dish-tag">Tapa · Mar</span>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-img">
+            <img src="img/plato-pulpo.webp" alt="Pulpo y orzo en plato hondo." />
+          </div>
+          <div class="dish-info">
+            <div class="dish-head">
+              <h3 class="dish-name">Pulpo y orzo</h3>
+              <span class="dish-price">—</span>
+            </div>
+            <p class="dish-desc">
+              Pulpo con orzo, aceite de oliva y un toque de pimentón.
+              Una de las apuestas de la casa.
+            </p>
+            <span class="dish-tag">Mar · Plato hondo</span>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-img">
+            <img src="img/plato-lubina.webp" alt="Lubina entera a la plancha con limón y verduras." />
+          </div>
+          <div class="dish-info">
+            <div class="dish-head">
+              <h3 class="dish-name">Lubina a la plancha</h3>
+              <span class="dish-price">—</span>
+            </div>
+            <p class="dish-desc">
+              Lubina entera a la plancha, piel crujiente, acompañada de
+              verduras de temporada y un toque de aceite y limón.
+            </p>
+            <span class="dish-tag">Pescado · Principal</span>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-img">
+            <img src="img/plato-calamares.webp" alt="Calamares a la andaluza dorados con limón." />
+          </div>
+          <div class="dish-info">
+            <div class="dish-head">
+              <h3 class="dish-name">Calamares a la andaluza</h3>
+              <span class="dish-price">—</span>
+            </div>
+            <p class="dish-desc">
+              Anillas de calamar con harina, fritos en aceite limpio.
+              Servidos con cuña de limón y mayonesa de la casa.
+            </p>
+            <span class="dish-tag">Tapa · Mar</span>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-img">
+            <img src="img/plato-croquetas.webp" alt="Croquetas caseras doradas en plato blanco." />
+          </div>
+          <div class="dish-info">
+            <div class="dish-head">
+              <h3 class="dish-name">Croquetas de la casa</h3>
+              <span class="dish-price">—</span>
+            </div>
+            <p class="dish-desc">
+              Bechamel suave, rebozado dorado y crujiente. Las del día las
+              cantamos en la mesa.
+            </p>
+            <span class="dish-tag">Tapa · Casero</span>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-img">
+            <img src="img/plato-chivito.webp" alt="Entrecot a la plancha con guarnición." />
+          </div>
+          <div class="dish-info">
+            <div class="dish-head">
+              <h3 class="dish-name">Entrecot</h3>
+              <span class="dish-price">16,90 €</span>
+            </div>
+            <p class="dish-desc">
+              A la plancha, al punto que pidas. Con guarnición a elegir.
+              La especialidad de la casa.
+            </p>
+            <span class="dish-tag">Carne · Especialidad</span>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-img">
+            <img src="img/plato-milanesa.webp" alt="Milanesa a la napolitana con queso fundido y salsa." />
+          </div>
+          <div class="dish-info">
+            <div class="dish-head">
+              <h3 class="dish-name">Milanesa a la napolitana</h3>
+              <span class="dish-price">—</span>
+            </div>
+            <p class="dish-desc">
+              Filete empanado, salsa de tomate, jamón y queso fundido,
+              al estilo del Río de la Plata. Con ensalada.
+            </p>
+            <span class="dish-tag">Guiño rioplatense</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="carta-note" style="margin-top: 32px; background: rgba(44, 94, 124, 0.06); border-left-color: var(--sea);">
+        <strong style="color: var(--sea);">Guiños rioplatenses:</strong>
+        Dos clásicos del otro lado del Atlántico en una mesa mediterránea
+        — el chivito (sándwich uruguayo) y la milanesa napolitana al estilo
+        del Río de la Plata. <em style="color: var(--coal-soft)">[Por qué un
+        toque rioplatense en la carta — lo cuentan con vosotros.]</em>
+      </div>
+
+      <div class="carta-note">
+        <strong>Sobre los precios:</strong> Entrecot 16,90 € y solomillo
+        17,90 € verificados en reviews de Tripadvisor UK 2024-2025. IVA
+        incluido. Resto de platos: consultar al equipo de sala. La carta
+        entera está en sala y en el
+        <a
+          href="https://weur-cdn.carta.menu/storage/media/companies_menu_pdf/93190445/razo-calp-carta.pdf"
+          target="_blank"
+          rel="noopener"
+          style="color: var(--terracotta); border-bottom: 1px solid currentColor"
+          >PDF oficial</a
+        >. La carta de bebidas (vinos casa 9 €/botella, Rioja 15 €/botella,
+        sangría y cervezas) <em style="color: var(--coal-soft)">se
+        cierra con vosotros</em>.
+      </div>
+    </section>
+
+    <!-- ========= RESEÑAS ========= -->
+    <section id="resenas" class="section resenas" aria-labelledby="resenas-title">
+      <span class="section-eyebrow">Lo que se dice</span>
+      <h2 id="resenas-title" class="section-title">
+        Más de mil voces, <em>una misma mesa</em>.
+      </h2>
+      <p class="section-lead" style="color: rgba(247, 241, 232, 0.75)">
+        Reseñas verificadas en Tripadvisor y Sluurpy. Cada una es de un cliente
+        real — sin filtros, sin retoques.
+      </p>
+
+      <div class="resenas-grid">
+        <article class="review">
+          <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+          <p class="review-body">
+            "Es un lugar que nos gusta mucho por su deliciosa comida y su
+            excelente atención familiar. Cada plato preparado con mimo."
+          </p>
+          <div class="review-meta">
+            Sandypimienta <span>· Tripadvisor</span>
+          </div>
+        </article>
+
+        <article class="review">
+          <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+          <p class="review-body">
+            "El chivito era un plato enoooorme combinado, la ternera estaba
+            increíble, muy tierna y rica. Salimos a 23 euros los dos."
+          </p>
+          <div class="review-meta">
+            Azucena <span>· Tripadvisor</span>
+          </div>
+        </article>
+
+        <article class="review">
+          <div class="review-stars" aria-label="4 estrellas">★★★★☆</div>
+          <p class="review-body">
+            "Bar-restaurante junto al hotel Port Europe. Nos solían servir dos
+            camareras muy simpáticas. Tienen carta de desayunos, comidas y cenas."
+          </p>
+          <div class="review-meta">
+            Fernando M. <span>· Tripadvisor</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========= GALERIA ========= -->
+    <section class="section galeria" aria-label="Galería de ambiente">
+      <span class="section-eyebrow">Ambiente</span>
+      <h2 class="section-title">
+        Así se siente la <em>casa</em>.
+      </h2>
+
+      <div class="galeria-grid">
+        <img src="img/hero-terraza.webp" alt="Terraza al atardecer junto al paseo marítimo." />
+        <img src="img/plato-pulpo.webp" alt="Plato de pulpo a la gallega." />
+        <img src="img/ambiente-bar.webp" alt="Interior del bar con luz cálida." class="gallery-tall" />
+        <img src="img/plato-gambas.webp" alt="Gambas al ajillo en cazuela." />
+        <img src="img/plato-lubina.webp" alt="Lubina a la plancha." />
+        <img src="img/plato-bravas.webp" alt="Patatas bravas con alioli." />
+      </div>
+    </section>
+
+    <!-- ========= RESERVAS ========= -->
+    <section id="reservas" class="section reservas" aria-labelledby="reservas-title">
+      <div class="reservas-grid">
+        <div>
+          <span class="section-eyebrow">Reservas</span>
+          <h2 id="reservas-title" class="section-title">
+            Una mesa <em>esperando</em>.
+          </h2>
+          <p class="section-lead">
+            Llamada, WhatsApp o formulario — como os sea más cómodo.
+            Confirmamos por escrito en menos de una hora en horario
+            de servicio.
+          </p>
+
+          <div class="reservas-alt">
+            <p>O directamente:</p>
+            <div class="reservas-alt-actions">
+              <a href="tel:+34965046104" class="alt-btn">
+                <span class="ic">☎</span> +34 965 04 61 04
+              </a>
+              <a
+                href="https://wa.me/34965046104"
+                target="_blank"
+                rel="noopener"
+                class="alt-btn"
+              >
+                <span class="ic">✆</span> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form
+          onsubmit="event.preventDefault(); alert('Demo: el formulario está conectado en la versión final.');"
+          aria-label="Formulario de reserva"
+        >
+          <div class="form-row">
+            <div class="form-field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" type="text" name="nombre" required />
+            </div>
+            <div class="form-field">
+              <label for="telefono">Teléfono</label>
+              <input id="telefono" type="tel" name="telefono" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fecha">Fecha</label>
+              <input id="fecha" type="date" name="fecha" required />
+            </div>
+            <div class="form-field">
+              <label for="hora">Hora</label>
+              <input id="hora" type="time" name="hora" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="personas">Comensales</label>
+              <select id="personas" name="personas">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7+</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="email">Email (opcional)</label>
+              <input id="email" type="email" name="email" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="notas">Algo más</label>
+            <textarea
+              id="notas"
+              name="notas"
+              placeholder="Alergias, cumpleaños, mesa en terraza..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            Solicitar reserva <span class="btn-arrow">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========= CONTACTO ========= -->
+    <section id="contacto" class="section contacto" aria-labelledby="contacto-title">
+      <div class="contacto-grid">
+        <div>
+          <span class="section-eyebrow">Contacto</span>
+          <h2 id="contacto-title" class="section-title">
+            En el <em>paseo</em>, frente al mar.
+          </h2>
+
+          <dl class="info-block">
+            <div class="info-row">
+              <dt class="info-label">Dirección</dt>
+              <dd class="info-value">
+                Avenida Europa 24<br />
+                03710 Calpe, Alicante
+              </dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-label">Teléfono</dt>
+              <dd class="info-value">
+                <a href="tel:+34965046104">+34 965 04 61 04</a>
+              </dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-label">Horario</dt>
+              <dd class="info-value">
+                Todos los días<br />
+                09:00 – 23:30
+              </dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-label">Redes</dt>
+              <dd class="info-value">
+                <a
+                  href="https://www.instagram.com/razocalpe/"
+                  target="_blank"
+                  rel="noopener"
+                  >Instagram @razocalpe</a
+                >
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="map-wrap">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=0.04566%2C38.6463%2C0.05366%2C38.6493&amp;layer=mapnik&amp;marker=38.6478%2C0.0497"
+            title="Mapa de RAZO en Avenida Europa 24, Calpe"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= FOOTER ========= -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">RAZO</div>
+          <p class="footer-tag">
+            Bar-restaurante mediterráneo en Avenida Europa, Calpe.
+            A pasos de la playa de La Fossa.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Visita</h4>
+          <ul>
+            <li>Avenida Europa 24</li>
+            <li>03710 Calpe, Alicante</li>
+            <li>España</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:+34965046104">+34 965 04 61 04</a></li>
+            <li>
+              <a
+                href="https://wa.me/34965046104"
+                target="_blank"
+                rel="noopener"
+                >WhatsApp</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/razocalpe/"
+                target="_blank"
+                rel="noopener"
+                >Instagram</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Carta</h4>
+          <ul>
+            <li>
+              <a
+                href="https://weur-cdn.carta.menu/storage/media/companies_menu_pdf/93190445/razo-calp-carta.pdf"
+                target="_blank"
+                rel="noopener"
+                >Ver PDF oficial</a
+              >
+            </li>
+            <li><a href="#reservas">Reservar mesa</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <strong>Aviso de la maqueta:</strong> Esta web es una propuesta
+          de diseño hecha por Kenaz para RAZO. Las imágenes son
+          referenciales — las definitivas serán fotografía profesional
+          realizada en el local. Los textos marcados <em style="color: rgba(247, 241, 232, 0.55); font-style: italic">en cursiva tenue</em>
+          se co-escriben con el equipo de RAZO. Identidad y origen del
+          equipo a confirmar con la casa.
+        </div>
+        <div class="by-kenaz">
+          Diseño propuesto por
+          <a href="https://kenaz.studio" target="_blank" rel="noopener"
+            >Kenaz Studio</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========= Lenis smooth scroll + GSAP reveals + parallax ========= -->
+    <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+      (function () {
+        const prefersReduced = window.matchMedia(
+          '(prefers-reduced-motion: reduce)'
+        ).matches;
+
+        // ----- Lenis smooth scroll (skip si reduced motion) -----
+        if (!prefersReduced && typeof Lenis !== 'undefined') {
+          const lenis = new Lenis({
+            duration: 1.1,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            smoothTouch: false,
+          });
+
+          function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          }
+          requestAnimationFrame(raf);
+
+          // Integrar Lenis con ScrollTrigger
+          if (typeof ScrollTrigger !== 'undefined') {
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => lenis.raf(time * 1000));
+            gsap.ticker.lagSmoothing(0);
+          }
+        }
+
+        // ----- GSAP no disponible? salir -----
+        if (typeof gsap === 'undefined') return;
+        if (typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+
+        // Si reduced motion: aplicar todo instantáneo
+        if (prefersReduced) {
+          gsap.set(
+            '.dish, .casa-text > *, .casa-img, .review, .section-title, .section-lead, .desayunos-list li, .desayunos-head > *',
+            { opacity: 1, y: 0 }
+          );
+          return;
+        }
+
+        // ----- Hero stats count-up -----
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) {
+          const numEls = heroStats.querySelectorAll('.stat-num');
+
+          // Targets parseados desde el contenido original
+          const animations = [
+            { el: numEls[0], to: 4.4, suffix: '★', decimals: 1 },
+            { el: numEls[1], to: 1000, prefix: '+', decimals: 0 },
+            // El tercero ("A pasos") no es numérico — solo fade-in
+          ];
+
+          // Set inicial
+          animations.forEach((a) => {
+            if (!a.el) return;
+            a.el.textContent = (a.decimals ? '0,0' : '0') + (a.suffix || '');
+            if (a.prefix) a.el.textContent = a.prefix + a.el.textContent;
+          });
+
+          ScrollTrigger.create({
+            trigger: heroStats,
+            start: 'top 85%',
+            once: true,
+            onEnter: () => {
+              animations.forEach((a) => {
+                if (!a.el) return;
+                const obj = { val: 0 };
+                gsap.to(obj, {
+                  val: a.to,
+                  duration: 1.6,
+                  ease: 'power2.out',
+                  onUpdate: () => {
+                    let text = a.decimals
+                      ? obj.val.toFixed(a.decimals).replace('.', ',')
+                      : Math.round(obj.val).toLocaleString('es-ES');
+                    if (a.prefix) text = a.prefix + text;
+                    if (a.suffix) text = text + a.suffix;
+                    a.el.textContent = text;
+                  },
+                });
+              });
+              // Fade-in del tercer stat
+              if (numEls[2]) {
+                gsap.from(numEls[2], {
+                  opacity: 0,
+                  y: 10,
+                  duration: 0.9,
+                  ease: 'power2.out',
+                });
+              }
+            },
+          });
+        }
+
+        // ----- Parallax sutil en hero background -----
+        const heroBgImg = document.querySelector('.hero-bg img');
+        if (heroBgImg) {
+          gsap.to(heroBgImg, {
+            yPercent: 18,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.hero',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: true,
+            },
+          });
+        }
+
+        // ----- Cards de carta: stagger desde abajo -----
+        const dishes = gsap.utils.toArray('.dish');
+        if (dishes.length) {
+          gsap.set(dishes, { opacity: 0, y: 36 });
+          ScrollTrigger.batch(dishes, {
+            start: 'top 88%',
+            once: true,
+            onEnter: (batch) =>
+              gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.08,
+                ease: 'power2.out',
+              }),
+          });
+        }
+
+        // ----- Sección Historia / La Casa: fade-up -----
+        const casaTargets = gsap.utils.toArray(
+          '.casa-img, .casa-text > *'
+        );
+        if (casaTargets.length) {
+          gsap.set(casaTargets, { opacity: 0, y: 24 });
+          ScrollTrigger.batch(casaTargets, {
+            start: 'top 85%',
+            once: true,
+            onEnter: (batch) =>
+              gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.07,
+                ease: 'power2.out',
+              }),
+          });
+        }
+
+        // ----- Desayunos: fade-up con stagger -----
+        const desayunosTargets = gsap.utils.toArray(
+          '.desayunos-head > *, .desayunos-list li'
+        );
+        if (desayunosTargets.length) {
+          gsap.set(desayunosTargets, { opacity: 0, y: 24 });
+          ScrollTrigger.batch(desayunosTargets, {
+            start: 'top 88%',
+            once: true,
+            onEnter: (batch) =>
+              gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.07,
+                ease: 'power2.out',
+              }),
+          });
+        }
+
+        // ----- Reseñas: fade-up con stagger -----
+        const reviews = gsap.utils.toArray('.review');
+        if (reviews.length) {
+          gsap.set(reviews, { opacity: 0, y: 28 });
+          ScrollTrigger.batch(reviews, {
+            start: 'top 88%',
+            once: true,
+            onEnter: (batch) =>
+              gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.12,
+                ease: 'power2.out',
+              }),
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

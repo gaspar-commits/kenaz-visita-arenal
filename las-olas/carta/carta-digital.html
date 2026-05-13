@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Las Olas · Carta · Paellas y arroces · Calpe</title>
+<meta name="description" content="Carta de Las Olas. Paellas y arroces valencianos en el paseo del Arenal de Calpe." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #fbf5e9;
+    --cream-deep: #f3ead6;
+    --bone: #f7f1e2;
+    --ink: #2a1f12;
+    --ink-soft: #5b4b35;
+    --saffron: #d99526;
+    --saffron-deep: #b97a18;
+    --ocre: #9a6f2c;
+    --sea: #2a607b;
+    --sea-deep: #194559;
+    --line: rgba(42, 31, 18, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 400; }
+
+  /* DISCLAIMER TOP */
+  .disclaimer-top {
+    background: var(--cream-deep);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px; color: var(--ink-soft);
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  .disclaimer-top strong { color: var(--ink); }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 245, 233, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px; max-width: 1180px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: baseline; gap: 8px; }
+  .brand-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+  .brand-tag {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--saffron-deep); font-weight: 600;
+  }
+  .nav-cta {
+    background: var(--ink); color: var(--cream);
+    padding: 10px 16px; border-radius: 4px;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+  }
+
+  /* COVER */
+  .cover {
+    position: relative;
+    min-height: 78vh;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .cover-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.95;
+  }
+  .cover-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(42,31,18,0.18) 0%, rgba(42,31,18,0.55) 60%, rgba(42,31,18,0.92) 100%);
+  }
+  .cover-content {
+    position: relative; z-index: 2;
+    min-height: 78vh;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 30px 22px 50px;
+    max-width: 1180px; margin: 0 auto;
+    color: var(--cream);
+  }
+  .cover-top {
+    display: flex; justify-content: space-between;
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(251,245,233,0.75); font-weight: 500;
+  }
+  .cover-top em { font-style: normal; color: var(--saffron); }
+  .cover-center { margin-top: auto; }
+  .cover-eyebrow {
+    font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 16px; font-weight: 600;
+  }
+  .cover-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(56px, 14vw, 120px);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    margin-bottom: 18px;
+    max-width: 9ch;
+  }
+  .cover-title em { font-style: italic; color: var(--saffron); font-weight: 300; }
+  .cover-tagline {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    font-size: clamp(16px, 4vw, 22px);
+    color: rgba(251,245,233,0.85);
+    max-width: 24ch;
+    line-height: 1.4;
+  }
+  .cover-location {
+    margin-top: 28px;
+    display: flex; gap: 16px;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(251,245,233,0.75); font-weight: 500;
+  }
+  .cover-location .dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--saffron); align-self: center;
+  }
+
+  /* ORNAMENT */
+  .ornament {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    padding: 30px 22px;
+    background: var(--cream-deep);
+    border-bottom: 1px solid var(--line);
+  }
+  .ornament .line {
+    width: 36px; height: 1px; background: var(--saffron-deep); opacity: 0.5;
+  }
+  .ornament .mark {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 14px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--saffron-deep); font-weight: 500;
+  }
+
+  /* SECTIONS */
+  section { padding: 64px 22px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--saffron-deep); font-weight: 600; margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: ""; width: 18px; height: 1px;
+    background: var(--saffron-deep); opacity: 0.55;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(34px, 8vw, 52px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .section-title em { font-style: italic; color: var(--saffron-deep); }
+  .section-sub {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    font-size: clamp(15px, 3.6vw, 17px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 40ch;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .section-head .section-sub { margin: 18px auto 0; }
+
+  /* LA CASA */
+  .casa {
+    background: var(--cream);
+    text-align: center;
+  }
+  .casa .body {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 17px; line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 36ch;
+    margin: 0 auto;
+  }
+  .casa .body p + p { margin-top: 14px; }
+  .casa .placeholder {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--saffron-deep); font-weight: 600;
+    background: rgba(217,149,38,0.08);
+    border: 1px dashed var(--saffron);
+    padding: 10px 18px;
+    border-radius: 2px;
+  }
+
+  /* ARROCES (signature) */
+  .arroces {
+    background: var(--cream-deep);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .arroces .section-head { margin-bottom: 32px; }
+  .feature-img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+  .feature-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  .dish-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .dish {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 22px;
+  }
+  .dish:last-child { border-bottom: none; }
+  .dish-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .dish-desc {
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .dish-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--sea);
+    font-weight: 500;
+    white-space: nowrap;
+    align-self: flex-start;
+    padding-top: 4px;
+  }
+  .reserva-arroz {
+    margin-top: 36px;
+    padding: 20px 22px;
+    background: var(--cream);
+    border-left: 3px solid var(--saffron);
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 15px; line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .reserva-arroz strong {
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'Inter', sans-serif; font-style: normal;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--saffron-deep); font-weight: 600;
+  }
+
+  /* SECCION normal */
+  .section--cream { background: var(--cream); }
+  .section--bone { background: var(--bone); }
+  .section--sea { background: var(--sea-deep); color: var(--cream); }
+  .section--sea .section-title { color: var(--cream); }
+  .section--sea .section-title em { color: var(--saffron); }
+  .section--sea .section-sub { color: rgba(251,245,233,0.78); }
+  .section--sea .eyebrow { color: var(--saffron); }
+  .section--sea .eyebrow::before, .section--sea .eyebrow::after { background: var(--saffron); }
+  .section--sea .dish { border-bottom-color: rgba(251,245,233,0.16); }
+  .section--sea .dish-name { color: var(--cream); }
+  .section--sea .dish-desc { color: rgba(251,245,233,0.7); }
+  .section--sea .dish-price { color: var(--saffron); }
+
+  .gallery-strip {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    margin: 0 -22px 36px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .gallery-strip img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* INFO bloque alergenos */
+  .info {
+    background: var(--ink);
+    color: rgba(251,245,233,0.85);
+    padding: 56px 22px;
+  }
+  .info-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .info .eyebrow { color: var(--saffron); }
+  .info .eyebrow::before, .info .eyebrow::after { background: var(--saffron); opacity: 0.55; }
+  .info-title {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 28px; line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 18px;
+  }
+  .info-title em { font-style: italic; color: var(--saffron); }
+  .info-body {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(251,245,233,0.72);
+    max-width: 42ch;
+    margin: 0 auto;
+  }
+  .info-note {
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: rgba(217,149,38,0.10);
+    border: 1px solid rgba(217,149,38,0.3);
+    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(251,245,233,0.92);
+    max-width: 42ch;
+    margin-left: auto; margin-right: auto;
+  }
+  .info-note strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--saffron); font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--sea-deep); color: rgba(251,245,233,0.7);
+    padding: 48px 22px 36px;
+    font-size: 13px;
+    text-align: center;
+  }
+  .foot-inner { max-width: 720px; margin: 0 auto; }
+  .foot-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 28px; font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .foot-tag {
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(251,245,233,0.5);
+    margin-bottom: 28px;
+  }
+  .foot-disclaimer {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(251,245,233,0.14);
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: rgba(251,245,233,0.55);
+    max-width: 48ch;
+    margin-left: auto; margin-right: auto;
+  }
+  .kenaz-credit {
+    margin-top: 20px;
+    font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(251,245,233,0.4);
+    font-weight: 500;
+  }
+  .kenaz-credit a { color: var(--saffron); }
+</style>
+</head>
+<body>
+
+<div class="disclaimer-top">
+  <strong>Carta editorial de muestra.</strong> Preparada por Kenaz. Variedades, precios y detalles definitivos se cierran con Las Olas.
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="brand-mark">Las Olas</span>
+      <span class="brand-tag">Carta</span>
+    </div>
+    <a href="#arroces" class="nav-cta">Ver arroces</a>
+  </div>
+</nav>
+
+<!-- ===================== COVER ===================== -->
+<header class="cover">
+  <img class="cover-img" src="img/portada-mesa.webp" alt="Mesa con paellas y vista al paseo del Arenal de Calpe" onerror="this.src='img/hero-paella.webp'" />
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <div class="cover-top">
+      <span>Las Olas · Calpe</span>
+      <span><em>Carta de temporada</em></span>
+    </div>
+    <div class="cover-center">
+      <div class="cover-eyebrow">La carta</div>
+      <h1 class="cover-title">Paellas <em>y arroces</em></h1>
+      <p class="cover-tagline">En el paseo del Arenal, frente al Mediterráneo.</p>
+      <div class="cover-location">
+        <span>Av. Europa</span>
+        <span class="dot"></span>
+        <span>Paseo Arenal–Bol</span>
+        <span class="dot"></span>
+        <span>Calpe</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ornament">
+  <span class="line"></span>
+  <span class="mark">· Carta ·</span>
+  <span class="line"></span>
+</div>
+
+<!-- ===================== LA CASA ===================== -->
+<section class="casa">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">La casa</span>
+      <h2 class="section-title">Cocina del <em>paseo</em>.</h2>
+    </div>
+    <div class="body">
+      <p>Estamos en el paseo marítimo del Arenal, mirando al mar. La cocina hace lo que esta costa hace bien: paellas y arroces valencianos, al fuego que les toca, sin atajos.</p>
+      <p>Cada arroz se prepara en su sartén y necesita su tiempo. Vale la pena esperarlo.</p>
+      <span class="placeholder">· Historia real de la casa a definir ·</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ARROCES (signature) ===================== -->
+<section class="arroces" id="arroces">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">La firma de la casa</span>
+      <h2 class="section-title">Nuestros <em>arroces</em>.</h2>
+      <p class="section-sub">Hechos en su sartén, con caldo del día. Mínimo de elaboración 25 minutos. Conviene reservarlos con antelación.</p>
+    </div>
+
+    <div class="feature-img">
+      <img src="img/arroz-banda.webp" alt="Arroz a banda en sartén" />
+    </div>
+
+    <ul class="dish-list">
+      <li class="dish">
+        <div>
+          <div class="dish-name">Paella valenciana</div>
+          <div class="dish-desc">Pollo, conejo, garrofó, judía verde, tomate, azafrán. <em>Receta exacta a definir.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Paella de marisco</div>
+          <div class="dish-desc">Gambas, mejillones, calamar, cigalas según mercado. <em>Mariscos a confirmar.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Paella mixta</div>
+          <div class="dish-desc">Carne y marisco. La combinación clásica para los indecisos.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Arroz a banda</div>
+          <div class="dish-desc">Arroz con caldo de pescado de roca, servido con alioli aparte. Marinero puro.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Arroz negro</div>
+          <div class="dish-desc">Con tinta de calamar y sepia. Acabado con alioli suave de la casa.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Arroz del señorito</div>
+          <div class="dish-desc">Marisco pelado, sin trabajo en la mesa. Caldo intenso de pescado.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Fideuá</div>
+          <div class="dish-desc">Fideo fino en lugar de arroz. Caldo de pescado y marisco, alioli aparte.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+    </ul>
+
+    <div class="reserva-arroz">
+      <strong>Importante</strong>
+      Reservar la paella con antelación. Mínimo 25 minutos de elaboración por tratarse de cocina al momento.
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARA EMPEZAR ===================== -->
+<section class="section--cream">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Para empezar</span>
+      <h2 class="section-title">Entrantes y <em>picar</em>.</h2>
+      <p class="section-sub">Para abrir mesa mientras se hace el arroz.</p>
+    </div>
+
+    <ul class="dish-list">
+      <li class="dish">
+        <div>
+          <div class="dish-name">Ensalada de la casa</div>
+          <div class="dish-desc"><em>Ingredientes exactos a definir con el equipo.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Gambas a la plancha</div>
+          <div class="dish-desc">Producto fresco según mercado.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Calamares a la andaluza</div>
+          <div class="dish-desc">Rebozado fino, limón de la costa.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Croquetas caseras</div>
+          <div class="dish-desc"><em>Variedad de la casa a confirmar.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Mejillones al vapor</div>
+          <div class="dish-desc">Con limón, ajo y perejil. Sencillo.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== GALLERY STRIP ===================== -->
+<div class="gallery-strip">
+  <img src="img/arroz-negro.webp" alt="Arroz negro de Las Olas" />
+</div>
+
+<!-- ===================== PESCADOS Y CARNES ===================== -->
+<section class="section--bone">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Del mar y de la brasa</span>
+      <h2 class="section-title">Pescados <em>y carnes</em>.</h2>
+      <p class="section-sub">Producto según mercado. La pizarra del día se cierra cada mañana.</p>
+    </div>
+
+    <ul class="dish-list">
+      <li class="dish">
+        <div>
+          <div class="dish-name">Pescado del día</div>
+          <div class="dish-desc">A la sal, a la plancha o a la espalda, según el pez. <em>Lista del día a definir.</em></div>
+        </div>
+        <div class="dish-price">S/M</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Lubina o dorada</div>
+          <div class="dish-desc"><em>Preparación de la casa a confirmar.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Entrecot a la plancha</div>
+          <div class="dish-desc">Carne madurada, guarnición de la casa.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Solomillo</div>
+          <div class="dish-desc"><em>Punto y salsa a definir.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== POSTRES ===================== -->
+<section class="section--cream">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Para cerrar</span>
+      <h2 class="section-title">Postres <em>de la casa</em>.</h2>
+    </div>
+
+    <ul class="dish-list">
+      <li class="dish">
+        <div>
+          <div class="dish-name">Tarta de queso</div>
+          <div class="dish-desc"><em>Receta exacta a definir.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Helado artesano</div>
+          <div class="dish-desc">Variedad según temporada.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Postre del día</div>
+          <div class="dish-desc"><em>Sugerencia de la casa.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== BEBIDAS ===================== -->
+<section class="section--sea">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Bodega y barra</span>
+      <h2 class="section-title">Bebidas <em>y vinos</em>.</h2>
+      <p class="section-sub">Carta corta, elegida con criterio. Maridajes con arroz disponibles.</p>
+    </div>
+
+    <ul class="dish-list">
+      <li class="dish">
+        <div>
+          <div class="dish-name">Sangría de la casa</div>
+          <div class="dish-desc">Vino tinto, frutas de temporada, especiado suave. Jarra o copa.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Vino de la casa</div>
+          <div class="dish-desc">Tinto, blanco o rosado. <em>Bodega a definir.</em></div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Selección de vinos</div>
+          <div class="dish-desc">Carta de bodega completa a presentar en mesa.</div>
+        </div>
+        <div class="dish-price">Carta</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Cervezas</div>
+          <div class="dish-desc">Caña, doble, sin alcohol. Marcas a definir.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+      <li class="dish">
+        <div>
+          <div class="dish-name">Refrescos y aguas</div>
+          <div class="dish-desc">Selección completa.</div>
+        </div>
+        <div class="dish-price">PVP · —</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== INFO ===================== -->
+<section class="info">
+  <div class="info-inner">
+    <span class="eyebrow">Información</span>
+    <h3 class="info-title">Alérgenos <em>y reservas</em>.</h3>
+    <p class="info-body">
+      Para cualquier alergia o intolerancia, pregunte al personal de sala antes de hacer su pedido. Disponemos de información detallada de los 14 alérgenos de declaración obligatoria.
+    </p>
+    <div class="info-note">
+      <strong>Importante</strong>
+      Las paellas y arroces se elaboran al momento. Recomendamos reservar la paella con antelación, mínimo 25 minutos de elaboración por tratarse de cocina al fuego.
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">Las Olas</div>
+    <div class="foot-tag">Paseo Arenal · Calpe</div>
+    <div class="foot-disclaimer">
+      Carta editorial preparada por Kenaz como muestra. Variedades, precios y detalles finales se cierran con vosotros. Imágenes referenciales.
+    </div>
+    <div class="kenaz-credit">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

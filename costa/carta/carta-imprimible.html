@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Costa · Carta imprimible · A3 doble cara</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   COSTA — Carta imprimible
+   Formato: A3 horizontal (420 × 297 mm) doble cara
+   Pliegue triple gatefold: 3 paneles de 140 × 297 mm cada uno
+   Márgenes seguros: 12 mm
+   Para imprenta: lista para CMYK / sangrado mínimo
+   Paleta: blanco hueso + azul Mediterráneo + ocre dorado
+============================================================ */
+
+@page {
+  size: 420mm 297mm;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bone: #f5efe4;
+  --bone-soft: #ebe3d3;
+  --bone-warm: #e3d8c1;
+  --ink: #0f2438;
+  --ink-soft: #1a3148;
+  --ink-line: #2a4663;
+  --sea: #244a6b;
+  --sea-deep: #163553;
+  --ochre: #c08a3a;
+  --ochre-deep: #9d6c25;
+
+  --serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  background: #2a2a2a;
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body { padding: 30px; }
+
+/* ============================================================
+   SHEET (one printed page)
+============================================================ */
+
+.sheet {
+  width: 420mm;
+  height: 297mm;
+  background: var(--bone);
+  display: grid;
+  grid-template-columns: 140mm 140mm 140mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  margin: 0 auto 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.sheet:last-child { page-break-after: auto; margin-bottom: 0; }
+
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(15,36,56,0.08);
+  pointer-events: none;
+  z-index: 10;
+}
+.fold--1 { left: 140mm; }
+.fold--2 { left: 280mm; }
+
+@media print { .fold { display: none; } }
+
+/* ============================================================
+   PANEL — base
+============================================================ */
+
+.panel {
+  height: 297mm;
+  width: 140mm;
+  padding: 14mm 12mm;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--bone { background: var(--bone); color: var(--ink); }
+.panel--ink { background: var(--ink); color: var(--bone); }
+
+.panel--cover {
+  background:
+    linear-gradient(180deg, rgba(15,36,56,0.50) 0%, rgba(15,36,56,0.78) 60%, rgba(15,36,56,0.95) 100%),
+    url('img/ambiente.png') center / cover no-repeat,
+    var(--ink);
+  color: var(--bone);
+}
+
+/* ============================================================
+   COVER PANEL
+============================================================ */
+
+.panel--cover .top-meta {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+}
+
+.panel--cover .top-meta span:last-child { color: var(--ochre); }
+
+.panel--cover .center {
+  margin: auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18mm;
+}
+
+.brand-mark__rule {
+  width: 30px;
+  height: 1px;
+  background: var(--ochre);
+}
+
+.brand-mark__label {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+.cover-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 96pt;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--bone);
+  margin-bottom: 6mm;
+}
+.cover-name em { font-style: italic; font-weight: 400; color: var(--ochre); }
+
+.cover-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14pt;
+  line-height: 1.45;
+  color: var(--bone-warm);
+  max-width: 24ch;
+  margin: 0 auto;
+}
+
+.cover-hero-line {
+  margin-top: 8mm;
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+.panel--cover .bottom-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  position: relative;
+  z-index: 2;
+}
+.panel--cover .bottom-meta strong { color: var(--bone); font-weight: 500; letter-spacing: 0.22em; }
+.panel--cover .bottom-meta div { display: flex; flex-direction: column; gap: 3px; }
+.panel--cover .bottom-meta .right { text-align: right; }
+
+/* ============================================================
+   STORY PANEL
+============================================================ */
+
+.panel--story {
+  background: var(--bone);
+  border-left: 1px solid rgba(15,36,56,0.08);
+  border-right: 1px solid rgba(15,36,56,0.08);
+  text-align: center;
+  justify-content: center;
+}
+
+.story-eyebrow {
+  font-size: 7pt;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 6mm;
+  font-weight: 500;
+}
+
+.story-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 26pt;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 6mm;
+}
+.story-title em { font-style: italic; color: var(--sea); font-weight: 400; }
+
+.story-rule {
+  width: 24px;
+  height: 1px;
+  background: var(--ochre);
+  margin: 6mm auto;
+}
+
+.story-body {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 30ch;
+  margin: 0 auto;
+}
+.story-body p + p { margin-top: 4mm; }
+
+.story-placeholder {
+  margin-top: 6mm;
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ochre-deep);
+  background: rgba(192,138,58,0.08);
+  padding: 3mm 5mm;
+  border: 0.5pt dashed var(--ochre);
+  font-weight: 500;
+}
+
+.story-signature {
+  margin-top: 6mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--sea);
+}
+
+/* ============================================================
+   SECTION — listados
+============================================================ */
+
+.panel--list {
+  background: var(--bone);
+}
+
+.panel--list-dark {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 9mm;
+  padding-top: 4mm;
+}
+
+.chapter {
+  font-size: 6.5pt;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+  margin-bottom: 4mm;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.chapter::before, .chapter::after {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--ochre);
+  opacity: 0.6;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22pt;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+}
+.section-title em { font-style: italic; color: var(--sea); font-weight: 400; }
+
+.panel--list-dark .section-title { color: var(--bone); }
+.panel--list-dark .section-title em { color: var(--ochre); }
+.panel--list-dark .section-sub { color: var(--bone-warm); }
+
+.section-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--ink-soft);
+  margin-top: 3mm;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+/* dish */
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+  flex: 1;
+}
+
+.dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5mm 4mm;
+  padding-bottom: 3.5mm;
+  border-bottom: 0.5pt solid rgba(15,36,56,0.12);
+}
+.dish:last-child { border-bottom: none; }
+
+.panel--list-dark .dish { border-bottom-color: rgba(245,239,228,0.12); }
+
+.dish-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 11.5pt;
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+}
+
+.panel--list-dark .dish-name { color: var(--bone); }
+
+.dish-price {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 8pt;
+  color: var(--sea);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel--list-dark .dish-price { color: var(--ochre); }
+
+.dish-price em {
+  font-style: normal;
+  color: var(--ochre);
+  font-size: 6.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 0.5mm;
+}
+
+.dish-desc {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.dish-desc em { font-style: italic; color: var(--sea); }
+
+.panel--list-dark .dish-desc { color: var(--bone-warm); }
+.panel--list-dark .dish-desc em { color: var(--ochre); }
+
+.dish-tag {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-size: 5.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-top: 1mm;
+  font-weight: 500;
+}
+
+.placeholder-row {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 6.5pt;
+  letter-spacing: 0.04em;
+  color: var(--ochre-deep);
+  background: rgba(192,138,58,0.10);
+  border: 0.5pt dashed var(--ochre);
+  padding: 2.5mm 3mm;
+  margin-top: 1mm;
+  line-height: 1.4;
+}
+
+.panel--list-dark .placeholder-row {
+  color: var(--bone-warm);
+  background: rgba(192,138,58,0.10);
+}
+
+/* ============================================================
+   HERO PANEL — LUBINA EN SAL
+============================================================ */
+
+.panel--hero {
+  background: var(--ink);
+  text-align: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--hero .hero-image {
+  height: 110mm;
+  background:
+    linear-gradient(180deg, rgba(15,36,56,0.05) 0%, rgba(15,36,56,0.15) 60%, rgba(15,36,56,0.85) 100%),
+    url('img/lubina-en-sal.png') center / cover no-repeat,
+    var(--ink);
+  position: relative;
+}
+
+.panel--hero .hero-content {
+  padding: 8mm 12mm 12mm;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--bone);
+}
+
+.panel--hero .hero-chapter {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+  margin-bottom: 3mm;
+}
+
+.panel--hero .hero-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 32pt;
+  line-height: 1;
+  color: var(--bone);
+  margin-bottom: 4mm;
+}
+.panel--hero .hero-name em { font-style: italic; font-weight: 400; color: var(--ochre); }
+
+.panel--hero .hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 10pt;
+  color: var(--bone-warm);
+  margin-bottom: 6mm;
+  max-width: 30ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+}
+
+.panel--hero .hero-quote {
+  margin: 4mm auto 0;
+  max-width: 32ch;
+  border-top: 0.5pt solid var(--ink-line);
+  padding-top: 5mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 10pt;
+  line-height: 1.5;
+  color: var(--bone);
+  font-weight: 400;
+}
+
+.panel--hero .hero-quote::before {
+  content: "“";
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28pt;
+  color: var(--ochre);
+  line-height: 0.6;
+  margin-bottom: 1mm;
+}
+
+.panel--hero .hero-quote-source {
+  display: block;
+  margin-top: 3mm;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 6pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+.panel--hero .hero-price-row {
+  margin-top: auto;
+  padding-top: 5mm;
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  font-weight: 500;
+}
+
+/* ============================================================
+   SPLIT panel — postres + bebidas (vertical)
+============================================================ */
+
+.panel--split {
+  background: var(--bone);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 0;
+  border-left: 1px solid rgba(15,36,56,0.08);
+  border-right: 1px solid rgba(15,36,56,0.08);
+}
+
+.split-section {
+  padding: 12mm 12mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.split-section + .split-section {
+  border-top: 1px solid rgba(15,36,56,0.12);
+}
+
+.split-section .section-head { margin-bottom: 5mm; padding-top: 0; }
+.split-section .section-title { font-size: 18pt; }
+.split-section .dishes { gap: 3mm; }
+.split-section .dish { padding-bottom: 2.5mm; }
+.split-section .dish-name { font-size: 10pt; }
+.split-section .dish-desc { font-size: 7pt; line-height: 1.4; }
+.split-section .dish-price { font-size: 7.5pt; }
+
+/* ============================================================
+   FOOTER / CONTACT panel
+============================================================ */
+
+.panel--contact {
+  background: var(--ink);
+  color: var(--bone);
+  text-align: center;
+  justify-content: space-between;
+  padding-top: 16mm;
+  padding-bottom: 14mm;
+}
+
+.contact-mark {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 6mm;
+  font-weight: 500;
+}
+
+.contact-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 36pt;
+  letter-spacing: 0.04em;
+  color: var(--bone);
+  margin-bottom: 3mm;
+}
+.contact-name em { font-style: italic; color: var(--ochre); font-weight: 400; }
+
+.contact-tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--bone-warm);
+  margin-bottom: 8mm;
+}
+
+.contact-info {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  line-height: 2;
+  margin-bottom: 6mm;
+}
+
+.contact-info strong { color: var(--bone); font-weight: 500; }
+
+.contact-hours {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 8pt;
+  color: var(--bone-warm);
+  line-height: 1.6;
+  max-width: 36ch;
+  margin: 0 auto 8mm;
+  padding-top: 6mm;
+  border-top: 0.5pt solid var(--ink-line);
+}
+
+.allergens-block {
+  border-top: 0.5pt solid var(--ink-line);
+  padding-top: 6mm;
+  margin-bottom: 6mm;
+}
+
+.allergens-title {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 3mm;
+  font-weight: 500;
+}
+
+.allergens-body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 7pt;
+  color: var(--bone-warm);
+  line-height: 1.55;
+  max-width: 38ch;
+  margin: 0 auto;
+}
+
+.disclaimer {
+  border-top: 0.5pt solid var(--ink-line);
+  padding-top: 5mm;
+  margin-top: 4mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 6.5pt;
+  color: var(--bone-warm);
+  line-height: 1.55;
+  max-width: 40ch;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.85;
+}
+
+.disclaimer + .disclaimer {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 3mm;
+  opacity: 0.7;
+}
+
+.kenaz-mark {
+  margin-top: 6mm;
+  font-family: var(--sans);
+  font-size: 5.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  opacity: 0.45;
+}
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+@media print {
+  body { background: white; padding: 0; margin: 0; }
+  .sheet { box-shadow: none; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SHEET 1 (front)
+     Triple panel: [HISTORIA] | [PARA EMPEZAR] | [COVER]
+     La portada queda a la derecha — al plegar gatefold queda
+     como cara externa frontal.
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Story -->
+  <section class="panel panel--bone panel--story">
+    <p class="story-eyebrow">La casa</p>
+    <h2 class="story-title">Cocina <em>mediterránea</em><br>honesta en Calpe.</h2>
+
+    <div class="story-rule"></div>
+
+    <div class="story-body">
+      <p>
+        Producto fresco, fuego, sal y tiempo.
+        Esa es la receta. Arroces a la antigua,
+        pescados que llegan del día, carnes a la brasa.
+      </p>
+      <p>
+        Roberto en sala. Sunni en cocina.
+        El resto lo cuenta el plato.
+      </p>
+    </div>
+
+    <span class="story-placeholder">[ vuestra historia aquí ]</span>
+
+    <p class="story-signature">— Roberto y Sunni</p>
+
+    <div style="position:absolute; bottom:14mm; left:0; right:0; text-align:center;">
+      <p style="font-family: var(--sans); font-size: 6.5pt; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ink-soft); opacity: 0.5;">Carta · Edición 2026</p>
+    </div>
+  </section>
+
+  <!-- Panel: Para empezar -->
+  <section class="panel panel--list">
+    <header class="section-head">
+      <p class="chapter">Capítulo I</p>
+      <h2 class="section-title">Para <em>empezar</em></h2>
+      <p class="section-sub">Pequeñas piezas para abrir la mesa mientras llega el arroz.</p>
+    </header>
+
+    <div class="dishes">
+
+      <article class="dish">
+        <h3 class="dish-name">Tabla de ibérico</h3>
+        <span class="dish-price">— <em>precio del día</em></span>
+        <p class="dish-desc">Selección de embutido ibérico, queso curado y pan crocante. Para compartir.</p>
+        <span class="dish-tag">— De la casa</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Pulpo a la brasa</h3>
+        <span class="dish-price">— <em>precio del día</em></span>
+        <p class="dish-desc">Tentáculo a la parrilla, aceite virgen, pimentón ahumado y sal en escamas.</p>
+        <span class="dish-tag">— Recomendado</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Croquetas caseras</h3>
+        <span class="dish-price">— <em>precio del día</em></span>
+        <p class="dish-desc">Hechas en casa cada mañana. Crujientes por fuera, melosas por dentro.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Calamares a la romana</h3>
+        <span class="dish-price">— <em>precio del día</em></span>
+        <p class="dish-desc">Anillas frescas en harina ligera, fritas al momento. Limón.</p>
+      </article>
+
+      <div class="placeholder-row">
+        [ Sección a completar — ensaladas frescas y entrantes adicionales a confirmar con vosotros ]
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Panel: Cover -->
+  <section class="panel panel--cover">
+    <div class="top-meta">
+      <span>Calpe · Costa Blanca</span>
+      <span>Travelers' Choice</span>
+    </div>
+
+    <div class="center">
+      <div class="brand-mark">
+        <span class="brand-mark__rule"></span>
+        <span class="brand-mark__label">Mediterránea con alma</span>
+        <span class="brand-mark__rule"></span>
+      </div>
+
+      <h1 class="cover-name">COST<em>A</em></h1>
+
+      <p class="cover-tagline">
+        Arroces, pescados y carnes.<br>
+        Hechos como tienen que hacerse.
+      </p>
+
+      <p class="cover-hero-line">— La lubina en sal · plato de la casa</p>
+    </div>
+
+    <div class="bottom-meta">
+      <div>
+        <span>La carta</span>
+        <strong>2026</strong>
+      </div>
+      <div class="right">
+        <span>Pintor Sorolla 5A</span>
+        <strong>+34 965 06 43 69</strong>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================
+     SHEET 2 (back)
+     Triple panel: [LUBINA hero] | [ARROCES + PESCADOS] | [CARNES + POSTRES + BEBIDAS + CONTACTO]
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Lubina en sal (hero) -->
+  <section class="panel panel--hero">
+    <div class="hero-image"></div>
+
+    <div class="hero-content">
+      <p class="hero-chapter">El plato de la casa</p>
+
+      <h2 class="hero-name">Lubina <em>en sal</em></h2>
+
+      <p class="hero-sub">
+        Pieza entera del día, costra de sal gruesa, horno fuerte.
+        Se rompe en mesa, se separa el lomo, se rocía con aceite. Nada más.
+      </p>
+
+      <blockquote class="hero-quote">
+        La mejor lubina en sal que he comido en Calpe en veinte años.
+        <span class="hero-quote-source">— Reseña Tripadvisor (verificada)</span>
+      </blockquote>
+
+      <p class="hero-price-row">
+        Precio según pieza · Sugerencia para 2 personas
+      </p>
+    </div>
+  </section>
+
+  <!-- Panel: Arroces + Pescados -->
+  <section class="panel panel--split">
+
+    <div class="split-section panel--list-dark" style="background: var(--ink);">
+      <header class="section-head">
+        <p class="chapter">Capítulo II</p>
+        <h2 class="section-title">Los <em>arroces</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Paella negra</h3>
+          <span class="dish-price">— <em>del día</em></span>
+          <p class="dish-desc">Tinta de calamar, mejillones y sofrito mediterráneo.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Arroz del señorito</h3>
+          <span class="dish-price">— <em>del día</em></span>
+          <p class="dish-desc">Mariscos pelados al servirse. Tradición valenciana.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Arroz a banda</h3>
+          <span class="dish-price">— <em>del día</em></span>
+          <p class="dish-desc">Caldo de pescado de roca, alioli y reducción.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Arroz con bogavante</h3>
+          <span class="dish-price">— <em>del día</em></span>
+          <p class="dish-desc">Bogavante fresco sobre arroz meloso.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Fideuá</h3>
+          <span class="dish-price">— <em>del día</em></span>
+          <p class="dish-desc">Fideo fino, sofrito y mariscos.</p>
+        </article>
+
+        <div class="placeholder-row">
+          [ Mín. 2 personas · 25 min · precios a confirmar con Roberto ]
+        </div>
+      </div>
+    </div>
+
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo III</p>
+        <h2 class="section-title">Del <em>mar</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Pulpo a la brasa</h3>
+          <span class="dish-price">— <em>del día</em></span>
+          <p class="dish-desc">Pimentón de la Vera, aceite virgen, patata aplastada.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Sepia a la plancha</h3>
+          <span class="dish-price">— <em>del día</em></span>
+          <p class="dish-desc">Verduras de temporada, aceite de ajo y perejil.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Salmón con tagliatelle</h3>
+          <span class="dish-price">— <em>del día</em></span>
+          <p class="dish-desc">Pasta fresca, salsa cremosa de azafrán.</p>
+        </article>
+
+        <div class="placeholder-row">
+          [ Pescado del día variable — pizarra ]
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Panel: Carnes + Postres + Contacto stack -->
+  <section class="panel panel--contact">
+    <div style="margin-bottom: 6mm;">
+      <p class="chapter" style="margin-bottom: 3mm;">Capítulo IV</p>
+      <h2 class="section-title" style="color: var(--bone); font-size: 18pt; margin-bottom: 5mm;">De la <em style="color: var(--ochre);">brasa</em></h2>
+
+      <div class="dishes" style="gap: 2.5mm;">
+        <article class="dish" style="border-bottom-color: rgba(245,239,228,0.12);">
+          <h3 class="dish-name" style="color: var(--bone); font-size: 10pt;">Carrilladas al vino</h3>
+          <span class="dish-price" style="color: var(--ochre); font-size: 7pt;">— <em style="color: var(--ochre);">del día</em></span>
+          <p class="dish-desc" style="color: var(--bone-warm); font-size: 7pt;">Mejilla de ternera braseada lentamente. Receta de la casa.</p>
+        </article>
+
+        <article class="dish" style="border-bottom-color: rgba(245,239,228,0.12);">
+          <h3 class="dish-name" style="color: var(--bone); font-size: 10pt;">Entrecot a la brasa</h3>
+          <span class="dish-price" style="color: var(--ochre); font-size: 7pt;">— <em style="color: var(--ochre);">del día</em></span>
+          <p class="dish-desc" style="color: var(--bone-warm); font-size: 7pt;">Sal en escamas, mantequilla de hierbas. Punto a elegir.</p>
+        </article>
+
+        <article class="dish" style="border-bottom: none;">
+          <h3 class="dish-name" style="color: var(--bone); font-size: 10pt;">Filete argentino · pimienta</h3>
+          <span class="dish-price" style="color: var(--ochre); font-size: 7pt;">— <em style="color: var(--ochre);">del día</em></span>
+          <p class="dish-desc" style="color: var(--bone-warm); font-size: 7pt;">Solomillo sellado, salsa cremosa, patatas asadas.</p>
+        </article>
+      </div>
+    </div>
+
+    <div style="border-top: 0.5pt solid var(--ink-line); padding-top: 5mm; margin-bottom: 5mm;">
+      <p class="chapter" style="margin-bottom: 2mm;">Capítulo V</p>
+      <h2 class="section-title" style="color: var(--bone); font-size: 16pt; margin-bottom: 3mm;">Para <em style="color: var(--ochre);">cerrar</em></h2>
+
+      <div class="dishes" style="gap: 2mm;">
+        <article class="dish" style="border-bottom: none;">
+          <h3 class="dish-name" style="color: var(--bone); font-size: 9.5pt;">Tarta de queso casera</h3>
+          <span class="dish-price" style="color: var(--ochre); font-size: 7pt;">— <em style="color: var(--ochre);">del día</em></span>
+          <p class="dish-desc" style="color: var(--bone-warm); font-size: 6.5pt;">Cremosa por dentro, dorada por fuera. <em style="color: var(--ochre);">Pide repetir.</em></p>
+        </article>
+
+        <div class="placeholder-row">
+          [ Crema catalana, helados artesanales y otros postres caseros — pendiente con Sunni ]
+        </div>
+      </div>
+    </div>
+
+    <div class="allergens-block">
+      <p class="allergens-title">Alérgenos · vinos · información</p>
+      <p class="allergens-body">
+        Carta completa de vinos mediterráneos y desglose de alérgenos disponible.
+        Consulta a tu camarero por intolerancias o necesidades específicas.
+      </p>
+    </div>
+
+    <div style="border-top: 0.5pt solid var(--ink-line); padding-top: 6mm; margin-top: 4mm;">
+      <p class="contact-mark">Encuéntranos</p>
+      <h3 class="contact-name" style="font-size: 26pt; margin-bottom: 2mm;">COST<em>A</em></h3>
+      <p class="contact-tag" style="font-size: 9pt; margin-bottom: 5mm;">Mediterránea con alma · Calpe</p>
+
+      <div class="contact-info" style="font-size: 6.5pt;">
+        Pintor Sorolla 5A · Edificio Apolo VII<br>
+        03710 Calpe · Alicante<br>
+        <strong>+34 965 06 43 69</strong>
+      </div>
+
+      <p class="contact-hours">
+        Domingo a martes y jueves a sábado · 11:00–16:00 · 18:00–23:45<br>
+        Miércoles cerrado
+      </p>
+    </div>
+
+    <p class="disclaimer">
+      Las imágenes son referenciales. Las definitivas serán fotografía profesional realizada en Costa.
+    </p>
+    <p class="disclaimer">
+      Esta carta contiene contenido placeholder marcado con corchetes [ ]. Al firmar, definimos juntos con Roberto y Sunni los detalles finales.
+    </p>
+
+    <p class="kenaz-mark">Diseño · Kenaz Studio</p>
+  </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#f5d4c2" />
+<title>Morena · Restobar en el paseo de Calpe</title>
+<meta name="description" content="Morena restobar en el paseo Arenal de Calpe. Mesa con vistas, copa al atardecer y cocina mediterránea para compartir frente al mar." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ==================================================
+     MORENA — Restobar paseo Arenal, Calpe
+     Vibra atardecer mediterraneo, coctel + cocina.
+     Paleta: rosa salmon + naranja coral + azul atardecer + crema
+     Display: Fraunces | Body: Inter
+     ================================================== */
+
+  :root {
+    --crema: #fbf1e6;
+    --crema-soft: #f5e6d2;
+    --crema-bright: #fef7ed;
+    --salmon: #f0a78e;
+    --salmon-soft: #f5c1ad;
+    --coral: #e07a5f;
+    --coral-deep: #b8543c;
+    --rosa: #d97a85;
+    --rosa-deep: #a8525c;
+    --azul-atardecer: #3a4a6b;
+    --azul-deep: #1f2b46;
+    --azul-soft: #5a6986;
+    --linea: rgba(31, 43, 70, 0.12);
+    --linea-strong: rgba(31, 43, 70, 0.25);
+    --linea-light: rgba(251, 241, 230, 0.2);
+
+    --display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+    --body: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    --fs-xs: 0.72rem;
+    --fs-sm: 0.85rem;
+    --fs-base: 1rem;
+    --fs-md: 1.125rem;
+    --fs-lg: 1.375rem;
+    --fs-xl: 1.75rem;
+    --fs-2xl: 2.25rem;
+    --fs-3xl: 3rem;
+    --fs-4xl: 4rem;
+    --fs-5xl: 5.5rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 8rem;
+
+    --container: 1240px;
+    --container-narrow: 880px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--body);
+    color: var(--azul-deep);
+    background: var(--crema);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  h1, h2, h3, h4 {
+    font-family: var(--display);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(31, 43, 70, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--linea-light);
+  }
+  .nav-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--crema-bright);
+    letter-spacing: 0.01em;
+  }
+  .nav-brand span { color: var(--salmon); }
+  .nav-links {
+    display: none;
+    gap: var(--space-lg);
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: var(--fs-sm);
+    color: var(--crema);
+    opacity: 0.85;
+    transition: opacity 0.2s;
+    font-weight: 400;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    font-size: var(--fs-sm);
+    padding: 0.55rem 1rem;
+    background: var(--salmon);
+    color: var(--azul-deep);
+    border-radius: 999px;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--coral); color: var(--crema-bright); }
+
+  @media (min-width: 880px) {
+    .nav-links { display: flex; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-3xl) var(--space-md) var(--space-xl);
+    background: var(--azul-deep);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg picture, .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(31, 43, 70, 0.15) 0%, rgba(31, 43, 70, 0.35) 50%, rgba(31, 43, 70, 0.85) 100%),
+      linear-gradient(90deg, rgba(184, 84, 60, 0.18) 0%, transparent 60%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    color: var(--crema-bright);
+  }
+  .hero-eyebrow {
+    font-family: var(--body);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--salmon);
+    margin-bottom: var(--space-md);
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 9vw, var(--fs-5xl));
+    font-weight: 300;
+    margin-bottom: var(--space-md);
+    color: var(--crema-bright);
+    line-height: 1;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--salmon);
+    font-weight: 400;
+  }
+  .hero-sub {
+    font-size: var(--fs-md);
+    max-width: 540px;
+    color: var(--crema);
+    opacity: 0.95;
+    margin-bottom: var(--space-lg);
+    line-height: 1.55;
+  }
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: center;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    background: var(--salmon);
+    color: var(--azul-deep);
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: var(--fs-base);
+    transition: all 0.2s;
+  }
+  .btn-primary:hover {
+    background: var(--coral);
+    color: var(--crema-bright);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.4rem;
+    color: var(--crema);
+    font-weight: 400;
+    font-size: var(--fs-base);
+    border-bottom: 1px solid var(--linea-light);
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--salmon); }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--linea-light);
+    font-size: var(--fs-sm);
+    color: var(--crema);
+    opacity: 0.85;
+  }
+  .hero-meta-item strong { color: var(--salmon); font-weight: 500; }
+
+  /* ============ CLAIM ============ */
+  .claim {
+    padding: var(--space-2xl) var(--space-md);
+    background: var(--crema);
+    border-bottom: 1px solid var(--linea);
+    position: relative;
+    overflow: hidden;
+  }
+  .claim::before {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, var(--salmon-soft) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    opacity: 0.45;
+    border-radius: 50%;
+  }
+  .claim-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .claim-eyebrow {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral-deep);
+    margin-bottom: var(--space-md);
+    font-weight: 500;
+  }
+  .claim h2 {
+    font-size: clamp(1.8rem, 5vw, var(--fs-3xl));
+    color: var(--azul-deep);
+    font-weight: 300;
+    margin-bottom: var(--space-md);
+  }
+  .claim h2 em { font-style: italic; color: var(--coral-deep); }
+  .claim p {
+    font-size: var(--fs-md);
+    color: var(--azul-soft);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ============ ATARDECER ============ */
+  .atardecer {
+    padding: var(--space-2xl) var(--space-md);
+    background: linear-gradient(160deg, var(--azul-atardecer) 0%, var(--coral-deep) 60%, var(--salmon) 100%);
+    color: var(--crema-bright);
+    position: relative;
+    overflow: hidden;
+  }
+  .atardecer-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  @media (min-width: 880px) {
+    .atardecer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+  .atardecer-text h2 {
+    font-size: clamp(2rem, 5vw, var(--fs-4xl));
+    margin-bottom: var(--space-md);
+    color: var(--crema-bright);
+    font-weight: 300;
+  }
+  .atardecer-text h2 em {
+    font-style: italic;
+    color: var(--salmon-soft);
+  }
+  .atardecer-text > p {
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-md);
+    opacity: 0.94;
+    line-height: 1.65;
+  }
+  .atardecer-eyebrow {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--salmon-soft);
+    margin-bottom: var(--space-md);
+    font-weight: 500;
+  }
+  .atardecer-list {
+    list-style: none;
+    margin-top: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .atardecer-list li {
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(251, 241, 230, 0.12);
+    border-radius: 4px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-size: var(--fs-base);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .atardecer-list li::before {
+    content: '·';
+    color: var(--salmon-soft);
+    font-size: 1.5rem;
+    line-height: 0;
+  }
+  .atardecer-img {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.5);
+  }
+  .atardecer-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ============ CARTA ============ */
+  .carta {
+    padding: var(--space-2xl) var(--space-md);
+    background: var(--crema);
+  }
+  .carta-head {
+    max-width: 720px;
+    margin: 0 auto var(--space-xl);
+    text-align: center;
+  }
+  .carta-eyebrow {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral-deep);
+    margin-bottom: var(--space-md);
+    font-weight: 500;
+  }
+  .carta-head h2 {
+    font-size: clamp(2rem, 5vw, var(--fs-4xl));
+    color: var(--azul-deep);
+    font-weight: 300;
+  }
+  .carta-head h2 em { font-style: italic; color: var(--coral-deep); }
+  .carta-note {
+    margin-top: var(--space-sm);
+    font-size: var(--fs-sm);
+    color: var(--azul-soft);
+    font-style: italic;
+    opacity: 0.85;
+  }
+  .carta-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  @media (min-width: 720px) {
+    .carta-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .carta-card {
+    background: var(--crema-bright);
+    border: 1px solid var(--linea);
+    border-radius: 6px;
+    padding: var(--space-lg);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .carta-card:hover {
+    border-color: var(--salmon);
+    transform: translateY(-3px);
+  }
+  .carta-card-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: var(--fs-sm);
+    color: var(--coral-deep);
+    letter-spacing: 0.15em;
+    margin-bottom: var(--space-sm);
+    font-weight: 400;
+  }
+  .carta-card h3 {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--space-sm);
+    color: var(--azul-deep);
+    font-weight: 400;
+  }
+  .carta-card h3 em { font-style: italic; color: var(--coral-deep); }
+  .carta-card p {
+    font-size: var(--fs-sm);
+    color: var(--azul-soft);
+    line-height: 1.65;
+    margin-bottom: var(--space-md);
+  }
+  .carta-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .carta-card ul li {
+    font-size: var(--fs-sm);
+    color: var(--azul-deep);
+    padding-left: var(--space-sm);
+    position: relative;
+    line-height: 1.5;
+  }
+  .carta-card ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--salmon);
+  }
+  .placeholder-inline {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    background: rgba(216, 122, 95, 0.1);
+    border-radius: 3px;
+    color: var(--coral-deep);
+    font-size: 0.78rem;
+    font-style: italic;
+  }
+
+  /* ============ GALERIA ============ */
+  .galeria {
+    padding: var(--space-2xl) 0 var(--space-xl);
+    background: var(--crema);
+    overflow: hidden;
+  }
+  .galeria-head {
+    max-width: 720px;
+    margin: 0 auto var(--space-xl);
+    text-align: center;
+    padding: 0 var(--space-md);
+  }
+  .galeria-eyebrow {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral-deep);
+    margin-bottom: var(--space-md);
+    font-weight: 500;
+  }
+  .galeria-head h2 {
+    font-size: clamp(2rem, 5vw, var(--fs-3xl));
+    color: var(--azul-deep);
+    font-weight: 300;
+  }
+  .galeria-head h2 em { font-style: italic; color: var(--coral-deep); }
+  .galeria-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  @media (min-width: 720px) {
+    .galeria-grid {
+      grid-template-columns: 2fr 1fr;
+      grid-auto-rows: 200px;
+    }
+    .galeria-item-large { grid-row: span 2; }
+  }
+  .galeria-item {
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    position: relative;
+  }
+  @media (min-width: 720px) {
+    .galeria-item { aspect-ratio: auto; height: 100%; }
+  }
+  .galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .galeria-item:hover img { transform: scale(1.04); }
+
+  /* ============ VISITA ============ */
+  .visita {
+    padding: var(--space-2xl) var(--space-md);
+    background: linear-gradient(180deg, var(--crema) 0%, var(--crema-soft) 100%);
+    border-top: 1px solid var(--linea);
+  }
+  .visita-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  @media (min-width: 880px) {
+    .visita-grid { grid-template-columns: 1.1fr 1fr; }
+  }
+  .visita-img {
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+  .visita-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .visita-text h2 {
+    font-size: clamp(1.8rem, 5vw, var(--fs-3xl));
+    color: var(--azul-deep);
+    margin-bottom: var(--space-md);
+    font-weight: 300;
+  }
+  .visita-text h2 em { font-style: italic; color: var(--coral-deep); }
+  .visita-text > p {
+    font-size: var(--fs-md);
+    color: var(--azul-soft);
+    margin-bottom: var(--space-md);
+    line-height: 1.65;
+  }
+  .visita-info {
+    list-style: none;
+    margin: var(--space-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .visita-info li {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--linea);
+    font-size: var(--fs-base);
+  }
+  .visita-info dt {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral-deep);
+    font-weight: 500;
+    padding-top: 0.15rem;
+  }
+  .visita-info dd { color: var(--azul-deep); }
+  .visita-info .placeholder {
+    font-style: italic;
+    color: var(--azul-soft);
+    opacity: 0.75;
+  }
+  .visita-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    background: var(--coral);
+    color: var(--crema-bright);
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: var(--fs-base);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .visita-cta:hover { background: var(--coral-deep); transform: translateY(-1px); }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    background: var(--azul-deep);
+    color: var(--crema);
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+  }
+  .footer-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .footer-inner { grid-template-columns: 2fr 1fr 1fr; }
+  }
+  .footer-brand {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: var(--fs-2xl);
+    color: var(--crema-bright);
+    margin-bottom: var(--space-sm);
+    font-weight: 400;
+  }
+  .footer-brand span { color: var(--salmon); }
+  .footer-tag {
+    font-size: var(--fs-sm);
+    opacity: 0.7;
+    line-height: 1.6;
+    max-width: 360px;
+  }
+  .footer-col h4 {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--salmon);
+    margin-bottom: var(--space-sm);
+    font-family: var(--body);
+    font-weight: 500;
+  }
+  .footer-col p, .footer-col a {
+    font-size: var(--fs-sm);
+    opacity: 0.85;
+    line-height: 1.7;
+    display: block;
+  }
+  .footer-col a:hover { opacity: 1; color: var(--salmon); }
+  .footer-bottom {
+    max-width: var(--container);
+    margin: var(--space-xl) auto 0;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--linea-light);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    font-size: var(--fs-xs);
+    opacity: 0.55;
+  }
+  @media (min-width: 720px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .footer-disclaimer {
+    max-width: var(--container);
+    margin: var(--space-md) auto 0;
+    padding: var(--space-md);
+    border: 1px dashed var(--linea-light);
+    border-radius: 4px;
+    font-size: var(--fs-xs);
+    opacity: 0.65;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .footer a.kenaz { color: var(--salmon); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Morena<span> ·</span></a>
+    <ul class="nav-links">
+      <li><a href="#atardecer">El paseo</a></li>
+      <li><a href="#carta">La carta</a></li>
+      <li><a href="#galeria">El bar</a></li>
+      <li><a href="#visita">Visitar</a></li>
+    </ul>
+    <a href="#visita" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg">
+    <picture>
+      <source srcset="img/hero-atardecer.webp" type="image/webp" />
+      <img src="img/hero-atardecer.jpg" alt="Mesa de restobar al atardecer en el paseo marítimo de Calpe con dos copas de cóctel" loading="eager" />
+    </picture>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Restobar · Paseo Arenal · Calpe</p>
+    <h1>Mesa con vistas,<br /><em>copa al atardecer.</em></h1>
+    <p class="hero-sub">Cocina mediterránea para compartir, cócteles bien hechos y el mejor sitio del paseo cuando se pone el sol.</p>
+    <div class="hero-cta-row">
+      <a href="#visita" class="btn-primary">Reservar mesa →</a>
+      <a href="#carta" class="btn-ghost">Ver la carta</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>·</strong> Calle Gran Bretaña — Paseo Arenal</div>
+      <div class="hero-meta-item"><strong>·</strong> Calpe, Alicante</div>
+    </div>
+  </div>
+</header>
+
+<section class="claim">
+  <div class="claim-inner">
+    <p class="claim-eyebrow">Restobar</p>
+    <h2>El paseo, una copa y algo bueno <em>de picar.</em></h2>
+    <p>Morena es restaurante a mediodía y barra de cócteles al atardecer. Mesa frente al mar, cocina mediterránea sin pretensiones y una carta de copas pensada para sentarse sin reloj.</p>
+  </div>
+</section>
+
+<section class="atardecer" id="atardecer">
+  <div class="atardecer-grid">
+    <div class="atardecer-text">
+      <p class="atardecer-eyebrow">La hora bonita</p>
+      <h2>El paseo Arenal,<br /><em>justo cuando se enciende.</em></h2>
+      <p>Llegas a las 19 h, pides una copa, se va el sol detrás del Peñón. Una hora después, la mesa se convierte en cena. Ese momento es Morena.</p>
+      <p>Vista directa al paseo, sombra cuando aprieta el sol y luz cálida cuando se va. El sitio que querías para terminar el día sin entrar a casa todavía.</p>
+      <ul class="atardecer-list">
+        <li>Mesas exteriores con vista al paseo</li>
+        <li>Carta de cócteles del atardecer (18 — 21 h)</li>
+        <li>Cocina abierta de mediodía a noche</li>
+      </ul>
+    </div>
+    <div class="atardecer-img">
+      <picture>
+        <source srcset="img/coctel-sunset.webp" type="image/webp" />
+        <img src="img/coctel-sunset.jpg" alt="Cóctel firma de Morena con tonos degradados de atardecer en copa coupe" loading="lazy" />
+      </picture>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="carta-head">
+    <p class="carta-eyebrow">La carta</p>
+    <h2>Lo que se come, <em>lo que se bebe.</em></h2>
+    <p class="carta-note">Estructura de la carta. Platos exactos y precios a definir contigo.</p>
+  </div>
+  <div class="carta-grid">
+
+    <article class="carta-card">
+      <div class="carta-card-num">— 01</div>
+      <h3>Para <em>picar</em></h3>
+      <p>Bocados pensados para empezar y para acompañar la copa. Para compartir o no compartir, según el día.</p>
+      <ul>
+        <li>Tablas de embutidos y quesos</li>
+        <li>Croquetas caseras</li>
+        <li>Tapas frías y calientes</li>
+        <li>Aceitunas, almendras y encurtidos</li>
+      </ul>
+      <p style="margin-top:1rem;"><span class="placeholder-inline">[a confirmar con vosotros]</span></p>
+    </article>
+
+    <article class="carta-card">
+      <div class="carta-card-num">— 02</div>
+      <h3>Platos <em>del paseo</em></h3>
+      <p>Cocina mediterránea de mercado. Pescado, arroces y carnes a la brasa. Carta corta, producto de aquí.</p>
+      <ul>
+        <li>Pescado del día</li>
+        <li>Arroces para dos</li>
+        <li>Carnes a la brasa</li>
+        <li>Vegetarianos del día</li>
+      </ul>
+      <p style="margin-top:1rem;"><span class="placeholder-inline">[a confirmar con vosotros]</span></p>
+    </article>
+
+    <article class="carta-card">
+      <div class="carta-card-num">— 03</div>
+      <h3>Cócteles <em>del atardecer</em></h3>
+      <p>Clásicos bien hechos y firmas de la casa. Aperitivos italianos, gin tonics premium y la copa que pidas.</p>
+      <ul>
+        <li>Aperol, Negroni, Spritz</li>
+        <li>Gin tonics premium</li>
+        <li>Firmas de la casa</li>
+        <li>Vermú, vinos por copa</li>
+      </ul>
+      <p style="margin-top:1rem;"><span class="placeholder-inline">[a confirmar con vosotros]</span></p>
+    </article>
+
+    <article class="carta-card">
+      <div class="carta-card-num">— 04</div>
+      <h3>Para <em>terminar</em></h3>
+      <p>Postres caseros, café de tueste natural y digestivos para cerrar la mesa sin prisa.</p>
+      <ul>
+        <li>Postres caseros del día</li>
+        <li>Café de especialidad</li>
+        <li>Digestivos</li>
+        <li>Té e infusiones</li>
+      </ul>
+      <p style="margin-top:1rem;"><span class="placeholder-inline">[a confirmar con vosotros]</span></p>
+    </article>
+
+  </div>
+</section>
+
+<section class="galeria" id="galeria">
+  <div class="galeria-head">
+    <p class="galeria-eyebrow">El bar</p>
+    <h2>Mesa, copa, <em>vistas.</em></h2>
+  </div>
+  <div class="galeria-grid">
+    <div class="galeria-item galeria-item-large">
+      <picture>
+        <source srcset="img/vista-paseo.webp" type="image/webp" />
+        <img src="img/vista-paseo.jpg" alt="Vista del Peñón de Ifach al atardecer desde una mesa del paseo de Calpe" loading="lazy" />
+      </picture>
+    </div>
+    <div class="galeria-item">
+      <picture>
+        <source srcset="img/plato-mediterraneo.webp" type="image/webp" />
+        <img src="img/plato-mediterraneo.jpg" alt="Plato mediterráneo con gambas a la plancha y aceite de pimentón" loading="lazy" />
+      </picture>
+    </div>
+    <div class="galeria-item">
+      <picture>
+        <source srcset="img/ambiente-restobar.webp" type="image/webp" />
+        <img src="img/ambiente-restobar.jpg" alt="Interior del restobar con luz cálida al atardecer" loading="lazy" />
+      </picture>
+    </div>
+  </div>
+</section>
+
+<section class="visita" id="visita">
+  <div class="visita-grid">
+    <div class="visita-img">
+      <picture>
+        <source srcset="img/ambiente-restobar.webp" type="image/webp" />
+        <img src="img/ambiente-restobar.jpg" alt="Ambiente cálido del bar de Morena con luces ámbar al anochecer" loading="lazy" />
+      </picture>
+    </div>
+    <div class="visita-text">
+      <p class="atardecer-eyebrow" style="color: var(--coral-deep);">Visitar</p>
+      <h2>Pasarse <em>a una copa.</em></h2>
+      <p>Reserva mesa, o ven directamente a barra. Si es atardecer, mejor reservar.</p>
+      <dl class="visita-info">
+        <li>
+          <dt>Dónde</dt>
+          <dd>Calle Gran Bretaña — Paseo Arenal, Calpe</dd>
+        </li>
+        <li>
+          <dt>Horarios</dt>
+          <dd class="placeholder">[horarios a confirmar]</dd>
+        </li>
+        <li>
+          <dt>Reservas</dt>
+          <dd class="placeholder">[teléfono / email a confirmar]</dd>
+        </li>
+        <li>
+          <dt>Terraza</dt>
+          <dd class="placeholder">[capacidad a confirmar — recomendable reservar en verano]</dd>
+        </li>
+      </dl>
+      <a href="#" class="visita-cta">Reservar una mesa →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Morena<span> ·</span></div>
+      <p class="footer-tag">Restobar en el paseo Arenal de Calpe. Cocina mediterránea, cócteles bien hechos y mesa con vistas.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Encontrarnos</h4>
+      <p>Calle Gran Bretaña<br />Paseo Arenal<br />03710 Calpe — Alicante</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p class="placeholder">[teléfono]<br />[email]<br />[Instagram]</p>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    Maqueta de propuesta. Los textos, fotos, platos y datos de contacto son provisionales o de referencia y deben validarse con el restaurante antes de publicar.
+  </div>
+  <div class="footer-bottom">
+    <p>© Morena Restobar — todos los derechos reservados</p>
+    <p>Diseño propuesto por <a href="https://kenaz.studio" class="kenaz">Kenaz Studio · kenaz.studio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

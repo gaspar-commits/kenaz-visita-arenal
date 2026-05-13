@@ -1,0 +1,1637 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0e2a3a" />
+<meta name="description" content="Restaurante Costa · Cocina ecléctica en Apolo VII, Calpe. Mediterráneo, guiños belgas y notas del sur asiático. Travelers' Choice de Tripadvisor." />
+<title>Restaurante Costa · Mediterráneo, Bélgica y un toque del sur asiático · Calpe</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --bg: #fbf6ee;          /* blanco hueso cálido */
+    --bg-2: #f3eadb;        /* arena */
+    --ink: #0e2a3a;         /* azul mediterráneo profundo */
+    --ink-2: #1c3d50;
+    --muted: #5a6a73;
+    --line: rgba(14,42,58,.12);
+    --gold: #b88543;        /* ocre / dorado costa */
+    --gold-2: #8c5f2c;
+    --mustard: #d6a531;     /* guiño belga — mostaza tostada, acento */
+    --white: #ffffff;
+    --warn: #c97a2a;         /* color para placeholders explícitos */
+    --warn-bg: rgba(201,122,42,.08);
+    --shadow: 0 30px 60px -30px rgba(14,42,58,.35);
+    --serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img{ display: block; max-width: 100%; height: auto; }
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ==========  TYPO  ========== */
+
+  h1, h2, h3, h4{
+    font-family: var(--serif);
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  h1{ font-size: clamp(2.4rem, 7vw, 4.6rem); line-height: 1.05; }
+  h2{ font-size: clamp(1.8rem, 4.2vw, 2.8rem); line-height: 1.15; }
+  h3{ font-size: clamp(1.3rem, 2.6vw, 1.7rem); line-height: 1.25; }
+  .eyebrow{
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--gold-2);
+  }
+  .lead{
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-style: italic;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .small{ font-size: 0.85rem; color: var(--muted); }
+
+  /* ==========  NAV  ========== */
+
+  .nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251,246,238,.92);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+  }
+  .brand{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .brand .mark{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .brand .mark em{
+    color: var(--gold-2);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .brand .city{
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.62rem;
+    color: var(--muted);
+    border-left: 1px solid var(--line);
+    padding-left: 10px;
+  }
+  .nav-links{
+    display: none;
+    gap: 28px;
+  }
+  .nav-links a{
+    font-size: 0.85rem;
+    color: var(--ink-2);
+    transition: color .2s ease;
+  }
+  .nav-links a:hover{ color: var(--gold-2); }
+  .nav-cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: background .2s ease;
+  }
+  .nav-cta:hover{ background: var(--gold-2); }
+  @media (min-width: 880px){
+    .nav-links{ display: flex; }
+  }
+
+  /* ==========  HERO  ========== */
+
+  .hero{
+    position: relative;
+    padding: clamp(48px, 8vw, 100px) 0 clamp(40px, 6vw, 72px);
+    overflow: hidden;
+  }
+  .hero-grid{
+    display: grid;
+    gap: clamp(28px, 4vw, 56px);
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  @media (min-width: 960px){
+    .hero-grid{ grid-template-columns: 1.05fr 1fr; }
+  }
+  .hero h1 .acc{
+    color: var(--gold-2);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero p.lead{ margin: 22px 0 24px; max-width: 42ch; }
+
+  /* Anclas de precio destacadas */
+  .hero-anchors{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 0 0 28px;
+    max-width: 480px;
+  }
+  @media (min-width: 520px){
+    .hero-anchors{ grid-template-columns: 1fr 1fr; gap: 14px; }
+  }
+  .anchor-item{
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .anchor-item--primary{
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+  .anchor-lab{
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .anchor-item--primary .anchor-lab{ color: var(--gold); }
+  .anchor-val{
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.6vw, 1.7rem);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .anchor-item--primary .anchor-val{ color: var(--bg); }
+  .anchor-suf{
+    font-size: 0.55em;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+  .anchor-item--primary .anchor-suf{ color: rgba(251,246,238,.6); }
+  .anchor-note{
+    font-size: 0.74rem;
+    color: var(--muted);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .anchor-item--primary .anchor-note{ color: rgba(251,246,238,.72); }
+
+  .hero-cta{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-primary:hover{ background: var(--gold-2); transform: translateY(-1px); }
+  .btn-ghost{
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ background: var(--ink); color: var(--bg); }
+  .arrow{
+    display: inline-block;
+    transition: transform .2s ease;
+  }
+  .btn:hover .arrow{ transform: translateX(3px); }
+
+  .hero-meta{
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 0;
+    align-items: stretch;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  @media (min-width: 560px){
+    .hero-meta{ grid-template-columns: repeat(4, 1fr); }
+  }
+  .hero-meta .item{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 18px;
+    border-left: 1px solid var(--line);
+    min-width: 0;
+  }
+  .hero-meta .item:first-child{ border-left: none; padding-left: 0; }
+  @media (min-width: 560px){
+    .hero-meta .item:nth-child(odd){ border-left: 1px solid var(--line); }
+    .hero-meta .item:first-child{ border-left: none; padding-left: 0; }
+  }
+  @media (max-width: 559px){
+    .hero-meta .item:nth-child(odd){ border-left: none; padding-left: 0; }
+  }
+  .hero-meta .num{
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.2vw, 1.85rem);
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .hero-meta .num.tc-num{
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    font-style: italic;
+    color: var(--gold-2);
+    line-height: 1.2;
+  }
+  .hero-meta .num-frac,
+  .hero-meta .num-suffix{
+    font-size: 0.55em;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+  .hero-meta .num-suffix{
+    color: var(--gold-2);
+    font-size: 0.7em;
+    margin-left: 4px;
+  }
+  .hero-meta .lab{
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+
+  .hero-img{
+    position: relative;
+    aspect-ratio: 4 / 5;
+    min-height: 50vh;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  @media (min-width: 960px){
+    .hero-img{ min-height: 0; }
+  }
+  .hero-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero-img::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14,42,58,0) 60%, rgba(14,42,58,.18) 100%);
+    pointer-events: none;
+  }
+  .hero-tag{
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    background: rgba(251,246,238,.94);
+    color: var(--ink);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    max-width: 260px;
+    line-height: 1.3;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ==========  SECTIONS  ========== */
+
+  section{ padding: clamp(64px, 9vw, 120px) 0; }
+  .section-head{
+    display: grid;
+    gap: 14px;
+    margin-bottom: clamp(32px, 5vw, 56px);
+    max-width: 720px;
+  }
+  .section-head .lead{ margin: 0; font-style: normal; color: var(--ink-2); }
+
+  /* ==========  PLACEHOLDER (visualmente distinto)  ========== */
+
+  .placeholder{
+    margin-top: 20px;
+    padding: 16px 18px;
+    border: 1px dashed var(--warn);
+    border-radius: 4px;
+    background: var(--warn-bg);
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  .placeholder::before{
+    content: "Pendiente · a confirmar con el equipo";
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.68rem;
+    color: var(--warn);
+    margin-bottom: 8px;
+  }
+
+  /* ==========  COCINA  ========== */
+
+  .cocina{
+    background: var(--bg-2);
+  }
+  .cocina-grid{
+    display: grid;
+    gap: clamp(28px, 5vw, 64px);
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  @media (min-width: 960px){
+    .cocina-grid{ grid-template-columns: 1.1fr 1fr; }
+  }
+  .cocina-img{
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+  }
+  .cocina-img img{ width: 100%; height: 100%; object-fit: cover; }
+
+  .pillars{
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: grid;
+    gap: 14px;
+  }
+  .pillars li{
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pillars li:last-child{ border-bottom: 0; }
+  .pillars .n{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--gold-2);
+    font-size: 1.05rem;
+  }
+  .pillars strong{
+    font-family: var(--serif);
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .pillars p{
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 0.92rem;
+  }
+
+  /* ==========  RECUERDOS / REVIEWS  ========== */
+
+  .recuerdos-grid{
+    display: grid;
+    gap: clamp(20px, 3vw, 32px);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px){
+    .recuerdos-grid{ grid-template-columns: 1.2fr 1fr; }
+  }
+  .quote-card{
+    background: var(--bg-2);
+    padding: clamp(28px, 4vw, 44px);
+    border-radius: 4px;
+    border-left: 3px solid var(--gold);
+  }
+  .quote-card .quote{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .quote-card .quote-trans{
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    margin: 0 0 14px;
+    font-family: var(--sans);
+  }
+  .quote-card .quote-source{
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+
+  .reviews-list{
+    display: grid;
+    gap: 14px;
+  }
+  .review{
+    padding: 18px 20px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .review .stars{
+    color: var(--gold);
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .review p{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+    margin: 0 0 10px;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+  .review .who{
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+  }
+
+  .tc-band{
+    margin-top: clamp(32px, 5vw, 48px);
+    padding: clamp(22px, 4vw, 36px);
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 4px;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  @media (min-width: 720px){
+    .tc-band{ grid-template-columns: auto 1fr auto; gap: 28px; }
+  }
+  .tc-band .badge{
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--gold);
+  }
+  .tc-band p{
+    margin: 0;
+    color: rgba(251,246,238,.85);
+    font-size: 0.95rem;
+  }
+  .tc-band .src{
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(251,246,238,.55);
+  }
+
+  /* ==========  CARTA  ========== */
+
+  .carta{
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .carta h2, .carta h3, .carta .lead, .carta p{ color: var(--bg); }
+  .carta .eyebrow{ color: var(--gold); }
+  .carta .lead{ color: rgba(251,246,238,.78); }
+
+  .carta-grid{
+    display: grid;
+    gap: clamp(28px, 4vw, 48px);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px){
+    .carta-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  .dish{
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 100px 1fr;
+    align-items: start;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(251,246,238,.12);
+  }
+  @media (min-width: 480px){
+    .dish{ grid-template-columns: 132px 1fr; gap: 22px; }
+  }
+  .dish-img{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+    background: rgba(251,246,238,.06);
+  }
+  .dish-img img{ width: 100%; height: 100%; object-fit: cover; }
+  .dish-body h4{
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    margin: 0 0 6px;
+    color: var(--bg);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .dish-body h4 .price{
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .dish-body p{
+    font-size: 0.9rem;
+    color: rgba(251,246,238,.72);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .dish-origin{
+    display: inline-block;
+    margin-bottom: 6px;
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--mustard);
+    padding: 2px 8px;
+    border: 1px solid rgba(214,165,49,.4);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .dish-origin.med{ color: var(--bg); border-color: rgba(251,246,238,.25); }
+  .dish-origin.asia{ color: #e8b88a; border-color: rgba(232,184,138,.3); }
+
+  .carta-foot{
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(251,246,238,.12);
+    text-align: center;
+  }
+  .carta-foot .small{ color: rgba(251,246,238,.55); }
+
+  /* Tilt 3D en cards */
+  .carta-grid{ perspective: 1200px; }
+  .dish{
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), background-color .35s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+    padding: 18px 12px;
+    border-radius: 6px;
+    margin: 0 -12px;
+  }
+  @media (hover: hover){
+    .dish:hover{
+      transform: translateZ(0) translateY(-2px) rotateX(2deg) rotateY(-2deg) scale(1.015);
+      background-color: rgba(251,246,238,.04);
+    }
+    .dish:hover .dish-img img{ transform: scale(1.06); }
+  }
+  .dish-img img{ transition: transform .6s ease; }
+
+  /* Lubina sticky parallax (solo desktop) */
+  .lubina-pin{ display: none; }
+  @media (min-width: 1024px){
+    .lubina-pin{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+      margin-top: 32px;
+      padding: 40px 0 0;
+      border-top: 1px solid rgba(251,246,238,.12);
+    }
+    .lubina-pin-img{
+      position: sticky;
+      top: 80px;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+    }
+    .lubina-pin-img img{ width: 100%; height: 100%; object-fit: cover; }
+    .lubina-pin-text{
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding: 20px 0 80px;
+    }
+    .lubina-pin-text .block{
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(251,246,238,.12);
+    }
+    .lubina-pin-text .block:last-child{ border-bottom: none; }
+    .lubina-pin-text h3{ color: var(--bg); margin-bottom: 10px; }
+    .lubina-pin-text p{ color: rgba(251,246,238,.78); margin: 0; font-size: 0.95rem; }
+    .lubina-pin-text .eyebrow{ color: var(--gold); margin-bottom: 8px; display: block; }
+  }
+
+  /* ==========  RECONOCIMIENTO  ========== */
+
+  .recog-grid{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 760px){
+    .recog-grid{ grid-template-columns: repeat(4, 1fr); }
+  }
+  .recog{
+    text-align: center;
+    padding: clamp(20px, 3vw, 32px) 16px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--white);
+  }
+  .recog .num{
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .recog .num em{
+    font-style: italic;
+    color: var(--gold-2);
+    font-weight: 400;
+  }
+  .recog .lab{
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+  }
+  .recog .src{
+    display: block;
+    margin-top: 6px;
+    font-size: 0.66rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  /* ==========  GALERIA  ========== */
+
+  .gallery{ background: var(--bg-2); }
+  .gallery-grid{
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 720px){
+    .gallery-grid{ grid-template-columns: repeat(4, 1fr); }
+  }
+  .gallery-item{
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+  }
+  .gallery-item img{
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .6s ease;
+  }
+  .gallery-item:hover img{ transform: scale(1.04); }
+  .gallery-disclaimer{
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ==========  RESERVAS  ========== */
+
+  .reserve-grid{
+    display: grid;
+    gap: clamp(28px, 5vw, 56px);
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  @media (min-width: 880px){
+    .reserve-grid{ grid-template-columns: 1.1fr 1fr; }
+  }
+  .reserve-form{
+    display: grid;
+    gap: 14px;
+  }
+  .reserve-form .row{
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 540px){
+    .reserve-form .row{ grid-template-columns: 1fr 1fr; }
+  }
+  .field{ display: grid; gap: 6px; }
+  .field label{
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+  }
+  .field input,
+  .field select,
+  .field textarea{
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--white);
+    color: var(--ink);
+    transition: border-color .2s ease;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus{
+    outline: none;
+    border-color: var(--ink);
+  }
+  .field textarea{ min-height: 100px; resize: vertical; }
+  .reserve-form .submit{
+    margin-top: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+  @media (min-width: 540px){
+    .reserve-form .submit{ width: auto; }
+  }
+
+  .reserve-side{
+    background: var(--bg-2);
+    padding: clamp(24px, 4vw, 36px);
+    border-radius: 4px;
+  }
+  .reserve-side h3{ margin-bottom: 16px; }
+  .reserve-side .row{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+  }
+  .reserve-side .row:first-of-type{ border-top: none; }
+  .reserve-side .lab{
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    min-width: 80px;
+  }
+  .reserve-side .val{
+    font-family: var(--serif);
+    color: var(--ink);
+  }
+  .wa-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 12px 18px;
+    background: #25d366;
+    color: white;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: transform .2s ease;
+  }
+  .wa-btn:hover{ transform: translateY(-1px); }
+
+  /* ==========  CONTACTO  ========== */
+
+  .contact-grid{
+    display: grid;
+    gap: clamp(20px, 4vw, 40px);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 880px){
+    .contact-grid{ grid-template-columns: 1fr 1fr 1fr; }
+  }
+  .contact-card{
+    padding: clamp(20px, 3vw, 28px);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .contact-card h4{
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    margin: 0 0 12px;
+  }
+  .contact-card p{ margin: 0 0 6px; color: var(--ink-2); }
+  .contact-card .small{ margin-top: 10px; }
+  .map-frame{
+    margin-top: clamp(28px, 5vw, 48px);
+    aspect-ratio: 16 / 7;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .map-frame iframe{ width: 100%; height: 100%; border: 0; }
+
+  /* ==========  FOOTER  ========== */
+
+  footer{
+    background: var(--ink);
+    color: rgba(251,246,238,.78);
+    padding: 32px 0 22px;
+    font-size: 0.84rem;
+  }
+  footer h5{
+    font-family: var(--serif);
+    color: var(--bg);
+    font-size: 0.95rem;
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+  .footer-grid{
+    display: grid;
+    gap: 22px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px){
+    .footer-grid{ grid-template-columns: 1.6fr 1fr 1fr; gap: 28px; }
+  }
+  footer p{ margin: 0 0 4px; line-height: 1.55; }
+  footer .footer-grid a{ display: block; padding: 2px 0; }
+  .footer-brand .mark{
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--bg);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .footer-brand .mark em{ color: var(--gold); font-style: italic; }
+  .footer-bottom{
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(251,246,238,.12);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: rgba(251,246,238,.55);
+  }
+  @media (min-width: 720px){
+    .footer-bottom{
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .footer-bottom a{ color: rgba(251,246,238,.78); border-bottom: 1px solid rgba(251,246,238,.2); }
+
+  .disclaimer{
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(251,246,238,.06);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.74rem;
+    color: rgba(251,246,238,.7);
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  /* ==========  UTIL  ========== */
+
+  /* Sin JS: todo visible. JS marca <html class="js"> y entonces escondemos hasta que entren en viewport. */
+  .reveal{ opacity: 1; transform: none; transition: opacity .8s ease, transform .8s ease; }
+  html.js .reveal{ opacity: 0; transform: translateY(16px); }
+  html.js .reveal.in{ opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce){
+    html.js .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
+    html{ scroll-behavior: auto; }
+  }
+
+  ::selection{ background: var(--gold); color: var(--bg); }
+</style>
+<script>
+  // Activa el modo "JS on": permite que el CSS esconda los .reveal antes de que pinte.
+  // Si JS está deshabilitado o falla, .reveal queda visible por defecto.
+  (function(){
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js');
+      }
+    } catch(e) { /* fallback: sin clase 'js' => todo visible */ }
+  })();
+</script>
+</head>
+
+<body>
+
+<!-- ==========  NAV  ========== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Restaurante Costa">
+      <span class="mark">Restaurante <em>Costa</em></span>
+      <span class="city">Calpe</span>
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#cocina">La cocina</a>
+      <a href="#carta">Carta</a>
+      <a href="#recuerdos">Reseñas</a>
+      <a href="#reconocimiento">Reconocimiento</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#reservar" class="nav-cta">Reservar</a>
+  </div>
+</header>
+
+<!-- ==========  HERO  ========== -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="eyebrow">Calpe · Edificio Apolo VII</p>
+      <h1>Cocina ecléctica<br/><span class="acc">en Apolo VII.</span></h1>
+      <p class="lead">Lo mediterráneo del lugar, con guiños del norte de Europa y notas del sur asiático. Arroces, pescados, coquilles, carrilladas y un curry de langostino. Una sola mesa.</p>
+
+      <div class="hero-anchors" aria-label="Precios destacados">
+        <div class="anchor-item anchor-item--primary">
+          <span class="anchor-lab">Paella señoret</span>
+          <span class="anchor-val">15,00 €<span class="anchor-suf"> / pers.</span></span>
+          <span class="anchor-note">Mínimo 2 personas · al momento</span>
+        </div>
+        <div class="anchor-item">
+          <span class="anchor-lab">Menú del día</span>
+          <span class="anchor-val">16 – 20 €</span>
+          <span class="anchor-note">Mediodía · de lunes a viernes</span>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#reservar" class="btn btn-primary">Reservar mesa <span class="arrow">→</span></a>
+        <a href="#carta" class="btn btn-ghost">Ver la carta</a>
+      </div>
+      <div class="hero-meta">
+        <div class="item">
+          <span class="num"><span class="count" data-count="4.7" data-decimals="1">4,7</span><span class="num-suffix"> ★</span></span>
+          <span class="lab">Google</span>
+        </div>
+        <div class="item">
+          <span class="num"><span class="count" data-count="4.8" data-decimals="1">4,8</span><span class="num-suffix"> ★</span></span>
+          <span class="lab">Tripadvisor</span>
+        </div>
+        <div class="item">
+          <span class="num tc-num">★ Travelers'<br/>Choice</span>
+          <span class="lab">Tripadvisor</span>
+        </div>
+        <div class="item">
+          <span class="num"><span class="count" data-count="97" data-decimals="0">97</span><span class="num-frac">/100</span></span>
+          <span class="lab">Sluurpy</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img reveal">
+      <img src="img/ambiente.webp" alt="Interior de Restaurante Costa, comedor con mesas vestidas y luz cálida" />
+      <div class="hero-tag">Mediterráneo del litoral con guiños belgas y un curry honesto.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========  COCINA  ========== -->
+<section class="cocina" id="cocina">
+  <div class="wrap">
+    <div class="cocina-grid">
+      <div class="cocina-img reveal">
+        <img src="img/arroz-negro.webp" alt="Arroz negro con marisco recién servido en mesa" />
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">La cocina</p>
+        <h2>Tres acentos,<br/>una misma mesa.</h2>
+        <p class="lead" style="font-style: normal; margin-top: 14px;">
+          Arroces alicantinos, pescados del mercado y carnes a la brasa. Conviven con coquilles, kaastaart y un curry korma de langostino. Sin teatro: cada plato hace lo suyo.
+        </p>
+
+        <ul class="pillars">
+          <li>
+            <span class="n">01</span>
+            <div>
+              <strong>Mediterráneo de aquí</strong>
+              <p>Arroz del señorito, paellas, lubina al horno de sal, pulpo a la brasa, carrilladas al vino. La base de la casa.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">02</span>
+            <div>
+              <strong>Toque belga</strong>
+              <p>Coquilles scampi (vieiras), pollo en salsa de mostaza, kaastaart de postre. Recetas del norte hechas con producto local.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">03</span>
+            <div>
+              <strong>Una nota del sur asiático</strong>
+              <p>Langostino korma. Curry suave de inspiración india, con coco y especias. Un único plato, pero entero.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="placeholder">
+          Texto de historia y trayectoria del restaurante (año exacto de apertura, origen del proyecto, identidad del equipo) a redactar conjuntamente con la casa tras la visita.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========  RECUERDOS (REVIEWS)  ========== -->
+<section id="recuerdos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Lo que recuerdan</p>
+      <h2>Reseñas <em style="font-style: italic; color: var(--gold-2); font-weight: 400;">verificadas.</em></h2>
+      <p class="lead">Recogidas de Tripadvisor y otras plataformas públicas. Sin retoques.</p>
+    </div>
+
+    <div class="recuerdos-grid">
+      <div class="quote-card reveal">
+        <p class="quote">“The best lubina en sal I have had on my plate in Calpe in twenty years.”</p>
+        <p class="quote-trans">— La mejor lubina al horno de sal que he probado en Calpe en veinte años.</p>
+        <p class="quote-source">Tripadvisor · reseña de viajero internacional</p>
+      </div>
+
+      <div class="reviews-list">
+        <article class="review reveal">
+          <p class="stars">★★★★★</p>
+          <p>“Un sitio muy agradable, con trato excepcional. La comida de una calidad muy buena.”</p>
+          <p class="who">Santi Mira · Tripadvisor · 2019</p>
+        </article>
+
+        <article class="review reveal">
+          <p class="stars">★★★★★</p>
+          <p>“El tartar de atún buenísimo y las vieiras con gambas y salsa de azafrán una delicia.”</p>
+          <p class="who">Ramon M · Tripadvisor · 2019</p>
+        </article>
+
+        <article class="review reveal">
+          <p class="stars">★★★★★</p>
+          <p>“La fideuá es increíble y la ensalada de cabra y tomate se derrite el queso.”</p>
+          <p class="who">Martita123 · Tripadvisor · 2018</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="tc-band reveal">
+      <span class="badge">★ Travelers' Choice</span>
+      <p>Distinción de Tripadvisor a los restaurantes mejor valorados de forma consistente por sus viajeros. Insignia activa en el perfil oficial.</p>
+      <span class="src">Fuente · Tripadvisor</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========  CARTA  ========== -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">La carta</p>
+      <h2 style="color: var(--bg);">Una selección de la casa.</h2>
+      <p class="lead">Ocho platos de la carta actual: mediterráneos, belgas y un curry. La paella señoret es el ancla a 15 € por persona; el resto figura en la carta física, que cambia con la temporada.</p>
+    </div>
+
+    <div class="carta-grid">
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="img/hero-lubina.webp" alt="Lubina al horno de sal" loading="lazy" /></div>
+        <div class="dish-body">
+          <span class="dish-origin med">Mediterráneo</span>
+          <h4>Lubina al horno de sal <span class="price">—</span></h4>
+          <p>Pescado entero a la sal gruesa, abierto en mesa. Aceite de oliva virgen extra y limón.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="img/arroz-negro.webp" alt="Arroz del señorito con marisco pelado" loading="lazy" /></div>
+        <div class="dish-body">
+          <span class="dish-origin med">Mediterráneo</span>
+          <h4>Paella señoret <span class="price">15,00 € / pers.</span></h4>
+          <p>Arroz con marisco pelado, fondo de pescado y azafrán. Para comer sin trabajo. Mínimo dos personas.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="img/arroz-negro.webp" alt="Arroz negro con sepia y marisco" loading="lazy" /></div>
+        <div class="dish-body">
+          <span class="dish-origin med">Mediterráneo</span>
+          <h4>Arroz negro <span class="price">—</span></h4>
+          <p>Arroz con tinta de calamar, sepia y marisco. Allioli casero aparte. Mínimo dos personas.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="img/pulpo.webp" alt="Coquilles scampi · vieiras con gambas y salsa de azafrán" loading="lazy" /></div>
+        <div class="dish-body">
+          <span class="dish-origin">Bélgica</span>
+          <h4>Coquilles scampi <span class="price">—</span></h4>
+          <p>Vieiras con gambas y salsa de azafrán. Clásico de la cocina belga, hecho con producto del Mediterráneo.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="img/carrilladas.webp" alt="Carrilladas de ternera al vino tinto" loading="lazy" /></div>
+        <div class="dish-body">
+          <span class="dish-origin med">Mediterráneo</span>
+          <h4>Carrilladas al vino <span class="price">—</span></h4>
+          <p>Mejillas de ternera braseadas a fuego lento en reducción de vino tinto. Patata y verdura de temporada.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="img/carrilladas.webp" alt="Pollo en salsa de mostaza, plato de inspiración belga" loading="lazy" /></div>
+        <div class="dish-body">
+          <span class="dish-origin">Bélgica</span>
+          <h4>Pollo en salsa de mostaza <span class="price">—</span></h4>
+          <p>Pechuga sellada con salsa cremosa de mostaza, una de las recetas más reconocibles del recetario belga.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="img/pulpo.webp" alt="Langostino korma · curry suave con leche de coco" loading="lazy" /></div>
+        <div class="dish-body">
+          <span class="dish-origin asia">Sur asiático</span>
+          <h4>Langostino korma <span class="price">—</span></h4>
+          <p>Curry suave de inspiración india, leche de coco y especias. La única nota oriental de la carta y va en serio.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="img/tarta-queso.webp" alt="Kaastaart · tarta de queso de tradición flamenca" loading="lazy" /></div>
+        <div class="dish-body">
+          <span class="dish-origin">Bélgica</span>
+          <h4>Kaastaart <span class="price">—</span></h4>
+          <p>Tarta de queso de tradición flamenca. Más densa que la española, menos dulce. El postre que el habitual ya no se cuestiona.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Lubina sticky-parallax (solo desktop) -->
+    <div class="lubina-pin" id="lubina">
+      <div class="lubina-pin-img">
+        <img src="img/hero-lubina.webp" alt="Lubina al horno de sal, plato insignia" />
+      </div>
+      <div class="lubina-pin-text">
+        <div class="block">
+          <span class="eyebrow">Plato insignia</span>
+          <h3 style="font-family: var(--serif); color: var(--bg); font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15;">Lubina al horno de sal.</h3>
+        </div>
+        <div class="block">
+          <span class="eyebrow">Producto</span>
+          <p>Pieza entera del día. Sal gruesa, horno fuerte. Nada más.</p>
+        </div>
+        <div class="block">
+          <span class="eyebrow">Mesa</span>
+          <p>Se abre delante del comensal. Aceite de oliva virgen y limón al servir.</p>
+        </div>
+        <div class="block">
+          <span class="eyebrow">Reseña</span>
+          <p style="font-family: var(--serif); font-style: italic; color: var(--bg);">"La mejor lubina al horno de sal que he probado en Calpe en veinte años."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="carta-foot reveal">
+      <p class="small">Carta completa con más arroces, pescados, carnes y postres en sala. Menú del día 16–20 € al mediodía.<br/>Paella señoret 15 € por persona. Algunos precios verificados en reseñas y carta.menu; IVA incluido. Resto: consultar al equipo de sala.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========  RECONOCIMIENTO  ========== -->
+<section id="reconocimiento">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Reconocimiento</p>
+      <h2>Lo que <em style="font-style: italic; color: var(--gold-2); font-weight: 400;">dicen las plataformas.</em></h2>
+      <p class="lead">Cuatro indicadores públicos, todos verificables en su fuente original.</p>
+    </div>
+
+    <div class="recog-grid">
+      <div class="recog reveal">
+        <div class="num">4,7 <em>★</em></div>
+        <div class="lab">Google</div>
+        <span class="src">Reseñas verificadas</span>
+      </div>
+      <div class="recog reveal">
+        <div class="num">4,8 <em>★</em></div>
+        <div class="lab">Tripadvisor</div>
+        <span class="src">Travelers' Choice activo</span>
+      </div>
+      <div class="recog reveal">
+        <div class="num">97<em>/100</em></div>
+        <div class="lab">Sluurpy</div>
+        <span class="src">Puntuación global</span>
+      </div>
+      <div class="recog reveal">
+        <div class="num">8,73<em>/10</em></div>
+        <div class="lab">Gastroranking</div>
+        <span class="src">Calificación gastronómica</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========  GALERIA  ========== -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">El sitio</p>
+      <h2>Ambiente.</h2>
+      <p class="lead">Comedor del cluster gastronómico de Apolo VII. Mesas vestidas, luz cálida, sobremesa larga.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <a class="gallery-item reveal" href="img/ambiente.webp" aria-label="Comedor del restaurante"><img src="img/ambiente.webp" alt="Comedor de Restaurante Costa" loading="lazy" /></a>
+      <a class="gallery-item reveal" href="img/mesa-vino.webp" aria-label="Mesa con vino"><img src="img/mesa-vino.webp" alt="Mesa preparada con copas y vino" loading="lazy" /></a>
+      <a class="gallery-item reveal" href="img/pulpo.webp" aria-label="Pulpo a la brasa"><img src="img/pulpo.webp" alt="Pulpo a la brasa servido" loading="lazy" /></a>
+      <a class="gallery-item reveal" href="img/fachada.webp" aria-label="Fachada del local"><img src="img/fachada.webp" alt="Exterior referencial de un restaurante mediterráneo en Calpe" loading="lazy" /></a>
+    </div>
+
+    <p class="gallery-disclaimer">
+      Imágenes referenciales generadas para la propuesta de diseño. La fotografía definitiva se realizará con sesión profesional en el local.
+    </p>
+  </div>
+</section>
+
+<!-- ==========  RESERVAS  ========== -->
+<section id="reservar">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Reservas</p>
+      <h2>Reserva tu mesa.</h2>
+      <p class="lead">El comedor es pequeño y las noches del fin de semana se llenan. Recomendamos reservar con antelación.</p>
+    </div>
+
+    <div class="reserve-grid">
+      <form class="reserve-form reveal" onsubmit="event.preventDefault(); this.querySelector('.submit').textContent='Solicitud enviada — te confirmamos en un rato'; this.querySelector('.submit').style.background='var(--gold-2)';">
+        <div class="row">
+          <div class="field">
+            <label for="r-name">Nombre</label>
+            <input id="r-name" type="text" required placeholder="Tu nombre" />
+          </div>
+          <div class="field">
+            <label for="r-phone">Teléfono</label>
+            <input id="r-phone" type="tel" required placeholder="+34 ..." />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="r-date">Fecha</label>
+            <input id="r-date" type="date" required />
+          </div>
+          <div class="field">
+            <label for="r-time">Hora</label>
+            <select id="r-time" required>
+              <option value="">Elige hora</option>
+              <option>13:00</option><option>13:30</option><option>14:00</option>
+              <option>14:30</option><option>15:00</option>
+              <option>20:00</option><option>20:30</option><option>21:00</option>
+              <option>21:30</option><option>22:00</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="r-people">Comensales</label>
+            <select id="r-people" required>
+              <option value="">Número de comensales</option>
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6</option>
+              <option>7</option><option>8+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="r-zone">Zona</label>
+            <select id="r-zone">
+              <option>Sin preferencia</option>
+              <option>Comedor interior</option>
+              <option>Terraza</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-note">Comentarios (alergias, ocasión, etc.)</label>
+          <textarea id="r-note" placeholder="Opcional"></textarea>
+        </div>
+        <button class="btn btn-primary submit" type="submit">Enviar solicitud <span class="arrow">→</span></button>
+      </form>
+
+      <aside class="reserve-side reveal">
+        <h3>Reservar también por…</h3>
+        <div class="row">
+          <span class="lab">Teléfono</span>
+          <a class="val" href="tel:+34965064369">+34 965 06 43 69</a>
+        </div>
+        <div class="row">
+          <span class="lab">Dirección</span>
+          <span class="val">Pintor Sorolla · Apolo VII · Local 5A · Calpe</span>
+        </div>
+        <div class="row">
+          <span class="lab">Cierre</span>
+          <span class="val">Miércoles</span>
+        </div>
+        <a class="wa-btn" href="https://wa.me/34965064369?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20Restaurante%20Costa." target="_blank" rel="noopener">
+          Reservar por WhatsApp →
+        </a>
+        <p class="small" style="margin-top: 16px;">Confirmación en horario de servicio.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ==========  CONTACTO  ========== -->
+<section id="contacto" style="background: var(--bg-2);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2>Dónde estamos.</h2>
+      <p class="lead">En el Edificio Apolo VII, en plena calle Pintor Sorolla. A pie de calle, zona azul próxima.</p>
+    </div>
+
+    <div class="contact-grid">
+      <article class="contact-card reveal">
+        <h4>Dirección</h4>
+        <p>Calle Pintor Sorolla<br/>Edificio Apolo VII · Local 5A<br/>03710 Calpe · Alicante</p>
+        <p class="small">Cluster gastronómico de Apolo VII</p>
+      </article>
+      <article class="contact-card reveal">
+        <h4>Cierre semanal</h4>
+        <p><strong>Miércoles cerrado.</strong></p>
+        <div class="placeholder" style="margin-top: 14px;">
+          Horario diario detallado (comida, cena, pase de tarde) a confirmar con la casa.
+        </div>
+      </article>
+      <article class="contact-card reveal">
+        <h4>Contacto</h4>
+        <p>Teléfono · <a href="tel:+34965064369" style="border-bottom: 1px solid var(--line);">+34 965 06 43 69</a></p>
+        <p class="small">Reservas también por WhatsApp y formulario web.</p>
+      </article>
+    </div>
+
+    <div class="map-frame reveal">
+      <iframe
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Calle+Pintor+Sorolla+Apolo+VII,+Calpe,+Alicante&output=embed"
+        title="Ubicación de Restaurante Costa en Calpe"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ==========  FOOTER  ========== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="mark">Restaurante <em>Costa</em></span>
+        <p>Cocina ecléctica en el Edificio Apolo VII de Calpe.<br/>Mediterráneo, guiños belgas y un toque del sur asiático.</p>
+        <p class="small" style="margin-top: 10px; color: rgba(251,246,238,.55);">Pintor Sorolla · Apolo VII · Local 5A · 03710 Calpe</p>
+      </div>
+      <div>
+        <h5>Restaurante</h5>
+        <p><a href="#cocina" style="display:block; padding: 4px 0;">La cocina</a></p>
+        <p><a href="#carta" style="display:block; padding: 4px 0;">Carta</a></p>
+        <p><a href="#recuerdos" style="display:block; padding: 4px 0;">Reseñas</a></p>
+        <p><a href="#reservar" style="display:block; padding: 4px 0;">Reservar</a></p>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <p><a href="tel:+34965064369" style="display:block; padding: 4px 0;">+34 965 06 43 69</a></p>
+        <p><a href="https://wa.me/34965064369" target="_blank" rel="noopener" style="display:block; padding: 4px 0;">WhatsApp</a></p>
+        <p><a href="https://www.tripadvisor.com/Restaurant_Review-g187526-d14129038" target="_blank" rel="noopener" style="display:block; padding: 4px 0;">Tripadvisor</a></p>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      Propuesta de diseño. Las imágenes y determinados textos son referenciales y se sustituirán por fotografía profesional propia y por contenido redactado conjuntamente con la casa (historia, equipo, año exacto de apertura, horario detallado). Los datos verificables —dirección, teléfono, valoraciones y reconocimientos— provienen de fuentes públicas: Tripadvisor, Google, Sluurpy, Gastroranking y el directorio oficial del Ajuntament de Calp.
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Restaurante Costa · Calpe</span>
+      <span>Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Lenis smooth scroll -->
+<script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+(function(){
+  'use strict';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveals = document.querySelectorAll('.reveal');
+
+  // ---------- Fallback reveal (sin IO, sin GSAP, o reduced motion) ----------
+  const showAllReveals = () => {
+    reveals.forEach(el => el.classList.add('in'));
+  };
+
+  if (reduceMotion) {
+    showAllReveals();
+    return;
+  }
+
+  // ---------- IntersectionObserver para reveal (con fallback robusto) ----------
+  let ioWorks = false;
+  try {
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+      reveals.forEach(el => io.observe(el));
+      ioWorks = true;
+
+      // Salvavidas: a 1.5s, todo lo visible que no se haya activado, se activa.
+      setTimeout(() => {
+        reveals.forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight) el.classList.add('in');
+        });
+      }, 1500);
+    }
+  } catch(e) { ioWorks = false; }
+
+  if (!ioWorks) showAllReveals();
+
+  // ---------- Lenis smooth scroll ----------
+  let lenis = null;
+  try {
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.1,
+        smoothWheel: true,
+        smoothTouch: false,
+        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+      function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    }
+  } catch(e){ /* sin smooth scroll */ }
+
+  // ---------- GSAP + ScrollTrigger ----------
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Sync ScrollTrigger con Lenis
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time)=>{ lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  // ---------- Count-up en hero stats (usa textContent, sin innerHTML) ----------
+  document.querySelectorAll('.hero-meta .count').forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    if (isNaN(target)) return;
+    const obj = { v: 0 };
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 92%',
+      once: true,
+      onEnter: () => {
+        gsap.to(obj, {
+          v: target,
+          duration: 1.4,
+          ease: 'power2.out',
+          onUpdate: () => {
+            el.textContent = obj.v.toFixed(decimals).replace('.', ',');
+          }
+        });
+      }
+    });
+  });
+
+  // ---------- Stagger cards de carta ----------
+  const dishes = gsap.utils.toArray('.carta .dish');
+  if (dishes.length){
+    gsap.from(dishes, {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      stagger: 0.08,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '.carta-grid', start: 'top 80%' }
+    });
+  }
+
+  // ---------- Cascada pilares Cocina ----------
+  const pillars = gsap.utils.toArray('.pillars li');
+  if (pillars.length){
+    gsap.from(pillars, {
+      opacity: 0,
+      x: -20,
+      duration: 0.7,
+      stagger: 0.15,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '.pillars', start: 'top 85%' }
+    });
+  }
+
+  // ---------- Sticky parallax lubina (solo desktop >=1024) ----------
+  const lubinaSection = document.querySelector('.lubina-pin');
+  if (lubinaSection && window.matchMedia('(min-width: 1024px)').matches){
+    const blocks = gsap.utils.toArray('.lubina-pin-text .block');
+    gsap.from(blocks, {
+      opacity: 0,
+      y: 24,
+      duration: 0.6,
+      stagger: 0.12,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: lubinaSection, start: 'top 70%' }
+    });
+    // Parallax sutil de la imagen mientras esta sticky
+    gsap.to('.lubina-pin-img img', {
+      yPercent: -6,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: lubinaSection,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  }
+
+  // Refresh tras carga de fuentes/imagenes
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+
+</body>
+</html>

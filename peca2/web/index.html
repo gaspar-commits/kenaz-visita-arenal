@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Peca2 · Helado artesanal · Paseo del Arenal · Calpe</title>
+<meta name="description" content="Peca2 · Heladería artesanal en el paseo del Arenal de Calpe. Cremas, sorbetes y helados de fruta hechos cada día." />
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --coral: #f08a78;
+    --coral-suave: #fbdcd2;
+    --coral-fondo: #fdeae3;
+    --crema: #fdf7ed;
+    --vainilla: #fbf2e0;
+    --mostaza: #d9a441;
+    --tinta: #2c1d1a;
+    --tinta-suave: #5a3f3a;
+    --blanco-roto: #fbfaf6;
+    --linea: rgba(44, 29, 26, 0.13);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--blanco-roto);
+    color: var(--tinta);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  .container { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* Disclaimer */
+  .disclaimer {
+    background: var(--tinta);
+    color: var(--coral-suave);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-align: center;
+    padding: 0.55rem 1rem;
+    line-height: 1.45;
+  }
+  .disclaimer strong { color: var(--coral); font-weight: 500; }
+
+  /* Header */
+  header {
+    padding: 1rem 0 0.9rem;
+    background: var(--blanco-roto);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--linea);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .logo-mark {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.55rem;
+    letter-spacing: -0.01em;
+    color: var(--coral);
+    line-height: 1;
+    position: relative;
+  }
+  .logo-mark::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--mostaza);
+    top: 6px;
+    right: -10px;
+  }
+  .brand .meta {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tinta-suave);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 2rem 0 2.5rem;
+    background: linear-gradient(180deg, var(--coral-fondo) 0%, var(--blanco-roto) 100%);
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mostaza);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--tinta);
+    margin-bottom: 1rem;
+  }
+  .hero h1 .big {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--coral);
+    display: block;
+    font-size: 1.15em;
+    letter-spacing: -0.04em;
+  }
+  .hero p.lede {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--tinta-suave);
+    max-width: 36ch;
+    margin-bottom: 1.5rem;
+  }
+  .hero-img {
+    margin-top: 1.5rem;
+    border-radius: 22px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: var(--coral-suave);
+  }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Info strip */
+  .info-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--linea);
+    border-bottom: 1px solid var(--linea);
+    margin-top: 2rem;
+  }
+  .info-strip .item .k {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mostaza);
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+  .info-strip .item .v {
+    font-family: "Fraunces", serif;
+    font-size: 1rem;
+    color: var(--tinta);
+    line-height: 1.35;
+  }
+
+  /* Secciones */
+  section { padding: 3rem 0; }
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mostaza);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 6.5vw, 2.1rem);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    color: var(--tinta);
+    margin-bottom: 1rem;
+  }
+  h2 em { font-style: italic; font-weight: 500; color: var(--coral); }
+  .section-lede {
+    font-size: 1rem;
+    color: var(--tinta-suave);
+    margin-bottom: 2rem;
+    max-width: 42ch;
+  }
+
+  /* Sabores categorias */
+  .sabores {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .sabor-card {
+    border: 1px solid var(--linea);
+    background: var(--vainilla);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .sabor-card::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+    top: 1.4rem;
+    right: 1.35rem;
+  }
+  .sabor-card[data-tipo="sorbetes"]::before { background: var(--mostaza); }
+  .sabor-card[data-tipo="frutas"]::before { background: #e6708e; }
+  .sabor-card[data-tipo="especiales"]::before { background: var(--tinta); }
+
+  .sabor-card .nombre {
+    font-family: "Fraunces", serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--tinta);
+  }
+  .sabor-card .desc {
+    font-size: 0.83rem;
+    color: var(--tinta-suave);
+    margin-top: 0.15rem;
+    line-height: 1.35;
+  }
+  .sabor-card .count {
+    font-size: 0.72rem;
+    color: var(--tinta-suave);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-right: 1.4rem;
+  }
+
+  /* Aptos */
+  .aptos {
+    background: var(--coral-fondo);
+    border-radius: 0;
+    padding: 3rem 0;
+  }
+  .aptos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .apto-card {
+    background: var(--blanco-roto);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+  .apto-card .tag {
+    display: inline-block;
+    background: var(--coral);
+    color: var(--blanco-roto);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+  .apto-card .tag.mostaza { background: var(--mostaza); }
+  .apto-card h3 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--tinta);
+    margin-bottom: 0.5rem;
+  }
+  .apto-card p { font-size: 0.93rem; color: var(--tinta-suave); }
+  .nota-confirmar {
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--tinta-suave);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Galeria */
+  .galeria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .galeria .tile {
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: var(--coral-suave);
+  }
+  .galeria .tile.wide { grid-column: 1 / -1; aspect-ratio: 16/10; }
+  .galeria .tile img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Find */
+  .find {
+    background: var(--coral);
+    color: var(--blanco-roto);
+    border-radius: 24px;
+    padding: 2.5rem 1.5rem;
+    margin: 2rem 0 0;
+    text-align: center;
+  }
+  .find .eyebrow { color: var(--vainilla); }
+  .find h2 { color: var(--blanco-roto); margin-bottom: 0.75rem; }
+  .find h2 em { color: var(--vainilla); }
+  .find .direccion {
+    font-family: "Fraunces", serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+  }
+  .find .ciudad {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+  }
+  .find .cta {
+    display: inline-block;
+    background: var(--blanco-roto);
+    color: var(--coral);
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.25rem 3rem;
+    font-size: 0.74rem;
+    color: var(--tinta-suave);
+    letter-spacing: 0.04em;
+  }
+  footer .kenaz {
+    margin-top: 0.65rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mostaza);
+  }
+  footer .kenaz a { border-bottom: 1px solid var(--linea); padding-bottom: 1px; }
+
+  @media (min-width: 760px) {
+    .container { max-width: 980px; padding: 0 2rem; }
+    .hero { padding: 3.5rem 0 4rem; display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
+    .hero-img { margin-top: 0; aspect-ratio: 3/4; }
+    .sabores { grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .galeria { grid-template-columns: repeat(4, 1fr); }
+    .galeria .tile.wide { grid-column: span 2; aspect-ratio: 1; }
+    .info-strip { grid-template-columns: repeat(4, 1fr); }
+    .aptos-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  <strong>Demo Kenaz Studio</strong> · Mockup propuesto · Contenido placeholder · Cero sabores específicos, cero datos inventados
+</div>
+
+<header>
+  <div class="container brand">
+    <div class="logo-mark">Peca<span style="font-style:normal;">2</span></div>
+    <div class="meta">Demo</div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Paseo del Arenal · Calpe</div>
+      <h1>Helado <span class="big">artesanal</span> en el paseo.</h1>
+      <p class="lede">Cremas, sorbetes y helados de fruta hechos cada día. Para el cucurucho de las cinco o la copa de después de cenar.</p>
+    </div>
+    <div class="container">
+      <div class="hero-img">
+        <img src="img/hero-cucurucho.webp" alt="Cucurucho con bolas de helado artesanal" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="info-strip">
+      <div class="item">
+        <div class="k">Zona</div>
+        <div class="v">Paseo del Arenal<br>Calpe</div>
+      </div>
+      <div class="item">
+        <div class="k">Estilo</div>
+        <div class="v">Heladería<br>artesanal</div>
+      </div>
+      <div class="item">
+        <div class="k">Producción</div>
+        <div class="v">Hecho<br>cada día</div>
+      </div>
+      <div class="item">
+        <div class="k">Para</div>
+        <div class="v">Cucurucho<br>tarrina o copa</div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Nuestros sabores</div>
+      <h2>Cuatro <em>familias</em>, una vitrina que cambia.</h2>
+      <p class="section-lede">La carta no es fija. Trabajamos por familias y rotamos sabores con la temporada y lo que llega del mercado.</p>
+
+      <div class="sabores">
+        <div class="sabor-card" data-tipo="cremas">
+          <div>
+            <div class="nombre">Cremas</div>
+            <div class="desc">Base láctea clásica<br>vainilla, chocolate, frutos secos…</div>
+          </div>
+          <div class="count">Vitrina</div>
+        </div>
+        <div class="sabor-card" data-tipo="sorbetes">
+          <div>
+            <div class="nombre">Sorbetes</div>
+            <div class="desc">Sin lácteos<br>frescos y ligeros</div>
+          </div>
+          <div class="count">Vitrina</div>
+        </div>
+        <div class="sabor-card" data-tipo="frutas">
+          <div>
+            <div class="nombre">Frutas</div>
+            <div class="desc">De temporada<br>fresa, limón, mango…</div>
+          </div>
+          <div class="count">Vitrina</div>
+        </div>
+        <div class="sabor-card" data-tipo="especiales">
+          <div>
+            <div class="nombre">Especiales</div>
+            <div class="desc">Receta de la casa<br>rotación corta</div>
+          </div>
+          <div class="count">Vitrina</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aptos">
+    <div class="container">
+      <div class="eyebrow">Para todos</div>
+      <h2>Que <em>nadie</em> se quede sin helado.</h2>
+      <p class="section-lede">Tenemos opciones aptas para distintas dietas. Pregunta en mostrador qué hay disponible hoy.</p>
+
+      <div class="aptos-grid">
+        <div class="apto-card">
+          <span class="tag">Sin lactosa</span>
+          <h3>Para intolerantes a la lactosa.</h3>
+          <p>Sorbetes y helados de fruta sin base láctea. Disponibilidad según vitrina del día.</p>
+        </div>
+        <div class="apto-card">
+          <span class="tag mostaza">Sin gluten</span>
+          <h3>Sin gluten en la base.</h3>
+          <p>Helados aptos para celíacos. Cucuruchos sin gluten y tarrinas para llevar.</p>
+        </div>
+      </div>
+      <div class="nota-confirmar">[Variedades exactas y certificaciones a confirmar in situ]</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Galería</div>
+      <h2>El verano <em>tiene</em> dos pecas.</h2>
+      <p class="section-lede">Un vistazo a lo que vas a encontrar — colores, texturas y el paseo de fondo.</p>
+
+      <div class="galeria">
+        <div class="tile"><img src="img/hero-cucurucho.webp" alt="Cucurucho con bolas coloridas" loading="lazy" /></div>
+        <div class="tile"><img src="img/vitrina-helados.webp" alt="Vitrina de helados artesanales" loading="lazy" /></div>
+        <div class="tile"><img src="img/paseo-helado.webp" alt="Helado en el paseo" loading="lazy" /></div>
+        <div class="tile"><img src="img/copa-frutas.webp" alt="Copa de helado con frutas" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="find">
+        <div class="eyebrow">Encuéntranos</div>
+        <h2>En el <em>paseo</em>, mirando al mar.</h2>
+        <div class="direccion">Paseo del Arenal</div>
+        <div class="ciudad">03710 Calpe · Alicante</div>
+        <a class="cta" href="https://maps.google.com/?q=Paseo+del+Arenal+Calpe" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© Peca2 · Paseo del Arenal · Calpe</div>
+  <div class="kenaz">Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a></div>
+</footer>
+
+</body>
+</html>

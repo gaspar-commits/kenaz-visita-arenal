@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Amara · Heladería y cafetería en el paseo de Calpe</title>
+<meta name="description" content="Heladería artesana y cafetería en el paseo marítimo de Calpe. Helado por la mañana, café por la tarde, gelato al sol." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --turquesa: #6fb8b2;
+    --turquesa-suave: #c8e3df;
+    --crema: #f7f0e2;
+    --arena: #fbf7ef;
+    --terracota: #d97a4a;
+    --tinta: #2a3a3a;
+    --tinta-suave: #5a6868;
+    --linea: #e8dfcd;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--arena);
+    color: var(--tinta);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.4em;
+    color: var(--tinta);
+  }
+  p { margin: 0 0 1em; }
+  a { color: var(--terracota); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { display: block; max-width: 100%; height: auto; }
+  .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 247, 239, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--linea);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 1.25rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--tinta);
+    letter-spacing: 0.01em;
+  }
+  .brand-dot { color: var(--terracota); }
+  .nav-cta {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    background: var(--terracota);
+    color: var(--arena);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .nav-cta:hover { text-decoration: none; opacity: 0.92; }
+
+  /* HERO */
+  .hero {
+    padding: 2rem 0 2.5rem;
+    background: linear-gradient(180deg, var(--arena) 0%, var(--crema) 100%);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--turquesa);
+    margin-bottom: 0.9rem;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 0.8rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracota);
+    font-weight: 400;
+  }
+  .hero p.lead {
+    font-size: 1.05rem;
+    color: var(--tinta-suave);
+    max-width: 32rem;
+  }
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 1.2rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: opacity 0.15s ease;
+  }
+  .btn-primary { background: var(--terracota); color: var(--arena); }
+  .btn-primary:hover { text-decoration: none; opacity: 0.92; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--tinta);
+    border: 1px solid var(--tinta);
+  }
+  .btn-ghost:hover { text-decoration: none; background: var(--tinta); color: var(--arena); }
+  .hero-img {
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 12px 30px -18px rgba(42, 58, 58, 0.35);
+    aspect-ratio: 4/5;
+  }
+  .hero-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* SECTIONS */
+  section { padding: 3rem 0; }
+  .section-head {
+    margin-bottom: 2rem;
+    max-width: 36rem;
+  }
+  .section-eyebrow {
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--turquesa);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .section-head h2 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  }
+  .section-head p {
+    color: var(--tinta-suave);
+    font-size: 1rem;
+  }
+
+  /* TIEMPOS */
+  .tiempos {
+    background: var(--turquesa-suave);
+  }
+  .tiempos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .tiempo {
+    background: var(--arena);
+    padding: 1.4rem 1.3rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.6);
+  }
+  .tiempo-hora {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--terracota);
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+  .tiempo h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+  .tiempo p {
+    font-size: 0.92rem;
+    color: var(--tinta-suave);
+    margin: 0;
+  }
+
+  /* CARTA */
+  .carta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+  .carta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem 1.1rem;
+    background: var(--crema);
+    border-radius: 0.75rem;
+    border: 1px solid var(--linea);
+  }
+  .carta-item h3 {
+    font-size: 1rem;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+  .carta-item span {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--tinta-suave);
+    font-size: 0.85rem;
+  }
+  .carta-nota {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--tinta-suave);
+    font-style: italic;
+  }
+
+  /* GALERIA */
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .galeria-item {
+    border-radius: 0.6rem;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+  }
+  .galeria-item img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .galeria-item.tall { aspect-ratio: 1/1; }
+
+  /* VISITA */
+  .visita {
+    background: var(--crema);
+  }
+  .visita-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .visita-card {
+    background: var(--arena);
+    padding: 1.6rem 1.4rem;
+    border-radius: 1rem;
+    border: 1px solid var(--linea);
+  }
+  .visita-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+    color: var(--terracota);
+    font-style: italic;
+  }
+  .visita-card p {
+    font-size: 0.95rem;
+    color: var(--tinta-suave);
+    margin: 0;
+  }
+  .visita-card strong {
+    color: var(--tinta);
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--tinta);
+    color: var(--arena);
+    padding: 2.5rem 0 1.5rem;
+    margin-top: 0;
+  }
+  footer .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  footer h3 {
+    color: var(--arena);
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+  footer p, footer a {
+    color: rgba(251, 247, 239, 0.78);
+    font-size: 0.9rem;
+  }
+  footer a:hover { color: var(--arena); }
+  .footer-bottom {
+    border-top: 1px solid rgba(251, 247, 239, 0.12);
+    padding-top: 1.2rem;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: rgba(251, 247, 239, 0.55);
+    text-align: center;
+  }
+  .footer-bottom a { color: rgba(251, 247, 239, 0.78); }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: var(--turquesa);
+    color: var(--arena);
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 0.7rem 1.25rem;
+    line-height: 1.5;
+  }
+
+  /* RESPONSIVE */
+  @media (min-width: 720px) {
+    section { padding: 4rem 0; }
+    .hero { padding: 3rem 0 4rem; }
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+    }
+    .hero-img { aspect-ratio: 4/5; }
+    .tiempos-grid { grid-template-columns: repeat(3, 1fr); }
+    .carta-grid { grid-template-columns: repeat(2, 1fr); }
+    .galeria-grid { grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+    .visita-grid { grid-template-columns: repeat(3, 1fr); }
+    footer .container { grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+  }
+  @media (min-width: 960px) {
+    .hero h1 { font-size: 3.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Demostración visual no oficial · Diseño propuesto por Kenaz Studio · Pendiente de verificación in situ
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#">Amara<span class="brand-dot">.</span></a>
+    <a class="nav-cta" href="#visita">Ven a vernos</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow">Paseo del Arenal · Calpe</span>
+        <h1>Amara · Heladería y <em>cafetería</em> en el paseo</h1>
+        <p class="lead">Café por la mañana, helado al sol del mediodía, tarta a la hora de la merienda. Un sitio sencillo en el paseo del Arenal para parar, mirar el mar y volver a empezar.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#carta">Ver la carta</a>
+          <a class="btn btn-ghost" href="#visita">Cómo llegar</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="img/hero-mesa.webp" alt="Mesa con café y copa de gelato en terraza del paseo" loading="eager" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="tiempos" id="tiempos">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Para todo el día</span>
+      <h2>Café por la mañana, helado al sol, tarta por la tarde</h2>
+      <p>No hace falta elegir entre cafetería o heladería. Aquí cabe todo, según la hora y según las ganas.</p>
+    </div>
+    <div class="tiempos-grid">
+      <div class="tiempo">
+        <div class="tiempo-hora">Mañanas</div>
+        <h3>Café y tostada</h3>
+        <p>El paseo todavía tranquilo, un café con leche y algo de comer mientras el día se acomoda.</p>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-hora">Mediodía</div>
+        <h3>Gelato al sol</h3>
+        <p>Cuando aprieta el calor, un cucurucho o una copa de helado artesano al paso, paseo a paseo.</p>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-hora">Tardes</div>
+        <h3>Merienda y batidos</h3>
+        <p>Tarta casera, batidos, tés fríos y la sombra de la sombrilla. La pausa más fácil del día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="carta">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">La carta</span>
+      <h2>Lo que tenemos</h2>
+      <p>Categorías generales para hacerte una idea. La carta exacta y los precios los confirmamos en el local.</p>
+    </div>
+    <div class="carta-grid">
+      <div class="carta-item">
+        <h3>Helados artesanos</h3>
+        <span>Por verificar</span>
+      </div>
+      <div class="carta-item">
+        <h3>Cafés e infusiones</h3>
+        <span>Por verificar</span>
+      </div>
+      <div class="carta-item">
+        <h3>Tés fríos y batidos</h3>
+        <span>Por verificar</span>
+      </div>
+      <div class="carta-item">
+        <h3>Tartas y dulces caseros</h3>
+        <span>Por verificar</span>
+      </div>
+      <div class="carta-item">
+        <h3>Bocadillos y tostadas</h3>
+        <span>Por verificar</span>
+      </div>
+      <div class="carta-item">
+        <h3>Refrescos y zumos</h3>
+        <span>Por verificar</span>
+      </div>
+    </div>
+    <p class="carta-nota">La carta exacta, los sabores de helado del día y los precios se confirman tras visita in situ.</p>
+  </div>
+</section>
+
+<section style="background: var(--turquesa-suave);">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">El sitio</span>
+      <h2>Una parada en el paseo del Arenal</h2>
+      <p>Una terraza con sombrillas, un mostrador con helados a la vista y el ruido suave del paseo de fondo.</p>
+    </div>
+    <div class="galeria-grid">
+      <div class="galeria-item">
+        <img src="img/vitrina-helados.webp" alt="Vitrina con helados artesanos" loading="lazy" />
+      </div>
+      <div class="galeria-item">
+        <img src="img/terraza-paseo.webp" alt="Terraza con sombrillas en el paseo de Calpe" loading="lazy" />
+      </div>
+      <div class="galeria-item">
+        <img src="img/gelato-copa.webp" alt="Copa de gelato con tres sabores" loading="lazy" />
+      </div>
+      <div class="galeria-item">
+        <img src="img/cafe-tarta.webp" alt="Café y tarta de limón" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visita" id="visita">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Visita</span>
+      <h2>Dónde estamos</h2>
+      <p>En el paseo del Arenal, justo donde el sol y la sombra se reparten la tarde.</p>
+    </div>
+    <div class="visita-grid">
+      <div class="visita-card">
+        <h3>Dirección</h3>
+        <p><strong>Paseo del Arenal</strong><br />Calpe, Alicante<br /><em>Dirección exacta por verificar in situ</em></p>
+      </div>
+      <div class="visita-card">
+        <h3>Horario</h3>
+        <p><em>Horarios por confirmar</em><br />Abierto durante temporada<br />Café desde la mañana, helado todo el día</p>
+      </div>
+      <div class="visita-card">
+        <h3>Contacto</h3>
+        <p><em>Teléfono y redes por confirmar</em><br />Mejor pasarse y verlo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <h3>Amara</h3>
+      <p>Heladería y cafetería en el paseo del Arenal de Calpe.</p>
+    </div>
+    <div>
+      <h3 style="font-size: 0.9rem; font-style: normal; font-family: 'Inter', sans-serif; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(251,247,239,0.55);">Navega</h3>
+      <p>
+        <a href="#tiempos">Para todo el día</a><br />
+        <a href="#carta">La carta</a><br />
+        <a href="#visita">Visita</a>
+      </p>
+    </div>
+    <div>
+      <h3 style="font-size: 0.9rem; font-style: normal; font-family: 'Inter', sans-serif; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(251,247,239,0.55);">Encuéntranos</h3>
+      <p>
+        Paseo del Arenal<br />
+        Calpe, Alicante
+      </p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a> · Demostración no oficial · Datos pendientes de verificación
+  </div>
+</footer>
+
+</body>
+</html>
