@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tu Capricho · Carta imprimible · A3 horizontal gatefold</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TU CAPRICHO — Carta imprimible
+   Formato: A3 horizontal (420 × 297 mm), doble cara
+   Pliegue triple gatefold: 3 paneles de 140 × 297 mm
+   Márgenes seguros: 12 mm
+   Paleta: hueso + azafrán paella + ocre + rojo arroz + tinta cálida
+============================================================ */
+
+@page {
+  size: 420mm 297mm;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bone: #f3ebdb;
+  --bone-soft: #ece1cc;
+  --bone-warm: #e2d3b6;
+  --ink: #3a1c10;
+  --ink-soft: #4f2818;
+  --ink-line: #6b3a26;
+  --saffron: #d99a2a;
+  --saffron-deep: #b67d12;
+  --ochre: #b07a3a;
+  --rice-red: #b8351f;
+  --rice-red-deep: #8e2614;
+
+  --serif: 'Fraunces', 'DM Serif Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  background: #2a2a2a;
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body { padding: 30px; }
+
+/* ============================================================
+   SHEET (one printed page)
+============================================================ */
+
+.sheet {
+  width: 420mm;
+  height: 297mm;
+  background: var(--bone);
+  display: grid;
+  grid-template-columns: 140mm 140mm 140mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  page-break-inside: avoid;
+  margin: 0 auto 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.sheet:last-child { page-break-after: auto; margin-bottom: 0; }
+
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(58,28,16,0.08);
+  pointer-events: none;
+  z-index: 10;
+}
+.fold--1 { left: 140mm; }
+.fold--2 { left: 280mm; }
+
+@media print { .fold { display: none; } }
+
+/* ============================================================
+   PANEL — base
+============================================================ */
+
+.panel {
+  height: 297mm;
+  width: 140mm;
+  padding: 14mm 12mm;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--bone { background: var(--bone); color: var(--ink); }
+.panel--bone-soft { background: var(--bone-soft); color: var(--ink); }
+.panel--ink { background: var(--ink); color: var(--bone); }
+
+.panel--cover {
+  background:
+    linear-gradient(180deg, rgba(58,28,16,0.55) 0%, rgba(58,28,16,0.78) 55%, rgba(58,28,16,0.95) 100%),
+    radial-gradient(ellipse at 70% 25%, rgba(217,154,42,0.42), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(184,53,31,0.28), transparent 60%),
+    var(--ink);
+  color: var(--bone);
+}
+
+/* ============================================================
+   COVER PANEL
+============================================================ */
+
+.panel--cover .top-meta {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+.panel--cover .top-meta span:last-child { color: var(--saffron); }
+
+.panel--cover .center {
+  margin: auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14mm;
+}
+
+.brand-mark__rule {
+  width: 30px;
+  height: 1.2pt;
+  background: var(--saffron);
+}
+
+.brand-mark__label {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  font-weight: 600;
+}
+
+.cover-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 70pt;
+  line-height: 0.92;
+  letter-spacing: 0.015em;
+  color: var(--bone);
+  margin-bottom: 4mm;
+  font-variation-settings: "opsz" 120;
+}
+.cover-name em { font-style: italic; font-weight: 400; color: var(--saffron); }
+
+.cover-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14pt;
+  line-height: 1.4;
+  color: var(--bone-warm);
+  margin-bottom: 6mm;
+}
+
+.cover-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12pt;
+  line-height: 1.45;
+  color: var(--bone-warm);
+  max-width: 26ch;
+  margin: 0 auto 8mm;
+}
+
+.cover-seals {
+  display: flex;
+  gap: 4mm;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5mm;
+  padding: 1.8mm 3mm;
+  border: 0.7pt solid rgba(217,154,42,0.55);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  font-weight: 500;
+  background: rgba(217,154,42,0.08);
+}
+.seal::before {
+  content: "";
+  width: 4pt; height: 4pt;
+  background: var(--saffron);
+  border-radius: 50%;
+}
+
+.seal--dark {
+  color: var(--ink-soft);
+  border-color: rgba(217,154,42,0.65);
+  background: rgba(217,154,42,0.14);
+}
+
+.panel--cover .bottom-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  position: relative;
+  z-index: 2;
+}
+.panel--cover .bottom-meta strong { color: var(--bone); font-weight: 600; letter-spacing: 0.22em; }
+.panel--cover .bottom-meta div { display: flex; flex-direction: column; gap: 3px; }
+.panel--cover .bottom-meta .right { text-align: right; }
+
+/* ============================================================
+   STORY PANEL
+============================================================ */
+
+.panel--story {
+  background: var(--bone);
+  border-left: 1px solid rgba(58,28,16,0.08);
+  border-right: 1px solid rgba(58,28,16,0.08);
+  text-align: center;
+  justify-content: center;
+}
+
+.story-eyebrow {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--rice-red);
+  margin-bottom: 6mm;
+  font-weight: 600;
+}
+
+.story-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22pt;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 5mm;
+}
+.story-title em { font-style: italic; color: var(--rice-red); font-weight: 400; }
+
+.story-rule {
+  width: 24px;
+  height: 1.5pt;
+  background: var(--saffron);
+  margin: 5mm auto;
+  border-radius: 1pt;
+}
+
+.story-body {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 32ch;
+  margin: 0 auto;
+}
+.story-body p + p { margin-top: 4mm; }
+
+.story-placeholder {
+  margin-top: 6mm;
+  display: inline-block;
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 8pt;
+  letter-spacing: 0.04em;
+  color: var(--rice-red-deep);
+  background: rgba(184,53,31,0.10);
+  padding: 3mm 5mm;
+  border: 0.7pt dashed var(--rice-red);
+  line-height: 1.5;
+  max-width: 36ch;
+}
+
+.story-signature {
+  margin-top: 5mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--ochre);
+}
+
+.story-acreditaciones {
+  margin-top: 8mm;
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+}
+
+.story-acreditacion {
+  border: 0.7pt solid rgba(217,154,42,0.55);
+  background: rgba(217,154,42,0.08);
+  padding: 4mm 5mm;
+  text-align: left;
+}
+
+.story-acreditacion__seal {
+  font-family: var(--sans);
+  font-size: 6pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--saffron-deep);
+  font-weight: 600;
+  margin-bottom: 2mm;
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+}
+.story-acreditacion__seal::before {
+  content: "";
+  width: 4pt; height: 4pt;
+  background: var(--saffron);
+  border-radius: 50%;
+}
+
+.story-acreditacion__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 12pt;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.5mm;
+}
+.story-acreditacion__name em { font-style: italic; color: var(--rice-red-deep); font-weight: 400; }
+
+.story-acreditacion__desc {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   SECTION — listings
+============================================================ */
+
+.panel--list { background: var(--bone); }
+
+.panel--list-dark {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 8mm;
+  padding-top: 4mm;
+}
+
+.chapter {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--rice-red);
+  font-weight: 600;
+  margin-bottom: 4mm;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.chapter::before, .chapter::after {
+  content: "";
+  width: 14px;
+  height: 1.2pt;
+  background: var(--saffron);
+  opacity: 0.85;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22pt;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+}
+.section-title em { font-style: italic; color: var(--rice-red); font-weight: 400; }
+
+.panel--list-dark .chapter { color: var(--saffron); }
+.panel--list-dark .section-title { color: var(--bone); }
+.panel--list-dark .section-title em { color: var(--saffron); }
+.panel--list-dark .section-sub { color: var(--bone-warm); }
+
+.section-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--ink-soft);
+  margin-top: 3mm;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+  opacity: 0.9;
+}
+
+/* dish */
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+}
+
+.dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5mm 4mm;
+  padding-bottom: 3mm;
+  border-bottom: 0.5pt solid rgba(58,28,16,0.14);
+}
+.dish:last-child { border-bottom: none; }
+
+.panel--list-dark .dish { border-bottom-color: rgba(243,235,219,0.14); }
+
+.dish-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 11pt;
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+}
+
+.panel--list-dark .dish-name { color: var(--bone); }
+
+.dish-price {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 7.5pt;
+  color: var(--ochre);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel--list-dark .dish-price { color: var(--saffron); }
+
+.dish-desc {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.dish-desc em { font-style: italic; color: var(--rice-red); }
+
+.panel--list-dark .dish-desc { color: var(--bone-warm); }
+.panel--list-dark .dish-desc em { color: var(--saffron); }
+
+.dish-tag {
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-size: 5.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rice-red);
+  margin-top: 0.5mm;
+  font-weight: 600;
+}
+
+.dish-tag--acreditado { color: var(--saffron-deep); }
+.panel--list-dark .dish-tag { color: var(--saffron); }
+.panel--list-dark .dish-tag--acreditado { color: var(--saffron); }
+
+.placeholder-row {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 6.5pt;
+  letter-spacing: 0.04em;
+  color: var(--rice-red-deep);
+  background: rgba(184,53,31,0.10);
+  border: 0.7pt dashed var(--rice-red);
+  padding: 2.5mm 3mm;
+  margin-top: 1mm;
+  line-height: 1.4;
+}
+
+.panel--list-dark .placeholder-row {
+  color: var(--bone-warm);
+  background: rgba(184,53,31,0.16);
+}
+
+/* ============================================================
+   HERO PANEL — Arroz a banda
+============================================================ */
+
+.panel--hero {
+  background: var(--ink);
+  text-align: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel--hero .hero-image {
+  height: 168mm;
+  background:
+    linear-gradient(180deg, rgba(58,28,16,0.05) 0%, rgba(58,28,16,0.18) 60%, rgba(58,28,16,0.88) 100%),
+    url('img/arroz-banda.webp') center top / cover no-repeat,
+    var(--ink);
+  position: relative;
+}
+
+.panel--hero .hero-image::before {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32mm;
+  height: 32mm;
+  border: 0.7pt solid rgba(243,235,219,0.20);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.panel--hero .hero-image::after {
+  content: "Plato bandera";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 22mm));
+  font-family: var(--sans);
+  font-size: 6pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(243,235,219,0.42);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.panel--hero .hero-content {
+  padding: 6mm 12mm 10mm;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--bone);
+}
+
+.panel--hero .hero-chapter {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  font-weight: 600;
+  margin-bottom: 3mm;
+}
+
+.panel--hero .hero-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 26pt;
+  line-height: 1;
+  color: var(--bone);
+  margin-bottom: 3mm;
+}
+.panel--hero .hero-name em { font-style: italic; font-weight: 400; color: var(--saffron); }
+
+.panel--hero .hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9.5pt;
+  color: var(--bone-warm);
+  margin-bottom: 4mm;
+  max-width: 32ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+.panel--hero .hero-note {
+  margin: 3mm auto 0;
+  max-width: 34ch;
+  border-top: 0.5pt solid var(--ink-line);
+  padding-top: 4mm;
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  line-height: 1.5;
+  color: var(--bone-warm);
+  font-weight: 400;
+}
+
+.panel--hero .hero-note strong {
+  display: block;
+  margin-bottom: 2mm;
+  font-family: var(--sans);
+  font-size: 6pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  font-weight: 600;
+}
+
+/* ============================================================
+   IMAGE strip
+============================================================ */
+
+.img-strip {
+  height: 30mm;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: auto;
+  margin-left: -12mm;
+  margin-right: -12mm;
+  margin-bottom: -14mm;
+  flex-shrink: 0;
+}
+
+.img-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(58,28,16,0) 30%, rgba(58,28,16,0.55) 100%);
+  pointer-events: none;
+}
+
+.img-strip__caption {
+  position: absolute;
+  bottom: 3mm;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 8pt;
+  color: var(--bone);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+
+.panel--list { display: flex; flex-direction: column; }
+.panel--list .section-head,
+.panel--list .dishes { flex-shrink: 0; }
+
+/* ============================================================
+   SPLIT panel (tapas + postres)
+============================================================ */
+
+.panel--split {
+  background: var(--bone);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 0;
+  border-left: 1px solid rgba(58,28,16,0.08);
+  border-right: 1px solid rgba(58,28,16,0.08);
+}
+
+.split-section {
+  padding: 12mm 12mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.split-section + .split-section {
+  border-top: 1px solid rgba(58,28,16,0.12);
+}
+
+.split-section .section-head { margin-bottom: 4mm; padding-top: 0; }
+.split-section .section-title { font-size: 17pt; }
+.split-section .dishes { gap: 2mm; }
+.split-section .dish { padding-bottom: 2mm; }
+.split-section .dish-name { font-size: 9.5pt; }
+.split-section .dish-desc { font-size: 6.8pt; line-height: 1.4; }
+.split-section .dish-price { font-size: 7pt; }
+
+.split-section .img-strip {
+  height: 20mm;
+  margin-top: auto;
+  margin-left: -12mm;
+  margin-right: -12mm;
+  margin-bottom: -12mm;
+}
+.split-section .img-strip__caption { font-size: 7pt; bottom: 2mm; }
+
+/* ============================================================
+   FOOTER / CONTACT panel
+============================================================ */
+
+.panel--contact {
+  background: var(--ink);
+  color: var(--bone);
+  text-align: center;
+  justify-content: space-between;
+  padding-top: 14mm;
+  padding-bottom: 12mm;
+}
+
+.contact-mark {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 5mm;
+  font-weight: 600;
+}
+
+.contact-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 28pt;
+  letter-spacing: 0.02em;
+  color: var(--bone);
+  margin-bottom: 2mm;
+}
+.contact-name em { font-style: italic; color: var(--saffron); font-weight: 400; }
+
+.contact-tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--bone-warm);
+  margin-bottom: 5mm;
+}
+
+.contact-info {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  line-height: 2;
+  margin-bottom: 4mm;
+}
+
+.contact-info strong { color: var(--bone); font-weight: 600; }
+
+.contact-hours {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 8pt;
+  color: var(--bone-warm);
+  line-height: 1.55;
+  max-width: 38ch;
+  margin: 0 auto 5mm;
+  padding-top: 4mm;
+  border-top: 0.5pt solid var(--ink-line);
+}
+
+.seals-row {
+  display: flex;
+  gap: 2mm;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 5mm;
+}
+
+.allergens-block {
+  border-top: 0.5pt solid var(--ink-line);
+  padding-top: 4mm;
+  margin-bottom: 4mm;
+}
+
+.allergens-title {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 2mm;
+  font-weight: 600;
+}
+
+.allergens-body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 7pt;
+  color: var(--bone-warm);
+  line-height: 1.5;
+  max-width: 38ch;
+  margin: 0 auto;
+}
+
+.disclaimer {
+  border-top: 0.5pt solid var(--ink-line);
+  padding-top: 4mm;
+  margin-top: 3mm;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 6.5pt;
+  color: var(--bone-warm);
+  line-height: 1.5;
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.85;
+}
+
+.kenaz-mark {
+  margin-top: 4mm;
+  font-family: var(--sans);
+  font-size: 5.5pt;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--bone-warm);
+  opacity: 0.45;
+  font-weight: 500;
+}
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+@media print {
+  html, body {
+    padding: 0;
+    margin: 0;
+    width: 420mm;
+    height: 297mm;
+    background: white;
+  }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+  .sheet:last-child { page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SHEET 1 — cara externa al plegar
+     Triple panel: [STORY + acreditaciones] | [ARROCES] | [COVER]
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Story + acreditaciones -->
+  <section class="panel panel--bone panel--story">
+    <p class="story-eyebrow">La casa</p>
+    <h2 class="story-title">Punto de encuentro <em>en Calpe</em>.</h2>
+
+    <div class="story-rule"></div>
+
+    <div class="story-body">
+      <p>
+        Arrocería &amp; Tapería en Calpe. Arroces tradicionales y tapas
+        de producto. Pescado y marisco directo de la lonja local. Paco al frente,
+        recibiendo en sala.
+      </p>
+    </div>
+
+    <span class="story-placeholder">
+      La historia completa de la casa se cierra con Paco — años de apertura, equipo y filosofía pendientes de confirmación.
+    </span>
+
+    <p class="story-signature">— Paco · anfitrión</p>
+
+    <div class="story-acreditaciones">
+      <article class="story-acreditacion">
+        <p class="story-acreditacion__seal">Sello oficial</p>
+        <h3 class="story-acreditacion__name">Peix <em>de Calp</em></h3>
+        <p class="story-acreditacion__desc">Pescado y marisco directo de la lonja local de Calpe — distintivo del Ayuntamiento.</p>
+      </article>
+      <article class="story-acreditacion">
+        <p class="story-acreditacion__seal">Sello oficial</p>
+        <h3 class="story-acreditacion__name">Llauna <em>de Calp</em></h3>
+        <p class="story-acreditacion__desc">Plato tradicional acreditado — receta marinera calpina al horno.</p>
+      </article>
+      <article class="story-acreditacion">
+        <p class="story-acreditacion__seal">Sello oficial</p>
+        <h3 class="story-acreditacion__name">Arròs <em>del Senyoret</em></h3>
+        <p class="story-acreditacion__desc">Arroz tradicional acreditado — marisco pelado, para comer con cuchara.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Panel: Arroces -->
+  <section class="panel panel--list">
+    <header class="section-head">
+      <p class="chapter">Capítulo I · La especialidad</p>
+      <h2 class="section-title">Los <em>arroces</em></h2>
+      <p class="section-sub">A la paella, al horno, melosos. Producto de la lonja y mano calpina.</p>
+    </header>
+
+    <div class="dishes">
+
+      <article class="dish">
+        <h3 class="dish-name">Arroz a banda</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">El plato bandera. Arroz cocido en caldo de pescado de roca, alioli al lado. <em>Lo más pedido.</em></p>
+        <span class="dish-tag">— Firma de la casa</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Arròs del Senyoret</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Marisco pelado, caldo intenso y arroz seco.</p>
+        <span class="dish-tag dish-tag--acreditado">— Acreditado · plato tradicional</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Llauna de Calp</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Receta tradicional marinera calpina al horno. Pescado de la lonja.</p>
+        <span class="dish-tag dish-tag--acreditado">— Acreditado · plato tradicional</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Paella de bogavante</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Arroz meloso con bogavante entero y caldo de marisco.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Fideuá</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Fideo fino, caldo de pescado de roca, alioli al lado.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Paella valenciana</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Pollo, conejo, garrofón, judía verde y azafrán. La receta de siempre.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Paella de marisco</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Gamba, mejillón, calamar y caldo de pescado de la lonja.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Paella de pollo</h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Pollo de corral, azafrán, judía verde y garrofón.</p>
+      </article>
+
+      <div class="placeholder-row">
+        Mínimo de comensales, tiempos y precios actuales — consultar al reservar.
+      </div>
+
+    </div>
+
+    <div class="img-strip" style="background-image: url('img/paella-valenciana.webp');">
+      <p class="img-strip__caption">Paella valenciana · receta de siempre</p>
+    </div>
+  </section>
+
+  <!-- Panel: Cover -->
+  <section class="panel panel--cover">
+    <div class="top-meta">
+      <span>Calpe · Costa Blanca</span>
+      <span>Arrocería &amp; Tapería</span>
+    </div>
+
+    <div class="center">
+      <div class="brand-mark">
+        <span class="brand-mark__rule"></span>
+        <span class="brand-mark__label">Arroces · Tapas · Lonja</span>
+        <span class="brand-mark__rule"></span>
+      </div>
+
+      <h1 class="cover-name">Tu&nbsp;<em>Capricho</em></h1>
+
+      <p class="cover-sub">Arrocería &amp; Tapería</p>
+
+      <p class="cover-tagline">
+        ¡Haz de Tu Capricho<br>
+        tu punto de encuentro!
+      </p>
+
+      <div class="cover-seals">
+        <span class="seal">Peix de Calp</span>
+        <span class="seal">Llauna de Calp</span>
+        <span class="seal">Arròs del Senyoret</span>
+      </div>
+    </div>
+
+    <div class="bottom-meta">
+      <div>
+        <span>La carta</span>
+        <strong>2026</strong>
+      </div>
+      <div class="right">
+        <span>Pintor Sorolla · Apolo VII</span>
+        <strong>+34 865 64 25 22</strong>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================
+     SHEET 2 — cara interna al desplegar
+     Triple panel: [ARROZ A BANDA hero] | [TAPAS + POSTRES split] | [BEBIDAS + CONTACTO]
+============================================================ -->
+<div class="sheet">
+  <div class="fold fold--1"></div>
+  <div class="fold fold--2"></div>
+
+  <!-- Panel: Arroz a banda (hero) -->
+  <section class="panel panel--hero">
+    <div class="hero-image"></div>
+
+    <div class="hero-content">
+      <p class="hero-chapter">El plato de la casa</p>
+
+      <h2 class="hero-name">Arroz <em>a banda</em></h2>
+
+      <p class="hero-sub">
+        Arroz cocido en caldo de pescado de roca de la lonja. Alioli al lado.
+        El plato bandera, mencionado decenas de veces por la clientela.
+      </p>
+
+      <div class="hero-note">
+        <strong>Cómo se sirve</strong>
+        En paella, recién hecho, mínimo de comensales según día. Reservá con tiempo si lo querés en mesa.
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel: Tapas + Postres (split) -->
+  <section class="panel panel--split">
+
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo II · Para abrir</p>
+        <h2 class="section-title">Las <em>tapas</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Gambas al ajillo</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Cazuela, ajo laminado, guindilla y aceite virgen.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Pulpo a la gallega</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Pulpo al punto, patata, pimentón y aceite.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Tellinas</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Tellinas frescas salteadas con ajo y limón.</p>
+          <span class="dish-tag">— De la lonja</span>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Calamar a la plancha</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Calamar entero a la plancha, aceite verde.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Tartar de atún</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Atún rojo a cuchillo, aliño suave de la casa.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Ensalada Capricho</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">La ensalada de la casa, temporada.</p>
+          <span class="dish-tag">— De la casa</span>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Carrilleras con puré</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Carrilleras braseadas, puré mantecoso.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Chuletillas de cordero</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">A la brasa, sal y limón.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Huevos rotos</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Patata, huevo de corral y jamón.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Tomate con mojama</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Tomate maduro, lascas de mojama, aceite.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Tabla de jamón ibérico</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Cortado a mano, picos y aceite.</p>
+        </article>
+
+        <div class="placeholder-row">
+          Más tapas y producto del día — pregunta en mesa.
+        </div>
+      </div>
+
+      <div class="img-strip" style="background-image: url('img/tabla-iberico.webp');">
+        <p class="img-strip__caption">Tabla de ibérico · cortada a mano</p>
+      </div>
+    </div>
+
+    <div class="split-section panel--list-dark" style="background: var(--ink);">
+      <header class="section-head">
+        <p class="chapter">Capítulo III · Para terminar</p>
+        <h2 class="section-title">Los <em>postres</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Tarta de queso con miel</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Cremosa, horneada, hilo de miel encima.</p>
+          <span class="dish-tag">— Casera</span>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Tiramisú</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Mascarpone, café y cacao. Receta clásica.</p>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Cremaet</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Café típico valenciano con licor.</p>
+          <span class="dish-tag">— Tradición valenciana</span>
+        </article>
+
+        <div class="placeholder-row">
+          Más postres caseros del día — pregunta a Paco.
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Panel: Bebidas + Contacto -->
+  <section class="panel panel--contact">
+    <div style="margin-bottom: 6mm;">
+      <p class="chapter" style="margin-bottom: 3mm; color: var(--saffron);">Capítulo IV · La bodega</p>
+      <h2 class="section-title" style="color: var(--bone); font-size: 17pt; margin-bottom: 4mm;">Las <em style="color: var(--saffron);">bebidas</em></h2>
+
+      <article class="dish" style="margin-bottom: 3mm; border-bottom-color: rgba(243,235,219,0.14);">
+        <h3 class="dish-name" style="color: var(--bone);">Vinos</h3>
+        <span class="dish-price" style="color: var(--saffron);">Consultar</span>
+        <p class="dish-desc" style="color: var(--bone-warm);">Tintos, blancos y rosados — DO regionales y nacionales.</p>
+      </article>
+
+      <article class="dish" style="margin-bottom: 3mm; border-bottom-color: rgba(243,235,219,0.14);">
+        <h3 class="dish-name" style="color: var(--bone);">Sangría de la casa</h3>
+        <span class="dish-price" style="color: var(--saffron);">PVP</span>
+        <p class="dish-desc" style="color: var(--bone-warm);">Receta propia, en jarra para compartir.</p>
+      </article>
+
+      <article class="dish" style="margin-bottom: 3mm; border-bottom-color: rgba(243,235,219,0.14);">
+        <h3 class="dish-name" style="color: var(--bone);">Cervezas</h3>
+        <span class="dish-price" style="color: var(--saffron);">Consultar</span>
+        <p class="dish-desc" style="color: var(--bone-warm);">Caña, tercio y embotelladas.</p>
+      </article>
+
+      <article class="dish" style="margin-bottom: 4mm; border-bottom: none;">
+        <h3 class="dish-name" style="color: var(--bone);">Refrescos, aguas y café</h3>
+        <span class="dish-price" style="color: var(--saffron);">Consultar</span>
+        <p class="dish-desc" style="color: var(--bone-warm);">Softs, infusiones y cafés.</p>
+      </article>
+
+      <div class="placeholder-row" style="color: var(--bone-warm); background: rgba(184,53,31,0.16);">
+        Carta de bodega completa con referencias y añadas — disponible en mesa.
+      </div>
+    </div>
+
+    <div style="border-top: 0.5pt solid var(--ink-line); padding-top: 5mm; margin-top: 3mm;">
+      <p class="contact-mark">Encuéntranos</p>
+      <h3 class="contact-name">Tu&nbsp;<em>Capricho</em></h3>
+      <p class="contact-tag">Arrocería &amp; Tapería · Calpe</p>
+
+      <div class="contact-info">
+        C/ Pintor Sorolla, Apolo VII, Local 19<br>
+        03710 Calpe · Alicante<br>
+        <strong>+34 865 64 25 22</strong>
+      </div>
+
+      <p class="contact-hours">
+        Abiertos cada día · 11:00 — 16:30 · 19:30 — 23:30<br>
+        Martes cerrado · Horario a confirmar
+      </p>
+
+      <div class="seals-row">
+        <span class="seal">Peix de Calp</span>
+        <span class="seal">Llauna de Calp</span>
+        <span class="seal">Arròs del Senyoret</span>
+      </div>
+    </div>
+
+    <div class="allergens-block">
+      <p class="allergens-title">Alérgenos · información</p>
+      <p class="allergens-body">
+        Carta completa con desglose de alérgenos disponible.
+        Avisa al camarero por intolerancias — la cocina las contempla.
+      </p>
+    </div>
+
+    <p class="disclaimer">
+      Carta editorial preparada por Kenaz como muestra. Variedades, precios y detalles finales se cierran con Paco. Imágenes referenciales.
+    </p>
+
+    <p class="kenaz-mark">Diseño · Kenaz Studio</p>
+  </section>
+
+</div>
+
+</body>
+</html>

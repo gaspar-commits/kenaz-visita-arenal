@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#8c2f1d" />
+<title>Tu Capricho — Arrocería & Tapería en Calpe</title>
+<meta name="description" content="Arrocería y tapería en Calpe con tres acreditaciones oficiales del Ayuntamiento: Peix de Calp, Llauna de Calp y Arròs del Senyoret. Arroces, pescado de lonja y tapas. Pintor Sorolla, Edificio Apolo VII, 03710 Calpe. Cerrado los martes." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<style>
+  /* ==================================================
+     TU CAPRICHO — Sistema de marca propio (NO Kenaz)
+     Concepto: arrocería & tapería de barrio con prestigio
+     Paleta: hueso valenciano + azafrán + ocre cálido + rojo paella + tinta
+     Display: Fraunces | Body: Inter
+     ================================================== */
+
+  :root {
+    --hueso: #fbf6ec;
+    --hueso-soft: #f3ecdb;
+    --crema: #e8dcc1;
+    --tinta: #2a1a10;
+    --tinta-soft: #4a3525;
+    --tinta-mute: #6b5240;
+    --azafran: #d49a2c;
+    --azafran-soft: #f0d486;
+    --ocre: #a3631a;
+    --paella: #8c2f1d;
+    --paella-claro: #b34427;
+    --paella-suave: #f2dcd2;
+    --ceniza: #968570;
+    --linea: rgba(42, 26, 16, 0.14);
+    --linea-soft: rgba(42, 26, 16, 0.07);
+    --oro-sello: #b0832a;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-md: 1.125rem;
+    --fs-lg: 1.375rem;
+    --fs-xl: 1.875rem;
+    --fs-2xl: 2.5rem;
+    --fs-3xl: 3.25rem;
+    --fs-4xl: 4.5rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 9rem;
+
+    --container: 1240px;
+    --container-narrow: 900px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--body);
+    font-size: var(--fs-base);
+    line-height: 1.65;
+    color: var(--tinta);
+    background: var(--hueso);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--azafran); color: var(--tinta); }
+
+  /* ==================== NAV ==================== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0.95rem 1.25rem;
+    background: rgba(251, 246, 236, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--linea-soft);
+    transition: background 0.3s ease;
+  }
+  .nav-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    color: var(--tinta);
+  }
+  .brand-mark {
+    font-family: var(--display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: var(--fs-lg);
+    letter-spacing: -0.01em;
+  }
+  .brand-tag {
+    font-family: var(--body);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--paella);
+    font-weight: 600;
+    margin-top: 0.3rem;
+  }
+  .nav-links {
+    display: none;
+    gap: 1.85rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+  }
+  .nav-links a {
+    color: var(--tinta-soft);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--paella); }
+  .nav-cta {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.05rem;
+    background: var(--paella);
+    color: var(--hueso);
+    border-radius: 2px;
+    transition: background 0.2s ease;
+  }
+  .nav-cta:hover { background: var(--tinta); }
+
+  @media (min-width: 980px) {
+    .nav { padding: 1.05rem 2rem; }
+    .nav-links { display: flex; }
+    .nav-cta { font-size: 0.78rem; padding: 0.7rem 1.3rem; }
+  }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    padding: 7rem 1.25rem 3.5rem;
+    background: var(--hueso);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(212,154,44,0.18), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .eyebrow {
+    font-size: 0.66rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--paella);
+    margin-bottom: 1.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--paella);
+  }
+  .hero-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 9vw, 4.75rem);
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    color: var(--tinta);
+    margin-bottom: 1.25rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--paella);
+  }
+  .hero-slogan {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 3vw, 1.45rem);
+    color: var(--tinta-soft);
+    margin-bottom: 0.85rem;
+    line-height: 1.4;
+    max-width: 30rem;
+  }
+  .hero-sub {
+    font-size: var(--fs-base);
+    color: var(--tinta-mute);
+    max-width: 30rem;
+    line-height: 1.65;
+    margin-bottom: 2.2rem;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.75rem;
+  }
+  .btn {
+    font-family: var(--body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.5rem;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-primary {
+    background: var(--paella);
+    color: var(--hueso);
+  }
+  .btn-primary:hover {
+    background: var(--tinta);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--tinta);
+    border-color: var(--tinta);
+  }
+  .btn-secondary:hover {
+    background: var(--tinta);
+    color: var(--hueso);
+  }
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.35rem 1rem;
+    padding-top: 1.85rem;
+    border-top: 1px solid var(--linea-soft);
+  }
+  .kpi {
+    display: flex;
+    flex-direction: column;
+  }
+  .kpi-value {
+    font-family: var(--display);
+    font-size: var(--fs-xl);
+    font-weight: 400;
+    color: var(--tinta);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .kpi-value em {
+    font-style: italic;
+    color: var(--paella);
+  }
+  .kpi-value .kpi-unit {
+    font-style: normal;
+    font-size: 0.65em;
+    color: var(--ocre);
+    margin-left: 0.15rem;
+  }
+  .kpi-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+    font-weight: 600;
+  }
+  .hero-image {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--crema);
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-image-caption {
+    position: absolute;
+    bottom: 0.85rem;
+    left: 0.85rem;
+    background: rgba(251, 246, 236, 0.94);
+    backdrop-filter: blur(8px);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tinta-soft);
+    font-weight: 600;
+  }
+  .hero-badges {
+    position: absolute;
+    top: 0.85rem; right: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-end;
+  }
+  .hero-badge {
+    background: rgba(42, 26, 16, 0.92);
+    color: var(--azafran-soft);
+    padding: 0.35rem 0.7rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 1px;
+  }
+
+  @media (min-width: 900px) {
+    .hero { padding: 9.5rem 2rem 5rem; }
+    .hero-inner {
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4.5rem;
+    }
+    .kpi-strip {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* ==================== SECTION BASE ==================== */
+  section {
+    padding: 4.5rem 1.25rem;
+  }
+  @media (min-width: 900px) {
+    section { padding: 7rem 2rem; }
+  }
+  .section-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .section-inner-narrow {
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    font-size: 0.66rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--paella);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--paella);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--tinta);
+    margin-bottom: 1.25rem;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--paella);
+  }
+  .section-lede {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: var(--fs-md);
+    color: var(--tinta-soft);
+    max-width: 36rem;
+    line-height: 1.55;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ==================== LA CASA (historia) ==================== */
+  .casa {
+    background: var(--hueso-soft);
+    border-top: 1px solid var(--linea-soft);
+    border-bottom: 1px solid var(--linea-soft);
+  }
+  .casa-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+  .casa-text p {
+    font-size: var(--fs-md);
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+    color: var(--tinta-soft);
+  }
+  .casa-text p:first-of-type::first-letter {
+    font-family: var(--display);
+    font-size: 3.5rem;
+    line-height: 0.85;
+    float: left;
+    padding: 0.3rem 0.4rem 0 0;
+    color: var(--paella);
+    font-weight: 400;
+  }
+  .casa-cita {
+    border-left: 2px solid var(--paella);
+    padding: 0.65rem 0 0.65rem 1.25rem;
+    margin: 1.5rem 0;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: var(--fs-lg);
+    line-height: 1.4;
+    color: var(--tinta);
+  }
+  .casa-cita-fuente {
+    margin-top: 0.6rem;
+    font-family: var(--body);
+    font-style: normal;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+    font-weight: 600;
+  }
+  .casa-img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--crema);
+  }
+  .casa-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .placeholder-note {
+    background: var(--paella-suave);
+    border-left: 3px solid var(--paella);
+    padding: 0.85rem 1rem;
+    margin: 1.5rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--tinta-soft);
+    border-radius: 0 2px 2px 0;
+  }
+  .placeholder-note strong {
+    color: var(--paella);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.66rem;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (min-width: 900px) {
+    .casa-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+  }
+
+  /* ==================== TRES ACREDITACIONES (estrella) ==================== */
+  .acreditaciones {
+    background: var(--tinta);
+    color: var(--hueso);
+    position: relative;
+    overflow: hidden;
+  }
+  .acreditaciones::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,154,44,0.14), transparent 70%);
+    pointer-events: none;
+  }
+  .acreditaciones .section-eyebrow {
+    color: var(--azafran);
+  }
+  .acreditaciones .section-eyebrow::before {
+    background: var(--azafran);
+  }
+  .acreditaciones .section-title {
+    color: var(--hueso);
+  }
+  .acreditaciones .section-title em {
+    color: var(--azafran);
+  }
+  .acreditaciones .section-lede {
+    color: rgba(251, 246, 236, 0.78);
+  }
+  .acreditaciones-intro {
+    max-width: 42rem;
+    margin-bottom: 3rem;
+  }
+  .sellos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .sello {
+    background: linear-gradient(180deg, rgba(251,246,236,0.04), rgba(251,246,236,0.02));
+    border: 1px solid rgba(212,154,44,0.32);
+    padding: 2rem 1.5rem 1.75rem;
+    border-radius: 2px;
+    position: relative;
+    transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+  }
+  .sello:hover {
+    transform: translateY(-4px);
+    border-color: var(--azafran);
+    background: linear-gradient(180deg, rgba(212,154,44,0.08), rgba(251,246,236,0.02));
+  }
+  .sello-medalla {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--azafran-soft), var(--azafran) 50%, var(--oro-sello) 100%);
+    border: 1px solid var(--azafran-soft);
+    box-shadow: inset 0 -4px 12px rgba(42,26,16,0.35), 0 4px 24px rgba(212,154,44,0.18);
+    display: grid;
+    place-items: center;
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+  .sello-medalla::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    border: 1px dashed rgba(42,26,16,0.4);
+  }
+  .sello-medalla span {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--tinta);
+    z-index: 1;
+  }
+  .sello-titulo {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: var(--hueso);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  .sello-fuente {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--azafran);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+  .sello-texto {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(251, 246, 236, 0.72);
+  }
+  .acreditaciones-fuente {
+    margin-top: 2.5rem;
+    font-size: 0.72rem;
+    color: rgba(251, 246, 236, 0.55);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(251, 246, 236, 0.1);
+  }
+  .acreditaciones-fuente a {
+    color: var(--azafran);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (min-width: 700px) {
+    .sellos-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  }
+  @media (min-width: 1000px) {
+    .sellos-grid { gap: 2rem; }
+    .sello { padding: 2.5rem 2rem 2rem; }
+  }
+
+  /* ==================== ARROCES ==================== */
+  .arroces .section-header {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .arroces-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .arroz-card {
+    background: var(--hueso-soft);
+    border: 1px solid var(--linea-soft);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+  }
+  .arroz-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--paella);
+    box-shadow: 0 24px 60px -32px rgba(42, 26, 16, 0.32);
+  }
+  .arroz-card.featured {
+    background: var(--tinta);
+    color: var(--hueso);
+    border-color: var(--paella);
+  }
+  .arroz-img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--crema);
+  }
+  .arroz-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .arroz-card:hover .arroz-img img {
+    transform: scale(1.04);
+  }
+  .arroz-body {
+    padding: 1.35rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .arroz-tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paella);
+    font-weight: 700;
+  }
+  .arroz-card.featured .arroz-tag {
+    color: var(--azafran);
+  }
+  .arroz-nombre {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--tinta);
+  }
+  .arroz-card.featured .arroz-nombre {
+    color: var(--hueso);
+  }
+  .arroz-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--tinta-mute);
+  }
+  .arroz-card.featured .arroz-desc {
+    color: rgba(251, 246, 236, 0.72);
+  }
+  .arroz-precio {
+    margin-top: 0.65rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--linea-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+    font-weight: 600;
+  }
+  .arroz-card.featured .arroz-precio {
+    border-color: rgba(251, 246, 236, 0.12);
+    color: rgba(251, 246, 236, 0.55);
+  }
+  .arroz-precio span:last-child {
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--tinta-soft);
+  }
+  .arroz-card.featured .arroz-precio span:last-child {
+    color: var(--azafran);
+  }
+
+  @media (min-width: 700px) {
+    .arroces-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .arroz-card.featured.span-2 { grid-column: span 2; }
+    .arroz-card.featured.span-2 .arroz-img { aspect-ratio: 16 / 9; }
+  }
+  @media (min-width: 1000px) {
+    .arroces-grid { grid-template-columns: repeat(3, 1fr); }
+    .arroz-card.featured.span-2 { grid-column: span 2; }
+  }
+
+  /* ==================== TAPAS ==================== */
+  .tapas {
+    background: var(--hueso-soft);
+    border-top: 1px solid var(--linea-soft);
+    border-bottom: 1px solid var(--linea-soft);
+  }
+  .tapas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .tapas-columna {
+    background: var(--hueso);
+    border: 1px solid var(--linea-soft);
+    border-radius: 2px;
+    padding: 1.75rem 1.5rem;
+  }
+  .tapas-columna-titulo {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--paella);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--linea-soft);
+    letter-spacing: -0.01em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .tapas-columna-titulo small {
+    font-family: var(--body);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+    font-weight: 600;
+  }
+  .tapa-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--linea-soft);
+  }
+  .tapa-row:last-child { border-bottom: none; }
+  .tapa-nombre {
+    font-size: 0.95rem;
+    color: var(--tinta);
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .tapa-nombre small {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--tinta-mute);
+    font-weight: 400;
+    margin-top: 0.2rem;
+    font-style: italic;
+  }
+  .tapa-precio {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ceniza);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .tapas-imagen {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--crema);
+    position: relative;
+  }
+  .tapas-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .tapas-imagen-caption {
+    position: absolute;
+    bottom: 0.75rem; left: 0.75rem;
+    background: rgba(251, 246, 236, 0.94);
+    padding: 0.35rem 0.7rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tinta-soft);
+    font-weight: 600;
+  }
+
+  @media (min-width: 900px) {
+    .tapas-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ==================== RECONOCIMIENTO ==================== */
+  .reconocimiento {
+    background: var(--hueso);
+    text-align: center;
+  }
+  .reconocimiento .section-title {
+    margin-bottom: 1rem;
+  }
+  .reconocimiento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .reconocimiento-card {
+    background: var(--hueso-soft);
+    border: 1px solid var(--linea-soft);
+    border-radius: 2px;
+    padding: 1.85rem 1.25rem;
+    text-align: left;
+    position: relative;
+  }
+  .reconocimiento-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1rem;
+    display: grid;
+    place-items: center;
+    background: var(--paella);
+    color: var(--hueso);
+    border-radius: 50%;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .reconocimiento-num {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--paella);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .reconocimiento-num small {
+    font-size: 0.55em;
+    color: var(--ocre);
+    margin-left: 0.15rem;
+    font-style: italic;
+  }
+  .reconocimiento-label {
+    font-size: 0.95rem;
+    color: var(--tinta);
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.35rem;
+  }
+  .reconocimiento-sub {
+    font-size: 0.75rem;
+    color: var(--tinta-mute);
+    line-height: 1.5;
+  }
+
+  @media (min-width: 700px) {
+    .reconocimiento-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* ==================== GALERIA ==================== */
+  .galeria {
+    background: var(--tinta);
+    color: var(--hueso);
+  }
+  .galeria .section-eyebrow { color: var(--azafran); }
+  .galeria .section-eyebrow::before { background: var(--azafran); }
+  .galeria .section-title { color: var(--hueso); }
+  .galeria .section-title em { color: var(--azafran); }
+  .galeria .section-lede { color: rgba(251, 246, 236, 0.72); }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin-top: 2.5rem;
+  }
+  .galeria-item {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 2px;
+    background: rgba(251,246,236,0.04);
+    position: relative;
+  }
+  .galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .galeria-item:hover img {
+    transform: scale(1.05);
+  }
+  .galeria-item.wide { grid-column: span 1; }
+  @media (min-width: 700px) {
+    .galeria-grid { grid-template-columns: repeat(3, 1fr); }
+    .galeria-item.wide { grid-column: span 2; aspect-ratio: 2 / 1; }
+  }
+  .galeria-disclaimer {
+    margin-top: 1.75rem;
+    font-size: 0.72rem;
+    color: rgba(251, 246, 236, 0.55);
+    letter-spacing: 0.04em;
+    line-height: 1.65;
+    text-align: center;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ==================== RESERVAS ==================== */
+  .reservas {
+    background: var(--paella-suave);
+  }
+  .reservas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .reservas-text .section-title em { color: var(--paella); }
+  .reservas-canales {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 2rem;
+  }
+  .canal {
+    background: var(--hueso);
+    border: 1px solid var(--linea-soft);
+    padding: 1.25rem 1.35rem;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .canal:hover {
+    transform: translateY(-2px);
+    border-color: var(--paella);
+  }
+  .canal-icon {
+    width: 36px; height: 36px;
+    background: var(--paella);
+    color: var(--hueso);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .canal-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .canal-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ceniza);
+    font-weight: 600;
+  }
+  .canal-valor {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--tinta);
+    letter-spacing: -0.01em;
+  }
+  .reservas-form {
+    background: var(--hueso);
+    padding: 1.85rem 1.5rem;
+    border-radius: 2px;
+    border: 1px solid var(--linea-soft);
+  }
+  .reservas-form-titulo {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--tinta);
+    margin-bottom: 0.5rem;
+  }
+  .reservas-form-sub {
+    font-size: 0.82rem;
+    color: var(--tinta-mute);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  .form-row {
+    display: grid;
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .form-field label {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tinta-mute);
+    font-weight: 600;
+  }
+  .form-field input,
+  .form-field select {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--linea);
+    background: var(--hueso);
+    font-family: var(--body);
+    font-size: 0.9rem;
+    color: var(--tinta);
+    border-radius: 2px;
+    transition: border-color 0.2s ease;
+  }
+  .form-field input:focus,
+  .form-field select:focus {
+    outline: none;
+    border-color: var(--paella);
+  }
+  .form-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .form-aviso {
+    font-size: 0.72rem;
+    color: var(--tinta-mute);
+    margin-top: 0.85rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+  @media (min-width: 600px) {
+    .form-row.two { grid-template-columns: 1fr 1fr; }
+    .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  @media (min-width: 900px) {
+    .reservas-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+
+  /* ==================== CONTACTO ==================== */
+  .contacto {
+    background: var(--hueso);
+    border-top: 1px solid var(--linea-soft);
+  }
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .contacto-bloque {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .contacto-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paella);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .contacto-titulo {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--tinta);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .contacto-data {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--tinta-soft);
+  }
+  .horario-tabla {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.4rem 1.5rem;
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
+  }
+  .horario-dia {
+    color: var(--tinta-mute);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .horario-rango {
+    color: var(--tinta);
+  }
+  .horario-cerrado {
+    color: var(--paella);
+    font-weight: 600;
+    font-style: italic;
+  }
+  .mapa {
+    aspect-ratio: 4 / 3;
+    background: var(--crema);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .mapa iframe { width: 100%; height: 100%; border: none; }
+
+  @media (min-width: 900px) {
+    .contacto-grid { grid-template-columns: 1fr 1fr 1.1fr; gap: 4rem; }
+  }
+
+  /* ==================== FOOTER ==================== */
+  footer {
+    background: var(--tinta);
+    color: rgba(251, 246, 236, 0.7);
+    padding: 3.5rem 1.25rem 2rem;
+  }
+  .footer-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(251, 246, 236, 0.1);
+  }
+  .footer-brand .brand-mark { color: var(--hueso); font-size: 1.5rem; }
+  .footer-brand .brand-tag { color: var(--azafran); }
+  .footer-brand p {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    max-width: 22rem;
+  }
+  .footer-col h4 {
+    font-family: var(--body);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--azafran);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .footer-col li {
+    font-size: 0.88rem;
+    color: rgba(251, 246, 236, 0.72);
+    line-height: 1.5;
+  }
+  .footer-col li strong {
+    color: var(--hueso);
+    font-weight: 600;
+  }
+  .footer-acreditaciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .footer-sello {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid rgba(212,154,44,0.4);
+    color: var(--azafran);
+    border-radius: 1px;
+    font-weight: 600;
+  }
+  .footer-bottom {
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    font-size: 0.72rem;
+    color: rgba(251, 246, 236, 0.5);
+    line-height: 1.6;
+  }
+  .footer-disclaimer {
+    font-size: 0.72rem;
+    color: rgba(251, 246, 236, 0.45);
+    line-height: 1.6;
+    max-width: 48rem;
+  }
+  .footer-kenaz {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--azafran);
+    font-weight: 600;
+  }
+  .footer-kenaz a {
+    color: inherit;
+    border-bottom: 1px solid rgba(212,154,44,0.4);
+    padding-bottom: 1px;
+  }
+  @media (min-width: 700px) {
+    .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; }
+  }
+  @media (min-width: 900px) {
+    .footer-bottom { grid-template-columns: 1fr auto; align-items: center; }
+  }
+
+  /* ==================== ANIMATIONS ==================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .tilt {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .tilt { transform: none !important; transition: none; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand" aria-label="Tu Capricho - inicio">
+      <span class="brand-mark">Tu Capricho</span>
+      <span class="brand-tag">Arrocería &middot; Tapería &middot; Calpe</span>
+    </a>
+    <div class="nav-links">
+      <a href="#casa">La Casa</a>
+      <a href="#acreditaciones">Acreditaciones</a>
+      <a href="#arroces">Arroces</a>
+      <a href="#tapas">Tapas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#reservas" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow reveal">Arrocería &amp; Tapería &middot; Calpe desde hace más de una década</p>
+      <h1 class="hero-title reveal">
+        Tu Capricho.<br/>
+        <em>Tres acreditaciones</em><br/>
+        del Ayuntamiento.
+      </h1>
+      <p class="hero-slogan reveal">«¡Haz de Tu Capricho tu punto de encuentro!»</p>
+      <p class="hero-sub reveal">
+        Arroces tradicionales valencianos, pescado y marisco de la lonja de Calpe,
+        y tapas de barra con producto local. Reconocidos oficialmente por el
+        Ayuntamiento con tres distintivos gastronómicos.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#reservas">Reservar mesa</a>
+        <a class="btn btn-secondary" href="#arroces">Ver arroces</a>
+      </div>
+      <div class="kpi-strip">
+        <div class="kpi reveal">
+          <span class="kpi-value" data-count="5076"><em>0</em></span>
+          <span class="kpi-label">Reseñas Google</span>
+        </div>
+        <div class="kpi reveal">
+          <span class="kpi-value"><em data-count-decimal="4.3">0</em>★</span>
+          <span class="kpi-label">Rating medio</span>
+        </div>
+        <div class="kpi reveal">
+          <span class="kpi-value" data-count="3"><em>0</em></span>
+          <span class="kpi-label">Acreditaciones Ayto.</span>
+        </div>
+        <div class="kpi reveal">
+          <span class="kpi-value"><em>TC</em><span class="kpi-unit">'25</span></span>
+          <span class="kpi-label">Travelers' Choice</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image reveal">
+      <img src="img/hero-paella.webp" alt="Paella valenciana tradicional servida en mesa larga, imagen referencial" loading="eager" />
+      <div class="hero-badges">
+        <span class="hero-badge">Peix de Calp</span>
+        <span class="hero-badge">Llauna de Calp</span>
+        <span class="hero-badge">Arròs del Senyoret</span>
+      </div>
+      <div class="hero-image-caption">Paella valenciana &middot; referencial</div>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== LA CASA ==================== -->
+<section id="casa" class="casa">
+  <div class="section-inner">
+    <div class="casa-grid">
+      <div class="casa-text">
+        <p class="section-eyebrow reveal">La Casa</p>
+        <h2 class="section-title reveal">Una cocina con <em>oficio</em> y un anfitrión con nombre.</h2>
+        <p class="reveal">
+          Tu Capricho es un restaurante familiar en el corazón de Calpe, con Paco
+          García al frente como anfitrión. Una cocina mediterránea sin pretensiones,
+          centrada en producto local: pescado y marisco que llega directo de la
+          lonja, arroces tradicionales valencianos y tapas de barra que cambian
+          según lo que entra del mar cada mañana.
+        </p>
+        <p class="reveal">
+          Más de cinco mil reseñas en Google y un rating consolidado de 4,3
+          estrellas describen el mismo patrón: producto fresco, raciones
+          generosas, trato cercano. Por eso se quedan los locales y vuelven los
+          de fuera.
+        </p>
+        <blockquote class="casa-cita reveal">
+          «Paco te hace sentir como en casa.»
+          <div class="casa-cita-fuente">Reseña recurrente — Tripadvisor / Google</div>
+        </blockquote>
+
+        <div class="placeholder-note reveal">
+          <strong>Por completar con Paco</strong>
+          La historia detallada del local, el año exacto de apertura y la
+          composición del equipo se incorporarán a esta sección tras la visita.
+          Este bloque es la primera versión, redactada solo con datos verificables.
+        </div>
+      </div>
+      <div class="casa-img reveal">
+        <img src="img/ambiente-mesa.webp" alt="Ambiente del comedor con mesa servida, imagen referencial" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ACREDITACIONES (ESTRELLA) ==================== -->
+<section id="acreditaciones" class="acreditaciones">
+  <div class="section-inner">
+    <div class="acreditaciones-intro">
+      <p class="section-eyebrow reveal">Acreditaciones oficiales</p>
+      <h2 class="section-title reveal">Tres distintivos del <em>Ayuntamiento de Calpe</em>.</h2>
+      <p class="section-lede reveal">
+        El Ayuntamiento acredita a los restaurantes que mantienen vivo el
+        recetario y el producto local de Calpe. Tu Capricho tiene los tres
+        sellos en activo: producto de la lonja y dos platos tradicionales
+        reconocidos institucionalmente.
+      </p>
+    </div>
+
+    <div class="sellos-grid">
+      <article class="sello reveal tilt">
+        <div class="sello-medalla"><span>P</span></div>
+        <h3 class="sello-titulo">Peix de Calp</h3>
+        <p class="sello-fuente">Distintivo oficial · Ayto. Calpe</p>
+        <p class="sello-texto">
+          Acredita el uso continuado de pescado y marisco fresco comprado
+          directamente en la lonja de Calpe. El sello solo lo conservan los
+          restaurantes que mantienen ese suministro local de forma habitual.
+        </p>
+      </article>
+
+      <article class="sello reveal tilt">
+        <div class="sello-medalla"><span>L</span></div>
+        <h3 class="sello-titulo">Llauna de Calp</h3>
+        <p class="sello-fuente">Plato tradicional acreditado</p>
+        <p class="sello-texto">
+          Receta histórica calpina cocinada en cazuela baja de hierro
+          ("llauna"), con pescado de la lonja al horno con patata y tomate.
+          Distintivo del Ayuntamiento que reconoce a quienes la cocinan según
+          la receta tradicional.
+        </p>
+      </article>
+
+      <article class="sello reveal tilt">
+        <div class="sello-medalla"><span>A</span></div>
+        <h3 class="sello-titulo">Arròs del Senyoret</h3>
+        <p class="sello-fuente">Plato tradicional acreditado</p>
+        <p class="sello-texto">
+          Arroz seco con todo el marisco ya pelado, listo para comer sin
+          mancharse. Una receta clásica de la costa alicantina, reconocida por
+          el Ayuntamiento como plato tradicional dentro del recetario local.
+        </p>
+      </article>
+    </div>
+
+    <p class="acreditaciones-fuente reveal">
+      Verificación pública: fichas oficiales en
+      <a href="https://www.calpe.es/en/services-and-restaurants-guide/restaurants/tu-capricho" rel="noopener">Calpe Turismo</a>
+      y listado de
+      <a href="https://www.calpe.es/es/guia-de-restaurantes-y-servicios/restaurantes/establecimientos-acreditados-peix-de-calp" rel="noopener">establecimientos acreditados Peix de Calp</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== ARROCES ==================== -->
+<section id="arroces" class="arroces">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-eyebrow reveal">Los arroces</p>
+      <h2 class="section-title reveal">Arroces <em>valencianos</em>, como deben ser.</h2>
+      <p class="section-lede reveal">
+        Caldo cocinado en casa, fondo de pescado de la lonja y socarrat
+        trabajado. Ocho arroces que llevan años en carta, dos de ellos con
+        acreditación oficial del Ayuntamiento de Calpe.
+      </p>
+    </div>
+
+    <div class="arroces-grid">
+
+      <article class="arroz-card featured span-2 reveal tilt">
+        <div class="arroz-img">
+          <img src="img/arroz-a-banda.webp" alt="Arroz a banda en paella, imagen referencial" loading="lazy" />
+        </div>
+        <div class="arroz-body">
+          <span class="arroz-tag">Bandera de la casa</span>
+          <h3 class="arroz-nombre">Arroz a banda</h3>
+          <p class="arroz-desc">
+            Arroz seco cocinado en fondo de pescado de la lonja, terminado en
+            paella. El plato más mencionado en las más de cinco mil reseñas: «el
+            mejor arroz a banda de Calpe» (cita textual de reseña en Tripadvisor).
+            Se sirve con alioli aparte.
+          </p>
+          <div class="arroz-precio">
+            <span>Mín. 2 personas</span>
+            <span>Consultar PVP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="arroz-card reveal tilt">
+        <div class="arroz-img">
+          <img src="img/arros-senyoret.webp" alt="Arròs del Senyoret, imagen referencial" loading="lazy" />
+        </div>
+        <div class="arroz-body">
+          <span class="arroz-tag">Acreditado · Ayto. Calpe</span>
+          <h3 class="arroz-nombre">Arròs del Senyoret</h3>
+          <p class="arroz-desc">
+            Marisco completamente pelado y arroz cocinado en fumet. Plato
+            tradicional con distintivo oficial del Ayuntamiento.
+          </p>
+          <div class="arroz-precio">
+            <span>Mín. 2 personas</span>
+            <span>Consultar PVP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="arroz-card reveal tilt">
+        <div class="arroz-img" style="background:linear-gradient(160deg, var(--crema), var(--hueso-soft));">
+          <div style="height:100%; display:grid; place-items:center; font-family:var(--display); font-style:italic; color:var(--paella); font-size:1.3rem; padding:1rem; text-align:center;">Llauna de Calp</div>
+        </div>
+        <div class="arroz-body">
+          <span class="arroz-tag">Acreditado · Ayto. Calpe</span>
+          <h3 class="arroz-nombre">Llauna de Calp</h3>
+          <p class="arroz-desc">
+            Receta tradicional calpina al horno en cazuela baja. Distintivo
+            oficial del Ayuntamiento.
+          </p>
+          <div class="arroz-precio">
+            <span>Mín. 2 personas</span>
+            <span>Consultar PVP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="arroz-card reveal tilt">
+        <div class="arroz-img">
+          <img src="img/arroz-bogavante.webp" alt="Arroz meloso con bogavante, imagen referencial" loading="lazy" />
+        </div>
+        <div class="arroz-body">
+          <span class="arroz-tag">Especialidad</span>
+          <h3 class="arroz-nombre">Arroz meloso de bogavante</h3>
+          <p class="arroz-desc">
+            Arroz meloso con bogavante mediterráneo y fondo de marisco. Reseña
+            literal de cliente: «arroz meloso con bogavante buenísimo».
+          </p>
+          <div class="arroz-precio">
+            <span>Mín. 2 personas</span>
+            <span>Consultar PVP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="arroz-card reveal tilt">
+        <div class="arroz-img" style="background:linear-gradient(160deg, var(--crema), var(--hueso-soft));">
+          <div style="height:100%; display:grid; place-items:center; font-family:var(--display); font-style:italic; color:var(--paella); font-size:1.3rem; padding:1rem; text-align:center;">Paella valenciana</div>
+        </div>
+        <div class="arroz-body">
+          <span class="arroz-tag">Tradicional</span>
+          <h3 class="arroz-nombre">Paella valenciana</h3>
+          <p class="arroz-desc">
+            Receta clásica: pollo, conejo, judía verde plana (ferraúra),
+            garrofó y romero. Fondo en casa, terminada en paella.
+          </p>
+          <div class="arroz-precio">
+            <span>Mín. 2 personas</span>
+            <span>Consultar PVP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="arroz-card reveal tilt">
+        <div class="arroz-img" style="background:linear-gradient(160deg, var(--crema), var(--hueso-soft));">
+          <div style="height:100%; display:grid; place-items:center; font-family:var(--display); font-style:italic; color:var(--paella); font-size:1.3rem; padding:1rem; text-align:center;">Paella de marisco</div>
+        </div>
+        <div class="arroz-body">
+          <span class="arroz-tag">Marisco</span>
+          <h3 class="arroz-nombre">Paella de marisco</h3>
+          <p class="arroz-desc">
+            Marisco seleccionado de la lonja sobre arroz cocinado en fumet.
+            Variante también disponible en negro con tinta de calamar.
+          </p>
+          <div class="arroz-precio">
+            <span>Mín. 2 personas</span>
+            <span>Consultar PVP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="arroz-card reveal tilt">
+        <div class="arroz-img" style="background:linear-gradient(160deg, var(--crema), var(--hueso-soft));">
+          <div style="height:100%; display:grid; place-items:center; font-family:var(--display); font-style:italic; color:var(--paella); font-size:1.3rem; padding:1rem; text-align:center;">Paella de pollo</div>
+        </div>
+        <div class="arroz-body">
+          <span class="arroz-tag">Clásico</span>
+          <h3 class="arroz-nombre">Paella de pollo</h3>
+          <p class="arroz-desc">
+            Versión sencilla para mesa familiar, pensada para grupos grandes
+            y comensales más conservadores con el marisco.
+          </p>
+          <div class="arroz-precio">
+            <span>Mín. 2 personas</span>
+            <span>Consultar PVP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="arroz-card reveal tilt">
+        <div class="arroz-img" style="background:linear-gradient(160deg, var(--crema), var(--hueso-soft));">
+          <div style="height:100%; display:grid; place-items:center; font-family:var(--display); font-style:italic; color:var(--paella); font-size:1.3rem; padding:1rem; text-align:center;">Fideuá</div>
+        </div>
+        <div class="arroz-body">
+          <span class="arroz-tag">Sin arroz</span>
+          <h3 class="arroz-nombre">Fideuá</h3>
+          <p class="arroz-desc">
+            Hermana mayor del arroz a banda hecha con fideo grueso, también
+            sobre fondo de pescado. Se sirve con alioli.
+          </p>
+          <div class="arroz-precio">
+            <span>Mín. 2 personas</span>
+            <span>Consultar PVP</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="placeholder-note reveal" style="margin-top: 2.5rem; max-width: 42rem;">
+      <strong>Sobre los precios</strong>
+      Mostramos «Consultar PVP» hasta sincronizar la carta actual con Paco. La
+      carta digital quedará abierta para actualización directa por el
+      restaurante.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TAPAS ==================== -->
+<section id="tapas" class="tapas">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">La barra</p>
+    <h2 class="section-title reveal">Tapas y <em>raciones</em>, para empezar bien.</h2>
+    <p class="section-lede reveal">
+      Producto de mercado y plato del día. Esta es una muestra del recetario
+      habitual; la carta completa se sincronizará con Paco antes del lanzamiento.
+    </p>
+
+    <div class="tapas-grid">
+
+      <div class="tapas-columna reveal">
+        <div class="tapas-columna-titulo">
+          De la mar
+          <small>Lonja Calpe</small>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Gambas al ajillo
+            <small>Ajo, guindilla, aceite de oliva virgen extra</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Pulpo a la gallega
+            <small>Pimentón, AOVE, patata cocida</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Tellinas
+            <small>Al ajillo o al vapor</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Calamar a la plancha
+            <small>Limón y perejil</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Tartar de atún
+            <small>Aguacate, sésamo, salsa de soja</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Tomate con mojama
+            <small>Pan, aceite, virutas de mojama</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapas-imagen">
+          <img src="img/gambas-ajillo.webp" alt="Gambas al ajillo en cazuela, imagen referencial" loading="lazy" />
+          <div class="tapas-imagen-caption">Gambas al ajillo &middot; referencial</div>
+        </div>
+      </div>
+
+      <div class="tapas-columna reveal">
+        <div class="tapas-columna-titulo">
+          De la casa
+          <small>Tapas y carnes</small>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Ensalada Capricho
+            <small>Especialidad con el nombre de la casa</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Carrilleras con puré
+            <small>Estofadas largas, puré casero de patata</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Chuletillas de cordero
+            <small>A la brasa, sal en escamas</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Huevos rotos con jamón
+            <small>Patata frita en casa, jamón ibérico</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Tabla de jamón ibérico
+            <small>Con queso manchego y picos</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapa-row">
+          <div class="tapa-nombre">Bacalao con alcachofa
+            <small>Plato de temporada</small>
+          </div>
+          <div class="tapa-precio">Consultar</div>
+        </div>
+        <div class="tapas-imagen">
+          <img src="img/tabla-iberico.webp" alt="Tabla de jamón ibérico, imagen referencial" loading="lazy" />
+          <div class="tapas-imagen-caption">Tabla ibérica &middot; referencial</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RECONOCIMIENTO ==================== -->
+<section class="reconocimiento">
+  <div class="section-inner-narrow">
+    <p class="section-eyebrow reveal" style="justify-content:center;">Reconocimiento</p>
+    <h2 class="section-title reveal">Lo que dicen <em>los datos</em>.</h2>
+    <p class="section-lede reveal" style="margin-left:auto; margin-right:auto;">
+      Más allá del boca a boca: fichas oficiales, ratings públicos y
+      acreditaciones institucionales. Todos los números son verificables.
+    </p>
+
+    <div class="reconocimiento-grid">
+      <div class="reconocimiento-card reveal tilt">
+        <div class="reconocimiento-num" data-count="5076">0</div>
+        <div class="reconocimiento-label">Reseñas en Google</div>
+        <div class="reconocimiento-sub">Volumen poco común para Calpe. Reputación construida durante años.</div>
+      </div>
+      <div class="reconocimiento-card reveal tilt">
+        <div class="reconocimiento-num"><span data-count-decimal="4.3">0</span><small>★</small></div>
+        <div class="reconocimiento-label">Rating consolidado</div>
+        <div class="reconocimiento-sub">4,3 en Google · 4,5 en Tripadvisor · 4,8 en Facebook (125 reseñas).</div>
+      </div>
+      <div class="reconocimiento-card reveal tilt">
+        <div class="reconocimiento-num">TC</div>
+        <div class="reconocimiento-label">Travelers' Choice</div>
+        <div class="reconocimiento-sub">Distinción Tripadvisor — top 10% de establecimientos a nivel mundial.</div>
+      </div>
+      <div class="reconocimiento-card reveal tilt">
+        <div class="reconocimiento-num" data-count="3">0</div>
+        <div class="reconocimiento-label">Acreditaciones Ayto.</div>
+        <div class="reconocimiento-sub">Peix de Calp · Llauna de Calp · Arròs del Senyoret. Distintivos oficiales.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GALERIA ==================== -->
+<section class="galeria">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">La mesa</p>
+    <h2 class="section-title reveal">Producto, fondo y <em>tiempo</em>.</h2>
+    <p class="section-lede reveal">
+      Una muestra editorial del recetario de la casa. Las imágenes definitivas
+      serán fotografía profesional realizada en Tu Capricho durante la
+      producción.
+    </p>
+
+    <div class="galeria-grid">
+      <div class="galeria-item wide reveal">
+        <img src="img/ambiente-mesa.webp" alt="Ambiente del comedor, imagen referencial" loading="lazy" />
+      </div>
+      <div class="galeria-item reveal">
+        <img src="img/arroz-bogavante.webp" alt="Arroz meloso de bogavante, imagen referencial" loading="lazy" />
+      </div>
+      <div class="galeria-item reveal">
+        <img src="img/tartar-atun.webp" alt="Tartar de atún, imagen referencial" loading="lazy" />
+      </div>
+      <div class="galeria-item reveal">
+        <img src="img/arros-senyoret.webp" alt="Arròs del Senyoret, imagen referencial" loading="lazy" />
+      </div>
+      <div class="galeria-item reveal">
+        <img src="img/tabla-iberico.webp" alt="Tabla ibérica, imagen referencial" loading="lazy" />
+      </div>
+      <div class="galeria-item wide reveal">
+        <img src="img/gambas-ajillo.webp" alt="Gambas al ajillo, imagen referencial" loading="lazy" />
+      </div>
+    </div>
+
+    <p class="galeria-disclaimer reveal">
+      Algunas imágenes son referenciales para esta propuesta inicial. Las
+      definitivas serán fotografía profesional realizada en Tu Capricho con
+      Paco al frente del servicio.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== RESERVAS ==================== -->
+<section id="reservas" class="reservas">
+  <div class="section-inner">
+    <div class="reservas-grid">
+      <div class="reservas-text">
+        <p class="section-eyebrow reveal">Reservar</p>
+        <h2 class="section-title reveal">Reservar es la <em>forma rápida</em>.</h2>
+        <p class="section-lede reveal">
+          Si vienes en grupo o un fin de semana, mejor avísanos. Los arroces se
+          cocinan al momento, así que reservar nos permite tenerlo todo a punto.
+        </p>
+
+        <div class="reservas-canales">
+          <a class="canal reveal" href="tel:+34865642522">
+            <span class="canal-icon">T</span>
+            <span class="canal-text">
+              <span class="canal-label">Teléfono · principal</span>
+              <span class="canal-valor">+34 865 64 25 22</span>
+            </span>
+          </a>
+          <a class="canal reveal" href="https://wa.me/34658859012" rel="noopener">
+            <span class="canal-icon">W</span>
+            <span class="canal-text">
+              <span class="canal-label">WhatsApp · Paco</span>
+              <span class="canal-valor">+34 658 859 012</span>
+            </span>
+          </a>
+          <a class="canal reveal" href="mailto:tucaprichocalpe@gmail.com">
+            <span class="canal-icon">@</span>
+            <span class="canal-text">
+              <span class="canal-label">Email</span>
+              <span class="canal-valor">tucaprichocalpe@gmail.com</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <form class="reservas-form reveal" onsubmit="event.preventDefault(); alert('Demo: el formulario se conectará al sistema de reservas en la versión final.');">
+        <p class="reservas-form-titulo">Pide hora online</p>
+        <p class="reservas-form-sub">Recibirás confirmación por WhatsApp o email en horario de servicio.</p>
+
+        <div class="form-row two">
+          <div class="form-field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" required />
+          </div>
+          <div class="form-field">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" required />
+          </div>
+        </div>
+
+        <div class="form-row three">
+          <div class="form-field">
+            <label for="fecha">Fecha</label>
+            <input id="fecha" name="fecha" type="date" required />
+          </div>
+          <div class="form-field">
+            <label for="hora">Hora</label>
+            <select id="hora" name="hora" required>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+              <option value="21:30">21:30</option>
+              <option value="22:00">22:00</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="personas">Comensales</label>
+            <select id="personas" name="personas" required>
+              <option value="2">2 personas</option>
+              <option value="3">3 personas</option>
+              <option value="4">4 personas</option>
+              <option value="5">5 personas</option>
+              <option value="6">6 personas</option>
+              <option value="7+">7 o más</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Pedir reserva</button>
+        <p class="form-aviso">
+          Cerramos los <strong>martes</strong>. Para grupos de 8 o más, mejor
+          llamar directamente a Paco.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACTO ==================== -->
+<section id="contacto" class="contacto">
+  <div class="section-inner">
+    <div class="contacto-grid">
+      <div class="contacto-bloque reveal">
+        <p class="contacto-eyebrow">Dónde estamos</p>
+        <h3 class="contacto-titulo">Edificio Apolo VII, Calpe</h3>
+        <p class="contacto-data">
+          C/ Pintor Sorolla<br/>
+          Edificio Apolo VII, Local 19<br/>
+          03710 Calpe (Alicante)
+        </p>
+        <p class="contacto-data" style="margin-top:0.85rem;">
+          <a href="https://maps.google.com/?q=Tu+Capricho+Calpe+Pintor+Sorolla+Edificio+Apolo+VII" rel="noopener" style="color:var(--paella); border-bottom:1px solid var(--paella); padding-bottom:1px;">Cómo llegar &rarr;</a>
+        </p>
+      </div>
+
+      <div class="contacto-bloque reveal">
+        <p class="contacto-eyebrow">Horario</p>
+        <h3 class="contacto-titulo">Comidas y cenas todos los días, salvo martes</h3>
+        <div class="horario-tabla">
+          <span class="horario-dia">Lunes</span><span class="horario-rango">11:00 – 16:30 · 19:30 – 23:30</span>
+          <span class="horario-dia">Martes</span><span class="horario-cerrado">Cerrado</span>
+          <span class="horario-dia">Miércoles</span><span class="horario-rango">11:00 – 16:30 · 19:30 – 23:30</span>
+          <span class="horario-dia">Jueves</span><span class="horario-rango">11:00 – 16:30 · 19:30 – 23:30</span>
+          <span class="horario-dia">Viernes</span><span class="horario-rango">11:00 – 16:30 · 19:30 – 23:30</span>
+          <span class="horario-dia">Sábado</span><span class="horario-rango">11:00 – 16:30 · 19:30 – 23:30</span>
+          <span class="horario-dia">Domingo</span><span class="horario-rango">11:00 – 16:30 · 19:30 – 23:30</span>
+        </div>
+        <p class="contacto-data" style="margin-top:0.85rem; font-size:0.78rem; color:var(--tinta-mute);">
+          Horario sujeto a confirmación según temporada. Recomendado llamar
+          fuera de festividades.
+        </p>
+      </div>
+
+      <div class="contacto-bloque reveal">
+        <p class="contacto-eyebrow">Mapa</p>
+        <h3 class="contacto-titulo">A dos calles del puerto deportivo</h3>
+        <div class="mapa" style="margin-top:1rem;">
+          <iframe
+            src="https://www.google.com/maps?q=Restaurante+Tu+Capricho+Calpe+Pintor+Sorolla&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa Tu Capricho - Calpe"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div>
+          <div class="brand-mark">Tu Capricho</div>
+          <div class="brand-tag">Arrocería · Tapería · Calpe</div>
+        </div>
+        <p>
+          Cocina mediterránea valenciana en Calpe, con tres acreditaciones
+          oficiales del Ayuntamiento y miles de comensales que vuelven.
+        </p>
+        <div class="footer-acreditaciones">
+          <span class="footer-sello">Peix de Calp</span>
+          <span class="footer-sello">Llauna de Calp</span>
+          <span class="footer-sello">Arròs del Senyoret</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><strong>Reservas</strong><br/>+34 865 64 25 22</li>
+          <li><strong>WhatsApp · Paco</strong><br/>+34 658 859 012</li>
+          <li><strong>Email</strong><br/>tucaprichocalpe@gmail.com</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visítanos</h4>
+        <ul>
+          <li>C/ Pintor Sorolla<br/>Edificio Apolo VII, Local 19<br/>03710 Calpe (Alicante)</li>
+          <li><strong>Cerrado los martes</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">
+        Los datos publicados en esta web se han verificado contra fuentes
+        oficiales del Ayuntamiento de Calpe, perfiles propios del restaurante
+        y reseñas públicas. Las imágenes señaladas como referenciales se
+        sustituirán por fotografía profesional realizada en Tu Capricho durante
+        la producción. Los precios mostrados como «Consultar» se publicarán al
+        sincronizar la carta actual con la dirección del restaurante.
+      </p>
+      <p class="footer-kenaz">
+        Diseño propuesto por <a href="https://kenaz.studio" rel="noopener">Kenaz Studio</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============================================
+  // ANIMATIONS — GSAP ScrollTrigger reveal + count-up
+  // ============================================
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+      document.querySelectorAll('[data-count]').forEach((el) => {
+        const target = parseInt(el.dataset.count, 10);
+        const inner = el.querySelector('em') || el;
+        inner.textContent = target.toLocaleString('es-ES');
+      });
+      document.querySelectorAll('[data-count-decimal]').forEach((el) => {
+        el.textContent = el.dataset.countDecimal;
+      });
+      return;
+    }
+
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.normalizeScroll(true);
+
+      gsap.utils.toArray('.reveal').forEach((el, i) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'expo.out',
+          delay: (i % 4) * 0.05,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          onStart: () => el.classList.add('in'),
+        });
+      });
+
+      // Count-up integer KPIs
+      document.querySelectorAll('[data-count]').forEach((el) => {
+        const target = parseInt(el.dataset.count, 10);
+        const inner = el.querySelector('em') || el;
+        const obj = { v: 0 };
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 85%',
+          onEnter: () => {
+            gsap.to(obj, {
+              v: target,
+              duration: 1.6,
+              ease: 'expo.out',
+              onUpdate: () => {
+                inner.textContent = Math.round(obj.v).toLocaleString('es-ES');
+              },
+            });
+          },
+          once: true,
+        });
+      });
+
+      // Count-up decimal KPIs
+      document.querySelectorAll('[data-count-decimal]').forEach((el) => {
+        const target = parseFloat(el.dataset.countDecimal);
+        const obj = { v: 0 };
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 85%',
+          onEnter: () => {
+            gsap.to(obj, {
+              v: target,
+              duration: 1.4,
+              ease: 'expo.out',
+              onUpdate: () => {
+                el.textContent = obj.v.toFixed(1).replace('.', ',');
+              },
+            });
+          },
+          once: true,
+        });
+      });
+    } else {
+      // Fallback sin GSAP
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      document.querySelectorAll('[data-count]').forEach((el) => {
+        const target = parseInt(el.dataset.count, 10);
+        const inner = el.querySelector('em') || el;
+        inner.textContent = target.toLocaleString('es-ES');
+      });
+      document.querySelectorAll('[data-count-decimal]').forEach((el) => {
+        el.textContent = el.dataset.countDecimal.replace('.', ',');
+      });
+    }
+
+    // ============================================
+    // 3D TILT subtle on cards
+    // ============================================
+    const isTouch = matchMedia('(pointer: coarse)').matches;
+    if (!isTouch) {
+      document.querySelectorAll('.tilt').forEach((el) => {
+        el.addEventListener('mousemove', (e) => {
+          const r = el.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          el.style.transform = `perspective(1000px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg) translateY(-4px)`;
+        });
+        el.addEventListener('mouseleave', () => {
+          el.style.transform = '';
+        });
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
