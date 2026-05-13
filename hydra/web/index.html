@@ -1,540 +1,1223 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hydra · Cocina en Calpe</title>
-<meta name="description" content="Restaurante en Calpe. Cocina mediterránea cuidada en un ambiente sereno." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hydra · Cocina mediterránea de producto · Calpe</title>
+<meta name="description" content="Restaurante Hydra en Calpe. Arroces autóctonos, tapas con alma, carnes de Galicia y pescados del Mediterráneo. Huerta propia. Jazz y blues en vivo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --hueso: #f5f1ea;
-    --hueso-suave: #ecdfd1;
-    --papel: #faf7f2;
-    --azul: #1c2a3a;
-    --azul-suave: #2d3f53;
-    --oro: #b08a4b;
-    --oro-suave: #d4b67f;
-    --tinta: #1a1f26;
-    --tinta-suave: #5e6571;
-    --linea: #e6dfd4;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--papel);
-    color: var(--tinta);
-    font-size: 16px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 400;
-    line-height: 1.12;
-    letter-spacing: -0.015em;
-    margin: 0 0 0.5em;
-    color: var(--azul);
-  }
-  p { margin: 0 0 1em; }
-  a { color: var(--oro); text-decoration: none; transition: opacity 0.15s; }
-  a:hover { opacity: 0.75; }
-  img { display: block; max-width: 100%; height: auto; }
-  .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+:root {
+  --bone: #f5f0e6;
+  --bone-soft: #ede4d3;
+  --olive: #4a5d3a;
+  --olive-deep: #2f3d24;
+  --amber: #b8742a;
+  --amber-soft: #d4924a;
+  --ink: #1a1714;
+  --ink-soft: #3d3733;
+  --muted: #7a7066;
+  --line: rgba(26, 23, 20, 0.12);
+  --line-soft: rgba(26, 23, 20, 0.06);
+}
 
-  /* DISCLAIMER */
-  .disclaimer {
-    background: var(--azul);
-    color: var(--hueso);
-    text-align: center;
-    font-size: 0.78rem;
-    padding: 0.7rem 1.25rem;
-    line-height: 1.5;
-    letter-spacing: 0.03em;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* NAV */
-  .nav {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(250, 247, 242, 0.94);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--linea);
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 1.25rem;
-    max-width: 1100px; margin: 0 auto;
-  }
-  .brand {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 1.5rem;
-    color: var(--azul);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .brand .accent { color: var(--oro); }
-  .nav-cta {
-    display: inline-block;
-    padding: 0.55rem 1rem;
-    background: var(--azul);
-    color: var(--hueso);
-    border-radius: 0;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .nav-cta:hover { background: var(--azul-suave); opacity: 1; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-  /* HERO */
-  .hero {
-    padding: 2rem 0 2.5rem;
-    background: var(--papel);
-  }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-    align-items: center;
-  }
-  .hero-eyebrow {
-    font-size: 0.74rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--oro);
-    margin-bottom: 1.1rem;
-    font-weight: 500;
-  }
-  .hero h1 {
-    font-size: clamp(2.2rem, 6.5vw, 3.6rem);
-    margin-bottom: 0.7rem;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--oro);
-    font-weight: 300;
-  }
-  .hero p.lead {
-    font-size: 1.05rem;
-    color: var(--tinta-suave);
-    max-width: 32rem;
-    font-weight: 300;
-  }
-  .hero-actions {
-    display: flex; flex-wrap: wrap; gap: 0.7rem;
-    margin-top: 1.4rem;
-  }
-  .btn {
-    display: inline-block;
-    padding: 0.85rem 1.4rem;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    transition: all 0.15s ease;
-  }
-  .btn-primary { background: var(--azul); color: var(--hueso); }
-  .btn-primary:hover { background: var(--azul-suave); opacity: 1; }
-  .btn-ghost {
-    background: transparent;
-    color: var(--azul);
-    border: 1px solid var(--azul);
-  }
-  .btn-ghost:hover { background: var(--azul); color: var(--hueso); opacity: 1; }
-  .hero-img {
-    overflow: hidden;
-    box-shadow: 0 18px 40px -22px rgba(28, 42, 58, 0.4);
-    aspect-ratio: 4/5;
-  }
-  .hero-img img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bone);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-  /* SECTIONS */
-  section { padding: 3.5rem 0; }
-  .section-head {
-    margin-bottom: 2.5rem;
-    max-width: 38rem;
-  }
-  .section-eyebrow {
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--oro);
-    font-weight: 500;
-    margin-bottom: 0.8rem;
-    display: block;
-  }
-  .section-head h2 {
-    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-  }
-  .section-head p {
-    color: var(--tinta-suave);
-    font-size: 1.02rem;
-    font-weight: 300;
-  }
+.serif { font-family: 'Fraunces', 'Times New Roman', serif; }
+.italic { font-style: italic; }
 
-  /* SITIO */
-  .sitio {
-    background: var(--hueso);
-  }
-  .sitio-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    align-items: center;
-  }
-  .sitio-img {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-  }
-  .sitio-img img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
-  .sitio-text h2 {
-    margin-bottom: 1rem;
-  }
-  .sitio-text p {
-    color: var(--tinta-suave);
-    font-weight: 300;
-  }
-  .sitio-text .placeholder {
-    margin-top: 1.5rem;
-    padding: 1rem 1.2rem;
-    background: var(--papel);
-    border-left: 2px solid var(--oro);
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--tinta-suave);
-  }
+img { display: block; max-width: 100%; height: auto; }
 
-  /* CARTA */
-  .carta-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  .carta-section {
-    padding: 1.6rem 1.4rem;
-    background: var(--papel);
-    border: 1px solid var(--linea);
-  }
-  .carta-section h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
-    font-style: italic;
-    color: var(--azul);
-  }
-  .carta-section .num {
-    font-family: 'Fraunces', serif;
-    font-size: 0.75rem;
-    color: var(--oro);
-    letter-spacing: 0.2em;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  .carta-section p {
-    font-size: 0.92rem;
-    color: var(--tinta-suave);
-    margin: 0;
-    font-weight: 300;
-  }
-  .carta-nota {
-    margin-top: 1.8rem;
-    padding: 1rem 1.2rem;
-    background: var(--hueso);
-    border-left: 2px solid var(--oro);
-    font-size: 0.88rem;
-    color: var(--tinta-suave);
-    font-style: italic;
-  }
+a { color: inherit; text-decoration: none; }
 
-  /* GALERIA */
-  .galeria {
-    background: var(--azul);
-    color: var(--hueso);
-  }
-  .galeria h2 { color: var(--hueso); }
-  .galeria .section-head p { color: rgba(245, 241, 234, 0.7); }
-  .galeria .section-eyebrow { color: var(--oro-suave); }
-  .galeria-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
-  }
-  .galeria-item {
-    overflow: hidden;
-    aspect-ratio: 1/1;
-  }
-  .galeria-item img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
+/* RIBBON PROPUESTA */
+.ribbon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--olive-deep);
+  color: var(--bone);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  text-align: center;
+  font-weight: 500;
+}
 
-  /* VISITA */
-  .visita-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  .visita-card {
-    padding: 1.8rem 1.5rem;
-    background: var(--hueso);
-    border-top: 2px solid var(--oro);
-  }
-  .visita-card h3 {
-    font-size: 0.78rem;
-    margin-bottom: 0.8rem;
-    color: var(--oro);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-  }
-  .visita-card p {
-    font-size: 0.98rem;
-    color: var(--tinta);
-    margin: 0;
-    font-weight: 300;
-  }
-  .visita-card p em {
-    color: var(--tinta-suave);
-    font-size: 0.88rem;
-  }
-  .visita-card strong {
-    font-weight: 500;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--azul);
-    display: block;
-    margin-bottom: 0.3rem;
-  }
+/* NAV */
+.nav {
+  position: sticky;
+  top: 33px;
+  z-index: 50;
+  background: rgba(245, 240, 230, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-soft);
+}
 
-  /* FOOTER */
-  footer {
-    background: var(--azul);
-    color: var(--hueso);
-    padding: 3rem 0 1.5rem;
-  }
-  footer .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  footer h3 {
-    color: var(--hueso);
-    font-style: italic;
-    font-size: 1.6rem;
-    margin-bottom: 0.8rem;
-  }
-  footer .label {
-    color: var(--oro-suave);
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-size: 0.74rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    display: block;
-    font-weight: 500;
-  }
-  footer p, footer a {
-    color: rgba(245, 241, 234, 0.78);
-    font-size: 0.92rem;
-    font-weight: 300;
-  }
-  footer a:hover { color: var(--oro-suave); opacity: 1; }
-  .footer-bottom {
-    border-top: 1px solid rgba(245, 241, 234, 0.12);
-    padding-top: 1.3rem;
-    margin-top: 1.5rem;
-    font-size: 0.76rem;
-    color: rgba(245, 241, 234, 0.55);
-    text-align: center;
-    letter-spacing: 0.05em;
-  }
-  .footer-bottom a { color: rgba(245, 241, 234, 0.78); }
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  /* RESPONSIVE */
-  @media (min-width: 720px) {
-    section { padding: 5rem 0; }
-    .hero { padding: 3.5rem 0 4.5rem; }
-    .hero-grid {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3.5rem;
-    }
-    .sitio-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-    .carta-grid { grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-    .galeria-grid { grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
-    .visita-grid { grid-template-columns: repeat(3, 1fr); }
-    footer .container { grid-template-columns: 1.4fr 0.8fr 0.8fr; }
-  }
-  @media (min-width: 960px) {
-    .hero h1 { font-size: 4rem; }
-  }
+.nav-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--olive-deep);
+}
+
+.nav-brand small {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted);
+  display: block;
+  margin-top: -2px;
+}
+
+.nav-cta {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  background: var(--olive-deep);
+  color: var(--bone);
+  border-radius: 2px;
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: none;
+  gap: 28px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+@media (min-width: 900px) {
+  .nav-links { display: flex; }
+  .nav-brand { font-size: 26px; }
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  padding: 56px 20px 48px;
+  background: var(--bone);
+}
+
+.hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hero-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--amber);
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(38px, 9vw, 84px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--olive-deep);
+  margin-bottom: 24px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--amber);
+  font-weight: 400;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2.4vw, 19px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+  transition: transform .2s, background .2s;
+}
+
+.btn-primary {
+  background: var(--olive-deep);
+  color: var(--bone);
+}
+
+.btn-primary:hover { background: var(--olive); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.btn-ghost:hover { background: var(--bone-soft); }
+
+.hero-img {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  margin-bottom: 32px;
+  box-shadow: 0 24px 60px rgba(47, 61, 36, 0.18);
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-img-caption {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(26, 23, 20, 0.78);
+  color: var(--bone);
+  padding: 6px 12px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 1px;
+}
+
+/* KPIs */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.kpi {
+  background: var(--bone);
+  padding: 24px 18px;
+}
+
+.kpi-num {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 5vw, 38px);
+  font-weight: 500;
+  color: var(--olive-deep);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.kpi-num em {
+  font-style: italic;
+  color: var(--amber);
+  font-weight: 400;
+}
+
+.kpi-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@media (min-width: 720px) {
+  .kpis { grid-template-columns: repeat(4, 1fr); }
+  .kpi { padding: 36px 24px; }
+}
+
+/* SECTION SHARED */
+.section {
+  padding: 72px 20px;
+}
+
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(30px, 5.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  color: var(--olive-deep);
+  margin-bottom: 20px;
+  max-width: 760px;
+}
+
+.section-title em { font-style: italic; color: var(--amber); }
+
+.section-lede {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--ink-soft);
+  line-height: 1.65;
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+/* LA COCINA — split */
+.cocina { background: var(--bone); }
+
+.cocina-grid {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 900px) {
+  .cocina-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+}
+
+.cocina-img {
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  position: relative;
+}
+
+.cocina-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.cocina-text h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--olive-deep);
+  margin-bottom: 20px;
+}
+
+.cocina-text p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.cocina-quote {
+  margin-top: 32px;
+  padding: 24px 28px;
+  border-left: 3px solid var(--amber);
+  background: var(--bone-soft);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(17px, 2.4vw, 21px);
+  line-height: 1.45;
+  color: var(--olive-deep);
+}
+
+.cocina-quote small {
+  display: block;
+  margin-top: 14px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ARROCES — protagonista */
+.arroces {
+  background: var(--olive-deep);
+  color: var(--bone);
+}
+
+.arroces .section-eyebrow { color: var(--amber-soft); }
+.arroces .section-eyebrow::before { background: var(--amber-soft); }
+.arroces .section-title { color: var(--bone); }
+.arroces .section-title em { color: var(--amber-soft); }
+.arroces .section-lede { color: rgba(245, 240, 230, 0.78); }
+
+.arroces-callout {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(184, 116, 42, 0.18);
+  border: 1px solid rgba(212, 146, 74, 0.42);
+  padding: 10px 16px;
+  border-radius: 2px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber-soft);
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.arroces-callout::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--amber-soft);
+  border-radius: 50%;
+}
+
+.arroces-list {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 720px) {
+  .arroces-list { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+}
+
+.arroz-card {
+  padding: 28px 24px;
+  background: rgba(245, 240, 230, 0.04);
+  border: 1px solid rgba(245, 240, 230, 0.12);
+  border-radius: 3px;
+}
+
+.arroz-card .num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--amber-soft);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+}
+
+.arroz-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--bone);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.arroz-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(245, 240, 230, 0.74);
+}
+
+.arroces-note {
+  font-size: 13px;
+  color: rgba(245, 240, 230, 0.62);
+  padding: 16px 20px;
+  border-top: 1px solid rgba(245, 240, 230, 0.14);
+  font-style: italic;
+}
+
+/* TAPAS */
+.tapas { background: var(--bone-soft); }
+
+.tapas-grid {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 720px) {
+  .tapas-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+}
+
+@media (min-width: 1000px) {
+  .tapas-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tapa-card {
+  background: var(--bone);
+  padding: 28px 24px;
+  border-radius: 3px;
+  border-top: 2px solid var(--olive);
+}
+
+.tapa-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--olive-deep);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.tapa-card p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.tapa-placeholder {
+  margin-top: 32px;
+  padding: 18px 22px;
+  background: var(--bone);
+  border: 1px dashed var(--olive);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* CARNES Y PESCADOS — split */
+.carnes-pescados { background: var(--bone); }
+
+.cp-grid {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 900px) {
+  .cp-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+.cp-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: var(--ink);
+}
+
+.cp-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.78;
+  transition: opacity .3s, transform .6s;
+}
+
+.cp-card:hover img { opacity: 0.92; transform: scale(1.02); }
+
+.cp-card-text {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 28px 28px 32px;
+  background: linear-gradient(to top, rgba(26, 23, 20, 0.92) 0%, rgba(26, 23, 20, 0.6) 60%, transparent 100%);
+  color: var(--bone);
+}
+
+.cp-card-text .label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber-soft);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.cp-card-text h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3.4vw, 32px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  margin-bottom: 12px;
+}
+
+.cp-card-text p {
+  font-size: 14px;
+  color: rgba(245, 240, 230, 0.82);
+  line-height: 1.55;
+  max-width: 380px;
+}
+
+/* JAZZ */
+.jazz {
+  background: var(--ink);
+  color: var(--bone);
+  position: relative;
+  overflow: hidden;
+}
+
+.jazz-grid {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .jazz-grid { grid-template-columns: 1fr 1.1fr; gap: 56px; }
+}
+
+.jazz .section-eyebrow { color: var(--amber-soft); }
+.jazz .section-eyebrow::before { background: var(--amber-soft); }
+
+.jazz-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  color: var(--bone);
+  margin-bottom: 20px;
+}
+
+.jazz-title em { font-style: italic; color: var(--amber-soft); }
+
+.jazz-text p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(245, 240, 230, 0.78);
+  margin-bottom: 18px;
+}
+
+.jazz-img {
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.jazz-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.jazz-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.jazz-tag {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 7px 12px;
+  border: 1px solid rgba(212, 146, 74, 0.42);
+  color: var(--amber-soft);
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* HUERTA */
+.huerta { background: var(--bone); }
+
+.huerta-grid {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .huerta-grid { grid-template-columns: 1.1fr 1fr; gap: 56px; }
+}
+
+.huerta-img {
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.huerta-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.huerta-text h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--olive-deep);
+  margin-bottom: 20px;
+  letter-spacing: -0.015em;
+}
+
+.huerta-text h3 em { font-style: italic; color: var(--amber); }
+
+.huerta-text p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.huerta-points {
+  list-style: none;
+  margin-top: 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+
+.huerta-points li {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.huerta-points li::before {
+  content: "·";
+  color: var(--amber);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 0.8;
+  margin-top: 2px;
+}
+
+/* RESERVAS */
+.reservas {
+  background: var(--olive-deep);
+  color: var(--bone);
+}
+
+.reservas .section-eyebrow { color: var(--amber-soft); }
+.reservas .section-eyebrow::before { background: var(--amber-soft); }
+
+.reservas-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 5.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.018em;
+  color: var(--bone);
+  margin-bottom: 24px;
+}
+
+.reservas-title em { font-style: italic; color: var(--amber-soft); }
+
+.reservas-lede {
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba(245, 240, 230, 0.78);
+  margin-bottom: 48px;
+  max-width: 620px;
+}
+
+.reservas-grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 800px) {
+  .reservas-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+}
+
+.res-block {
+  padding: 28px 24px;
+  background: rgba(245, 240, 230, 0.04);
+  border: 1px solid rgba(245, 240, 230, 0.12);
+  border-radius: 3px;
+}
+
+.res-block h4 {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber-soft);
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.res-block .big {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--bone);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.res-block p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(245, 240, 230, 0.74);
+}
+
+.res-block a.big { color: var(--bone); transition: color .2s; }
+.res-block a.big:hover { color: var(--amber-soft); }
+
+.res-cta {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-amber {
+  background: var(--amber);
+  color: var(--bone);
+}
+
+.btn-amber:hover { background: var(--amber-soft); color: var(--ink); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--bone);
+  border: 1px solid rgba(245, 240, 230, 0.32);
+}
+
+.btn-outline:hover { border-color: var(--amber-soft); color: var(--amber-soft); }
+
+/* FOOTER */
+.footer {
+  background: var(--ink);
+  color: rgba(245, 240, 230, 0.62);
+  padding: 56px 20px 32px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 720px) {
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+}
+
+.footer-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  color: var(--bone);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.footer h5 {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber-soft);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.footer a { color: rgba(245, 240, 230, 0.74); transition: color .2s; }
+.footer a:hover { color: var(--amber-soft); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(245, 240, 230, 0.1);
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 12px;
+  color: rgba(245, 240, 230, 0.48);
+}
+
+@media (min-width: 720px) {
+  .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+
+.disclaimer {
+  background: rgba(184, 116, 42, 0.1);
+  border: 1px solid rgba(212, 146, 74, 0.28);
+  border-radius: 2px;
+  padding: 14px 18px;
+  font-size: 11px;
+  line-height: 1.55;
+  color: rgba(245, 240, 230, 0.72);
+  margin-bottom: 24px;
+}
+
+.disclaimer strong {
+  color: var(--amber-soft);
+  display: block;
+  margin-bottom: 4px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.kenaz-sig {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 230, 0.42);
+}
+
+.kenaz-sig a { color: rgba(245, 240, 230, 0.62); }
+.kenaz-sig a:hover { color: var(--amber-soft); }
+
+.section-title, .hero h1, .reservas-title, .jazz-title { hyphens: auto; }
 </style>
 </head>
 <body>
 
-<div class="disclaimer">
-  Demostración visual no oficial · Diseño propuesto por Kenaz Studio · Concepto y carta a definir tras visita in situ
-</div>
+<div class="ribbon">Propuesta de diseño · Kenaz Studio para Hydra</div>
 
 <nav class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#">Hydra<span class="accent"> ·</span></a>
-    <a class="nav-cta" href="#visita">Reservas</a>
+    <div class="nav-brand">
+      Hydra
+      <small>Calpe · desde la cala</small>
+    </div>
+    <div class="nav-links">
+      <a href="#cocina">La cocina</a>
+      <a href="#arroces">Arroces</a>
+      <a href="#jazz">Música</a>
+      <a href="#reservas">Contacto</a>
+    </div>
+    <a href="#reservas" class="nav-cta">Reservar</a>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="container">
-    <div class="hero-grid">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Cala Calalga · Calpe</div>
+    <h1>Hydra<br><em>Cocina mediterránea de producto</em></h1>
+    <p class="hero-sub">
+      Arroces autóctonos, tapas con alma, carnes de Galicia y pescados del Mediterráneo. Huerta propia. Jazz y blues en vivo. Sabores de antaño cocinados como entonces.
+    </p>
+    <div class="hero-actions">
+      <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
+      <a href="#arroces" class="btn btn-ghost">Ver arroces</a>
+    </div>
+
+    <div class="hero-img">
+      <img src="img/hero-mesa.webp" alt="Arroz autóctono servido en cazuela tradicional sobre mesa de Hydra">
+      <div class="hero-img-caption">Arroces · solo de encargo · mediodía</div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-num">Encargo<em>·</em></div>
+        <div class="kpi-label">Paellas solo<br>al mediodía</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">Huerta<em>·</em></div>
+        <div class="kpi-label">Propia<br>de producto</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">Jazz<em>·</em></div>
+        <div class="kpi-label">Y blues<br>en vivo</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">7<em>/</em>7</div>
+        <div class="kpi-label">Días<br>abierto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA COCINA -->
+<section class="section cocina" id="cocina">
+  <div class="section-inner">
+    <div class="cocina-grid">
+      <div class="cocina-img">
+        <img src="img/plato-mediterraneo.webp" alt="Plato mediterráneo de producto fresco preparado en Hydra">
+      </div>
+      <div class="cocina-text">
+        <div class="section-eyebrow">La cocina</div>
+        <h3>Producto, <em>honestidad</em><br>y sabores de antaño.</h3>
+        <p>
+          Hydra es un restaurante de producto. Lo decimos sin adornos: trabajamos con lo que da la temporada, lo que la huerta entrega esa misma semana y lo que el mercado tiene fresco esa mañana.
+        </p>
+        <p>
+          La carta recupera platos autóctonos y raciales. Recetas que se cocinaban en las casas valencianas antes de que todo se acelerara. Sin atajos, sin cocción exprés.
+        </p>
+        <div class="cocina-quote">
+          "Restaurante de producto, honesto, que conserva los sabores de antaño, con personalidad. Cocina con alma y sala con corazón."
+          <small>— Hydra · restaurantehydra.com</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARROCES -->
+<section class="section arroces" id="arroces">
+  <div class="section-inner">
+    <div class="section-eyebrow">Arroces autóctonos</div>
+    <h2 class="section-title">Arroces que <em>te transportan</em><br>a la infancia.</h2>
+    <p class="section-lede">
+      Trabajamos arroces con sabor, hechos como se hacían en casa: a fuego lento, con caldos de verdad, sin prisa. Por eso solo se preparan a mediodía y bajo encargo previo.
+    </p>
+
+    <div class="arroces-callout">Solo de encargo · solo a mediodía · reserva 24-48h antes</div>
+
+    <div class="arroces-list">
+      <article class="arroz-card">
+        <div class="num">I.</div>
+        <h4>Arroz a banda</h4>
+        <p>El clásico marinero de la Costa Blanca. Caldo de pescado de roca, arroz seco, sofrito largo. Servido con su all i oli.</p>
+      </article>
+      <article class="arroz-card">
+        <div class="num">II.</div>
+        <h4>Arroz al horno</h4>
+        <p>Receta valenciana tradicional. Garbanzos, costilla, morcilla, tomate y patata. Cocido en cazuela de barro hasta el socarrat.</p>
+      </article>
+      <article class="arroz-card">
+        <div class="num">III.</div>
+        <h4>Meloso de raya</h4>
+        <p>Arroz meloso con raya fresca del Mediterráneo. Textura cremosa, sabor profundo. Plato de cuchara que recuerda a las barracas.</p>
+      </article>
+    </div>
+
+    <p class="arroces-note">
+      Otros arroces disponibles según temporada y disponibilidad de producto. Consultar al reservar.
+    </p>
+  </div>
+</section>
+
+<!-- TAPAS -->
+<section class="section tapas">
+  <div class="section-inner">
+    <div class="section-eyebrow">Tapas con alma</div>
+    <h2 class="section-title">Recuperación de platos<br><em>autóctonos y raciales</em>.</h2>
+    <p class="section-lede">
+      Tapas en la misma línea que la cocina principal: sabor, producto, recuperación de recetas que se estaban perdiendo. Ración honesta, sin trampa.
+    </p>
+
+    <div class="tapas-grid">
+      <div class="tapa-card">
+        <h4>Cocas de pimiento</h4>
+        <p>Masa fina, pimiento asado en horno, aceite de oliva. Entrante clásico de la zona.</p>
+      </div>
+      <div class="tapa-card">
+        <h4>Clotxina valenciana</h4>
+        <p>Mejillón mediterráneo de roca, cocción al vapor con su jugo. Producto de proximidad.</p>
+      </div>
+      <div class="tapa-card">
+        <h4>Pulpo a la parrilla</h4>
+        <p>Pulpo a la brasa, aceite ahumado y pimentón. Textura tierna, ahumado limpio.</p>
+      </div>
+      <div class="tapa-card">
+        <h4>Jamón ibérico</h4>
+        <p>Bellota, corte a cuchillo, pan tostado con tomate. Sin más adornos.</p>
+      </div>
+      <div class="tapa-card">
+        <h4>Frituras del día</h4>
+        <p>Pescaíto, calamar, boquerón según lo que el mercado traiga esa mañana.</p>
+      </div>
+      <div class="tapa-card">
+        <h4>Encurtidos de la casa</h4>
+        <p>Aceitunas, hortalizas en vinagre, conservas propias de la huerta.</p>
+      </div>
+    </div>
+
+    <div class="tapa-placeholder">
+      · Carta completa de tapas disponible en sala — el listado evoluciona con temporada y mercado
+    </div>
+  </div>
+</section>
+
+<!-- CARNES Y PESCADOS -->
+<section class="section carnes-pescados">
+  <div class="section-inner">
+    <div class="section-eyebrow">Producto principal</div>
+    <h2 class="section-title">Carnes de Galicia<br>y <em>pescados del Mediterráneo</em>.</h2>
+    <p class="section-lede">
+      Dos fuegos, una misma idea: trabajar con el mejor producto que podamos conseguir y respetarlo. Lo que se hace en sala se entiende cuando se prueba.
+    </p>
+
+    <div class="cp-grid">
+      <article class="cp-card">
+        <img src="img/vista-interior.webp" alt="Carne gallega a la parrilla servida en plato oscuro">
+        <div class="cp-card-text">
+          <div class="label">Galicia</div>
+          <h3>Carnes a la brasa</h3>
+          <p>Vaca rubia gallega madurada. Brasa de carbón, sal en escamas, reposo. El producto manda, la técnica acompaña.</p>
+        </div>
+      </article>
+      <article class="cp-card">
+        <img src="img/detalle-pan-aceite.webp" alt="Pescado mediterráneo de roca recién preparado">
+        <div class="cp-card-text">
+          <div class="label">Mediterráneo</div>
+          <h3>Pescados de costa</h3>
+          <p>Lubina, dorada, gambas blancas, raya. Pescados de roca de nuestra costa, preparados al horno, a la sal o a la plancha.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- JAZZ -->
+<section class="section jazz" id="jazz">
+  <div class="section-inner">
+    <div class="jazz-grid">
+      <div class="jazz-text">
+        <div class="section-eyebrow">Música en vivo</div>
+        <h2 class="jazz-title">Jazz, blues<br>y <em>cocktail bar</em>.</h2>
+        <p>
+          En Hydra la cena no termina en el postre. Programamos actuaciones de jazz y blues en directo, y la barra sigue funcionando hasta tarde con coctelería clásica.
+        </p>
+        <p>
+          Un ambiente para alargar la sobremesa con una copa, escuchar buena música y dejar que la noche siga su ritmo.
+        </p>
+        <div class="jazz-tags">
+          <span class="jazz-tag">Jazz</span>
+          <span class="jazz-tag">Blues</span>
+          <span class="jazz-tag">Cocktail bar</span>
+          <span class="jazz-tag">Clásicos</span>
+        </div>
+      </div>
+      <div class="jazz-img">
+        <img src="img/ambiente-interior.webp" alt="Ambiente interior de Hydra con luz cálida y barra de coctelería">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HUERTA -->
+<section class="section huerta">
+  <div class="section-inner">
+    <div class="huerta-grid">
+      <div class="huerta-img">
+        <img src="img/detalle-copa.webp" alt="Detalle de producto fresco y cuidado en Hydra">
+      </div>
+      <div class="huerta-text">
+        <div class="section-eyebrow">Huerta propia</div>
+        <h3>De la tierra<br>al plato, <em>sin escalas</em>.</h3>
+        <p>
+          Tenemos huerta propia. No es discurso de marketing: es lo que nos permite controlar lo que entra en la cocina y trabajar verduras y hortalizas con el sabor real de cada temporada.
+        </p>
+        <p>
+          Lo que crece esa semana es lo que llega a la mesa esa semana. Si no hay, no hay. Si está en su momento, ahí estará el plato.
+        </p>
+        <ul class="huerta-points">
+          <li>Tomate, pimiento y berenjena en temporada cálida</li>
+          <li>Verdura de hoja, cebolla y ajo tierno en temporada fría</li>
+          <li>Hierbas aromáticas y encurtidos propios todo el año</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section class="section reservas" id="reservas">
+  <div class="section-inner">
+    <div class="section-eyebrow">Reservas y contacto</div>
+    <h2 class="reservas-title">Reserva tu mesa.<br><em>Te esperamos.</em></h2>
+    <p class="reservas-lede">
+      Recomendamos reserva, especialmente fines de semana y para arroces (que se preparan solo de encargo y a mediodía, con 24-48h de antelación).
+    </p>
+
+    <div class="reservas-grid">
+      <div class="res-block">
+        <h4>Dirección</h4>
+        <div class="big">Av. Rosa de los Vientos 16<br>Puerta 1</div>
+        <p>Cala Calalga · 03710 Calpe · Alicante</p>
+      </div>
+      <div class="res-block">
+        <h4>Teléfono</h4>
+        <a class="big" href="tel:+34865649383">+34 865 649 383</a>
+        <p>Reservas y consultas de carta. Encargos de arroz: 24-48h antes.</p>
+      </div>
+      <div class="res-block">
+        <h4>Horario</h4>
+        <div class="big">Abierto<br>los 7 días</div>
+        <p>Horario detallado de comida y cena disponible en sala y al teléfono.</p>
+      </div>
+    </div>
+
+    <div class="res-cta">
+      <a href="tel:+34865649383" class="btn btn-amber">Llamar para reservar</a>
+      <a href="https://restaurantehydra.com" class="btn btn-outline" target="_blank" rel="noopener">Ver web actual</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="disclaimer">
+      <strong>Propuesta de diseño</strong>
+      Esta página es una propuesta de rediseño elaborada por Kenaz Studio para Hydra. Los textos están redactados a partir de información pública de la web propia del restaurante (restaurantehydra.com) y fuentes verificadas. Datos sin confirmar — fotografías reales del local, año de apertura, equipo de cocina, carta completa, precios y horarios exactos — se completarán con el restaurante antes de publicar.
+    </div>
+
+    <div class="footer-grid">
       <div>
-        <span class="hero-eyebrow">Restaurante · Calpe</span>
-        <h1>Hydra <em>·</em><br />Cocina en Calpe</h1>
-        <p class="lead">Una mesa cuidada en un ambiente sereno. Cocina mediterránea con producto cercano y un pulso pausado, pensada para quedarse.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#visita">Reservar mesa</a>
-          <a class="btn btn-ghost" href="#carta">Ver la carta</a>
-        </div>
+        <div class="footer-brand">Hydra</div>
+        <p>Restaurante mediterráneo de producto. Cala Calalga, Calpe. Cocina con alma, sala con corazón.</p>
       </div>
-      <div class="hero-img">
-        <img src="img/hero-mesa.webp" alt="Mesa puesta en interior elegante con copa de vino y vajilla" loading="eager" />
+      <div>
+        <h5>Contacto</h5>
+        <p><a href="tel:+34865649383">+34 865 649 383</a></p>
+        <p>Av. Rosa de los Vientos 16<br>Puerta 1 · Calpe</p>
+      </div>
+      <div>
+        <h5>Encontrarnos</h5>
+        <p><a href="https://restaurantehydra.com" target="_blank" rel="noopener">restaurantehydra.com</a></p>
+        <p>Abierto los 7 días<br>Jazz y blues en vivo</p>
       </div>
     </div>
-  </div>
-</header>
 
-<section class="sitio" id="sitio">
-  <div class="container">
-    <div class="sitio-grid">
-      <div class="sitio-img">
-        <img src="img/ambiente-interior.webp" alt="Interior del restaurante con luz cálida" loading="lazy" />
-      </div>
-      <div class="sitio-text">
-        <span class="section-eyebrow">El sitio</span>
-        <h2>Un lugar tranquilo<br />en Calpe</h2>
-        <p>Una sala con luz contenida y mesas separadas. El sitio pide su tiempo: la comida llega cuando llega, y se come a otro ritmo.</p>
-        <p>Avenida Rosa de los Vientos, en una zona apartada del bullicio. Lejos del paseo, cerca de la mesa.</p>
-        <div class="placeholder">
-          [Historia del proyecto, equipo de cocina y filosofía gastronómica a definir tras visita in situ]
-        </div>
-      </div>
+    <div class="footer-bottom">
+      <span>© Hydra · Calpe. Carta y horarios sujetos a temporada.</span>
+      <span class="kenaz-sig">Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a></span>
     </div>
-  </div>
-</section>
-
-<section id="carta">
-  <div class="container">
-    <div class="section-head">
-      <span class="section-eyebrow">La carta</span>
-      <h2>Lo que sale de cocina</h2>
-      <p>Una carta corta organizada en tres momentos. Sin platos llamativos: producto, técnica y temporada.</p>
-    </div>
-    <div class="carta-grid">
-      <div class="carta-section">
-        <span class="num">I</span>
-        <h3>Entrantes</h3>
-        <p>Pequeños platos para empezar la comida con calma. Selección por temporada.</p>
-      </div>
-      <div class="carta-section">
-        <span class="num">II</span>
-        <h3>Principales</h3>
-        <p>Carnes, pescados y propuestas de cocina mediterránea con técnica cuidada.</p>
-      </div>
-      <div class="carta-section">
-        <span class="num">III</span>
-        <h3>Postres</h3>
-        <p>Cierre dulce de elaboración propia. Algo ligero para acabar bien.</p>
-      </div>
-    </div>
-    <div class="carta-nota">
-      Carta completa, sugerencias del día y maridajes por confirmar tras visita in situ. La carta puede cambiar según temporada y producto disponible.
-    </div>
-  </div>
-</section>
-
-<section class="galeria">
-  <div class="container">
-    <div class="section-head">
-      <span class="section-eyebrow">El ambiente</span>
-      <h2>Mesa, sala, luz, calma</h2>
-      <p>Imágenes orientativas del estilo y atmósfera que proponemos para reposicionar la presencia digital.</p>
-    </div>
-    <div class="galeria-grid">
-      <div class="galeria-item">
-        <img src="img/plato-mediterraneo.webp" alt="Plato mediterráneo emplatado" loading="lazy" />
-      </div>
-      <div class="galeria-item">
-        <img src="img/vista-interior.webp" alt="Vista de interior con ventana y luz dorada" loading="lazy" />
-      </div>
-      <div class="galeria-item">
-        <img src="img/detalle-copa.webp" alt="Detalle de copa de vino en mantel oscuro" loading="lazy" />
-      </div>
-      <div class="galeria-item">
-        <img src="img/detalle-pan-aceite.webp" alt="Pan y aceite de oliva" loading="lazy" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="visita">
-  <div class="container">
-    <div class="section-head">
-      <span class="section-eyebrow">Visita</span>
-      <h2>Reservas y horario</h2>
-      <p>Para garantizar mesa, mejor reservar. El sitio es para sentarse, no para esperar.</p>
-    </div>
-    <div class="visita-grid">
-      <div class="visita-card">
-        <h3>Dirección</h3>
-        <p><strong>Av. Rosa de los Vientos, 16</strong>Calpe, Alicante<br /><em>Acceso y aparcamiento a confirmar in situ</em></p>
-      </div>
-      <div class="visita-card">
-        <h3>Horario</h3>
-        <p><strong>Por confirmar</strong>Servicio de comidas y cenas<br /><em>Días de apertura por verificar</em></p>
-      </div>
-      <div class="visita-card">
-        <h3>Reservas</h3>
-        <p><strong>Por confirmar</strong>Teléfono y formulario online<br /><em>Mejor confirmar día antes</em></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <div>
-      <h3>Hydra</h3>
-      <p>Cocina en Calpe. Mesa cuidada, ambiente sereno.</p>
-    </div>
-    <div>
-      <span class="label">Navegación</span>
-      <p>
-        <a href="#sitio">El sitio</a><br />
-        <a href="#carta">La carta</a><br />
-        <a href="#visita">Visita</a>
-      </p>
-    </div>
-    <div>
-      <span class="label">Ubicación</span>
-      <p>
-        Av. Rosa de los Vientos, 16<br />
-        Calpe, Alicante
-      </p>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a> · Demostración no oficial · Datos pendientes de verificación in situ
   </div>
 </footer>
 

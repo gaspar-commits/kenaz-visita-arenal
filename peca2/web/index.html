@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Peca2 · Helado artesanal · Paseo del Arenal · Calpe</title>
-<meta name="description" content="Peca2 · Heladería artesanal en el paseo del Arenal de Calpe. Cremas, sorbetes y helados de fruta hechos cada día." />
+<title>Peca2 · Heladería · Cafetería · Bar · Paseo del Arenal · Calpe</title>
+<meta name="description" content="Peca2 · Heladería, cafetería y bar en el paseo del Arenal de Calpe. Helado artesanal, crepes recién hechos, café y cerveza fría." />
 <meta name="robots" content="noindex,nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -189,6 +189,24 @@
     max-width: 42ch;
   }
 
+  /* Ribbon propuesta */
+  .ribbon-propuesta {
+    position: fixed;
+    top: 14px;
+    right: -42px;
+    transform: rotate(35deg);
+    background: var(--coral);
+    color: var(--blanco-roto);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.35rem 3rem;
+    z-index: 50;
+    box-shadow: 0 2px 8px rgba(44, 29, 26, 0.18);
+    pointer-events: none;
+  }
+
   /* Sabores categorias */
   .sabores {
     display: grid;
@@ -366,8 +384,10 @@
 </head>
 <body>
 
+<div class="ribbon-propuesta">Propuesta de diseño</div>
+
 <div class="disclaimer">
-  <strong>Demo Kenaz Studio</strong> · Mockup propuesto · Contenido placeholder · Cero sabores específicos, cero datos inventados
+  <strong>Demo Kenaz Studio</strong> · Mockup propuesto · Contenido placeholder · Categorías genéricas, sin marcas ni sabores específicos, sin precios, cero datos inventados
 </div>
 
 <header>
@@ -381,9 +401,9 @@
 
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">Paseo del Arenal · Calpe</div>
-      <h1>Helado <span class="big">artesanal</span> en el paseo.</h1>
-      <p class="lede">Cremas, sorbetes y helados de fruta hechos cada día. Para el cucurucho de las cinco o la copa de después de cenar.</p>
+      <div class="hero-eyebrow">Heladería · Cafetería · Bar · Paseo del Arenal</div>
+      <h1>Helado, café <span class="big">y algo más</span> en el paseo.</h1>
+      <p class="lede">Heladería artesanal, cafetería y bar del paseo del Arenal. Helado cada día, crepes recién hechos, café y cerveza fría.</p>
     </div>
     <div class="container">
       <div class="hero-img">
@@ -399,25 +419,25 @@
         <div class="v">Paseo del Arenal<br>Calpe</div>
       </div>
       <div class="item">
-        <div class="k">Estilo</div>
-        <div class="v">Heladería<br>artesanal</div>
+        <div class="k">Concepto</div>
+        <div class="v">Heladería<br>cafetería · bar</div>
       </div>
       <div class="item">
-        <div class="k">Producción</div>
-        <div class="v">Hecho<br>cada día</div>
+        <div class="k">Cocina</div>
+        <div class="v">Helado y crepes<br>cada día</div>
       </div>
       <div class="item">
-        <div class="k">Para</div>
-        <div class="v">Cucurucho<br>tarrina o copa</div>
+        <div class="k">Barra</div>
+        <div class="v">Café<br>cerveza fría</div>
       </div>
     </div>
   </div>
 
   <section>
     <div class="container">
-      <div class="eyebrow">Nuestros sabores</div>
+      <div class="eyebrow">El helado · Nuestro origen</div>
       <h2>Cuatro <em>familias</em>, una vitrina que cambia.</h2>
-      <p class="section-lede">La carta no es fija. Trabajamos por familias y rotamos sabores con la temporada y lo que llega del mercado.</p>
+      <p class="section-lede">El helado artesanal es el corazón del local. La carta no es fija: trabajamos por familias y rotamos con la temporada y lo que llega del mercado.</p>
 
       <div class="sabores">
         <div class="sabor-card" data-tipo="cremas">
@@ -449,6 +469,103 @@
           <div class="count">Vitrina</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Crepes</div>
+      <h2>Crepes <em>recién hechos</em>, a la vista.</h2>
+      <p class="section-lede">Dulces o salados, preparados al momento sobre la plancha. Una parada distinta cuando el helado no es lo que toca.</p>
+
+      <div class="sabores">
+        <div class="sabor-card" data-tipo="cremas">
+          <div>
+            <div class="nombre">Crepes dulces</div>
+            <div class="desc">Base clásica<br>chocolate, fruta, crema…</div>
+          </div>
+          <div class="count">Recién hecho</div>
+        </div>
+        <div class="sabor-card" data-tipo="especiales">
+          <div>
+            <div class="nombre">Crepes salados</div>
+            <div class="desc">Para una pausa con algo más<br>opciones de la casa</div>
+          </div>
+          <div class="count">Recién hecho</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Café</div>
+      <h2>El café del <em>paseo</em>.</h2>
+      <p class="section-lede">Cafetería de paseo, desayuno o pausa. Lo de siempre, servido como toca.</p>
+
+      <div class="sabores">
+        <div class="sabor-card" data-tipo="cremas">
+          <div>
+            <div class="nombre">Espresso</div>
+            <div class="desc">Solo o doble<br>cargado o cortado</div>
+          </div>
+          <div class="count">Barra</div>
+        </div>
+        <div class="sabor-card" data-tipo="sorbetes">
+          <div>
+            <div class="nombre">Café con leche</div>
+            <div class="desc">Vaso o taza<br>caliente o templado</div>
+          </div>
+          <div class="count">Barra</div>
+        </div>
+        <div class="sabor-card" data-tipo="frutas">
+          <div>
+            <div class="nombre">Latte</div>
+            <div class="desc">Más leche, suave<br>frío o caliente</div>
+          </div>
+          <div class="count">Barra</div>
+        </div>
+        <div class="sabor-card" data-tipo="especiales">
+          <div>
+            <div class="nombre">Capuccino</div>
+            <div class="desc">Con espuma<br>clásico de barra</div>
+          </div>
+          <div class="count">Barra</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Cerveza fría</div>
+      <h2>Una <em>fría</em> mirando al mar.</h2>
+      <p class="section-lede">Cerveza fría todo el día, para la pausa del paseo o el rato largo en mesa. Marcas y referencias disponibles en local.</p>
+
+      <div class="sabores">
+        <div class="sabor-card" data-tipo="cremas">
+          <div>
+            <div class="nombre">Caña</div>
+            <div class="desc">De barril<br>el formato del paseo</div>
+          </div>
+          <div class="count">Barra</div>
+        </div>
+        <div class="sabor-card" data-tipo="sorbetes">
+          <div>
+            <div class="nombre">Tercio</div>
+            <div class="desc">Botellín 33 cl<br>frío de nevera</div>
+          </div>
+          <div class="count">Barra</div>
+        </div>
+        <div class="sabor-card" data-tipo="frutas">
+          <div>
+            <div class="nombre">Jarra</div>
+            <div class="desc">Para compartir<br>o quedarse un rato</div>
+          </div>
+          <div class="count">Barra</div>
+        </div>
+      </div>
+      <div class="nota-confirmar" style="margin-top:1.25rem; text-align:left;">[Marcas y referencias concretas a confirmar in situ]</div>
     </div>
   </section>
 

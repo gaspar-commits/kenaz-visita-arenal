@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Kenaz · Tarjeta · Las Olas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     Kenaz · Tarjeta fisica 85x55mm
+     Imprimible en cualquier copisteria de Calpe.
+     Diseno: blanco/negro estricto. Sin acentos. Sin adornos.
+     ============================================================ */
+
+  @page {
+    size: 85mm 55mm;
+    margin: 0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    color: #050505;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  body {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 7pt;
+    line-height: 1.35;
+  }
+
+  /* Cada tarjeta ocupa una pagina A complete card = single @page */
+  .card {
+    width: 85mm;
+    height: 55mm;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+    overflow: hidden;
+    padding: 5mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* -------- FRENTE -------- */
+  .front {
+    background: #f2f2f2;
+    color: #050505;
+  }
+
+  .front-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3mm;
+  }
+
+  .runa {
+    width: 7mm;
+    height: 7mm;
+    flex-shrink: 0;
+  }
+
+  .runa svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .brand-block {
+    text-align: right;
+    line-height: 1.1;
+  }
+
+  .brand-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 9pt;
+    letter-spacing: 0.18em;
+    margin: 0;
+  }
+
+  .brand-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 5.5pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 0.5mm;
+    opacity: 0.7;
+  }
+
+  .sep {
+    height: 0.5pt;
+    background: #050505;
+    margin: 2.5mm 0 2mm;
+    opacity: 0.85;
+  }
+
+  .tagline {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 5.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .negocio-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 11pt;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    margin-top: 1mm;
+    /* Si el nombre es muy largo, encoge un poco */
+    word-break: break-word;
+  }
+
+  .qr-block {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+
+  .qr-img {
+    width: 22mm;
+    height: 22mm;
+    display: block;
+    flex-shrink: 0;
+    background: #f2f2f2;
+  }
+
+  .qr-caption {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 5.5pt;
+    line-height: 1.35;
+    letter-spacing: 0.05em;
+    color: #050505;
+  }
+
+  .qr-caption strong {
+    display: block;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 5pt;
+    margin-bottom: 0.8mm;
+    opacity: 0.7;
+  }
+
+  /* -------- DORSO -------- */
+  .back {
+    background: #050505;
+    color: #f2f2f2;
+  }
+
+  .back .sep {
+    background: #f2f2f2;
+    opacity: 0.6;
+  }
+
+  .back-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3mm;
+  }
+
+  .back-runa svg path {
+    stroke: #f2f2f2;
+  }
+
+  .person-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    letter-spacing: 0.06em;
+    margin: 0;
+  }
+
+  .person-role {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 5.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 0.6mm;
+    opacity: 0.7;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1mm;
+    margin-top: 1.5mm;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: baseline;
+    gap: 2.5mm;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 7pt;
+    line-height: 1.2;
+  }
+
+  .contact-label {
+    font-size: 5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    min-width: 10mm;
+  }
+
+  .contact-value {
+    font-size: 7pt;
+    letter-spacing: 0.04em;
+  }
+
+  .back-bottom {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3mm;
+  }
+
+  .location {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 5.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .url {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    font-size: 7pt;
+    letter-spacing: 0.1em;
+  }
+
+  /* Marca de corte sutil (no necesaria para imprenta digital pero ayuda al ojo) */
+  .corner-mark {
+    position: absolute;
+    width: 3mm;
+    height: 3mm;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ FRENTE ============ -->
+<section class="card front">
+  <div class="front-top">
+    <div class="runa" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 68 18 L 30 50 L 68 82"
+              stroke="#050505" stroke-width="7"
+              stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+    </div>
+    <div class="brand-block">
+      <p class="brand-name">KENAZ</p>
+      <p class="brand-sub">Studio</p>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <p class="tagline">Propuesta de diseño para</p>
+  <p class="negocio-name">Las Olas</p>
+
+  <div class="qr-block">
+    <img class="qr-img" src="data:image/png;base64,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" alt="QR mockup">
+    <div class="qr-caption">
+      <strong>Escanea</strong>
+      Abre la propuesta web hecha para tu negocio.
+    </div>
+  </div>
+</section>
+
+<!-- ============ DORSO ============ -->
+<section class="card back">
+  <div class="back-top">
+    <div>
+      <p class="person-name">Gaspar Mazzoni</p>
+      <p class="person-role">Fundador · Kenaz Studio</p>
+    </div>
+    <div class="runa back-runa" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 68 18 L 30 50 L 68 82"
+              stroke="#f2f2f2" stroke-width="7"
+              stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="contact-grid">
+    <div class="contact-row">
+      <span class="contact-label">Tel</span>
+      <span class="contact-value">+34 600 000 000</span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Mail</span>
+      <span class="contact-value">gaspar@kenaz.studio</span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Web</span>
+      <span class="contact-value">kenaz.studio</span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">IG</span>
+      <span class="contact-value">@kenaz.studio</span>
+    </div>
+  </div>
+
+  <div class="back-bottom">
+    <span class="location">Estudio digital · Calpe</span>
+    <span class="url">kenaz.studio</span>
+  </div>
+</section>
+
+</body>
+</html>

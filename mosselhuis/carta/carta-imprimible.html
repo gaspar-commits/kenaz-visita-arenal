@@ -13,7 +13,7 @@
    MOSSELHUIS — Carta imprimible
    Formato: A3 horizontal (420 × 297 mm), 2 caras (gatefold triple).
    3 paneles por cara = 140 × 297 mm cada panel.
-   Márgenes seguros: 12 mm.
+   Brasserie belga: mejillones (especialidad) + carnes + cervezas.
    Paleta: azul mar profundo + crema + ámbar mantequilla.
 ============================================================ */
 
@@ -52,6 +52,26 @@ html, body {
 }
 
 body { padding: 30px; }
+
+/* Ribbon "Propuesta de diseño" (solo visible en pantalla) */
+.ribbon {
+  position: fixed;
+  top: 14px;
+  right: -52px;
+  transform: rotate(34deg);
+  background: var(--ambar);
+  color: var(--azul-deep);
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 60px;
+  z-index: 200;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+@media print { .ribbon { display: none; } }
 
 /* ============================================================
    SHEET — una página impresa A3 horizontal
@@ -119,10 +139,10 @@ body { padding: 30px; }
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('img/portada-mejillones.webp');
+  background-image: url('img/mejillones-mariniere.webp');
   background-size: cover;
   background-position: center;
-  opacity: 0.32;
+  opacity: 0.3;
   z-index: 0;
 }
 
@@ -130,7 +150,7 @@ body { padding: 30px; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8,25,42,0.55) 0%, rgba(8,25,42,0.6) 55%, rgba(8,25,42,0.85) 100%);
+  background: linear-gradient(180deg, rgba(8,25,42,0.55) 0%, rgba(8,25,42,0.6) 55%, rgba(8,25,42,0.88) 100%);
   z-index: 1;
 }
 
@@ -184,7 +204,7 @@ body { padding: 30px; }
 .cover-name {
   font-family: var(--display);
   font-weight: 400;
-  font-size: 78pt;
+  font-size: 72pt;
   line-height: 0.9;
   letter-spacing: -0.015em;
   color: var(--crema-bright);
@@ -202,7 +222,7 @@ body { padding: 30px; }
   font-family: var(--display);
   font-style: italic;
   font-weight: 400;
-  font-size: 14pt;
+  font-size: 13pt;
   line-height: 1.4;
   color: var(--crema);
   max-width: 22ch;
@@ -257,7 +277,7 @@ body { padding: 30px; }
 .story-title {
   font-family: var(--display);
   font-weight: 400;
-  font-size: 24pt;
+  font-size: 22pt;
   line-height: 1.1;
   color: var(--azul);
   margin-bottom: 5mm;
@@ -276,7 +296,7 @@ body { padding: 30px; }
 .story-body {
   font-family: var(--display);
   font-weight: 400;
-  font-size: 10.5pt;
+  font-size: 10pt;
   line-height: 1.6;
   color: var(--azul-soft);
   max-width: 34ch;
@@ -288,7 +308,7 @@ body { padding: 30px; }
   margin-top: 6mm;
   display: inline-block;
   font-family: var(--body);
-  font-size: 7.5pt;
+  font-size: 7pt;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ambar-deep);
@@ -302,7 +322,7 @@ body { padding: 30px; }
   margin-top: 5mm;
   font-family: var(--display);
   font-style: italic;
-  font-size: 11pt;
+  font-size: 10.5pt;
   color: var(--ambar-deep);
 }
 
@@ -315,7 +335,7 @@ body { padding: 30px; }
 
 .section-head {
   text-align: center;
-  margin-bottom: 9mm;
+  margin-bottom: 7mm;
   padding-top: 2mm;
 }
 
@@ -343,7 +363,7 @@ body { padding: 30px; }
 .section-title {
   font-family: var(--display);
   font-weight: 400;
-  font-size: 22pt;
+  font-size: 20pt;
   line-height: 1;
   color: var(--azul);
   letter-spacing: -0.01em;
@@ -361,7 +381,7 @@ body { padding: 30px; }
   font-size: 9pt;
   color: var(--azul-soft);
   margin-top: 3mm;
-  max-width: 36ch;
+  max-width: 32ch;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.45;
@@ -373,26 +393,26 @@ body { padding: 30px; }
 .dishes {
   display: flex;
   flex-direction: column;
-  gap: 4mm;
+  gap: 3.5mm;
 }
 
 .dish {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 1.5mm 4mm;
-  padding-bottom: 3.5mm;
+  padding-bottom: 3mm;
   border-bottom: 0.5pt solid var(--linea-dark);
 }
 
-.dish:last-child { border-bottom: none; }
+.dish:last-child { border-bottom: none; padding-bottom: 0; }
 
 .panel--list-dark .dish { border-bottom-color: rgba(245,236,219,0.16); }
 
 .dish-name {
   font-family: var(--display);
   font-weight: 500;
-  font-size: 12pt;
-  line-height: 1.1;
+  font-size: 11pt;
+  line-height: 1.15;
   color: var(--azul);
   letter-spacing: -0.005em;
 }
@@ -417,7 +437,7 @@ body { padding: 30px; }
   grid-column: 1 / -1;
   font-family: var(--body);
   font-weight: 400;
-  font-size: 7.5pt;
+  font-size: 7pt;
   line-height: 1.5;
   color: var(--azul-soft);
 }
@@ -458,7 +478,7 @@ body { padding: 30px; }
 }
 
 /* ============================================================
-   HERO PANEL — variedad estrella
+   HERO PANEL — Mejillones (la especialidad)
 ============================================================ */
 
 .panel--hero {
@@ -470,44 +490,31 @@ body { padding: 30px; }
 }
 
 .panel--hero .hero-image {
-  height: 168mm;
+  height: 165mm;
   background:
     linear-gradient(180deg, rgba(8,25,42,0.05) 0%, rgba(8,25,42,0.2) 55%, rgba(8,25,42,0.92) 100%),
-    url('img/variedad-mariniere.webp') center top / cover no-repeat,
+    url('img/mejillones-mariniere.webp') center top / cover no-repeat,
     var(--azul-deep);
   position: relative;
 }
 
-.panel--hero .hero-image::before {
-  content: "";
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30mm;
-  height: 30mm;
-  border: 0.7pt solid rgba(245,236,219,0.18);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
 .panel--hero .hero-image::after {
-  content: "Marinière · la cazuela";
+  content: "Mejillones · marinière";
   position: absolute;
-  top: 45%;
+  bottom: 5mm;
   left: 50%;
-  transform: translate(-50%, calc(-50% + 20mm));
+  transform: translateX(-50%);
   font-family: var(--body);
   font-size: 6pt;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(245,236,219,0.4);
+  color: rgba(245,236,219,0.55);
   font-weight: 500;
   pointer-events: none;
 }
 
 .panel--hero .hero-content {
-  padding: 6mm 12mm 10mm;
+  padding: 7mm 12mm 10mm;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -527,7 +534,7 @@ body { padding: 30px; }
 .panel--hero .hero-name {
   font-family: var(--display);
   font-weight: 400;
-  font-size: 26pt;
+  font-size: 22pt;
   line-height: 1;
   color: var(--crema-bright);
   margin-bottom: 3mm;
@@ -538,7 +545,7 @@ body { padding: 30px; }
 .panel--hero .hero-sub {
   font-family: var(--display);
   font-style: italic;
-  font-size: 9.5pt;
+  font-size: 9pt;
   color: var(--crema);
   opacity: 0.88;
   margin-bottom: 4mm;
@@ -549,12 +556,12 @@ body { padding: 30px; }
 }
 
 .panel--hero .hero-note {
-  margin: 3mm auto 0;
+  margin: 2mm auto 0;
   max-width: 34ch;
   border-top: 0.5pt solid var(--linea);
-  padding-top: 4mm;
+  padding-top: 3mm;
   font-family: var(--body);
-  font-size: 7.5pt;
+  font-size: 7pt;
   line-height: 1.5;
   color: var(--crema);
   opacity: 0.85;
@@ -577,7 +584,7 @@ body { padding: 30px; }
 ============================================================ */
 
 .img-strip {
-  height: 32mm;
+  height: 28mm;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -630,10 +637,11 @@ body { padding: 30px; }
 }
 
 .split-section {
-  padding: 11mm 12mm;
+  padding: 10mm 12mm;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
 .split-section + .split-section {
@@ -641,21 +649,12 @@ body { padding: 30px; }
 }
 
 .split-section .section-head { margin-bottom: 4mm; padding-top: 0; }
-.split-section .section-title { font-size: 17pt; }
-.split-section .dishes { gap: 2.5mm; }
-.split-section .dish { padding-bottom: 2.5mm; }
-.split-section .dish-name { font-size: 10pt; }
-.split-section .dish-desc { font-size: 7pt; line-height: 1.4; }
+.split-section .section-title { font-size: 16pt; }
+.split-section .dishes { gap: 2.2mm; }
+.split-section .dish { padding-bottom: 2.2mm; }
+.split-section .dish-name { font-size: 9.5pt; }
+.split-section .dish-desc { font-size: 6.8pt; line-height: 1.4; }
 .split-section .dish-price { font-size: 8pt; }
-
-.split-section .img-strip {
-  height: 22mm;
-  margin-top: auto;
-  margin-left: -12mm;
-  margin-right: -12mm;
-  margin-bottom: -11mm;
-}
-.split-section .img-strip__caption { font-size: 7pt; bottom: 2mm; }
 
 /* ============================================================
    CONTACT PANEL
@@ -666,8 +665,8 @@ body { padding: 30px; }
   color: var(--crema);
   text-align: center;
   justify-content: space-between;
-  padding-top: 16mm;
-  padding-bottom: 14mm;
+  padding-top: 14mm;
+  padding-bottom: 12mm;
 }
 
 .contact-mark {
@@ -683,7 +682,7 @@ body { padding: 30px; }
 .contact-name {
   font-family: var(--display);
   font-weight: 400;
-  font-size: 32pt;
+  font-size: 28pt;
   letter-spacing: -0.01em;
   color: var(--crema-bright);
   margin-bottom: 3mm;
@@ -693,10 +692,10 @@ body { padding: 30px; }
 .contact-tag {
   font-family: var(--display);
   font-style: italic;
-  font-size: 10pt;
+  font-size: 9.5pt;
   color: var(--crema);
   opacity: 0.85;
-  margin-bottom: 8mm;
+  margin-bottom: 7mm;
 }
 
 .contact-info {
@@ -707,17 +706,22 @@ body { padding: 30px; }
   color: var(--crema);
   opacity: 0.85;
   line-height: 2;
-  margin-bottom: 6mm;
+  margin-bottom: 5mm;
 }
 
 .contact-info strong { color: var(--crema-bright); font-weight: 600; }
 
 .contact-info-placeholder {
+  display: inline-block;
+  margin-top: 1.5mm;
+  padding: 1mm 2.5mm;
   font-style: italic;
   text-transform: none;
   letter-spacing: 0.04em;
   color: var(--ambar-soft);
-  opacity: 0.85;
+  background: rgba(212,154,58,0.12);
+  border: 0.7pt dashed var(--ambar-soft);
+  opacity: 0.9;
 }
 
 .contact-hours {
@@ -728,15 +732,15 @@ body { padding: 30px; }
   opacity: 0.78;
   line-height: 1.6;
   max-width: 36ch;
-  margin: 0 auto 6mm;
-  padding-top: 5mm;
+  margin: 0 auto 5mm;
+  padding-top: 4mm;
   border-top: 0.5pt solid var(--linea);
 }
 
 .allergens-block {
   border-top: 0.5pt solid var(--linea);
-  padding-top: 5mm;
-  margin-bottom: 5mm;
+  padding-top: 4mm;
+  margin-bottom: 4mm;
 }
 
 .allergens-title {
@@ -756,21 +760,21 @@ body { padding: 30px; }
   color: var(--crema);
   opacity: 0.78;
   line-height: 1.55;
-  max-width: 38ch;
+  max-width: 40ch;
   margin: 0 auto;
 }
 
 .disclaimer {
   border-top: 0.5pt solid var(--linea);
-  padding-top: 4mm;
-  margin-top: 4mm;
+  padding-top: 3.5mm;
+  margin-top: 3.5mm;
   font-family: var(--display);
   font-style: italic;
-  font-size: 6.5pt;
+  font-size: 6pt;
   color: var(--crema);
   opacity: 0.6;
   line-height: 1.55;
-  max-width: 44ch;
+  max-width: 46ch;
   margin-left: auto;
   margin-right: auto;
 }
@@ -778,18 +782,18 @@ body { padding: 30px; }
 .disclaimer + .disclaimer {
   border-top: none;
   padding-top: 0;
-  margin-top: 3mm;
+  margin-top: 2.5mm;
   opacity: 0.5;
 }
 
 .kenaz-mark {
-  margin-top: 5mm;
+  margin-top: 4mm;
   font-family: var(--body);
   font-size: 5.5pt;
   letter-spacing: 0.42em;
   text-transform: uppercase;
   color: var(--crema);
-  opacity: 0.4;
+  opacity: 0.45;
   font-weight: 500;
 }
 
@@ -816,9 +820,11 @@ body { padding: 30px; }
 </head>
 <body>
 
+<div class="ribbon">Propuesta de diseño · imágenes referenciales</div>
+
 <!-- ============================================================
      SHEET 1 (cara externa al plegar)
-     Triple panel: [STORY] | [VARIEDADES] | [COVER]
+     Triple panel: [STORY] | [ENTRANTES + POSTRES] | [COVER]
 ============================================================ -->
 <div class="sheet">
   <div class="fold fold--1"></div>
@@ -827,108 +833,116 @@ body { padding: 30px; }
   <!-- Panel: Story -->
   <section class="panel panel--crema panel--story">
     <p class="story-eyebrow">La casa</p>
-    <h2 class="story-title">Una sola cosa,<br><em>bien hecha.</em></h2>
+    <h2 class="story-title">Brasserie belga<br><em>en Calpe.</em></h2>
 
     <div class="story-rule"></div>
 
     <div class="story-body">
       <p>
-        Mosselhuis es monoproducto: mejillones frescos, en sus
-        variedades clásicas, hechos al momento. Oficio belga y
-        holandés trasladado al mar de Calpe.
+        En Bélgica la brasserie es un sitio de barrio: cervezas
+        trapenses, carnes de Flandes, y la cazuela de mejillones
+        como bandera.
       </p>
       <p>
-        El resto es lo justo: pan, patata frita y cerveza belga.
-        Eso es todo. Eso es suficiente.
+        Eso quisimos traer al edificio Etxezuri. Mejillones de
+        especialidad, croquetas, tártaro, conejo a la belga y
+        cerveza tirada como manda.
       </p>
     </div>
 
-    <span class="story-placeholder">Vuestra historia · a definir</span>
+    <span class="story-placeholder">Año apertura · familia — a confirmar</span>
 
-    <p class="story-signature">— La casa del mejillón</p>
+    <p class="story-signature">— Recetario flamenco</p>
 
     <div style="position:absolute; bottom:14mm; left:0; right:0; text-align:center;">
       <p style="font-family: var(--body); font-size: 6.5pt; letter-spacing: 0.4em; text-transform: uppercase; color: var(--azul-soft); opacity: 0.5; font-weight: 500;">Carta · Edición</p>
     </div>
   </section>
 
-  <!-- Panel: Variedades (la sección principal) -->
-  <section class="panel panel--list">
-    <header class="section-head">
-      <p class="chapter">Capítulo I · La cazuela</p>
-      <h2 class="section-title">Nuestras <em>variedades</em></h2>
-      <p class="section-sub">Mejillón fresco del día. Salsa hecha al instante. Cazuela individual.</p>
-    </header>
+  <!-- Panel: Entrantes + Postres (split) -->
+  <section class="panel panel--split">
 
-    <div class="dishes">
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo I</p>
+        <h2 class="section-title">Entrantes <em>belgas</em></h2>
+      </header>
 
-      <article class="dish">
-        <h3 class="dish-name">Marinière</h3>
-        <span class="dish-price">PVP</span>
-        <p class="dish-desc">Vino blanco, chalota, perejil fresco y mantequilla. El clásico belga.</p>
-        <span class="dish-tag">— El clásico</span>
-      </article>
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Croquetas de <em>camarón</em></h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Crujientes por fuera, cremosas por dentro. Camarón gris del norte.</p>
+        </article>
 
-      <article class="dish">
-        <h3 class="dish-name">Provençale</h3>
-        <span class="dish-price">PVP</span>
-        <p class="dish-desc">Tomate, ajo y hierbas mediterráneas con un punto de pimentón.</p>
-      </article>
+        <article class="dish">
+          <h3 class="dish-name">Croquetas de <em>queso</em></h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Bechamel de quesos belgas, fritura al momento.</p>
+        </article>
 
-      <article class="dish">
-        <h3 class="dish-name">Crème</h3>
-        <span class="dish-price">PVP</span>
-        <p class="dish-desc">Nata, mostaza suave, mantequilla y vino blanco. Termina con pan.</p>
-      </article>
+        <article class="dish">
+          <h3 class="dish-name">Camembert <em>caliente</em></h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Horneado hasta dorar la costra. Pan tostado al lado.</p>
+        </article>
 
-      <article class="dish">
-        <h3 class="dish-name">Curry</h3>
-        <span class="dish-price">PVP</span>
-        <p class="dish-desc">Crema, curry suave y cilantro. Toque holandés clásico.</p>
-      </article>
-
-      <article class="dish">
-        <h3 class="dish-name">Marinera <em>de la casa</em></h3>
-        <span class="dish-price">PVP</span>
-        <p class="dish-desc">La receta firme de Mosselhuis — a definir con vosotros.</p>
-        <span class="dish-tag">— Firma de la casa</span>
-      </article>
-
-      <article class="dish">
-        <h3 class="dish-name">Naturel</h3>
-        <span class="dish-price">PVP</span>
-        <p class="dish-desc">Al vapor, sin salsa. Mejillón limpio con un toque de limón.</p>
-      </article>
-
-      <div class="placeholder-row">
-        Variedades de temporada y receta firme — a confirmar con vosotros antes de imprimir.
+        <div class="placeholder-row">
+          Otros entrantes y tablas — a confirmar con la cocina.
+        </div>
       </div>
-
     </div>
+
+    <div class="split-section">
+      <header class="section-head">
+        <p class="chapter">Capítulo IV · Postres</p>
+        <h2 class="section-title">Dulces <em>belgas</em></h2>
+      </header>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Dama <em>Negra</em></h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Postre belga tradicional: helado, chocolate caliente y nata montada.</p>
+          <span class="dish-tag">— Clásico belga</span>
+        </article>
+
+        <article class="dish">
+          <h3 class="dish-name">Postres de la casa</h3>
+          <span class="dish-price">PVP</span>
+          <p class="dish-desc">Selección casera — referencias a confirmar con la cocina.</p>
+        </article>
+
+        <div class="placeholder-row">
+          Carta de postres completa — a cerrar antes de imprimir.
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- Panel: Cover -->
   <section class="panel panel--cover">
     <div class="cover-top">
       <span>Calpe · Costa Blanca</span>
-      <span>Mejillones</span>
+      <span>Brasserie belga</span>
     </div>
 
     <div class="cover-center">
       <div class="brand-mark">
         <span class="brand-mark__rule"></span>
-        <span class="brand-mark__label">La casa del mejillón</span>
+        <span class="brand-mark__label">Cocina belga en Calpe</span>
         <span class="brand-mark__rule"></span>
       </div>
 
       <h1 class="cover-name">Mossel<em>huis</em></h1>
 
       <p class="cover-tagline">
-        Solo mejillones.<br>
-        Bien hechos.
+        Brasserie belga.<br>
+        Mejillones de especialidad.
       </p>
 
-      <p class="cover-hero-line">— Avenida de Europa 1 · Calpe</p>
+      <p class="cover-hero-line">— Av. de Europa 1 · Edificio Etxezuri</p>
     </div>
 
     <div class="cover-bottom">
@@ -937,7 +951,7 @@ body { padding: 30px; }
         <strong>Edición</strong>
       </div>
       <div class="right">
-        <span>Edificio Etxezuri</span>
+        <span>Local 12</span>
         <strong>03710 Calp</strong>
       </div>
     </div>
@@ -947,146 +961,140 @@ body { padding: 30px; }
 
 <!-- ============================================================
      SHEET 2 (cara interna al desplegar)
-     Triple panel: [HERO mariniere] | [ACOMPAÑAR + BEBIDAS] | [ALÉRGENOS + CONTACTO]
+     Triple panel: [CARNES] | [MEJILLONES hero] | [CERVEZAS + CONTACTO]
 ============================================================ -->
 <div class="sheet">
   <div class="fold fold--1"></div>
   <div class="fold fold--2"></div>
 
-  <!-- Panel: Hero -->
+  <!-- Panel: Carnes (lista) -->
+  <section class="panel panel--list">
+    <header class="section-head">
+      <p class="chapter">Capítulo II · Protagonista</p>
+      <h2 class="section-title">Las <em>carnes</em></h2>
+      <p class="section-sub">Recetas flamencas con producto de la zona. La otra bandera de la casa.</p>
+    </header>
+
+    <div class="dishes">
+
+      <article class="dish">
+        <h3 class="dish-name">Steak <em>tártaro</em></h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Solomillo picado a cuchillo, alcaparras, chalota, yema y mostaza.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Filet <em>américain</em></h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">La versión belga del tártaro. Pan tostado y patatas fritas belgas.</p>
+        <span class="dish-tag">— Clásico belga</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Conejo <em>a la belga</em></h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Lapin aux pruneaux. Guisado lento con ciruelas y cerveza belga.</p>
+        <span class="dish-tag">— Especialidad belga</span>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name"><em>Fricandelas</em></h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Albóndigas alargadas, receta flamenca. Patatas fritas belgas al lado.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Filete <em>del día</em></h3>
+        <span class="dish-price">PVP</span>
+        <p class="dish-desc">Corte de la zona, a la plancha. Pregunta al servicio por la pieza.</p>
+      </article>
+
+      <div class="placeholder-row">
+        Otros cortes y guarniciones — a confirmar.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Panel: Hero Mejillones (la especialidad) -->
   <section class="panel panel--hero">
     <div class="hero-image"></div>
 
     <div class="hero-content">
-      <p class="hero-chapter">Variedad estrella</p>
+      <p class="hero-chapter">Capítulo III · La especialidad</p>
 
-      <h2 class="hero-name">Marinière, <em>como en casa</em></h2>
+      <h2 class="hero-name">Mejillones · <em>seis maneras</em></h2>
 
       <p class="hero-sub">
-        Vino blanco, chalota, perejil fresco, mantequilla.
-        Sin trucos, sin chefismos.
+        Marinière, Provençale, Curry, Crème,<br>
+        Marinera de la casa, Naturel.
       </p>
 
       <div class="hero-note">
-        <strong>Cómo se sirve</strong>
-        Cazuela individual, recién hecha. Pan para mojar. Patata frita
-        gruesa si queréis. Cerveza belga al lado.
+        <strong>Cómo se sirven</strong>
+        Cazuela individual al momento. Mejillón fresco del día,
+        salsa hecha al instante. Patatas fritas belgas, pan, cerveza al lado.
       </div>
     </div>
   </section>
 
-  <!-- Panel: Acompañar + Bebidas (split) -->
-  <section class="panel panel--split">
-
-    <div class="split-section">
-      <header class="section-head">
-        <p class="chapter">Capítulo II</p>
-        <h2 class="section-title">Para <em>acompañar</em></h2>
-      </header>
-
-      <div class="dishes">
-        <article class="dish">
-          <h3 class="dish-name">Patatas fritas</h3>
-          <span class="dish-price">PVP</span>
-          <p class="dish-desc">Estilo belga, corte grueso, doble fritura.</p>
-        </article>
-
-        <article class="dish">
-          <h3 class="dish-name">Pan rústico</h3>
-          <span class="dish-price">PVP</span>
-          <p class="dish-desc">Pan del día, tostado. Para mojar en la salsa.</p>
-        </article>
-
-        <article class="dish">
-          <h3 class="dish-name">Salsas de la casa</h3>
-          <span class="dish-price">PVP</span>
-          <p class="dish-desc">Mayonesa casera y selección para frites.</p>
-        </article>
-
-        <div class="placeholder-row">
-          Acompañamientos completos — a confirmar.
-        </div>
-      </div>
-
-      <div class="img-strip" style="background-image: url('img/bandeja-mar.webp');">
-        <p class="img-strip__caption">Bandeja con frites y cerveza · referencial</p>
-      </div>
-    </div>
-
-    <div class="split-section panel--list-dark" style="background: var(--azul);">
-      <header class="section-head">
-        <p class="chapter">Capítulo III · La barra</p>
-        <h2 class="section-title">Para <em>beber</em></h2>
-      </header>
-
-      <div class="dishes">
-        <article class="dish">
-          <h3 class="dish-name">Cervezas belgas</h3>
-          <span class="dish-price">PVP</span>
-          <p class="dish-desc">Selección de barril y botella. Marcas a definir.</p>
-          <span class="dish-tag">— Selección rotativa</span>
-        </article>
-
-        <article class="dish">
-          <h3 class="dish-name">Vino blanco</h3>
-          <span class="dish-price">PVP</span>
-          <p class="dish-desc">Copa o botella. Referencias a confirmar.</p>
-        </article>
-
-        <article class="dish">
-          <h3 class="dish-name">Refrescos y agua</h3>
-          <span class="dish-price">PVP</span>
-          <p class="dish-desc">Selección habitual. Pregunta al camarero.</p>
-        </article>
-
-        <div class="placeholder-row">
-          Carta de bebidas completa — a cerrar.
-        </div>
-      </div>
-
-      <div class="img-strip" style="background-image: url('img/variedad-provenzale.webp');">
-        <p class="img-strip__caption">Mejillones provençale · referencial</p>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- Panel: Contacto -->
+  <!-- Panel: Cervezas + Contacto -->
   <section class="panel panel--contact">
+
+    <div>
+      <p class="contact-mark">Capítulo V · La barra</p>
+      <h3 class="contact-name" style="font-size: 22pt; margin-bottom: 2mm;">Cervezas <em>belgas</em></h3>
+      <p class="contact-tag" style="font-size: 9pt; margin-bottom: 5mm; max-width: 30ch; margin-left: auto; margin-right: auto;">Tres trapenses siempre en barra.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 3mm; max-width: 32ch; margin: 0 auto 5mm; text-align: left;">
+        <div style="display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2mm; padding-bottom: 2mm; border-bottom: 0.5pt solid var(--linea);">
+          <span style="font-family: var(--display); font-size: 10pt; color: var(--crema-bright);">Leffe <em style="color: var(--ambar-soft); font-style: italic;">— abadía</em></span>
+          <span style="font-family: var(--display); font-style: italic; font-size: 8pt; color: var(--ambar-soft);">PVP</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2mm; padding-bottom: 2mm; border-bottom: 0.5pt solid var(--linea);">
+          <span style="font-family: var(--display); font-size: 10pt; color: var(--crema-bright);">Hoegaarden <em style="color: var(--ambar-soft); font-style: italic;">— blanca de trigo</em></span>
+          <span style="font-family: var(--display); font-style: italic; font-size: 8pt; color: var(--ambar-soft);">PVP</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2mm;">
+          <span style="font-family: var(--display); font-size: 10pt; color: var(--crema-bright);">Duvel <em style="color: var(--ambar-soft); font-style: italic;">— rubia fuerte</em></span>
+          <span style="font-family: var(--display); font-style: italic; font-size: 8pt; color: var(--ambar-soft);">PVP</span>
+        </div>
+      </div>
+
+      <div style="font-family: var(--body); font-style: italic; font-size: 6.5pt; letter-spacing: 0.04em; color: var(--ambar-soft); background: rgba(212,154,58,0.12); border: 0.7pt dashed var(--ambar-soft); padding: 2.5mm 3mm; max-width: 32ch; margin: 0 auto 6mm; line-height: 1.45;">
+        Más referencias en botella · vinos y refrescos — carta a confirmar.
+      </div>
+    </div>
 
     <div class="allergens-block">
       <p class="allergens-title">Alérgenos · información</p>
       <p class="allergens-body">
-        El mejillón es un molusco. Avisa al camarero por intolerancias o
-        alergias — la cocina las contempla. Desglose completo disponible
-        a la consulta.
+        El mejillón es un molusco; el filet américain y el tártaro
+        llevan huevo crudo. Avisa al servicio por intolerancias —
+        la cocina las contempla. Información completa según el
+        Reglamento UE 1169/2011.
       </p>
     </div>
 
-    <div style="border-top: 0.5pt solid var(--linea); padding-top: 6mm; margin-top: 4mm;">
-      <p class="contact-mark">Encuéntranos</p>
-      <h3 class="contact-name" style="font-size: 26pt; margin-bottom: 2mm;">Mossel<em>huis</em></h3>
-      <p class="contact-tag" style="font-size: 9pt; margin-bottom: 5mm;">La casa del mejillón en Calpe</p>
+    <div style="border-top: 0.5pt solid var(--linea); padding-top: 4mm; margin-top: 2mm;">
+      <p class="contact-mark" style="margin-bottom: 3mm;">Encuéntranos</p>
+      <p style="font-family: var(--display); font-style: italic; font-size: 11pt; color: var(--crema-bright); margin-bottom: 1mm;">Mossel<em style="color: var(--ambar-soft);">·</em>huis</p>
 
-      <div class="contact-info" style="font-size: 6.5pt;">
-        Avenida de Europa, 1<br>
-        Edificio Etxezuri<br>
-        03710 Calp · Alicante<br>
-        <span class="contact-info-placeholder">[teléfono a confirmar]</span>
+      <div class="contact-info" style="font-size: 6.5pt; margin-bottom: 3mm; line-height: 1.8;">
+        Av. de Europa, 1 · Edificio Etxezuri<br>
+        Local 12 · 03710 Calp · Alicante<br>
+        <span class="contact-info-placeholder">[teléfono · reservas a confirmar]</span>
       </div>
-
-      <p class="contact-hours">
-        Horarios y reservas — a confirmar con vosotros antes de publicar.
-      </p>
     </div>
 
     <p class="disclaimer">
-      Carta editorial preparada por Kenaz como muestra. Variedades, precios
-      y detalles finales se cierran con vosotros antes de imprimir.
+      Propuesta de diseño elaborada por Kenaz Studio para Mosselhuis.
+      Nombres de platos, descripciones, precios y datos son referenciales
+      y deben validarse con el restaurante antes de imprimir.
     </p>
     <p class="disclaimer">
-      Imágenes referenciales. Las definitivas serán fotografía profesional
-      realizada en Mosselhuis por nuestra socia fotógrafa.
+      Imágenes ilustrativas. Las definitivas serán fotografía profesional
+      realizada en Mosselhuis. No se ha establecido vínculo comercial.
     </p>
 
     <p class="kenaz-mark">Diseño · Kenaz Studio</p>

@@ -3,30 +3,32 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>Las Olas · Paellas y arroces en el paseo · Calpe</title>
-<meta name="description" content="Las Olas. Paellas y arroces en el paseo Arenal de Calpe. Cocina valenciana, producto del mar, mesa frente al Mediterráneo. Avenida Europa, Calpe." />
+<title>Las Olas · 30 años de cocina familiar en el paseo · Calpe</title>
+<meta name="description" content="Las Olas. Cocina valenciana familiar desde hace 30 años en el paseo Arenal-Bol de Calpe. Arroces, pescados, carnes y menú diario 17,50 € con vino." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --cream: #fbf5e9;
-    --cream-deep: #f3ead6;
-    --bone: #f7f1e2;
-    --ink: #2a1f12;
-    --ink-soft: #5b4b35;
-    --saffron: #d99526;
-    --saffron-deep: #b97a18;
-    --ocre: #9a6f2c;
-    --sea: #2a607b;
-    --sea-deep: #194559;
-    --line: rgba(42, 31, 18, 0.14);
+    /* Paleta cálida valenciana familiar */
+    --bone: #f5efe1;          /* blanco hueso */
+    --bone-deep: #ece3cf;
+    --cream: #faf4e6;
+    --ink: #20283a;           /* azul mar profundo Mediterráneo */
+    --ink-soft: #475467;
+    --sea: #1f5e7a;           /* azul mar */
+    --sea-deep: #143c4e;
+    --paella: #c46a1c;        /* acento naranja paella */
+    --paella-deep: #9a4f10;
+    --ocre: #a17536;          /* ocre familiar */
+    --ocre-deep: #7d5826;
+    --line: rgba(32, 40, 58, 0.14);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    background: var(--cream);
+    background: var(--bone);
     color: var(--ink);
     font-weight: 400;
     line-height: 1.55;
@@ -37,10 +39,33 @@
   a { color: inherit; text-decoration: none; }
   .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 400; }
 
+  /* RIBBON */
+  .ribbon {
+    position: fixed; top: 14px; right: -42px;
+    transform: rotate(35deg);
+    background: var(--paella); color: var(--bone);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 6px 50px;
+    z-index: 100;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: var(--bone-deep);
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px; color: var(--ink-soft);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .disclaimer strong { color: var(--ink); }
+
   /* NAV */
   .nav {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(251, 245, 233, 0.94);
+    background: rgba(245, 239, 225, 0.94);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
@@ -58,13 +83,18 @@
   }
   .brand-tag {
     font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--saffron-deep); font-weight: 600;
+    color: var(--paella-deep); font-weight: 600;
   }
-  .nav-links { display: none; gap: 28px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .nav-links {
+    display: none; gap: 26px;
+    font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
   .nav-cta {
-    background: var(--ink); color: var(--cream);
+    background: var(--ink); color: var(--bone);
     padding: 10px 16px; border-radius: 4px;
-    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+    font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; font-weight: 500;
   }
   @media (min-width: 880px) {
     .nav-links { display: flex; }
@@ -81,12 +111,12 @@
     position: absolute; inset: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    opacity: 0.95;
+    opacity: 0.92;
   }
   .hero-overlay {
     position: absolute; inset: 0;
     background:
-      linear-gradient(180deg, rgba(42,31,18,0.08) 0%, rgba(42,31,18,0.5) 70%, rgba(42,31,18,0.88) 100%);
+      linear-gradient(180deg, rgba(20,60,78,0.10) 0%, rgba(20,40,58,0.55) 65%, rgba(20,40,58,0.90) 100%);
   }
   .hero-content {
     position: relative; z-index: 2;
@@ -94,217 +124,391 @@
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 120px 22px 60px;
     max-width: 1180px; margin: 0 auto;
-    color: var(--cream);
+    color: var(--bone);
   }
   .hero-kicker {
     font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
-    color: var(--saffron); margin-bottom: 18px; font-weight: 600;
+    color: var(--paella); margin-bottom: 18px; font-weight: 600;
   }
   .hero-title {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: clamp(46px, 10vw, 104px);
-    line-height: 0.96;
-    letter-spacing: -0.025em;
+    font-size: clamp(44px, 9.5vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.024em;
     margin-bottom: 22px;
-    max-width: 13ch;
+    max-width: 15ch;
   }
-  .hero-title em { font-style: italic; color: var(--saffron); font-weight: 300; }
+  .hero-title em { font-style: italic; color: var(--paella); font-weight: 300; }
   .hero-sub {
     font-size: clamp(16px, 2.4vw, 19px);
-    line-height: 1.5;
-    max-width: 38ch;
-    color: rgba(251, 245, 233, 0.88);
+    line-height: 1.55;
+    max-width: 42ch;
+    color: rgba(245, 239, 225, 0.9);
     margin-bottom: 36px;
     font-weight: 300;
   }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 14px 22px;
-    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.16em;
+    text-transform: uppercase; font-weight: 500;
     border-radius: 4px;
     transition: transform 0.2s ease, background 0.2s ease;
   }
-  .btn-primary { background: var(--saffron); color: var(--ink); }
-  .btn-primary:hover { background: var(--saffron-deep); color: var(--cream); }
-  .btn-ghost { background: transparent; color: var(--cream); border: 1px solid rgba(251,245,233,0.45); }
-  .btn-ghost:hover { background: rgba(251,245,233,0.08); }
+  .btn-primary { background: var(--paella); color: var(--bone); }
+  .btn-primary:hover { background: var(--paella-deep); color: var(--bone); }
+  .btn-ghost {
+    background: transparent; color: var(--bone);
+    border: 1px solid rgba(245,239,225,0.45);
+  }
+  .btn-ghost:hover { background: rgba(245,239,225,0.08); }
+
+  /* KPIs */
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 8px;
+    max-width: 560px;
+  }
+  .kpi {
+    border-top: 1px solid rgba(245,239,225,0.32);
+    padding-top: 12px;
+  }
+  .kpi-num {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; font-weight: 500;
+    color: var(--bone);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .kpi-num em { font-style: italic; color: var(--paella); }
+  .kpi-label {
+    margin-top: 4px;
+    font-size: 10.5px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,239,225,0.72);
+    font-weight: 500;
+  }
+  @media (min-width: 640px) {
+    .kpis { grid-template-columns: repeat(4, 1fr); }
+  }
 
   /* SECTIONS */
   section { padding: 80px 22px; }
   .wrap { max-width: 1100px; margin: 0 auto; }
   .eyebrow {
     font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
-    color: var(--saffron-deep); font-weight: 600; margin-bottom: 18px;
+    color: var(--paella-deep); font-weight: 600; margin-bottom: 18px;
   }
   .section-title {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: clamp(34px, 6vw, 58px);
-    line-height: 1.02;
+    font-size: clamp(32px, 5.6vw, 54px);
+    line-height: 1.04;
     letter-spacing: -0.02em;
     color: var(--ink);
     margin-bottom: 24px;
-    max-width: 18ch;
+    max-width: 20ch;
   }
-  .section-title em { font-style: italic; color: var(--saffron-deep); }
+  .section-title em { font-style: italic; color: var(--paella-deep); }
   .lede {
-    font-size: clamp(17px, 2.2vw, 20px);
-    line-height: 1.6;
+    font-size: clamp(16.5px, 2.2vw, 19px);
+    line-height: 1.65;
     color: var(--ink-soft);
-    max-width: 56ch;
+    max-width: 58ch;
     font-weight: 300;
   }
 
-  /* LA PAELLA — feature section */
-  .paella {
-    background: var(--cream-deep);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .paella-grid {
+  /* LA FAMILIA */
+  .familia { background: var(--cream); border-bottom: 1px solid var(--line); }
+  .familia-grid {
     display: grid; gap: 36px;
     grid-template-columns: 1fr;
     margin-top: 40px;
     align-items: center;
   }
-  .paella-img {
-    aspect-ratio: 4 / 5;
+  .familia-img {
+    aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: 4px;
     border: 1px solid var(--line);
   }
-  .paella-img img { width: 100%; height: 100%; object-fit: cover; }
-  .paella-copy h3 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(28px, 4vw, 38px);
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    margin-bottom: 18px;
-    line-height: 1.1;
-  }
-  .paella-copy p {
+  .familia-img img { width: 100%; height: 100%; object-fit: cover; }
+  .familia-copy p {
     color: var(--ink-soft);
-    font-size: 16.5px; line-height: 1.65;
-    margin-bottom: 16px;
-    max-width: 50ch;
+    font-size: 16.5px; line-height: 1.7;
+    margin-bottom: 14px;
+    max-width: 54ch;
   }
-  .paella-list {
-    list-style: none;
-    margin-top: 24px;
-    border-top: 1px solid var(--line);
+  .familia-copy p strong { color: var(--ink); font-weight: 500; }
+  .placeholder-box {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paella-deep); font-weight: 600;
+    background: rgba(196,106,28,0.10);
+    border: 1px dashed var(--paella);
+    padding: 10px 16px;
+    border-radius: 2px;
   }
-  .paella-list li {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-    display: flex; justify-content: space-between; align-items: baseline;
-    gap: 16px;
-  }
-  .paella-list .name {
-    font-family: 'Fraunces', serif;
-    font-size: 19px;
-    color: var(--ink);
-  }
-  .paella-list .note {
-    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--sea); font-weight: 500;
-  }
-  @media (min-width: 800px) {
-    .paella-grid { grid-template-columns: 1fr 1.1fr; gap: 56px; }
+  @media (min-width: 820px) {
+    .familia-grid { grid-template-columns: 1.05fr 1fr; gap: 56px; }
   }
 
-  /* CARTA */
-  .carta { background: var(--cream); }
+  /* ARROCES — protagonistas */
+  .arroces {
+    background: var(--bone-deep);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .arroces-grid {
+    display: grid; gap: 36px;
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+    align-items: start;
+  }
+  .arroces-img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    position: sticky; top: 90px;
+  }
+  .arroces-img img { width: 100%; height: 100%; object-fit: cover; }
+  .arroces-list { list-style: none; border-top: 1px solid var(--line); }
+  .arroces-list li {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+  }
+  .arroces-list .name {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .arroces-list .desc {
+    grid-column: 1 / -1;
+    font-size: 14px; color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .arroces-list .price {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--sea); font-weight: 500;
+    white-space: nowrap; padding-top: 6px;
+  }
+  .arroces-note {
+    margin-top: 32px;
+    padding: 18px 22px;
+    background: var(--cream);
+    border-left: 3px solid var(--paella);
+    font-size: 14.5px; line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+  .arroces-note strong {
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'Inter', sans-serif; font-style: normal;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--paella-deep); font-weight: 600;
+  }
+  @media (min-width: 820px) {
+    .arroces-grid { grid-template-columns: 0.85fr 1.15fr; gap: 56px; }
+  }
+
+  /* CARTA — resto */
+  .carta { background: var(--bone); }
   .carta-grid {
     display: grid; gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
-    margin-top: 48px;
+    margin-top: 40px;
   }
   .carta-item {
-    background: var(--cream);
-    padding: 32px 26px;
+    background: var(--bone);
+    padding: 30px 26px;
     display: flex; flex-direction: column; gap: 12px;
   }
   .carta-item .num {
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-size: 14px;
-    color: var(--saffron-deep);
+    color: var(--paella-deep);
     letter-spacing: 0.1em;
   }
   .carta-item h3 {
     font-family: 'Fraunces', serif;
-    font-size: 28px; font-weight: 500;
+    font-size: 26px; font-weight: 500;
     letter-spacing: -0.01em;
     color: var(--ink);
   }
-  .carta-item p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.55; }
-  .placeholder-note {
-    display: inline-block;
-    margin-top: 6px;
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--sea); font-weight: 500;
+  .carta-item ul {
+    list-style: none;
+    margin-top: 4px;
+  }
+  .carta-item li {
+    padding: 8px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    display: flex; justify-content: space-between; gap: 12px;
+  }
+  .carta-item li .pvp {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--sea);
+    font-weight: 500; white-space: nowrap;
   }
   @media (min-width: 760px) {
     .carta-grid { grid-template-columns: 1fr 1fr; }
   }
-  @media (min-width: 1000px) {
-    .carta-grid { grid-template-columns: repeat(4, 1fr); }
+  @media (min-width: 1020px) {
+    .carta-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  /* GALERIA */
-  .galeria { background: var(--bone); }
-  .gal-grid {
-    display: grid; gap: 12px;
+  /* MENU DIARIO — ancla */
+  .menu-diario {
+    background: var(--sea-deep); color: var(--bone);
+    border-top: 1px solid var(--line);
+  }
+  .menu-diario .eyebrow { color: var(--paella); }
+  .menu-diario .section-title { color: var(--bone); }
+  .menu-diario .section-title em { color: var(--paella); }
+  .menu-diario .lede { color: rgba(245,239,225,0.82); }
+  .menu-card {
+    margin-top: 44px;
+    background: rgba(245,239,225,0.06);
+    border: 1px solid rgba(245,239,225,0.18);
+    border-radius: 6px;
+    padding: 36px 28px;
+    display: grid; gap: 26px;
     grid-template-columns: 1fr;
-    margin-top: 48px;
+    align-items: center;
   }
-  .gal-item {
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
-    background: var(--cream);
+  .menu-precio {
+    text-align: center;
+    padding: 12px 14px;
+    border: 1px solid rgba(245,239,225,0.22);
+    border-radius: 4px;
+    background: rgba(196,106,28,0.10);
   }
-  .gal-item img { width: 100%; height: 100%; object-fit: cover; }
+  .menu-precio .label {
+    font-size: 10.5px; letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--paella); font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .menu-precio .num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 8vw, 64px);
+    line-height: 1;
+    color: var(--bone);
+    font-weight: 500;
+  }
+  .menu-precio .num em { font-style: italic; color: var(--paella); }
+  .menu-precio .desc {
+    margin-top: 6px;
+    font-size: 12.5px;
+    color: rgba(245,239,225,0.78);
+    letter-spacing: 0.04em;
+  }
+  .menu-incluye dl {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 10px 18px;
+    font-size: 14.5px;
+  }
+  .menu-incluye dt {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--paella);
+    font-size: 14px;
+  }
+  .menu-incluye dd {
+    color: rgba(245,239,225,0.86);
+    line-height: 1.5;
+  }
+  .menu-foot {
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: rgba(245,239,225,0.66);
+    line-height: 1.5;
+    border-top: 1px solid rgba(245,239,225,0.16);
+    padding-top: 14px;
+  }
   @media (min-width: 760px) {
-    .gal-grid {
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(2, 300px);
-      gap: 14px;
-    }
-    .gal-item.g1 { grid-column: 1 / 4; grid-row: 1 / 3; aspect-ratio: auto; }
-    .gal-item.g2 { grid-column: 4 / 7; grid-row: 1 / 2; aspect-ratio: auto; }
-    .gal-item.g3 { grid-column: 4 / 6; grid-row: 2 / 3; aspect-ratio: auto; }
-    .gal-item.g4 { grid-column: 6 / 7; grid-row: 2 / 3; aspect-ratio: auto; }
+    .menu-card { grid-template-columns: 280px 1fr; gap: 36px; }
+  }
+
+  /* RESERVAR PAELLA */
+  .reservar-paella {
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .reservar-paella-inner {
+    display: grid; gap: 28px;
+    grid-template-columns: 1fr;
+    align-items: center;
+    margin-top: 36px;
+  }
+  .reservar-paella-copy p {
+    color: var(--ink-soft);
+    font-size: 16px; line-height: 1.7;
+    margin-bottom: 12px;
+    max-width: 52ch;
+  }
+  .reservar-paella-copy p strong { color: var(--paella-deep); }
+  .reservar-paella-img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .reservar-paella-img img { width: 100%; height: 100%; object-fit: cover; }
+  @media (min-width: 820px) {
+    .reservar-paella-inner { grid-template-columns: 1.05fr 0.95fr; gap: 56px; }
   }
 
   /* VISITA */
-  .visita { background: var(--sea-deep); color: var(--cream); }
-  .visita .eyebrow { color: var(--saffron); }
-  .visita .section-title { color: var(--cream); }
-  .visita .section-title em { color: var(--saffron); }
+  .visita { background: var(--ink); color: var(--bone); }
+  .visita .eyebrow { color: var(--paella); }
+  .visita .section-title { color: var(--bone); }
+  .visita .section-title em { color: var(--paella); }
+  .visita .lede { color: rgba(245,239,225,0.8); }
   .visita-grid {
-    display: grid; gap: 32px;
+    display: grid; gap: 28px;
     grid-template-columns: 1fr;
-    margin-top: 48px;
+    margin-top: 44px;
+  }
+  .visita-card {
+    background: rgba(245,239,225,0.04);
+    border: 1px solid rgba(245,239,225,0.12);
+    border-radius: 4px;
+    padding: 26px 22px;
   }
   .visita-card .label {
-    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-    color: var(--saffron); margin-bottom: 10px; font-weight: 600;
+    font-size: 11px; letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--paella); margin-bottom: 10px; font-weight: 600;
   }
   .visita-card .data {
     font-family: 'Fraunces', serif;
-    font-size: 22px; font-weight: 400;
-    color: var(--cream);
-    line-height: 1.4;
+    font-size: 20px; font-weight: 400;
+    color: var(--bone);
+    line-height: 1.45;
   }
   .visita-card .data small {
     display: block;
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: rgba(251,245,233,0.6);
-    margin-top: 6px;
+    font-size: 12.5px;
+    color: rgba(245,239,225,0.6);
+    margin-top: 8px;
     letter-spacing: 0.04em;
   }
   @media (min-width: 760px) {
@@ -313,7 +517,7 @@
 
   /* FOOTER */
   footer {
-    background: var(--ink); color: rgba(251,245,233,0.7);
+    background: var(--sea-deep); color: rgba(245,239,225,0.7);
     padding: 56px 22px 40px;
     font-size: 13px;
   }
@@ -321,51 +525,52 @@
   .foot-top {
     display: flex; flex-direction: column; gap: 24px;
     padding-bottom: 32px;
-    border-bottom: 1px solid rgba(251,245,233,0.14);
+    border-bottom: 1px solid rgba(245,239,225,0.14);
   }
   .foot-brand {
     font-family: 'Fraunces', serif;
     font-size: 24px; font-weight: 500;
-    color: var(--cream);
+    color: var(--bone);
+  }
+  .foot-disclaimer {
+    margin-top: 24px;
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: rgba(245,239,225,0.55);
+    max-width: 60ch;
   }
   .foot-meta {
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 14px;
     padding-top: 24px;
     font-size: 12px; letter-spacing: 0.06em;
   }
-  .foot-meta .kenaz-credit { color: var(--saffron); }
+  .foot-meta .kenaz-credit { color: var(--paella); }
   @media (min-width: 760px) {
     .foot-top { flex-direction: row; justify-content: space-between; align-items: center; }
   }
-
-  /* DISCLAIMER */
-  .disclaimer {
-    background: var(--cream-deep);
-    padding: 20px 22px;
-    border-bottom: 1px solid var(--line);
-    font-size: 12px; color: var(--ink-soft);
-    text-align: center;
-    line-height: 1.5;
-  }
-  .disclaimer strong { color: var(--ink); }
 </style>
 </head>
 <body>
 
+<div class="ribbon">Propuesta de diseño</div>
+
 <div class="disclaimer">
-  <strong>Maqueta de propuesta.</strong> Imágenes generadas y textos provisionales. Carta, precios e historia se completarían con vosotros.
+  <strong>Maqueta de propuesta — Kenaz Studio.</strong> Imágenes generadas como referencia y textos provisionales. Historia familiar, fechas exactas, carta completa y precios definitivos se completarían junto con el equipo de Las Olas.
 </div>
 
 <nav class="nav">
   <div class="nav-inner">
     <div class="brand">
       <span class="brand-mark">Las Olas</span>
-      <span class="brand-tag">Calpe</span>
+      <span class="brand-tag">Calpe · 30 años</span>
     </div>
     <div class="nav-links">
-      <a href="#paella">La paella</a>
+      <a href="#familia">La familia</a>
+      <a href="#arroces">Arroces</a>
       <a href="#carta">Carta</a>
-      <a href="#galeria">Galería</a>
+      <a href="#menu-diario">Menú diario</a>
       <a href="#visita">Visita</a>
     </div>
     <a href="#visita" class="nav-cta">Reservar</a>
@@ -373,145 +578,268 @@
 </nav>
 
 <header class="hero">
-  <img class="hero-img" src="img/hero-paella.webp" alt="Paella valenciana servida frente al mar de Calpe" />
+  <img class="hero-img" src="img/hero-paella.webp" alt="Paella valenciana servida en mesa familiar frente al paseo del Arenal de Calpe" />
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-kicker">Paseo Arenal · Avenida Europa</div>
-    <h1 class="hero-title">Paellas <em>y arroces</em> en el paseo.</h1>
+    <div class="hero-kicker">Paseo Arenal–Bol · Av. Europa · Calpe</div>
+    <h1 class="hero-title">30 años de cocina <em>familiar</em> en el paseo.</h1>
     <p class="hero-sub">
-      Cocina valenciana frente al Mediterráneo. Arroces hechos en su sartén, producto fresco del mar y mesa con vista al paseo de la playa del Arenal.
+      Cocina valenciana de toda la vida frente al Mediterráneo. Arroces hechos en su sartén, pescados de la lonja, carnes a la plancha y menú diario para todos los días.
     </p>
     <div class="hero-actions">
       <a href="#visita" class="btn btn-primary">Reservar mesa</a>
-      <a href="#paella" class="btn btn-ghost">Ver los arroces</a>
+      <a href="#menu-diario" class="btn btn-ghost">Ver menú diario</a>
+    </div>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-num"><em>30+</em></div>
+        <div class="kpi-label">Años en el paseo</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">17,50 €</div>
+        <div class="kpi-label">Menú diario con vino</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">Familiar</div>
+        <div class="kpi-label">Cocina valenciana</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">Mar</div>
+        <div class="kpi-label">Frente al Mediterráneo</div>
+      </div>
     </div>
   </div>
 </header>
 
-<section class="paella" id="paella">
+<!-- =============================================================
+     LA FAMILIA
+============================================================== -->
+<section class="familia" id="familia">
+  <div class="wrap">
+    <div class="eyebrow">La casa</div>
+    <h2 class="section-title">Una familia <em>en el paseo, desde hace 30 años.</em></h2>
+    <div class="familia-grid">
+      <div class="familia-img">
+        <img src="img/ambiente-comedor.webp" alt="Comedor cálido y familiar de Las Olas en el paseo del Arenal" />
+      </div>
+      <div class="familia-copy">
+        <p>
+          <strong>Las Olas</strong> lleva más de tres décadas dando de comer en el paseo Arenal–Bol de Calpe. Restaurante familiar valenciano, abierto cada día, con la receta de siempre y la confianza de los vecinos.
+        </p>
+        <p>
+          Cocina honesta: arroces hechos al fuego que toca, pescado de la lonja del día, carnes a la plancha y un menú diario pensado para quien quiere comer bien sin complicarse.
+        </p>
+        <p>
+          La historia exacta de la familia, las fechas y los nombres de quienes la sostienen se contarían aquí cuando la cerremos con vosotros.
+        </p>
+        <span class="placeholder-box">· Año exacto e historia familiar · a completar ·</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================
+     ARROCES — protagonistas
+============================================================== -->
+<section class="arroces" id="arroces">
   <div class="wrap">
     <div class="eyebrow">La firma de la casa</div>
-    <h2 class="section-title">El arroz, <em>como tiene que ser.</em></h2>
-    <div class="paella-grid">
-      <div class="paella-img">
-        <img src="img/arroz-banda.webp" alt="Arroz a banda en sartén, especialidad de Las Olas" />
+    <h2 class="section-title">Los arroces, <em>como siempre se hicieron aquí.</em></h2>
+    <p class="lede">
+      Cada arroz se prepara en su sartén, con caldo del día y al fuego que le toca. Sin pre-cocinado, sin atajos. Necesitan tiempo —y vale la pena.
+    </p>
+
+    <div class="arroces-grid">
+      <div class="arroces-img">
+        <img src="img/arroz-banda.webp" alt="Arroz a banda en sartén con alioli aparte" />
       </div>
-      <div class="paella-copy">
-        <h3>Paella valenciana y arroces marineros.</h3>
-        <p>
-          Cada arroz se hace en su sartén, al fuego que le toca, con caldo del día. Sin atajos, sin pre-cocinado, sin prisas. Como se ha hecho siempre en esta costa.
-        </p>
-        <p>
-          Algunos clásicos que entrarían en la carta:
-        </p>
-        <ul class="paella-list">
+      <div>
+        <ul class="arroces-list">
           <li>
-            <span class="name">Paella valenciana</span>
-            <span class="note">A definir</span>
+            <span class="name">Paella alicantina</span>
+            <span class="price">PVP · consultar</span>
+            <span class="desc">La receta de la casa, con base alicantina. Ingredientes exactos a definir con el equipo.</span>
           </li>
           <li>
             <span class="name">Arroz a banda</span>
-            <span class="note">A definir</span>
+            <span class="price">PVP · consultar</span>
+            <span class="desc">Caldo de pescado de roca, alioli aparte. Marinero puro.</span>
           </li>
           <li>
-            <span class="name">Arroz negro con alioli</span>
-            <span class="note">A definir</span>
+            <span class="name">Arroz negro</span>
+            <span class="price">PVP · consultar</span>
+            <span class="desc">Con tinta de calamar y sepia. Alioli suave de la casa.</span>
           </li>
           <li>
-            <span class="name">Arroz del senyoret</span>
-            <span class="note">A definir</span>
+            <span class="name">Arroz del señorito</span>
+            <span class="price">PVP · consultar</span>
+            <span class="desc">Marisco pelado, sin trabajo en la mesa. Caldo intenso.</span>
+          </li>
+          <li>
+            <span class="name">Paella de marisco</span>
+            <span class="price">PVP · consultar</span>
+            <span class="desc">Gambas, mejillones, calamar, cigalas según mercado.</span>
+          </li>
+          <li>
+            <span class="name">Paella mixta</span>
+            <span class="price">PVP · consultar</span>
+            <span class="desc">Carne y marisco. La combinación clásica.</span>
           </li>
           <li>
             <span class="name">Fideuá</span>
-            <span class="note">A definir</span>
+            <span class="price">PVP · consultar</span>
+            <span class="desc">Fideo fino en lugar de arroz, caldo de pescado y marisco.</span>
           </li>
         </ul>
-        <p style="margin-top: 18px; font-size: 13px; color: var(--ink-soft);">
-          Lista provisional. Los arroces exactos, ingredientes, tiempos y precios se completarían con vosotros.
+
+        <div class="arroces-note">
+          <strong>Importante</strong>
+          La paella se hace al momento. Mínimo 25 minutos de elaboración. Conviene reservarla con antelación, especialmente para mesa grande.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================
+     CARTA — resto (pescados, carnes, tapas, sopas)
+============================================================== -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="eyebrow">Más allá del arroz</div>
+    <h2 class="section-title">Pescados, carnes, <em>tapas y sopas.</em></h2>
+    <p class="lede">
+      Carta completa de cocina valenciana familiar. Variedades, descripciones y precios se cierran con el equipo de Las Olas.
+    </p>
+
+    <div class="carta-grid">
+      <div class="carta-item">
+        <span class="num">/ 01</span>
+        <h3>Pescados</h3>
+        <ul>
+          <li><span>Lubina</span><span class="pvp">PVP</span></li>
+          <li><span>Emperador</span><span class="pvp">PVP</span></li>
+          <li><span>Lenguado</span><span class="pvp">PVP</span></li>
+          <li><span>Pescado del día</span><span class="pvp">S/M</span></li>
+        </ul>
+      </div>
+      <div class="carta-item">
+        <span class="num">/ 02</span>
+        <h3>Carnes</h3>
+        <ul>
+          <li><span>Entrecot a la pimienta</span><span class="pvp">PVP</span></li>
+          <li><span>Paleta de cordero</span><span class="pvp">PVP</span></li>
+          <li><span>Otras carnes</span><span class="pvp">a definir</span></li>
+        </ul>
+      </div>
+      <div class="carta-item">
+        <span class="num">/ 03</span>
+        <h3>Tapas y sopas</h3>
+        <ul>
+          <li><span>Variedad de tapas valencianas</span><span class="pvp">PVP</span></li>
+          <li><span>Sopa de pescado</span><span class="pvp">PVP</span></li>
+          <li><span>Sopa de fideos</span><span class="pvp">PVP</span></li>
+          <li><span>Mariscos del día</span><span class="pvp">S/M</span></li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top: 18px; font-size: 12.5px; color: var(--ink-soft); font-style: italic; font-family: 'Fraunces', serif;">
+      Lista provisional basada en la carta verificada. El detalle completo y los precios se trabajan con el equipo de Las Olas.
+    </p>
+  </div>
+</section>
+
+<!-- =============================================================
+     MENU DIARIO — ancla
+============================================================== -->
+<section class="menu-diario" id="menu-diario">
+  <div class="wrap">
+    <div class="eyebrow">El ancla de cada día</div>
+    <h2 class="section-title">Menú diario <em>de 17,50 €,</em> con vino incluido.</h2>
+    <p class="lede">
+      El menú de toda la vida: primero, segundo, postre, pan y bebida. Para quien viene a comer bien sin complicarse, todos los días en el paseo.
+    </p>
+    <div class="menu-card">
+      <div class="menu-precio">
+        <div class="label">Menú diario</div>
+        <div class="num">17,<em>50</em> €</div>
+        <div class="desc">por persona · vino incluido</div>
+      </div>
+      <div class="menu-incluye">
+        <dl>
+          <dt>Primero</dt><dd>A elegir entre primeros del día (sopa, ensalada, entrante).</dd>
+          <dt>Segundo</dt><dd>A elegir entre carne, pescado o arroz del día.</dd>
+          <dt>Postre</dt><dd>Postres caseros de la casa o café.</dd>
+          <dt>Bebida</dt><dd>Vino de la casa, agua o refresco.</dd>
+        </dl>
+        <p class="menu-foot">
+          Composición exacta de cada día se cierra cada mañana con la cocina. Precio verificado · IVA incluido.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="carta" id="carta">
+<!-- =============================================================
+     RESERVAR PAELLA con antelación
+============================================================== -->
+<section class="reservar-paella">
   <div class="wrap">
-    <div class="eyebrow">La carta</div>
-    <h2 class="section-title">Más allá <em>del arroz.</em></h2>
-    <p class="lede">
-      Estructura provisional de la carta. Los platos exactos, descripciones y precios se definen con el equipo de Las Olas.
-    </p>
-    <div class="carta-grid">
-      <div class="carta-item">
-        <span class="num">/ 01</span>
-        <h3>Entrantes</h3>
-        <p>Para empezar la mesa. Producto del mar, encurtidos de la casa, conservas seleccionadas.</p>
-        <span class="placeholder-note">Lista a definir</span>
+    <div class="eyebrow">Reservar paella</div>
+    <h2 class="section-title">La paella necesita <em>su tiempo.</em></h2>
+    <div class="reservar-paella-inner">
+      <div class="reservar-paella-copy">
+        <p>
+          Los arroces y paellas se elaboran <strong>al momento, al fuego.</strong> El mínimo de cocción es de 25 minutos, y para mesas grandes algo más.
+        </p>
+        <p>
+          Por eso, conviene avisar con antelación. Si vais a venir a comer paella, llamad un par de horas antes (o el día anterior si sois más de seis). El equipo de cocina prepara el caldo, el sofrito y la sartén para que la mesa salga como tiene que salir.
+        </p>
+        <p>
+          Si pasáis sin reserva, también os atendemos: hay <strong>menú diario, pescados, carnes y tapas</strong> listos al momento.
+        </p>
       </div>
-      <div class="carta-item">
-        <span class="num">/ 02</span>
-        <h3>Arroces</h3>
-        <p>La firma de la casa. Paella, arroz a banda, arroz negro, fideuá, sugerencias del día.</p>
-        <span class="placeholder-note">Lista a definir</span>
-      </div>
-      <div class="carta-item">
-        <span class="num">/ 03</span>
-        <h3>Pescados</h3>
-        <p>Producto de lonja según día. A la sal, a la espalda o a la plancha, según el pez y su tamaño.</p>
-        <span class="placeholder-note">Lista a definir</span>
-      </div>
-      <div class="carta-item">
-        <span class="num">/ 04</span>
-        <h3>Postres</h3>
-        <p>Cierre clásico de mediterráneo: dulces de cuchara, tartas caseras, frutas de temporada.</p>
-        <span class="placeholder-note">Lista a definir</span>
+      <div class="reservar-paella-img">
+        <img src="img/arroz-negro.webp" alt="Arroz negro al fuego con alioli" />
       </div>
     </div>
   </div>
 </section>
 
-<section class="galeria" id="galeria">
-  <div class="wrap">
-    <div class="eyebrow">El ambiente</div>
-    <h2 class="section-title">El paseo, <em>la mesa, el arroz.</em></h2>
-    <p class="lede">Composiciones de muestra para la futura sesión fotográfica. La sesión real se haría en Las Olas, con vuestras mesas, vuestros arroces y vuestro equipo.</p>
-    <div class="gal-grid">
-      <div class="gal-item g1"><img src="img/mesa-paseo.webp" alt="Mesa con paella y sangría en el paseo Arenal de Calpe" /></div>
-      <div class="gal-item g2"><img src="img/ambiente-comedor.webp" alt="Comedor interior cálido y familiar de Las Olas" /></div>
-      <div class="gal-item g3"><img src="img/arroz-negro.webp" alt="Arroz negro con calamar y gambas" /></div>
-      <div class="gal-item g4"><img src="img/hero-paella.webp" alt="Paella valenciana terminada y servida en sartén" /></div>
-    </div>
-  </div>
-</section>
-
+<!-- =============================================================
+     VISITA · horarios · contacto
+============================================================== -->
 <section class="visita" id="visita">
   <div class="wrap">
-    <div class="eyebrow">Visita</div>
-    <h2 class="section-title">Pasaos a <em>vernos</em>.</h2>
-    <p class="lede" style="color: rgba(251,245,233,0.8);">
-      Reservas, horarios y contacto. Los datos definitivos se completan con vosotros.
+    <div class="eyebrow">Visita y reservas</div>
+    <h2 class="section-title">Os esperamos <em>en el paseo.</em></h2>
+    <p class="lede">
+      Dirección verificada en el paseo Arenal–Bol. Horarios, teléfono de reservas y datos definitivos se cierran con el equipo de Las Olas.
     </p>
     <div class="visita-grid">
       <div class="visita-card">
         <div class="label">Dirección</div>
         <div class="data">
-          Avenida Europa<br/>
-          Paseo del Arenal · Calpe
-          <small>Número exacto y CP a confirmar</small>
+          Av. Europa<br/>
+          Edificio Oceanic, Playa Bol<br/>
+          Paseo Arenal–Bol · Calpe
+          <small>Número exacto y CP a confirmar in situ.</small>
         </div>
       </div>
       <div class="visita-card">
         <div class="label">Horario</div>
         <div class="data">
-          A definir
-          <small>Horarios reales a completar con el equipo</small>
+          Cocina abierta cada día<br/>
+          Comidas y cenas
+          <small>Franjas exactas a confirmar con el equipo.</small>
         </div>
       </div>
       <div class="visita-card">
         <div class="label">Reservas</div>
         <div class="data">
-          A definir
-          <small>Teléfono y formulario a integrar</small>
+          Teléfono — a confirmar<br/>
+          Paella con antelación
+          <small>Línea directa y formulario online a integrar.</small>
         </div>
       </div>
     </div>
@@ -523,16 +851,19 @@
     <div class="foot-top">
       <div>
         <div class="foot-brand">Las Olas</div>
-        <div style="margin-top: 8px; font-size: 13px; color: rgba(251,245,233,0.55); letter-spacing: 0.04em;">
-          Paseo Arenal · Calpe
+        <div style="margin-top: 8px; font-size: 13px; color: rgba(245,239,225,0.55); letter-spacing: 0.04em;">
+          Paseo Arenal–Bol · Av. Europa · Calpe
         </div>
       </div>
-      <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(251,245,233,0.6);">
-        Paellas y arroces · Mediterráneo
+      <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,239,225,0.6);">
+        30 años · cocina valenciana familiar
       </div>
     </div>
+    <p class="foot-disclaimer">
+      Maqueta de propuesta diseñada por Kenaz Studio. Imágenes generadas para referencia. Historia familiar, fechas, carta completa y precios definitivos se cierran junto con el equipo de Las Olas. Esta web no es una publicación oficial del restaurante.
+    </p>
     <div class="foot-meta">
-      <span>© Las Olas</span>
+      <span>© Las Olas · Calpe</span>
       <span class="kenaz-credit">Diseño propuesto por Kenaz Studio</span>
     </div>
   </div>

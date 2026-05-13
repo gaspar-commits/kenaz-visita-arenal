@@ -316,6 +316,13 @@
     font-weight: 500;
     line-height: 1.35;
   }
+  /* KPI variante texto (sin contador numerico) */
+  .kpi__num--text {
+    font-size: clamp(1.35rem, 3.3vw, 1.85rem);
+    letter-spacing: -0.005em;
+    display: inline-block;
+    line-height: 1.05;
+  }
 
   .hero__visual {
     position: relative;
@@ -345,6 +352,25 @@
     padding: 0.4rem 0.85rem;
     border-radius: 999px;
     letter-spacing: 0.02em;
+  }
+  .hero__visual-disclaimer {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--crema);
+    background: rgba(61, 36, 24, 0.62);
+    backdrop-filter: blur(6px);
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid rgba(245, 230, 211, 0.18);
+    max-width: 70%;
+    text-align: right;
+    line-height: 1.25;
   }
 
   @media (min-width: 880px) {
@@ -464,6 +490,24 @@
     border-left: 2px solid var(--coral);
     padding-left: 1.25rem;
     margin: 1.5rem 0;
+  }
+  .familia__highlight-source {
+    display: block;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cacao-soft);
+    margin-top: 0.6rem;
+    font-weight: 500;
+  }
+  .familia__nota {
+    display: inline;
+    font-size: 0.85em;
+    color: var(--cacao-soft);
+    font-style: italic;
+    opacity: 0.78;
   }
   @media (min-width: 880px) {
     .familia__grid {
@@ -869,12 +913,26 @@
     .footer__bottom-right { text-align: right; }
   }
   .footer__disclaimer {
-    font-size: 0.72rem;
-    line-height: 1.6;
-    color: rgba(251, 243, 230, 0.45);
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: rgba(251, 243, 230, 0.72);
     margin-top: 1.5rem;
-    max-width: 720px;
+    max-width: 760px;
     font-style: italic;
+    padding: 1rem 1.15rem;
+    border-left: 2px solid var(--coral);
+    background: rgba(251, 243, 230, 0.04);
+    border-radius: 0 4px 4px 0;
+  }
+  .footer__disclaimer strong {
+    font-style: normal;
+    color: var(--coral-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.4rem;
   }
   .footer__kenaz {
     display: inline-flex;
@@ -1190,14 +1248,17 @@
           <div class="kpi__label">Reseñas acumuladas</div>
         </div>
         <div class="kpi">
-          <div class="kpi__value"><span class="kpi__num" data-count="365" data-decimals="0">0</span></div>
-          <div class="kpi__label">Días abiertos al año</div>
+          <div class="kpi__value"><span class="kpi__num kpi__num--text">Todo el año</span></div>
+          <div class="kpi__label">Sin descanso semanal</div>
         </div>
       </div>
     </div>
     <div class="hero__visual">
       <img src="img/hero-cocktail.webp" alt="Mojito con menta fresca y lima en barra de bar" loading="eager" fetchpriority="high" width="1024" height="1280" />
       <div class="hero__visual-tag">Mojito de la casa</div>
+      <div class="hero__visual-disclaimer" aria-label="Aviso">
+        Propuesta de diseño · imágenes referenciales
+      </div>
     </div>
   </div>
 </section>
@@ -1219,17 +1280,20 @@
           Una familia venezolana que abrió un bar pequeño en una
           calle tranquila de Calpe y, desde entonces, atiende
           personalmente a cada cliente que entra por la puerta.
+          <span class="familia__nota">[la historia final la
+          escribimos con vosotros — placeholder en base a reseñas
+          públicas]</span>
         </p>
         <p class="familia__highlight">
           "Valentina, her husband and father-in-law were amazing.
           I felt like I was at home."
+          <span class="familia__highlight-source">— reseña pública, junio 2022</span>
         </p>
         <p>
-          Esa reseña de junio de 2022 resume bien la propuesta de la
-          casa: una carta corta de cócteles y snacks bien hechos, sin
-          pretensiones, servida con el calor de alguien que recibe
-          en su sala. Abierto todo el año, también fuera de
-          temporada turística.
+          Esa reseña resume bien la propuesta de la casa: una carta
+          corta de cócteles y snacks bien hechos, sin pretensiones,
+          servida con el calor de alguien que recibe en su sala.
+          Abierto todo el año, también fuera de temporada turística.
         </p>
       </div>
     </div>
@@ -1614,7 +1678,7 @@
           <div class="info__block-title">Dirección</div>
           <div class="info__block-value">
             Calle Isla de Formentera, 18<br>
-            <span class="info__block-value--small">03710 Calp, Alicante</span>
+            <span class="info__block-value--small">03710 Calpe, Alicante</span>
           </div>
           <div class="info__block-meta">
             A dos pasos del centro, abierto todo el año.
@@ -1636,11 +1700,12 @@
           <ul class="info__horario-list">
             <li>
               <span class="info__horario-day">Lunes a domingo</span>
-              <span class="info__horario-time">11:00 – 23:00</span>
+              <span class="info__horario-time">Mañana, tarde y noche</span>
             </li>
           </ul>
           <div class="info__block-meta">
-            Todos los días del año, incluso fuera de temporada.
+            Abiertos todos los días del año, incluso fuera de
+            temporada. Horario exacto a confirmar in situ.
           </div>
         </div>
 
@@ -1683,9 +1748,9 @@
         <div class="footer__col-title">Visitar</div>
         <ul>
           <li>Calle Isla de Formentera, 18</li>
-          <li>03710 Calp, Alicante</li>
+          <li>03710 Calpe, Alicante</li>
           <li><a href="tel:+34678210005">+34 678 21 00 05</a></li>
-          <li>Lunes a domingo · 11–23 h</li>
+          <li>Lunes a domingo · todo el año</li>
         </ul>
       </div>
       <div class="footer__col">
@@ -1707,12 +1772,14 @@
     </div>
 
     <p class="footer__disclaimer">
+      <strong>Propuesta de diseño · Aviso</strong>
       Esta web es una propuesta de diseño elaborada por Kenaz Studio
-      con datos verificados públicamente (Tripadvisor, Google Maps,
-      carta.menu, Gastroranking). Las imágenes son referenciales; las
-      fotos finales se realizarán in situ. Precios verificados en
-      reviews y carta. Resto: consultar en barra. IVA incluido. Sin
-      afiliación contractual previa con Cacao.
+      a partir de datos verificados públicamente (Tripadvisor, Google
+      Maps, carta.menu, Gastroranking). Todas las imágenes son
+      referenciales; las fotos definitivas se realizarán in situ con
+      el equipo de Cacao. Precios verificados en reseñas y carta —
+      el resto se consulta en barra. IVA incluido. Horario exacto a
+      confirmar in situ. Sin afiliación contractual previa con Cacao.
     </p>
   </div>
 </footer>
@@ -1760,6 +1827,7 @@
     if (!prefersReduced) {
       // -------- Count-up KPIs hero --------
       document.querySelectorAll('.kpi__num').forEach((el) => {
+        if (!('count' in el.dataset)) return; // KPIs de texto (sin data-count) no animan
         const target = parseFloat(el.dataset.count);
         const decimals = parseInt(el.dataset.decimals || '0', 10);
         const format = el.dataset.format || '';
@@ -1852,6 +1920,7 @@
     } else {
       // reduced motion: KPIs ya con valor final
       document.querySelectorAll('.kpi__num').forEach((el) => {
+        if (!('count' in el.dataset)) return; // KPIs de texto (sin data-count) ya tienen su valor
         const target = parseFloat(el.dataset.count);
         const decimals = parseInt(el.dataset.decimals || '0', 10);
         const format = el.dataset.format || '';

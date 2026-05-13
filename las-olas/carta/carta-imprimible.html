@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Las Olas · Carta imprimible · A3 horizontal gatefold</title>
+<title>Las Olas · Carta imprimible · A3 horizontal gatefold · 30 años</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +11,9 @@
 <style>
 /* ============================================================
    LAS OLAS — Carta imprimible
-   Formato: A3 horizontal (420 × 297 mm), doble cara
-   Pliegue triple gatefold: 3 paneles de 140 × 297 mm
-   Márgenes seguros: 12 mm
-   Paleta: crema cálida + azul Mediterráneo + amarillo azafrán + ocre
+   Formato: A3 horizontal (420 × 297 mm), gatefold triple
+   2 sheets EXACTAS (cara externa + cara interna)
+   Paleta cálida valenciana familiar
 ============================================================ */
 
 @page {
@@ -25,19 +24,20 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --cream: #fbf5e9;
-  --cream-deep: #f3ead6;
-  --bone: #f7f1e2;
-  --ink: #2a1f12;
-  --ink-soft: #5b4b35;
-  --ink-mute: #7a6a52;
-  --saffron: #d99526;
-  --saffron-deep: #b97a18;
-  --ocre: #9a6f2c;
-  --sea: #2a607b;
-  --sea-deep: #194559;
-  --sea-line: #2f6884;
-  --line: rgba(42, 31, 18, 0.14);
+  --bone: #f5efe1;
+  --bone-deep: #ece3cf;
+  --cream: #faf4e6;
+  --ink: #20283a;
+  --ink-soft: #475467;
+  --ink-mute: #6c7587;
+  --sea: #1f5e7a;
+  --sea-deep: #143c4e;
+  --sea-line: #1e6582;
+  --paella: #c46a1c;
+  --paella-deep: #9a4f10;
+  --ocre: #a17536;
+  --ocre-deep: #7d5826;
+  --line: rgba(32, 40, 58, 0.14);
 
   --serif: 'Fraunces', Georgia, serif;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -55,13 +55,13 @@ html, body {
 body { padding: 30px; }
 
 /* ============================================================
-   SHEET (una página impresa A3 horizontal)
+   SHEET
 ============================================================ */
 
 .sheet {
   width: 420mm;
   height: 297mm;
-  background: var(--cream);
+  background: var(--bone);
   display: grid;
   grid-template-columns: 140mm 140mm 140mm;
   position: relative;
@@ -76,10 +76,9 @@ body { padding: 30px; }
 
 .fold {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 0; bottom: 0;
   width: 1px;
-  background: rgba(42, 31, 18, 0.10);
+  background: rgba(32, 40, 58, 0.10);
   pointer-events: none;
   z-index: 10;
 }
@@ -87,20 +86,24 @@ body { padding: 30px; }
 .fold--2 { left: 280mm; }
 
 @media print {
-  html, body {
-    padding: 0;
-    margin: 0;
-    width: 420mm;
-    height: 297mm;
-    background: white;
-  }
-  .sheet {
-    margin: 0;
-    box-shadow: none;
-    page-break-inside: avoid;
-  }
+  html, body { padding: 0; margin: 0; width: 420mm; height: 297mm; background: white; }
+  .sheet { margin: 0; box-shadow: none; page-break-inside: avoid; }
   .sheet:last-child { page-break-after: auto; }
   .fold { display: none; }
+}
+
+/* RIBBON */
+.ribbon {
+  position: absolute;
+  top: 8mm; right: -22mm;
+  transform: rotate(35deg);
+  background: var(--paella); color: var(--bone);
+  font-family: var(--sans);
+  font-size: 6.5pt; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  padding: 2mm 26mm;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
 /* ============================================================
@@ -118,10 +121,10 @@ body { padding: 30px; }
 }
 
 .panel--cream { background: var(--cream); color: var(--ink); }
-.panel--cream-deep { background: var(--cream-deep); color: var(--ink); }
+.panel--bone-deep { background: var(--bone-deep); color: var(--ink); }
 .panel--bone { background: var(--bone); color: var(--ink); }
-.panel--sea { background: var(--sea-deep); color: var(--cream); }
-.panel--ink { background: var(--ink); color: var(--cream); }
+.panel--sea { background: var(--sea-deep); color: var(--bone); }
+.panel--ink { background: var(--ink); color: var(--bone); }
 
 /* ============================================================
    COVER PANEL
@@ -129,10 +132,10 @@ body { padding: 30px; }
 
 .panel--cover {
   background:
-    linear-gradient(180deg, rgba(42,31,18,0.20) 0%, rgba(42,31,18,0.55) 55%, rgba(42,31,18,0.92) 100%),
+    linear-gradient(180deg, rgba(20,60,78,0.20) 0%, rgba(20,40,58,0.55) 55%, rgba(20,40,58,0.92) 100%),
     url('img/hero-paella.webp') center center / cover no-repeat,
     var(--ink);
-  color: var(--cream);
+  color: var(--bone);
   text-align: center;
   justify-content: space-between;
   padding: 16mm 12mm 14mm;
@@ -142,20 +145,16 @@ body { padding: 30px; }
   font-size: 7.5pt;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(251,245,233,0.78);
+  color: rgba(245,239,225,0.78);
   font-weight: 500;
   display: flex;
   justify-content: space-between;
   position: relative;
   z-index: 2;
 }
-.cover-top em { font-style: normal; color: var(--saffron); }
+.cover-top em { font-style: normal; color: var(--paella); }
 
-.cover-center {
-  margin: auto 0;
-  position: relative;
-  z-index: 2;
-}
+.cover-center { margin: auto 0; position: relative; z-index: 2; }
 
 .cover-mark {
   display: inline-flex;
@@ -164,35 +163,26 @@ body { padding: 30px; }
   gap: 6px;
   margin-bottom: 14mm;
 }
-.cover-mark__rule {
-  width: 28px;
-  height: 1.2pt;
-  background: var(--saffron);
-}
+.cover-mark__rule { width: 28px; height: 1.2pt; background: var(--paella); }
 .cover-mark__label {
   font-family: var(--sans);
   font-size: 7pt;
   letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: var(--saffron);
+  color: var(--paella);
   font-weight: 600;
 }
 
 .cover-name {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 80pt;
+  font-size: 78pt;
   line-height: 0.92;
   letter-spacing: -0.018em;
-  color: var(--cream);
+  color: var(--bone);
   margin-bottom: 5mm;
-  font-variation-settings: "opsz" 120;
 }
-.cover-name em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--saffron);
-}
+.cover-name em { font-style: italic; font-weight: 300; color: var(--paella); }
 
 .cover-tagline {
   font-family: var(--serif);
@@ -200,8 +190,8 @@ body { padding: 30px; }
   font-weight: 300;
   font-size: 13pt;
   line-height: 1.4;
-  color: rgba(251,245,233,0.88);
-  max-width: 22ch;
+  color: rgba(245,239,225,0.88);
+  max-width: 24ch;
   margin: 0 auto;
 }
 
@@ -211,7 +201,7 @@ body { padding: 30px; }
   font-size: 7pt;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--saffron);
+  color: var(--paella);
   font-weight: 600;
 }
 
@@ -221,11 +211,11 @@ body { padding: 30px; }
   font-size: 7pt;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(251,245,233,0.75);
+  color: rgba(245,239,225,0.75);
   position: relative;
   z-index: 2;
 }
-.cover-bottom strong { color: var(--cream); font-weight: 600; letter-spacing: 0.22em; }
+.cover-bottom strong { color: var(--bone); font-weight: 600; letter-spacing: 0.22em; }
 .cover-bottom div { display: flex; flex-direction: column; gap: 3px; }
 .cover-bottom .right { text-align: right; }
 
@@ -245,7 +235,7 @@ body { padding: 30px; }
   font-size: 7pt;
   letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: var(--saffron-deep);
+  color: var(--paella-deep);
   margin-bottom: 5mm;
   font-weight: 600;
 }
@@ -253,18 +243,18 @@ body { padding: 30px; }
 .story-title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 26pt;
-  line-height: 1.06;
+  font-size: 28pt;
+  line-height: 1.04;
   letter-spacing: -0.01em;
   color: var(--ink);
   margin-bottom: 5mm;
 }
-.story-title em { font-style: italic; color: var(--saffron-deep); font-weight: 300; }
+.story-title em { font-style: italic; color: var(--paella-deep); font-weight: 300; }
 
 .story-rule {
   width: 26px;
   height: 1.4pt;
-  background: var(--saffron);
+  background: var(--paella);
   margin: 5mm auto 6mm;
   border-radius: 1pt;
 }
@@ -288,10 +278,10 @@ body { padding: 30px; }
   font-size: 7pt;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--saffron-deep);
-  background: rgba(217,149,38,0.10);
+  color: var(--paella-deep);
+  background: rgba(196,106,28,0.10);
   padding: 3mm 5mm;
-  border: 0.7pt dashed var(--saffron);
+  border: 0.7pt dashed var(--paella);
   font-weight: 600;
 }
 
@@ -303,13 +293,28 @@ body { padding: 30px; }
   color: var(--sea);
 }
 
+.story-pill {
+  display: inline-block;
+  margin-bottom: 6mm;
+  padding: 1.8mm 5mm;
+  background: rgba(196,106,28,0.12);
+  border: 0.5pt solid rgba(196,106,28,0.45);
+  border-radius: 999pt;
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--paella-deep);
+  font-weight: 600;
+}
+
 /* ============================================================
-   CONTACT / INFO PANEL (contraportada)
+   CONTACT PANEL (contraportada)
 ============================================================ */
 
 .panel--contact {
   background: var(--sea-deep);
-  color: var(--cream);
+  color: var(--bone);
   text-align: center;
   justify-content: space-between;
   padding-top: 18mm;
@@ -321,7 +326,7 @@ body { padding: 30px; }
   font-size: 7pt;
   letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: var(--saffron);
+  color: var(--paella);
   margin-bottom: 6mm;
   font-weight: 600;
 }
@@ -331,18 +336,22 @@ body { padding: 30px; }
   font-weight: 500;
   font-size: 34pt;
   letter-spacing: 0.01em;
-  color: var(--cream);
+  color: var(--bone);
   line-height: 0.95;
   margin-bottom: 4mm;
 }
-.contact-name em { font-style: italic; color: var(--saffron); font-weight: 400; }
+.contact-name em { font-style: italic; color: var(--paella); font-weight: 400; }
 
 .contact-tag {
   font-family: var(--serif);
   font-style: italic;
   font-size: 10pt;
-  color: rgba(251,245,233,0.82);
+  color: rgba(245,239,225,0.85);
   margin-bottom: 8mm;
+  max-width: 28ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
 }
 
 .contact-info {
@@ -350,20 +359,20 @@ body { padding: 30px; }
   font-size: 7pt;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(251,245,233,0.78);
+  color: rgba(245,239,225,0.78);
   line-height: 2;
   margin-bottom: 6mm;
 }
-.contact-info strong { color: var(--cream); font-weight: 600; }
+.contact-info strong { color: var(--bone); font-weight: 600; }
 
 .contact-hours {
   font-family: var(--serif);
   font-style: italic;
   font-size: 8.5pt;
-  color: rgba(251,245,233,0.78);
+  color: rgba(245,239,225,0.78);
   line-height: 1.55;
   max-width: 36ch;
-  margin: 0 auto 6mm;
+  margin: 0 auto 5mm;
   padding-top: 5mm;
   border-top: 0.5pt solid var(--sea-line);
 }
@@ -371,14 +380,14 @@ body { padding: 30px; }
 .allergens-block {
   border-top: 0.5pt solid var(--sea-line);
   padding-top: 5mm;
-  margin-bottom: 5mm;
+  margin-bottom: 4mm;
 }
 .allergens-title {
   font-family: var(--sans);
   font-size: 6.5pt;
   letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: var(--saffron);
+  color: var(--paella);
   margin-bottom: 3mm;
   font-weight: 600;
 }
@@ -386,7 +395,7 @@ body { padding: 30px; }
   font-family: var(--serif);
   font-style: italic;
   font-size: 7pt;
-  color: rgba(251,245,233,0.78);
+  color: rgba(245,239,225,0.78);
   line-height: 1.55;
   max-width: 38ch;
   margin: 0 auto;
@@ -399,7 +408,7 @@ body { padding: 30px; }
   font-family: var(--serif);
   font-style: italic;
   font-size: 7.5pt;
-  color: var(--saffron);
+  color: var(--paella);
   line-height: 1.55;
   max-width: 38ch;
   margin-left: auto;
@@ -409,7 +418,7 @@ body { padding: 30px; }
   display: block;
   font-family: var(--sans); font-style: normal;
   font-size: 6pt; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--saffron); font-weight: 600;
+  color: var(--paella); font-weight: 600;
   margin-bottom: 2mm;
 }
 
@@ -420,7 +429,7 @@ body { padding: 30px; }
   font-family: var(--serif);
   font-style: italic;
   font-size: 6.5pt;
-  color: rgba(251,245,233,0.6);
+  color: rgba(245,239,225,0.6);
   line-height: 1.55;
   max-width: 44ch;
   margin-left: auto;
@@ -433,28 +442,28 @@ body { padding: 30px; }
   font-size: 5.5pt;
   letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: rgba(251,245,233,0.5);
-  opacity: 0.7;
+  color: rgba(245,239,225,0.5);
+  opacity: 0.85;
   font-weight: 500;
 }
 
 /* ============================================================
-   SECTION / DISH (listados interiores)
+   SECTION / CHAPTER / DISH
 ============================================================ */
 
 .section-head {
   text-align: center;
-  margin-bottom: 8mm;
-  padding-top: 2mm;
+  margin-bottom: 7mm;
+  padding-top: 1mm;
 }
 
 .chapter {
   font-size: 6.5pt;
   letter-spacing: 0.5em;
   text-transform: uppercase;
-  color: var(--saffron-deep);
+  color: var(--paella-deep);
   font-weight: 600;
-  margin-bottom: 4mm;
+  margin-bottom: 3.5mm;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -463,30 +472,30 @@ body { padding: 30px; }
   content: "";
   width: 14px;
   height: 1.2pt;
-  background: var(--saffron);
+  background: var(--paella);
   opacity: 0.7;
 }
 
 .section-title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 24pt;
+  font-size: 22pt;
   line-height: 1.02;
   color: var(--ink);
   letter-spacing: -0.012em;
 }
-.section-title em { font-style: italic; color: var(--saffron-deep); font-weight: 300; }
+.section-title em { font-style: italic; color: var(--paella-deep); font-weight: 300; }
 
-.panel--sea .chapter { color: var(--saffron); }
-.panel--sea .chapter::before, .panel--sea .chapter::after { background: var(--saffron); }
-.panel--sea .section-title { color: var(--cream); }
-.panel--sea .section-title em { color: var(--saffron); }
-.panel--sea .section-sub { color: rgba(251,245,233,0.78); }
+.panel--sea .chapter { color: var(--paella); }
+.panel--sea .chapter::before, .panel--sea .chapter::after { background: var(--paella); }
+.panel--sea .section-title { color: var(--bone); }
+.panel--sea .section-title em { color: var(--paella); }
+.panel--sea .section-sub { color: rgba(245,239,225,0.78); }
 
 .section-sub {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 9pt;
+  font-size: 8.5pt;
   color: var(--ink-mute);
   margin-top: 3mm;
   max-width: 36ch;
@@ -495,194 +504,79 @@ body { padding: 30px; }
   line-height: 1.45;
 }
 
-/* dish */
-
 .dishes {
   display: flex;
   flex-direction: column;
-  gap: 3.5mm;
+  gap: 3mm;
 }
 
 .dish {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 1.5mm 4mm;
-  padding-bottom: 3mm;
-  border-bottom: 0.5pt solid rgba(42,31,18,0.14);
+  padding-bottom: 2.5mm;
+  border-bottom: 0.5pt solid rgba(32,40,58,0.14);
 }
 .dish:last-child { border-bottom: none; }
 
-.panel--sea .dish { border-bottom-color: rgba(251,245,233,0.18); }
+.panel--sea .dish { border-bottom-color: rgba(245,239,225,0.18); }
 
 .dish-name {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 11.5pt;
+  font-size: 11pt;
   line-height: 1.1;
   color: var(--ink);
-  letter-spacing: 0.005em;
 }
-.panel--sea .dish-name { color: var(--cream); }
+.panel--sea .dish-name { color: var(--bone); }
 
 .dish-price {
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 7.5pt;
+  font-size: 7pt;
   color: var(--sea);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
-.panel--sea .dish-price { color: var(--saffron); }
+.panel--sea .dish-price { color: var(--paella); }
 
 .dish-desc {
   grid-column: 1 / -1;
   font-family: var(--sans);
   font-weight: 400;
-  font-size: 7.5pt;
+  font-size: 7pt;
   line-height: 1.5;
   color: var(--ink-soft);
 }
 .dish-desc em { font-style: italic; color: var(--ink-mute); }
-.panel--sea .dish-desc { color: rgba(251,245,233,0.72); }
-.panel--sea .dish-desc em { color: rgba(251,245,233,0.55); }
+.panel--sea .dish-desc { color: rgba(245,239,225,0.72); }
+.panel--sea .dish-desc em { color: rgba(245,239,225,0.55); }
 
 /* ============================================================
-   HERO PANEL — Arroces (signature interior)
-============================================================ */
-
-.panel--hero {
-  background: var(--ink);
-  text-align: center;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.panel--hero .hero-image {
-  height: 168mm;
-  background:
-    linear-gradient(180deg, rgba(42,31,18,0.05) 0%, rgba(42,31,18,0.20) 60%, rgba(42,31,18,0.85) 100%),
-    url('img/arroz-banda.webp') center center / cover no-repeat,
-    var(--ink);
-  position: relative;
-}
-
-.panel--hero .hero-image::before {
-  content: "";
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 28mm;
-  height: 28mm;
-  border: 0.7pt solid rgba(251,245,233,0.22);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.panel--hero .hero-image::after {
-  content: "Arroz a banda";
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% + 18mm));
-  font-family: var(--sans);
-  font-size: 6pt;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(251,245,233,0.55);
-  font-weight: 500;
-  pointer-events: none;
-}
-
-.panel--hero .hero-content {
-  padding: 7mm 12mm 10mm;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  color: var(--cream);
-  text-align: center;
-  background: var(--ink);
-}
-
-.panel--hero .hero-chapter {
-  font-family: var(--sans);
-  font-size: 6.5pt;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--saffron);
-  font-weight: 600;
-  margin-bottom: 3mm;
-}
-
-.panel--hero .hero-name {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 24pt;
-  line-height: 1;
-  color: var(--cream);
-  margin-bottom: 3mm;
-}
-.panel--hero .hero-name em { font-style: italic; font-weight: 300; color: var(--saffron); }
-
-.panel--hero .hero-sub {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 9pt;
-  color: rgba(251,245,233,0.78);
-  margin-bottom: 4mm;
-  max-width: 32ch;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.4;
-}
-
-.panel--hero .hero-note {
-  margin: 3mm auto 0;
-  max-width: 34ch;
-  border-top: 0.5pt solid rgba(251,245,233,0.18);
-  padding-top: 4mm;
-  font-family: var(--sans);
-  font-size: 7pt;
-  line-height: 1.5;
-  color: rgba(251,245,233,0.75);
-  font-weight: 400;
-}
-.panel--hero .hero-note strong {
-  display: block;
-  margin-bottom: 2mm;
-  font-family: var(--sans);
-  font-size: 6pt;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--saffron);
-  font-weight: 600;
-}
-
-/* ============================================================
-   ARROCES LIST — panel exclusivo de arroces (signature)
+   ARROCES PANEL (signature interior)
 ============================================================ */
 
 .panel--arroces {
-  background: var(--cream-deep);
+  background: var(--bone-deep);
   display: flex;
   flex-direction: column;
 }
-.panel--arroces .section-head { margin-bottom: 7mm; }
-.panel--arroces .dishes { gap: 3mm; }
-.panel--arroces .dish { padding-bottom: 2.5mm; }
-.panel--arroces .dish-name { font-size: 12pt; }
-.panel--arroces .dish-desc { font-size: 7.5pt; }
+.panel--arroces .section-head { margin-bottom: 5mm; }
+.panel--arroces .dishes { gap: 2.4mm; }
+.panel--arroces .dish { padding-bottom: 2mm; }
+.panel--arroces .dish-name { font-size: 10.5pt; }
+.panel--arroces .dish-desc { font-size: 7pt; }
 
 .arroces-footnote {
-  margin-top: 6mm;
-  padding: 4mm 5mm;
-  background: rgba(217,149,38,0.10);
-  border-left: 1.5pt solid var(--saffron);
+  margin-top: 4mm;
+  padding: 3mm 4mm;
+  background: rgba(196,106,28,0.10);
+  border-left: 1.5pt solid var(--paella);
   font-family: var(--serif);
   font-style: italic;
-  font-size: 8pt;
+  font-size: 7.5pt;
   line-height: 1.5;
   color: var(--ink-soft);
 }
@@ -690,12 +584,30 @@ body { padding: 30px; }
   display: block;
   font-family: var(--sans); font-style: normal;
   font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--saffron-deep); font-weight: 600;
-  margin-bottom: 2mm;
+  color: var(--paella-deep); font-weight: 600;
+  margin-bottom: 1.5mm;
+}
+
+.arroces-image-strip {
+  height: 22mm;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: 4mm;
+  margin-left: -12mm;
+  margin-right: -12mm;
+  margin-bottom: -14mm;
+  flex-shrink: 0;
+}
+.arroces-image-strip::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(32,40,58,0) 30%, rgba(32,40,58,0.55) 100%);
 }
 
 /* ============================================================
-   SPLIT PANEL (postres + bebidas, entrantes + pescados)
+   SPLIT PANEL (dos secciones apiladas)
 ============================================================ */
 
 .panel--split {
@@ -708,61 +620,155 @@ body { padding: 30px; }
 }
 
 .split-section {
-  padding: 12mm 12mm;
+  padding: 11mm 11mm;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
 .split-section + .split-section {
-  border-top: 1px solid rgba(42,31,18,0.16);
+  border-top: 1px solid rgba(32,40,58,0.16);
 }
 
-.split-section .section-head { margin-bottom: 5mm; padding-top: 0; }
-.split-section .section-title { font-size: 18pt; }
-.split-section .section-sub { font-size: 8pt; }
-.split-section .dishes { gap: 2.5mm; }
-.split-section .dish { padding-bottom: 2.5mm; }
-.split-section .dish-name { font-size: 10pt; }
-.split-section .dish-desc { font-size: 7pt; line-height: 1.4; }
-.split-section .dish-price { font-size: 7pt; }
+.split-section .section-head { margin-bottom: 4mm; padding-top: 0; }
+.split-section .section-title { font-size: 16pt; }
+.split-section .section-sub { font-size: 7.5pt; }
+.split-section .dishes { gap: 2.2mm; }
+.split-section .dish { padding-bottom: 2mm; }
+.split-section .dish-name { font-size: 9.5pt; }
+.split-section .dish-desc { font-size: 6.8pt; line-height: 1.4; }
+.split-section .dish-price { font-size: 6.8pt; }
 
 /* ============================================================
-   IMAGE strip (banda inferior decorativa)
+   MENÚ DIARIO PANEL (ancla)
 ============================================================ */
 
-.img-strip {
-  height: 28mm;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  margin-top: auto;
-  margin-left: -12mm;
-  margin-right: -12mm;
-  margin-bottom: -14mm;
-  flex-shrink: 0;
+.panel--menu {
+  background: var(--sea-deep);
+  color: var(--bone);
+  display: flex;
+  flex-direction: column;
+  padding: 14mm 12mm;
 }
-.img-strip::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(42,31,18,0) 30%, rgba(42,31,18,0.55) 100%);
-  pointer-events: none;
-}
-.img-strip__caption {
-  position: absolute;
-  bottom: 3mm;
-  left: 0;
-  right: 0;
+
+.panel--menu .menu-eyebrow {
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--paella);
+  font-weight: 600;
   text-align: center;
+  margin-bottom: 4mm;
+  display: inline-flex; align-items: center; gap: 8px;
+  align-self: center;
+}
+.panel--menu .menu-eyebrow::before,
+.panel--menu .menu-eyebrow::after {
+  content: ""; width: 14px; height: 1.2pt;
+  background: var(--paella); opacity: 0.7;
+}
+.panel--menu .menu-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22pt;
+  line-height: 1.04;
+  color: var(--bone);
+  text-align: center;
+  margin-bottom: 4mm;
+}
+.panel--menu .menu-title em { font-style: italic; color: var(--paella); font-weight: 300; }
+
+.panel--menu .menu-sub {
   font-family: var(--serif);
   font-style: italic;
+  font-size: 8.5pt;
+  color: rgba(245,239,225,0.8);
+  text-align: center;
+  margin-bottom: 7mm;
+  max-width: 32ch;
+  margin-left: auto; margin-right: auto;
+  line-height: 1.45;
+}
+
+.menu-price-card {
+  background: rgba(245,239,225,0.06);
+  border: 0.7pt solid rgba(245,239,225,0.22);
+  border-radius: 2pt;
+  padding: 6mm 5mm;
+  text-align: center;
+  margin-bottom: 6mm;
+}
+.menu-price-label {
+  font-family: var(--sans);
+  font-size: 6.5pt; letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--paella);
+  font-weight: 600;
+  margin-bottom: 2mm;
+}
+.menu-price-num {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 42pt;
+  line-height: 1;
+  color: var(--bone);
+}
+.menu-price-num em { font-style: italic; color: var(--paella); font-weight: 400; }
+.menu-price-desc {
+  margin-top: 2mm;
+  font-family: var(--sans);
+  font-size: 7pt;
+  color: rgba(245,239,225,0.78);
+  letter-spacing: 0.06em;
+}
+
+.menu-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5mm 4mm;
   font-size: 8pt;
-  color: var(--cream);
-  text-shadow: 0 1px 6px rgba(42,31,18,0.8);
-  letter-spacing: 0.02em;
-  z-index: 2;
+  margin-bottom: 4mm;
+}
+.menu-list dt {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--paella);
+  font-size: 8pt;
+}
+.menu-list dd {
+  color: rgba(245,239,225,0.88);
+  line-height: 1.45;
+  font-size: 7.5pt;
+}
+
+.menu-note {
+  margin-top: auto;
+  padding-top: 4mm;
+  border-top: 0.5pt solid rgba(245,239,225,0.18);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 7pt;
+  color: rgba(245,239,225,0.65);
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* ============================================================
+   POSTRES Y BEBIDAS PANEL (mismo split, pero cream + sea split)
+============================================================ */
+
+.panel--final {
+  background: var(--cream);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 0;
+  border-left: 1px solid var(--line);
+}
+
+.panel--final .split-section { padding: 11mm 11mm; }
+.panel--final .split-section + .split-section {
+  border-top: none;
 }
 
 </style>
@@ -770,35 +776,36 @@ body { padding: 30px; }
 <body>
 
 <!-- ============================================================
-     SHEET 1 (cara externa: lo que ves cuando la carta está plegada)
-     Triple panel: [CONTACTO/INFO] | [HISTORIA] | [PORTADA]
+     SHEET 1 (cara externa al plegar)
+     [CONTACTO/INFO] | [LA CASA] | [PORTADA]
 ============================================================ -->
 <div class="sheet">
   <div class="fold fold--1"></div>
   <div class="fold fold--2"></div>
 
-  <!-- Panel: contraportada (queda detrás al plegar) -->
+  <!-- Panel: contraportada -->
   <section class="panel panel--contact">
     <div>
       <div class="contact-mark">Las Olas · Calpe</div>
       <h2 class="contact-name">Las <em>Olas</em></h2>
-      <p class="contact-tag">Paellas y arroces en el paseo.</p>
+      <p class="contact-tag">30 años de cocina valenciana familiar en el paseo del Arenal–Bol.</p>
     </div>
 
     <div class="contact-info">
-      <strong>Avenida Europa</strong><br>
+      <strong>Av. Europa</strong><br>
+      Edificio Oceanic · Playa Bol<br>
       Paseo Arenal–Bol · Calpe<br>
-      <em style="color: rgba(251,245,233,0.55); font-style: italic; letter-spacing: 0.04em; text-transform: none;">Número y CP a confirmar</em>
+      <em style="color: rgba(245,239,225,0.55); font-style: italic; letter-spacing: 0.04em; text-transform: none;">Número exacto y CP a confirmar</em>
     </div>
 
     <div class="contact-hours">
-      Reservas y teléfono — <em>a definir con el equipo.</em><br>
-      Horario de cocina — a confirmar.
+      Cocina abierta cada día — comidas y cenas.<br>
+      Teléfono de reservas — <em>a definir con el equipo.</em>
     </div>
 
     <div class="reserva-note">
       <strong>Reservar la paella</strong>
-      Mínimo 25 minutos de elaboración. Conviene avisar con antelación, especialmente en mesa grande.
+      Mínimo 25 minutos de elaboración. Conviene avisar con antelación, especialmente para mesa grande.
     </div>
 
     <div class="allergens-block">
@@ -809,34 +816,37 @@ body { padding: 30px; }
     </div>
 
     <div class="disclaimer">
-      Carta editorial preparada por Kenaz como muestra. Variedades, precios y detalles finales se cierran con vosotros. Imágenes referenciales.
+      Carta editorial preparada por Kenaz Studio como propuesta. Carta de platos verificada de la web propia y reseñas. Precios marcados como <em>PVP / consultar</em> son provisionales; el menú diario 17,50 € sí está verificado. Historia familiar y detalles definitivos se cierran con el equipo de Las Olas.
     </div>
 
     <div class="kenaz-mark">Diseño · Kenaz Studio</div>
   </section>
 
-  <!-- Panel: historia / la casa -->
+  <!-- Panel: la casa / historia -->
   <section class="panel panel--story">
+    <span class="story-pill">· 30 años en el paseo ·</span>
     <p class="story-eyebrow">La casa</p>
-    <h2 class="story-title">Cocina del<br><em>paseo</em>.</h2>
+    <h2 class="story-title">Cocina valenciana <em>familiar</em>.</h2>
 
     <div class="story-rule"></div>
 
     <div class="story-body">
-      <p>Estamos en el paseo marítimo del Arenal, mirando al mar. La cocina hace lo que esta costa hace bien: paellas y arroces valencianos, al fuego que les toca.</p>
-      <p>Cada arroz se prepara en su sartén y necesita su tiempo. Vale la pena esperarlo.</p>
+      <p>Tres décadas dando de comer en el paseo Arenal–Bol de Calpe. Restaurante familiar, abierto cada día, con la receta de siempre.</p>
+      <p>Arroces hechos en su sartén, pescado de la lonja, carnes a la plancha y un menú diario para los vecinos del paseo.</p>
     </div>
 
-    <div class="story-placeholder">Historia real · a definir</div>
+    <div class="story-placeholder">Historia exacta · a definir</div>
 
     <p class="story-signature">— Las Olas, frente al Mediterráneo.</p>
   </section>
 
-  <!-- Panel: PORTADA (cara visible al plegar) -->
+  <!-- Panel: portada -->
   <section class="panel panel--cover">
+    <span class="ribbon">Propuesta · Kenaz</span>
+
     <div class="cover-top">
       <span>Carta</span>
-      <span><em>Temporada</em></span>
+      <span><em>30 años</em></span>
     </div>
 
     <div class="cover-center">
@@ -848,80 +858,80 @@ body { padding: 30px; }
 
       <h1 class="cover-name">Las <em>Olas</em></h1>
 
-      <p class="cover-tagline">Paellas y arroces en el paseo.</p>
+      <p class="cover-tagline">Cocina valenciana familiar en el paseo del Arenal–Bol.</p>
 
-      <div class="cover-meta-line">Av. Europa · Paseo Arenal</div>
+      <div class="cover-meta-line">Av. Europa · Playa Bol · Calpe</div>
     </div>
 
     <div class="cover-bottom">
       <div>
-        <span>Cocina</span>
-        <strong>Valenciana</strong>
+        <span>Tradición</span>
+        <strong>30 años</strong>
       </div>
       <div class="right">
-        <span>Mesa</span>
-        <strong>Frente al mar</strong>
+        <span>Menú diario</span>
+        <strong>17,50 € con vino</strong>
       </div>
     </div>
   </section>
 </div>
 
 <!-- ============================================================
-     SHEET 2 (cara interna: lo que ves al abrir la carta)
-     Triple panel: [SIGNATURE ARROCES] | [ENTRANTES + PESCADOS] | [POSTRES + BEBIDAS]
+     SHEET 2 (cara interna al abrir)
+     [ARROCES (signature)] | [PESCADOS + CARNES + TAPAS] | [MENÚ DIARIO + POSTRES/BEBIDAS]
 ============================================================ -->
 <div class="sheet">
   <div class="fold fold--1"></div>
   <div class="fold fold--2"></div>
 
-  <!-- Panel: ARROCES (signature, el protagonista) -->
+  <!-- Panel: ARROCES (protagonista) -->
   <section class="panel panel--arroces">
     <div class="section-head">
-      <div class="chapter">La firma</div>
-      <h2 class="section-title">Nuestros <em>arroces</em></h2>
+      <div class="chapter">La firma de la casa</div>
+      <h2 class="section-title">Arroces <em>de la casa</em></h2>
       <p class="section-sub">Hechos en su sartén, con caldo del día. Sin atajos.</p>
     </div>
 
     <div class="dishes">
       <article class="dish">
-        <h3 class="dish-name">Paella valenciana</h3>
-        <span class="dish-price">PVP · —</span>
-        <p class="dish-desc">Pollo, conejo, garrofó, judía verde, tomate, azafrán. <em>Receta de la casa a definir.</em></p>
-      </article>
-
-      <article class="dish">
-        <h3 class="dish-name">Paella de marisco</h3>
-        <span class="dish-price">PVP · —</span>
-        <p class="dish-desc">Gambas, mejillones, calamar, cigalas según mercado. <em>Mariscos a confirmar.</em></p>
-      </article>
-
-      <article class="dish">
-        <h3 class="dish-name">Paella mixta</h3>
-        <span class="dish-price">PVP · —</span>
-        <p class="dish-desc">Carne y marisco. La combinación clásica.</p>
+        <h3 class="dish-name">Paella alicantina</h3>
+        <span class="dish-price">PVP · consultar</span>
+        <p class="dish-desc">La receta de la casa, base alicantina. <em>Ingredientes exactos a definir.</em></p>
       </article>
 
       <article class="dish">
         <h3 class="dish-name">Arroz a banda</h3>
-        <span class="dish-price">PVP · —</span>
-        <p class="dish-desc">Caldo de pescado de roca. Alioli aparte. Marinero puro.</p>
+        <span class="dish-price">PVP · consultar</span>
+        <p class="dish-desc">Caldo de pescado de roca, alioli aparte. Marinero puro.</p>
       </article>
 
       <article class="dish">
         <h3 class="dish-name">Arroz negro</h3>
-        <span class="dish-price">PVP · —</span>
-        <p class="dish-desc">Tinta de calamar y sepia. Acabado con alioli suave.</p>
+        <span class="dish-price">PVP · consultar</span>
+        <p class="dish-desc">Tinta de calamar y sepia. Acabado con alioli suave de la casa.</p>
       </article>
 
       <article class="dish">
         <h3 class="dish-name">Arroz del señorito</h3>
-        <span class="dish-price">PVP · —</span>
+        <span class="dish-price">PVP · consultar</span>
         <p class="dish-desc">Marisco pelado, sin trabajo en la mesa. Caldo intenso.</p>
       </article>
 
       <article class="dish">
+        <h3 class="dish-name">Paella de marisco</h3>
+        <span class="dish-price">PVP · consultar</span>
+        <p class="dish-desc">Gambas, mejillones, calamar, cigalas según mercado.</p>
+      </article>
+
+      <article class="dish">
+        <h3 class="dish-name">Paella mixta</h3>
+        <span class="dish-price">PVP · consultar</span>
+        <p class="dish-desc">Carne y marisco. La combinación clásica.</p>
+      </article>
+
+      <article class="dish">
         <h3 class="dish-name">Fideuá</h3>
-        <span class="dish-price">PVP · —</span>
+        <span class="dish-price">PVP · consultar</span>
         <p class="dish-desc">Fideo fino en lugar de arroz. Caldo de pescado y marisco.</p>
       </article>
     </div>
@@ -931,138 +941,133 @@ body { padding: 30px; }
       Reservar la paella con antelación. Mínimo 25 minutos de elaboración por tratarse de cocina al fuego.
     </div>
 
-    <div class="img-strip" style="background-image: linear-gradient(180deg, rgba(42,31,18,0) 30%, rgba(42,31,18,0.55) 100%), url('img/portada-mesa.webp');">
-      <span class="img-strip__caption"><em>Mesa con vista al paseo</em></span>
-    </div>
+    <div class="arroces-image-strip" style="background-image: linear-gradient(180deg, rgba(32,40,58,0) 30%, rgba(32,40,58,0.55) 100%), url('img/arroz-banda.webp');"></div>
   </section>
 
-  <!-- Panel: split — Entrantes + Pescados/Carnes -->
+  <!-- Panel: split — Pescados + Carnes + Tapas/Sopas -->
   <section class="panel panel--split">
     <div class="split-section">
       <div class="section-head">
-        <div class="chapter">Para empezar</div>
-        <h2 class="section-title">Entrantes</h2>
-        <p class="section-sub">Para abrir mesa mientras se hace el arroz.</p>
-      </div>
-
-      <div class="dishes">
-        <article class="dish">
-          <h3 class="dish-name">Ensalada de la casa</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc"><em>Ingredientes a definir con el equipo.</em></p>
-        </article>
-        <article class="dish">
-          <h3 class="dish-name">Gambas a la plancha</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc">Producto fresco según mercado.</p>
-        </article>
-        <article class="dish">
-          <h3 class="dish-name">Calamares a la andaluza</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc">Rebozado fino, limón de la costa.</p>
-        </article>
-        <article class="dish">
-          <h3 class="dish-name">Croquetas caseras</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc"><em>Variedad de la casa a confirmar.</em></p>
-        </article>
-        <article class="dish">
-          <h3 class="dish-name">Mejillones al vapor</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc">Limón, ajo y perejil.</p>
-        </article>
-      </div>
-    </div>
-
-    <div class="split-section">
-      <div class="section-head">
-        <div class="chapter">Del mar y de la brasa</div>
+        <div class="chapter">Del mar y la brasa</div>
         <h2 class="section-title">Pescados <em>y carnes</em></h2>
-        <p class="section-sub">Producto según mercado. Pizarra del día.</p>
+        <p class="section-sub">Producto verificado de la carta. Pizarra del día según lonja.</p>
       </div>
 
       <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Lubina</h3>
+          <span class="dish-price">PVP · consultar</span>
+          <p class="dish-desc">A la plancha o a la sal. <em>Detalle a confirmar.</em></p>
+        </article>
+        <article class="dish">
+          <h3 class="dish-name">Emperador</h3>
+          <span class="dish-price">PVP · consultar</span>
+          <p class="dish-desc">A la plancha con aceite de oliva y limón.</p>
+        </article>
+        <article class="dish">
+          <h3 class="dish-name">Lenguado</h3>
+          <span class="dish-price">PVP · consultar</span>
+          <p class="dish-desc">A la plancha. Producto fresco según mercado.</p>
+        </article>
         <article class="dish">
           <h3 class="dish-name">Pescado del día</h3>
           <span class="dish-price">S/M</span>
-          <p class="dish-desc">A la sal, plancha o espalda. <em>Lista a definir.</em></p>
+          <p class="dish-desc">Lo que llegue de la lonja. <em>Pizarra del día.</em></p>
         </article>
         <article class="dish">
-          <h3 class="dish-name">Lubina o dorada</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc"><em>Preparación de la casa a confirmar.</em></p>
+          <h3 class="dish-name">Entrecot a la pimienta</h3>
+          <span class="dish-price">PVP · consultar</span>
+          <p class="dish-desc">Salsa de pimienta verde de la casa.</p>
         </article>
         <article class="dish">
-          <h3 class="dish-name">Entrecot a la plancha</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc">Carne madurada, guarnición de la casa.</p>
+          <h3 class="dish-name">Paleta de cordero</h3>
+          <span class="dish-price">PVP · consultar</span>
+          <p class="dish-desc">Asado lento, tradicional valenciano.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="split-section">
+      <div class="section-head">
+        <div class="chapter">Para empezar</div>
+        <h2 class="section-title">Tapas <em>y sopas</em></h2>
+        <p class="section-sub">Variedad de tapas valencianas y sopas caseras.</p>
+      </div>
+
+      <div class="dishes">
+        <article class="dish">
+          <h3 class="dish-name">Tapas valencianas</h3>
+          <span class="dish-price">PVP · consultar</span>
+          <p class="dish-desc"><em>Variedad completa de la casa a detallar.</em></p>
         </article>
         <article class="dish">
-          <h3 class="dish-name">Solomillo</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc"><em>Punto y salsa a definir.</em></p>
+          <h3 class="dish-name">Sopa de pescado</h3>
+          <span class="dish-price">PVP · consultar</span>
+          <p class="dish-desc">Caldo casero, marisco según día.</p>
+        </article>
+        <article class="dish">
+          <h3 class="dish-name">Sopa de fideos</h3>
+          <span class="dish-price">PVP · consultar</span>
+          <p class="dish-desc">Receta tradicional de la casa.</p>
+        </article>
+        <article class="dish">
+          <h3 class="dish-name">Mariscos del día</h3>
+          <span class="dish-price">S/M</span>
+          <p class="dish-desc">Gambas, mejillones, mariscos según mercado.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Panel: split — Postres + Bebidas -->
-  <section class="panel panel--split">
-    <div class="split-section">
-      <div class="section-head">
-        <div class="chapter">Para cerrar</div>
-        <h2 class="section-title">Postres</h2>
-        <p class="section-sub">Hechos en casa.</p>
-      </div>
+  <!-- Panel: MENÚ DIARIO + POSTRES/BEBIDAS (split) -->
+  <section class="panel panel--menu">
+    <span class="menu-eyebrow">El ancla diaria</span>
+    <h2 class="menu-title">Menú diario <em>con vino</em></h2>
+    <p class="menu-sub">Verificado · vigente · pensado para los vecinos del paseo y quien viene a comer cada día.</p>
 
-      <div class="dishes">
-        <article class="dish">
-          <h3 class="dish-name">Tarta de queso</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc"><em>Receta exacta a definir.</em></p>
+    <div class="menu-price-card">
+      <div class="menu-price-label">Menú diario · IVA incluido</div>
+      <div class="menu-price-num">17,<em>50</em> €</div>
+      <div class="menu-price-desc">por persona · vino incluido</div>
+    </div>
+
+    <dl class="menu-list">
+      <dt>Primero</dt><dd>Sopa, ensalada o entrante del día.</dd>
+      <dt>Segundo</dt><dd>Carne, pescado o arroz del día.</dd>
+      <dt>Postre</dt><dd>Postres caseros o café.</dd>
+      <dt>Bebida</dt><dd>Vino de la casa, agua o refresco.</dd>
+    </dl>
+
+    <div style="border-top: 0.5pt solid rgba(245,239,225,0.18); padding-top: 5mm; margin-top: 2mm;">
+      <div style="font-family: var(--sans); font-size: 6.5pt; letter-spacing: 0.45em; text-transform: uppercase; color: var(--paella); font-weight: 600; text-align: center; margin-bottom: 3mm;">
+        Postres y bebidas
+      </div>
+      <div class="dishes" style="gap: 2mm;">
+        <article class="dish" style="border-bottom-color: rgba(245,239,225,0.18); padding-bottom: 1.8mm;">
+          <h3 class="dish-name" style="color: var(--bone); font-size: 9pt;">Postres caseros</h3>
+          <span class="dish-price" style="color: var(--paella); font-size: 6.8pt;">PVP · consultar</span>
+          <p class="dish-desc" style="color: rgba(245,239,225,0.72); font-size: 6.8pt;"><em style="color: rgba(245,239,225,0.55);">Variedad de la casa a detallar.</em></p>
         </article>
-        <article class="dish">
-          <h3 class="dish-name">Helado artesano</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc">Variedad según temporada.</p>
+        <article class="dish" style="border-bottom-color: rgba(245,239,225,0.18); padding-bottom: 1.8mm;">
+          <h3 class="dish-name" style="color: var(--bone); font-size: 9pt;">Vino de la casa</h3>
+          <span class="dish-price" style="color: var(--paella); font-size: 6.8pt;">PVP · consultar</span>
+          <p class="dish-desc" style="color: rgba(245,239,225,0.72); font-size: 6.8pt;">Tinto, blanco o rosado. <em style="color: rgba(245,239,225,0.55);">Bodega a definir.</em></p>
         </article>
-        <article class="dish">
-          <h3 class="dish-name">Postre del día</h3>
-          <span class="dish-price">PVP · —</span>
-          <p class="dish-desc"><em>Sugerencia de la casa.</em></p>
+        <article class="dish" style="border-bottom-color: rgba(245,239,225,0.18); padding-bottom: 1.8mm;">
+          <h3 class="dish-name" style="color: var(--bone); font-size: 9pt;">Sangría de la casa</h3>
+          <span class="dish-price" style="color: var(--paella); font-size: 6.8pt;">PVP · consultar</span>
+          <p class="dish-desc" style="color: rgba(245,239,225,0.72); font-size: 6.8pt;">Jarra o copa. Receta tradicional.</p>
+        </article>
+        <article class="dish" style="border-bottom: none; padding-bottom: 0;">
+          <h3 class="dish-name" style="color: var(--bone); font-size: 9pt;">Cervezas, refrescos y aguas</h3>
+          <span class="dish-price" style="color: var(--paella); font-size: 6.8pt;">PVP · consultar</span>
+          <p class="dish-desc" style="color: rgba(245,239,225,0.72); font-size: 6.8pt;">Selección completa de barra.</p>
         </article>
       </div>
     </div>
 
-    <div class="split-section" style="background: var(--sea-deep); color: var(--cream); border-top: none;">
-      <div class="section-head">
-        <div class="chapter" style="color: var(--saffron);">Bodega y barra</div>
-        <h2 class="section-title" style="color: var(--cream);">Bebidas <em style="color: var(--saffron);">y vinos</em></h2>
-        <p class="section-sub" style="color: rgba(251,245,233,0.78);">Carta corta, elegida con criterio.</p>
-      </div>
-
-      <div class="dishes">
-        <article class="dish" style="border-bottom-color: rgba(251,245,233,0.18);">
-          <h3 class="dish-name" style="color: var(--cream);">Sangría de la casa</h3>
-          <span class="dish-price" style="color: var(--saffron);">PVP · —</span>
-          <p class="dish-desc" style="color: rgba(251,245,233,0.72);">Vino tinto, frutas de temporada. Jarra o copa.</p>
-        </article>
-        <article class="dish" style="border-bottom-color: rgba(251,245,233,0.18);">
-          <h3 class="dish-name" style="color: var(--cream);">Vino de la casa</h3>
-          <span class="dish-price" style="color: var(--saffron);">PVP · —</span>
-          <p class="dish-desc" style="color: rgba(251,245,233,0.72);">Tinto, blanco o rosado. <em>Bodega a definir.</em></p>
-        </article>
-        <article class="dish" style="border-bottom-color: rgba(251,245,233,0.18);">
-          <h3 class="dish-name" style="color: var(--cream);">Cervezas</h3>
-          <span class="dish-price" style="color: var(--saffron);">PVP · —</span>
-          <p class="dish-desc" style="color: rgba(251,245,233,0.72);">Caña, doble, sin alcohol. Marcas a definir.</p>
-        </article>
-        <article class="dish" style="border-bottom: none;">
-          <h3 class="dish-name" style="color: var(--cream);">Refrescos y aguas</h3>
-          <span class="dish-price" style="color: var(--saffron);">PVP · —</span>
-          <p class="dish-desc" style="color: rgba(251,245,233,0.72);">Selección completa.</p>
-        </article>
-      </div>
+    <div class="menu-note">
+      Composición exacta de cada día se cierra cada mañana con la cocina.
     </div>
   </section>
 </div>

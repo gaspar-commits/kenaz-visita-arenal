@@ -4,16 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#f5d4c2" />
-<title>Morena · Restobar en el paseo de Calpe</title>
-<meta name="description" content="Morena restobar en el paseo Arenal de Calpe. Mesa con vistas, copa al atardecer y cocina mediterránea para compartir frente al mar." />
+<title>Morena · Beach bar de cócteles en el paseo de Calpe</title>
+<meta name="description" content="Morena, beach bar de cócteles en el paseo Arenal de Calpe. Cócteles al atardecer, cocina internacional casual y terraza dog-friendly frente al mar." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   /* ==================================================
-     MORENA — Restobar paseo Arenal, Calpe
-     Vibra atardecer mediterraneo, coctel + cocina.
-     Paleta: rosa salmon + naranja coral + azul atardecer + crema
+     MORENA — Beach bar paseo Arenal, Calpe
+     Cócteles al atardecer + cocina internacional casual.
+     Dog-friendly. Paleta: salmon + coral + atardecer + crema.
      Display: Fraunces | Body: Inter
      ================================================== */
 
@@ -259,6 +259,29 @@
     opacity: 0.85;
   }
   .hero-meta-item strong { color: var(--salmon); font-weight: 500; }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-md);
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(251, 241, 230, 0.12);
+    border: 1px solid rgba(251, 241, 230, 0.22);
+    border-radius: 999px;
+    font-size: var(--fs-xs);
+    color: var(--crema-bright);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .hero-badge svg { flex-shrink: 0; }
 
   /* ============ CLAIM ============ */
   .claim {
@@ -432,6 +455,24 @@
   @media (min-width: 720px) {
     .carta-grid { grid-template-columns: repeat(2, 1fr); }
   }
+  @media (min-width: 1080px) {
+    .carta-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .carta-card--feature {
+    background: linear-gradient(160deg, var(--azul-atardecer) 0%, var(--coral-deep) 100%);
+    color: var(--crema-bright);
+    border-color: transparent;
+  }
+  @media (min-width: 1080px) {
+    .carta-card--feature { grid-column: span 1; grid-row: span 2; }
+  }
+  .carta-card--feature .carta-card-num { color: var(--salmon-soft); }
+  .carta-card--feature h3 { color: var(--crema-bright); }
+  .carta-card--feature h3 em { color: var(--salmon-soft); }
+  .carta-card--feature p { color: var(--crema); opacity: 0.92; }
+  .carta-card--feature ul li { color: var(--crema-bright); }
+  .carta-card--feature ul li::before { color: var(--salmon-soft); }
+  .carta-card--feature:hover { border-color: var(--salmon-soft); }
   .carta-card {
     background: var(--crema-bright);
     border: 1px solid var(--linea);
@@ -737,9 +778,17 @@
     </picture>
   </div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Restobar · Paseo Arenal · Calpe</p>
-    <h1>Mesa con vistas,<br /><em>copa al atardecer.</em></h1>
-    <p class="hero-sub">Cocina mediterránea para compartir, cócteles bien hechos y el mejor sitio del paseo cuando se pone el sol.</p>
+    <p class="hero-eyebrow">Beach bar · Paseo Arenal · Calpe</p>
+    <h1>Cócteles con vistas,<br /><em>el paseo al atardecer.</em></h1>
+    <p class="hero-sub">Beach bar de cócteles frente al mar. Cocina internacional casual, terraza dog-friendly y el mejor sitio del paseo cuando se pone el sol.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><circle cx="9" cy="10" r="2"/><path d="M7 17c0-2 2-4 5-4s5 2 5 4-2 4-5 4-5-2-5-4z"/></svg>
+        Dog-friendly
+      </span>
+      <span class="hero-badge">Cócteles del atardecer</span>
+      <span class="hero-badge">Terraza frente al mar</span>
+    </div>
     <div class="hero-cta-row">
       <a href="#visita" class="btn-primary">Reservar mesa →</a>
       <a href="#carta" class="btn-ghost">Ver la carta</a>
@@ -753,9 +802,9 @@
 
 <section class="claim">
   <div class="claim-inner">
-    <p class="claim-eyebrow">Restobar</p>
-    <h2>El paseo, una copa y algo bueno <em>de picar.</em></h2>
-    <p>Morena es restaurante a mediodía y barra de cócteles al atardecer. Mesa frente al mar, cocina mediterránea sin pretensiones y una carta de copas pensada para sentarse sin reloj.</p>
+    <p class="claim-eyebrow">Beach bar · Paseo Arenal</p>
+    <h2>Cócteles frente al mar y algo bueno <em>de picar.</em></h2>
+    <p>Morena es beach bar de cócteles en el paseo de Calpe. Cocina internacional casual para acompañar la copa, terraza dog-friendly y carta de cócteles pensada para sentarse sin reloj.</p>
   </div>
 </section>
 
@@ -767,9 +816,10 @@
       <p>Llegas a las 19 h, pides una copa, se va el sol detrás del Peñón. Una hora después, la mesa se convierte en cena. Ese momento es Morena.</p>
       <p>Vista directa al paseo, sombra cuando aprieta el sol y luz cálida cuando se va. El sitio que querías para terminar el día sin entrar a casa todavía.</p>
       <ul class="atardecer-list">
-        <li>Mesas exteriores con vista al paseo</li>
         <li>Carta de cócteles del atardecer (18 — 21 h)</li>
-        <li>Cocina abierta de mediodía a noche</li>
+        <li>Cocina internacional casual abierta todo el día</li>
+        <li>Terraza dog-friendly con water bowls</li>
+        <li>Mesas exteriores con vista al paseo</li>
       </ul>
     </div>
     <div class="atardecer-img">

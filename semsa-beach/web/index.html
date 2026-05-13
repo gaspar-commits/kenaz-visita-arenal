@@ -230,6 +230,64 @@
     .carta-grid { grid-template-columns: repeat(4, 1fr); }
   }
 
+  /* MUSICA EN VIVO */
+  .musica {
+    background: var(--sea-deep);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .musica::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 18% 32%, rgba(198,154,74,0.18), transparent 55%),
+      radial-gradient(circle at 82% 70%, rgba(110,156,179,0.22), transparent 60%);
+    pointer-events: none;
+  }
+  .musica .wrap { position: relative; z-index: 1; }
+  .musica .eyebrow { color: var(--gold); }
+  .musica .section-title { color: var(--cream); max-width: 22ch; }
+  .musica .section-title em { color: var(--gold); }
+  .musica .lede { color: rgba(251,246,238,0.78); }
+  .musica-grid {
+    display: grid; gap: 28px;
+    grid-template-columns: 1fr;
+    margin-top: 48px;
+  }
+  .musica-card {
+    border: 1px solid rgba(251,246,238,0.14);
+    padding: 32px 28px;
+    background: rgba(251,246,238,0.03);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 4px;
+  }
+  .musica-card .label {
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px; font-weight: 500;
+  }
+  .musica-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .musica-card p {
+    color: rgba(251,246,238,0.75);
+    font-size: 15px; line-height: 1.6;
+  }
+  .musica-card .when {
+    margin-top: 18px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sea-light);
+  }
+  @media (min-width: 760px) {
+    .musica-grid { grid-template-columns: 1fr 1fr; }
+  }
+
   /* GALERIA */
   .galeria { background: var(--sand-deep); }
   .gal-grid {
@@ -346,6 +404,7 @@
     <div class="nav-links">
       <a href="#sitio">El sitio</a>
       <a href="#carta">La carta</a>
+      <a href="#musica">Música</a>
       <a href="#galeria">Galería</a>
       <a href="#visita">Visita</a>
     </div>
@@ -360,7 +419,7 @@
     <div class="hero-kicker">Primera línea · Calle Alemania 4</div>
     <h1 class="hero-title">El Peñón <em>desde tu mesa.</em></h1>
     <p class="hero-sub">
-      Restaurante de playa frente al Peñón de Ifach. Cocina mediterránea, cócteles al sol y sobremesas largas con los pies casi en la arena. Dog-friendly.
+      Restaurante de playa frente al Peñón de Ifach. Carnes premium a la brasa, cócteles de autor y música en vivo al atardecer. Sobremesas largas con los pies casi en la arena. Dog-friendly.
     </p>
     <div class="hero-actions">
       <a href="#visita" class="btn btn-primary">Reservar mesa</a>
@@ -405,34 +464,70 @@
 <section class="carta" id="carta">
   <div class="wrap">
     <div class="eyebrow">La carta</div>
-    <h2 class="section-title">Cocina mediterránea <em>con los pies en el mar.</em></h2>
+    <h2 class="section-title">Carnes premium <em>frente al mar.</em></h2>
     <p class="lede">
-      Estructura provisional de la carta. Los platos exactos, sus descripciones y los precios los definimos con vosotros en la próxima reunión.
+      Cortes seleccionados pasados por fuego, cócteles de autor y producto de mar. Una selección destacada; la carta completa se ajusta con vosotros.
     </p>
     <div class="carta-grid">
       <div class="carta-item">
         <span class="num">/ 01</span>
-        <h3>Cócteles</h3>
-        <p>De clásicos bien hechos a creaciones de casa. Spritz, gin-tonics premium, cócteles de autor.</p>
-        <span class="placeholder-note">Lista a definir</span>
+        <h3>Ribeye</h3>
+        <p>Corte jugoso con su veteado, marcado a la brasa. Cocción al punto y guarniciones que acompañan sin tapar.</p>
+        <span class="placeholder-note">Carne premium</span>
       </div>
       <div class="carta-item">
         <span class="num">/ 02</span>
-        <h3>Para picar</h3>
-        <p>Tablas, tartar, croquetas, frituras. Comida de compartir pensada para acompañar la copa.</p>
-        <span class="placeholder-note">Lista a definir</span>
+        <h3>Lamb chops</h3>
+        <p>Chuletas de cordero a la brasa. Sabor profundo, terminación crujiente, punto sangrante por defecto.</p>
+        <span class="placeholder-note">Carne premium</span>
       </div>
       <div class="carta-item">
         <span class="num">/ 03</span>
-        <h3>Pescados</h3>
-        <p>Producto de lonja según día. Sugerencia diaria de pescado a la sal, a la espalda o a la brasa.</p>
-        <span class="placeholder-note">Lista a definir</span>
+        <h3>Ox burger</h3>
+        <p>Hamburguesa de vacuno premium, pan brioche, queso fundido y guarnición de casa. La versión seria del clásico.</p>
+        <span class="placeholder-note">Carne premium</span>
       </div>
       <div class="carta-item">
         <span class="num">/ 04</span>
-        <h3>Carnes a la brasa</h3>
-        <p>Cortes seleccionados pasados por fuego. Acompañamientos sencillos para no robarle el sitio a la pieza.</p>
-        <span class="placeholder-note">Lista a definir</span>
+        <h3>Beef tataki</h3>
+        <p>Solomillo marcado por fuera, crudo por dentro. Cortado fino, con su salsa y un guiño japonés frente al Mediterráneo.</p>
+        <span class="placeholder-note">Carne premium</span>
+      </div>
+      <div class="carta-item">
+        <span class="num">/ 05</span>
+        <h3>Tartar de atún</h3>
+        <p>Atún rojo en tartar, sazonado en casa. Fresco, limpio, pensado para abrir mesa con una copa fría.</p>
+        <span class="placeholder-note">Producto de mar</span>
+      </div>
+      <div class="carta-item">
+        <span class="num">/ 06</span>
+        <h3>Cócteles de autor</h3>
+        <p>De clásicos bien hechos a creaciones de casa. Spritz, gin-tonics premium y mixología pensada para el atardecer.</p>
+        <span class="placeholder-note">Barra</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="musica" id="musica">
+  <div class="wrap">
+    <div class="eyebrow">Música en vivo</div>
+    <h2 class="section-title">Saxo al atardecer, <em>DJ chill</em> hasta la noche.</h2>
+    <p class="lede">
+      No es música de fondo: es parte de la mesa. Saxofonista en vivo cuando cae el sol y DJ con sesiones chill que estiran la sobremesa sin levantar la voz.
+    </p>
+    <div class="musica-grid">
+      <div class="musica-card">
+        <div class="label">Saxo en vivo</div>
+        <h3>Saxofonista al ocaso</h3>
+        <p>Sesiones en directo frente al Peñón. La hora dorada con saxo cerca de la mesa, justo cuando la luz se rompe sobre el agua.</p>
+        <div class="when">Atardeceres seleccionados</div>
+      </div>
+      <div class="musica-card">
+        <div class="label">DJ chill</div>
+        <h3>Set de cabina</h3>
+        <p>Selección cuidada para acompañar la copa: house lento, downtempo, balearic. Para quedarse después del postre.</p>
+        <div class="when">Tardes y noches</div>
       </div>
     </div>
   </div>
